@@ -1,210 +1,139 @@
 <?php
-
 require 'connect_db.php';
 require 'useful_functions.php';
 session_start();
-
-$cookie_time=time()+60*60*60;
-$username='';
-$password='';
-$safe_key='';
-
-if ((isset($_POST['password'])&&isset($_POST['username']))||(isset($_COOKIE['uname'])&&isset($_COOKIE['pwd'])&&isset($_COOKIE['safe_key']))) {
-	
-	
-
-	
-if(isset($_COOKIE['uname'])&&isset($_COOKIE['pwd'])&&isset($_COOKIE['safe_key']))	
-{
-	$username = preg_replace("/[^a-zA-Z0-9]+/", "", $_COOKIE['uname']);		
-	$password = preg_replace("/[^a-zA-Z0-9]+/", "", $_COOKIE['pwd']);	
-	$safe_key = preg_replace("/[^a-zA-Z0-9]+/", "", $_COOKIE['safe_key']);
-	
-	
-	$sql="SELECT U.id,U.username,U.password,U.name,U.surname,U.email,U.phone,U.profile_pic,U.active,U_C.name as profession FROM user U , user_categories U_C where U.profession=U_C.id AND U.username=:username";
-	$run = $dbh->prepare($sql);
-	$run->bindParam(':username', $username, PDO::PARAM_STR);
-	$run ->execute();
-	
-	if ($run->rowCount()>0)
-	{
-	
-		  while($row=$run->fetch(PDO::FETCH_ASSOC)){
-	      if((password_verify($password, $row['password'])==true))
-          {
-			  
-			if(security_check($safe_key,$row['id'])==true)
-			{
-			$_SESSION['user_id']=$row['id'];
-			$_SESSION['username'] = $row['username'];
-			$_SESSION['name'] = $row['name'];
-			$_SESSION['surname'] = $row['surname'];
-			$_SESSION['profile_pic'] = $row['profile_pic'];
-			$_SESSION['safe_key'] = $safe_key;
-			$_SESSION['profession'] = $row['profession'];
-			$_SESSION['N_O_M']=getNumberOfMessages($row['username']);
-			$_SESSION['L_L_H']=getLastLoginHistoryId($row['id']);
-			
-				if($row['active']==0)
-				{
-					if($row['profession']==='Admin')
-					{
-						
-							$_SESSION["server_response"] = 'Καλώς ήρθες '.$row['name'].' '.$row['surname'].'';
-							header('Location: ../home_admin.php');
-							die();
-					
-					}
-					else
-					{
-						$_SESSION["server_response"] = 'Καλώς ήρθες '.$row['name'].' '.$row['surname'].'';
-						header('Location: ../home_user.php');
-						die();
-					}
-				}
-				else
-				{
-					setcookie('uname','',time()-7000000,'/');
-					setcookie('pwd','',time()-7000000,'/');
-					setcookie('safe_key','',time()-7000000,'/');
-					
-					$_SESSION["server_response"] = 'Ανενεργός Λογαριασμός';
-					header('Location: ../index.php'); 
-					die();
-				}
-			}
-			else
-			{
-					setcookie('uname','',time()-7000000,'/');
-					setcookie('pwd','',time()-7000000,'/');
-					setcookie('safe_key','',time()-7000000,'/');
-					
-					$_SESSION["server_response"] = 'Login Απο άλλη συσκευή';
-					header('Location: ../index.php');
-					die();
-			}
-
-		}
-		else
-		{
-			setcookie('uname','',time()-7000000,'/');
-			setcookie('pwd','',time()-7000000,'/');
-			setcookie('safe_key','',time()-7000000,'/');
-	
-			$_SESSION["server_response"] = 'Λάνθασμένος κωδικός';
-			header('Location: ../index.php');
-			die();
-		}
-	  }
-	}
-	else
-	{
-		
-	 unset($_COOKIE['uname']);
-	 unset($_COOKIE['pwd']);
-	 unset($_COOKIE['safe_key']);
-	 
-	 $_SESSION["server_response"] = 'Eλένξτε ξανά το username';
-	 header('Location: ../index.php');
-	 die();
-	}
-	
-	
-}
-else if(isset($_POST['username'])&&isset($_POST['password']))
-{
-	$username = preg_replace("/[^a-zA-Z0-9]+/", "", $_POST['username']);		
-	$password = preg_replace("/[^a-zA-Z0-9]+/", "", $_POST['password']);	
-	$safe_key=randomString(15);
-	
-	
-	
-	$sql="SELECT U.id,U.username,U.password,U.name,U.surname,U.email,U.phone,U.profile_pic,U.active,U_C.name as profession FROM user U , user_categories U_C where U.profession=U_C.id AND U.username=:username";
-	$run = $dbh->prepare($sql);
-	$run->bindParam(':username', $username, PDO::PARAM_STR);
-	$run ->execute();
-	
-	if ($run->rowCount()>0)
-	{
-	
-		  while($row=$run->fetch(PDO::FETCH_ASSOC)){
-	      if((password_verify($password, $row['password'])==true))
-          {
-			$_SESSION['user_id']=$row['id'];
-			$_SESSION['username'] = $row['username'];
-			$_SESSION['name'] = $row['name'];
-			$_SESSION['surname'] = $row['surname'];
-			$_SESSION['profile_pic'] = $row['profile_pic'];
-			$_SESSION['safe_key'] = $safe_key;
-			$_SESSION['profession'] = $row['profession'];
-			$_SESSION['N_O_M']=getNumberOfMessages($row['username']);
-			$_SESSION['L_L_H']=getLastLoginHistoryId($row['id']);
-			
-			
-			$device = "Browser";
-			$sql="INSERT INTO login_history (user_id,safe_key,device_name,ip)VALUES (:id,:safe_key,:device_name,:ip)";
-			$res = $dbh->prepare($sql); 
-			$res->bindParam(':safe_key', $safe_key, PDO::PARAM_STR);
-			$res->bindParam(':id', $row['id'], PDO::PARAM_INT);
-			$res->bindParam(':ip', $_SERVER['REMOTE_ADDR'], PDO::PARAM_STR);
-			$res->bindParam(':device_name',$device, PDO::PARAM_STR);
-			$res->execute(); 
-			
-			setcookie("uname",$username,$cookie_time,'/');
-			setcookie("pwd",$password ,$cookie_time,'/');
-			setcookie("safe_key",$safe_key ,$cookie_time,'/');
-
-			
-			if($row['active']==0)
-			{
-				if($row['profession']==='Admin')
-				{
-					$_SESSION["server_response"] = 'Καλώς ήρθες '.$row['name'].' '.$row['surname'].'';
-					header('Location: ../home_admin.php');
-					die();
-				}
-				else
-				{
-					$_SESSION["server_response"] = 'Καλώς ήρθες '.$row['name'].' '.$row['surname'].'';
-					header('Location: ../home_user.php');
-					die();
-				}
-			}
-			else
-			{
-					$_SESSION["server_response"] = 'Ανενεργός Λογαριασμός';
-					header('Location: ../index.php'); 
-					die();
-			}
-
-		}
-		else
-		{
-			$_SESSION["server_response"] = 'Λάνθασμένος κωδικός';
-			header('Location: ../index.php');
-			die();
-		}
-      }
-	}
-	else
-	{
-	 
-	 $_SESSION["server_response"] = 'Eλένξτε ξανά το username';
-	 header('Location: ../index.php');
-	 die();
-	
-	}
-	
-
-	
-	}
-	else
-	{
-	 
-	 $_SESSION["server_response"] = 'Eλένξτε ξανά το username';
-	 header('Location: ../index.php');
-	 die();
-	
-	}
+$cookie_time = time() + 60 * 60 * 60;
+$username = '';
+$password = '';
+$safe_key = '';
+if ((isset($_POST['password']) && isset($_POST['username'])) || (isset($_COOKIE['uname']) && isset($_COOKIE['pwd']) && isset($_COOKIE['safe_key']))) {
+    if (isset($_COOKIE['uname']) && isset($_COOKIE['pwd']) && isset($_COOKIE['safe_key'])) {
+        $username = preg_replace("/[^a-zA-Z0-9]+/", "", $_COOKIE['uname']);
+        $password = preg_replace("/[^a-zA-Z0-9]+/", "", $_COOKIE['pwd']);
+        $safe_key = preg_replace("/[^a-zA-Z0-9]+/", "", $_COOKIE['safe_key']);
+        $sql = "SELECT U.id,U.username,U.password,U.name,U.surname,U.email,U.phone,U.profile_pic,U.active,U_C.name as profession FROM user U , user_categories U_C where U.profession=U_C.id AND U.username=:username";
+        $run = $dbh->prepare($sql);
+        $run->bindParam(':username', $username, PDO::PARAM_STR);
+        $run->execute();
+        if ($run->rowCount() > 0) {
+            while ($row = $run->fetch(PDO::FETCH_ASSOC)) {
+                if ((password_verify($password, $row['password']) == true)) {
+                    if (security_check($safe_key, $row['id']) == true) {
+						$_SESSION['polling_time'] = round(microtime(true) * 1000) + 60000 * 2;
+                        $_SESSION['user_id'] = $row['id'];
+                        $_SESSION['username'] = $row['username'];
+                        $_SESSION['name'] = $row['name'];
+                        $_SESSION['surname'] = $row['surname'];
+                        $_SESSION['profile_pic'] = $row['profile_pic'];
+                        $_SESSION['safe_key'] = $safe_key;
+                        $_SESSION['profession'] = $row['profession'];
+                        $_SESSION['N_O_M'] = getNumberOfMessages($row['username']);
+                        $_SESSION['L_L_H'] = getLastLoginHistoryId($row['id']);
+                        if ($row['active'] == 0) {
+                            if ($row['profession'] === 'Admin') {
+                                $_SESSION["server_response"] = 'Καλώς ήρθες ' . $row['name'] . ' ' . $row['surname'] . '';
+                                header('Location: ../home_admin.php');
+                                die();
+                            } else {
+                                $_SESSION["server_response"] = 'Καλώς ήρθες ' . $row['name'] . ' ' . $row['surname'] . '';
+                                header('Location: ../home_user.php');
+                                die();
+                            }
+                        } else {
+                            setcookie('uname', '', time() - 7000000, '/');
+                            setcookie('pwd', '', time() - 7000000, '/');
+                            setcookie('safe_key', '', time() - 7000000, '/');
+                            $_SESSION["server_response"] = 'Ανενεργός Λογαριασμός';
+                            header('Location: ../index.php');
+                            die();
+                        }
+                    } else {
+                        setcookie('uname', '', time() - 7000000, '/');
+                        setcookie('pwd', '', time() - 7000000, '/');
+                        setcookie('safe_key', '', time() - 7000000, '/');
+                        $_SESSION["server_response"] = 'Login Απο άλλη συσκευή';
+                        header('Location: ../index.php');
+                        die();
+                    }
+                } else {
+                    setcookie('uname', '', time() - 7000000, '/');
+                    setcookie('pwd', '', time() - 7000000, '/');
+                    setcookie('safe_key', '', time() - 7000000, '/');
+                    $_SESSION["server_response"] = 'Λάνθασμένος κωδικός';
+                    header('Location: ../index.php');
+                    die();
+                }
+            }
+        } else {
+            unset($_COOKIE['uname']);
+            unset($_COOKIE['pwd']);
+            unset($_COOKIE['safe_key']);
+            $_SESSION["server_response"] = 'Eλένξτε ξανά το username';
+            header('Location: ../index.php');
+            die();
+        }
+    } else if (isset($_POST['username']) && isset($_POST['password'])) {
+        $username = preg_replace("/[^a-zA-Z0-9]+/", "", $_POST['username']);
+        $password = preg_replace("/[^a-zA-Z0-9]+/", "", $_POST['password']);
+        $safe_key = randomString(15);
+        $sql = "SELECT U.id,U.username,U.password,U.name,U.surname,U.email,U.phone,U.profile_pic,U.active,U_C.name as profession FROM user U , user_categories U_C where U.profession=U_C.id AND U.username=:username";
+        $run = $dbh->prepare($sql);
+        $run->bindParam(':username', $username, PDO::PARAM_STR);
+        $run->execute();
+        if ($run->rowCount() > 0) {
+            while ($row = $run->fetch(PDO::FETCH_ASSOC)) {
+                if ((password_verify($password, $row['password']) == true)) {
+					$_SESSION['polling_time'] = round(microtime(true) * 1000) + 60000 * 2;
+                    $_SESSION['user_id'] = $row['id'];
+                    $_SESSION['username'] = $row['username'];
+                    $_SESSION['name'] = $row['name'];
+                    $_SESSION['surname'] = $row['surname'];
+                    $_SESSION['profile_pic'] = $row['profile_pic'];
+                    $_SESSION['safe_key'] = $safe_key;
+                    $_SESSION['profession'] = $row['profession'];
+                    $_SESSION['N_O_M'] = getNumberOfMessages($row['username']);
+                    $_SESSION['L_L_H'] = getLastLoginHistoryId($row['id']);
+                    $device = "Browser";
+                    $sql = "INSERT INTO login_history (user_id,safe_key,device_name,ip)VALUES (:id,:safe_key,:device_name,:ip)";
+                    $res = $dbh->prepare($sql);
+                    $res->bindParam(':safe_key', $safe_key, PDO::PARAM_STR);
+                    $res->bindParam(':id', $row['id'], PDO::PARAM_INT);
+                    $res->bindParam(':ip', $_SERVER['REMOTE_ADDR'], PDO::PARAM_STR);
+                    $res->bindParam(':device_name', $device, PDO::PARAM_STR);
+                    $res->execute();
+                    setcookie("uname", $username, $cookie_time, '/');
+                    setcookie("pwd", $password, $cookie_time, '/');
+                    setcookie("safe_key", $safe_key, $cookie_time, '/');
+                    if ($row['active'] == 0) {
+                        if ($row['profession'] === 'Admin') {
+                            $_SESSION["server_response"] = 'Καλώς ήρθες ' . $row['name'] . ' ' . $row['surname'] . '';
+                            header('Location: ../home_admin.php');
+                            die();
+                        } else {
+                            $_SESSION["server_response"] = 'Καλώς ήρθες ' . $row['name'] . ' ' . $row['surname'] . '';
+                            header('Location: ../home_user.php');
+                            die();
+                        }
+                    } else {
+                        $_SESSION["server_response"] = 'Ανενεργός Λογαριασμός';
+                        header('Location: ../index.php');
+                        die();
+                    }
+                } else {
+                    $_SESSION["server_response"] = 'Λάνθασμένος κωδικός';
+                    header('Location: ../index.php');
+                    die();
+                }
+            }
+        } else {
+            $_SESSION["server_response"] = 'Eλένξτε ξανά το username';
+            header('Location: ../index.php');
+            die();
+        }
+    } else {
+        $_SESSION["server_response"] = 'Eλένξτε ξανά το username';
+        header('Location: ../index.php');
+        die();
+    }
 }
 ?>

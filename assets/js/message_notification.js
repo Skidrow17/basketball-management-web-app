@@ -1,25 +1,27 @@
 var intervalID = window.setInterval(returnwasset, 5000);
-var buzzer = $('#buzzer')[0];  
+var buzzer = $("#buzzer")[0];
 
-        function returnwasset(){
-            $.ajax({
-                type: "POST",
-                url: "php/message_notification.php",
-             
-                success: function(response){
-					
-					if(response==2)
-					{
-						window.location.replace("./php/auto_logout.php");
-						
-					}
-					else if(response!=1)
-					{
-						$(function() {
-						$.snackbar({content: response}); });
-						buzzer.play();
-					}
-					
-                }
-            });
-        }
+function returnwasset() {
+  console.log(Math.floor(Date.now()) - pollingTime);
+  if(Math.floor(Date.now() > pollingTime)){
+	  $.ajax({
+		type: "POST",
+		url: "php/message_notification.php",
+		success: function(response) {
+		  var jsonObj = JSON.parse(response);
+		  console.log(jsonObj);
+		  if (jsonObj.code == 2) {
+			window.location.replace("./php/auto_logout.php");
+		  } else if (jsonObj.code != 1) {
+			  buzzer.play();
+			  pollingTime = jsonObj.polling_time;
+			$(function() {
+			  $.snackbar({ content: jsonObj.code });
+			});
+		  }else{
+			  pollingTime = jsonObj.polling_time;
+		  }
+		}
+	  });
+  }
+}

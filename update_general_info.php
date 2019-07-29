@@ -2,10 +2,10 @@
 //Access: Admin
 //Purpose: Update, Delete information about teams , team categories , city and user categories
 
-require_once("./php/session_admin.php");
-require("http_to_https.php");
-require 'php/useful_functions.php';
-require 'php/select_boxes.php';
+require_once('./php/session_admin.php');
+require_once('http_to_https.php');
+require_once('php/useful_functions.php');
+require_once('php/select_boxes.php');
 ?>
 
 <!DOCTYPE html>
@@ -22,8 +22,7 @@ require 'php/select_boxes.php';
     <main class="page lanidng-page">
         <section class="portfolio-block photography"></section>
     </main>
-    <div></div>
-    <div></div>
+   
     <?php include('admin_nav_bar.php'); ?>
     <div class="admin-look">
 	
