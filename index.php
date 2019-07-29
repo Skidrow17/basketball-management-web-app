@@ -147,7 +147,7 @@ header('Location: ./php/login.php');
 	</div>
 
 	<?php include('index_footer.php'); ?>
-		<script src="assets/js/index.js"></script>
+	<script src="assets/js/index.js"></script>
 
 </body>
 
