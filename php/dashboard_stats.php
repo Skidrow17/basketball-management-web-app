@@ -36,7 +36,7 @@ for ($i = 1;$i < 13;$i++) {
 new Chart(document.getElementById("bar-chart"), {
     type: 'bar',
     data: {
-      labels: ["Ιαν", "Φεβ", "Μαρ", "Απρ", "Μαι","Ιουν","Ιουλ","Αυγ","Σεπ","Οκτ","Νοε","Δεκ"],
+      labels: [<?php echo $jan; ?>, <?php echo $feb; ?>, <?php echo $mar; ?>, <?php echo $apr; ?>, <?php echo $may; ?>,<?php echo $jul; ?>,<?php echo $jun; ?>,<?php echo $aug; ?>,<?php echo $sep; ?>,<?php echo $oct; ?>,<?php echo $nov; ?>,<?php echo $dec; ?>],
       datasets: [
         {
           label: "",
@@ -49,7 +49,7 @@ new Chart(document.getElementById("bar-chart"), {
       legend: { display: false },
       title: {
         display: true,
-        text: 'Κωλύματα Ανα μήνα'
+        text:<?php echo $chartLabel; ?>
       }
     }
 });
