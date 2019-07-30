@@ -1,33 +1,28 @@
 ﻿<?php
-
 include 'connect_db.php';
-
 $a = array();
 $month = [];
 $restriction = [];
 $flag = 1;
-
 $sql = "SELECT month(date) as month,count(*) as nor 
 		FROM restriction 
 		GROUP by Month(date) ORDER BY Month(date);";
 $run = $dbh->prepare($sql);
 $run->execute();
 while ($row = $run->fetch(PDO::FETCH_ASSOC)) {
-	$month[] = $row['month'];
-	$restriction[] = $row['nor'];
+    $month[] = $row['month'];
+    $restriction[] = $row['nor'];
 }
-
-for( $i=1;$i<13;$i++){
-	$flag = 1;
-	for($j=0;$j<count($month);$j++){
-		if($i == $month[$j]){
-			$a[$i-1] = $restriction[$j];
-			$flag = 0;
-			break;
-		}
-	}
-	if($flag == 1)
-	 $a[$i-1] = 0;
+for ($i = 1;$i < 13;$i++) {
+    $flag = 1;
+    for ($j = 0;$j < count($month);$j++) {
+        if ($i == $month[$j]) {
+            $a[$i - 1] = $restriction[$j];
+            $flag = 0;
+            break;
+        }
+    }
+    if ($flag == 1) $a[$i - 1] = 0;
 }
 ?>
 
