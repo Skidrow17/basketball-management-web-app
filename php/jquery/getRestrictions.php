@@ -1,18 +1,19 @@
 <?php
 require_once '../connect_db.php';
 require_once '../useful_functions.php';
+require_once '../labels_en.php';
 session_start();
 if (isset($_POST['current_page']) && isset($_SESSION['safe_key']) && isset($_SESSION['user_id'])) {
     if (security_check($_SESSION['safe_key'], $_SESSION['user_id']) == true) {
         $page = $_POST['current_page'] * 9;
         echo "<tr>";
-        echo "<th>Όνομα</th>";
-        echo "<th>Επίθετο</th>";
-        echo "<th>Απο</th>";
-        echo "<th>Μέχρι</th>";
-        echo "<th>Ημερομινία</th>";
-        echo "<th>Ημερομινία Καταχώρισης</th>";
-        echo "<th>Ώρα Καταχώρισης</th>";
+        echo "<th>";echo $name; echo"</th>";
+        echo "<th>";echo $surname;echo "</th>";
+        echo "<th>";echo $from;echo "</th>";
+        echo "<th>";echo $to;echo "</th>";
+        echo "<th>";echo $date;echo "</th>";
+        echo "<th>";echo $importingDate;echo "</th>";
+        echo "<th>";echo $importingTime;echo "</th>";
         echo "</tr>";
         $sql = "SELECT U.name,U.surname,R.time_from,R.time_to,R.date,R.register_timestamp from user U,restriction R where U.id=R.user_id ORDER BY R.register_timestamp desc limit :page,9";
         $run = $dbh->prepare($sql);

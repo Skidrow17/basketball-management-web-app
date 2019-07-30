@@ -1,23 +1,24 @@
 <?php
 require_once '../connect_db.php';
 require_once '../useful_functions.php';
+require_once '../labels_en.php';
 session_start();
 if (isset($_SESSION['safe_key']) && isset($_SESSION['user_id']) && isset($_POST['current_page'])) {
     if (security_check($_SESSION['safe_key'], $_SESSION['user_id']) == true) {
         $page = $_POST['current_page'] * 9;
         echo "<tr>";
-        echo "<th>Όνομα</th>";
-        echo "<th>Επίθετο</th>";
-        echo "<th>Κωδικός</th>";
-        echo "<th>Εmail</th>";
-        echo "<th>Κινητό</th>";
-        echo "<th>Διπλωμα Οδηγησης</th>";
-        echo "<th>Τοπος Κατηκίας</th>";
-        echo "<th>Ιδιοτητα</th>";
-        echo "<th>Εικόνα Προφιλ</th>";
-        echo "<th>Κατασταση Λογαριασμού</th>";
-        echo "<th>Αξιολόγιση</th>";
-        echo "<th>Χρονος Αναβάθμησης</th>";
+        echo "<th>";echo $name; echo"</th>";
+        echo "<th>";echo $surname; echo"</th>";
+        echo "<th>";echo $password; echo"</th>";
+        echo "<th>";echo $email; echo"</th>";
+        echo "<th>";echo $phone; echo"</th>";
+        echo "<th>";echo $drivingLicence; echo"</th>";
+        echo "<th>";echo $livingPlace; echo"</th>";
+        echo "<th>";echo $profession; echo"</th>";
+        echo "<th>";echo $profileImage; echo"</th>";
+        echo "<th>";echo $accountState; echo"</th>";
+        echo "<th>";echo $rating; echo"</th>";
+        echo "<th>";echo $updateDate; echo"</th>";
         echo "</tr>";
         $sql = "SELECT name,surname,password,email,phone,driving_licence,living_place,profession,profile_pic,active,rate,update_time 
 				FROM user_update_history 
