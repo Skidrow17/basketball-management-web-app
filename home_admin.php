@@ -1,7 +1,7 @@
 <?php 
 //Access: Admin
 //Purpose: Admin Home Page
-
+require_once('./php/language_select.php');
 require_once('./php/session_admin.php');
 require_once('http_to_https.php');
 require_once('php/useful_functions.php');
@@ -46,7 +46,7 @@ require_once('php/select_boxes.php');
 										<div class="number">
 											<span><?php echo getNumberOfUsers(); ?></span>
 										</div>
-										<div class="desc">Χρήστες</div>
+										<div class="desc"><?php echo $usersDashboard; ?></div>
 									</div>
 								</a>
 							</div>
@@ -59,7 +59,7 @@ require_once('php/select_boxes.php');
 										<div class="number">
 											<span><?php echo getNumberOfAllMessages(); ?></span>
 										</div>
-										<div class="desc">Μηνύματα</div>
+										<div class="desc"><?php echo $messagesDashboard; ?></div>
 									</div>
 								</a>
 							</div>
@@ -72,7 +72,7 @@ require_once('php/select_boxes.php');
 										<div class="number">
 											<span><?php echo getNumberOfRestrictions(); ?></span>
 										</div>
-										<div class="desc">Κωλύματα</div>
+										<div class="desc"><?php echo $restrictionsDashboard; ?></div>
 									</div>
 								</a>
 							</div>
@@ -85,7 +85,7 @@ require_once('php/select_boxes.php');
 										<div class="number">
 											<span><?php echo getNumberOfAllMatches(); ?></span>
 										</div>
-										<div class="desc">Συνολικοί Αγώνες</div>
+										<div class="desc"><?php echo $totalMatchesDashboard; ?></div>
 									</div>
 								</a>
 							</div>
@@ -98,7 +98,7 @@ require_once('php/select_boxes.php');
 										<div class="number">
 											<span><?php echo getReadyToPlayGames();?></span>
 										</div>
-										<div class="desc">Αγώνες χωρίς διαιτητές</div>
+										<div class="desc"><?php echo $unassignedMatchesDashboard; ?></div>
 									</div>
 								</a>
 							</div>
@@ -111,7 +111,7 @@ require_once('php/select_boxes.php');
 										<div class="number">
 											<span><?php echo getNumberOfCurrentMatches(); ?></span>
 										</div>
-										<div class="desc">Τρέχων αγώνες</div>
+										<div class="desc"><?php echo $currentWeekMatchesDashoard; ?></div>
 									</div>
 								</a>
 							</div>
