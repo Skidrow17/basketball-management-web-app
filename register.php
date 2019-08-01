@@ -1,8 +1,8 @@
 <?php 
 //Access: Admin
 //Purpose: Registers a new user to the system
-
 require_once('./php/session_admin.php');
+require_once('./php/language_select.php');
 require_once('http_to_https.php');
 require_once('php/useful_functions.php');
 require_once('php/select_boxes.php');
@@ -29,7 +29,7 @@ require_once('php/select_boxes.php');
 
 				<div class="form-row">
 					<div class="col">
-						<h3>Φόρμα Εγγραφής Μέλους</h3>
+						<h3><?php echo $user; ?></h3>
 					</div>
 				</div>
 
@@ -40,56 +40,56 @@ require_once('php/select_boxes.php');
 				</div>
 
 				<div class="form-row">
-					<div class="col"><small class="form-text text-muted">Όνομα</small>
+					<div class="col"><small class="form-text text-muted"><?php echo $name; ?></small>
 						<input required name="name" class="form-control" type="text">
 					</div>
-					<div class="col"><small class="form-text text-muted">Επώνυμο</small>
+					<div class="col"><small class="form-text text-muted"><?php echo $surname; ?></small>
 						<input required name="surname" class="form-control" type="text">
 					</div>
 				</div>
 				<div class="form-row">
-					<div class="col"><small class="form-text text-muted">Όνομα χρήστη</small>
+					<div class="col"><small class="form-text text-muted"><?php echo $username; ?></small>
 						<input required name="username" class="form-control" type="text">
 					</div>
-					<div class="col"><small class="form-text text-muted">Κωδικός</small>
+					<div class="col"><small class="form-text text-muted"><?php echo $password; ?></small>
 						<input required name="password" class="form-control" type="text">
 					</div>
 				</div>
 				<div class="form-row">
-					<div class="col"><small class="form-text text-muted">Email</small>
+					<div class="col"><small class="form-text text-muted"><?php echo $email; ?></small>
 						<input requiredv name="email" class="form-control" type="text">
 					</div>
-					<div class="col"><small class="form-text text-muted">Αριθμός κινητού</small>
+					<div class="col"><small class="form-text text-muted"><?php echo $phone; ?></small>
 						<input required name="phone" class="form-control" type="text">
 					</div>
 				</div>
 				<div class="form-row">
-					<div class="col"><small class="form-text text-muted">Τόπος διαμονής</small>
+					<div class="col"><small class="form-text text-muted"><?php echo $livingPlace; ?></small>
 						<?php echo getAllCities();?>
 					</div>
-					<div class="col"><small class="form-text text-muted">Αξιολόγηση</small>
+					<div class="col"><small class="form-text text-muted"><?php echo $rating; ?></small>
 						<?php echo getAllRates();?>
 					</div>
 				</div>
 				<div class="form-row">
-					<div class="col"><small class="form-text text-muted">Δίπλωμα οδήγησης</small>
+					<div class="col"><small class="form-text text-muted"><?php echo $drivingLicence; ?></small>
 						<?php echo getDrivingLicence(1);?>
 					</div>
-					<div <div class="col"><small class="form-text text-muted">Ειδικότητα</small>
+					<div <div class="col"><small class="form-text text-muted"><?php echo $profession; ?></small>
 						<?php echo getAllUser_categories();?>
 					</div>
 				</div>
 				<div class="form-row">
-					<div class="col"><small class="form-text text-muted">Φωτογραφία Χρήστη</small>
+					<div class="col"><small class="form-text text-muted"><?php echo $profileImage; ?></small>
 						<input required name="profile_pic" class="col-xl-12" type="file" />
 					</div>
-					<div class="col"><small class="form-text text-muted">Κατηγορίες που μπορεί να παίξει</small>
+					<div class="col"><small class="form-text text-muted"><?php echo $playableCategories; ?></small>
 						<?php echo getAllPlayableCategories();?>
 					</div>
 				</div>
 				<div class="form-row">
 					<div class="col-xl-12">
-						<button name="submit" class="btn btn-primary btn-lg col-xl-12" style="width:" type="submit" style="width:290px;">Υποβολή</button>
+						<button name="submit" class="btn btn-primary btn-lg col-xl-12" style="width:" type="submit" style="width:290px;"><?php echo $addButton; ?></button>
 					</div>
 				</div>
 			</form>

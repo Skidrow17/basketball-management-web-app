@@ -1,8 +1,8 @@
 <?php 
 //Access: Admin
 //Purpose: Update, Delete information about teams , team categories , city and user categories
-
 require_once('./php/session_admin.php');
+require_once('./php/language_select.php');
 require_once('http_to_https.php');
 require_once('php/useful_functions.php');
 require_once('php/select_boxes.php');
@@ -14,7 +14,7 @@ require_once('php/select_boxes.php');
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ΕΚΑΣΔΥΜ - Ανανέωση Γενικών Πληροφοριών</title>
+    <title>ΕΚΑΣΔΥΜ - <?php echo $updateGeneralInfo;?></title>
 	<?php include('head.php'); ?>
 </head>
 
@@ -32,7 +32,7 @@ echo'
     
 		    <div class="form-row">
                 <div class="col">
-                    <h3>Πόλη</h3>
+                    <h3>';echo $city; echo'</h3>
                 </div>
             </div>
 			
@@ -42,12 +42,12 @@ echo'
                 </div>
             </div>
     <div class="form-row">
-        <div class="col"><small class="form-text text-muted">Επιλογή Πόλης</small>';echo getAllCities();echo '</div>
-        <div class="col"><small class="form-text text-muted">Όνομα</small><input name="city_name" id="city_name" class="form-control" type="text"></div>
+        <div class="col"><small class="form-text text-muted">';echo $selectCity; echo'</small>';echo getAllCities();echo '</div>
+        <div class="col"><small class="form-text text-muted">';echo $name; echo'</small><input name="city_name" id="city_name" class="form-control" type="text"></div>
 	</div>
 	<div class="form-row">
-        <div class="col"><button class="btn btn-primary" type="submit" style="width:100%">Ανανέωση</button></div>
-		<div class="col"><button class="btn btn-primary" type="button" id="delete_city" style="width:100%">Διαγραφή</button></div>
+        <div class="col"><button class="btn btn-primary" type="submit" style="width:100%">';echo $update; echo'</button></div>
+		<div class="col"><button class="btn btn-primary" type="button" id="delete_city" style="width:100%">';echo $delete; echo'</button></div>
     </div>
 </form>
 ';
@@ -58,7 +58,7 @@ echo'
     
 		    <div class="form-row">
                 <div class="col">
-                    <h3>Κατηγορία Ομάδας</h3>
+                    <h3>';echo $teamCategory; echo'</h3>
                 </div>
             </div>
 			
@@ -68,12 +68,12 @@ echo'
                 </div>
             </div>
     <div class="form-row">
-        <div class="col"><small class="form-text text-muted">Επιλογή Κατηγορίας</small>';echo getAllTeam_categories(); echo'</div>
-        <div class="col"><small class="form-text text-muted">Όνομα</small><input name="team_category_name" id="team_category_name" class="form-control" type="text"></div>
+        <div class="col"><small class="form-text text-muted">';echo $selectTeam; echo'</small>';echo getAllTeam_categories(); echo'</div>
+        <div class="col"><small class="form-text text-muted">';echo $name; echo'</small><input name="team_category_name" id="team_category_name" class="form-control" type="text"></div>
 	</div>
     <div class="form-row">
-        <div class="col"><button class="btn btn-primary" type="submit" style="width:100%">Ανανέωση</button></div>
-		<div class="col"><button class="btn btn-primary" type="button" id="delete_category" style="width:100%">Διαγραφή</button></div>
+        <div class="col"><button class="btn btn-primary" type="submit" style="width:100%">';echo $update; echo'</button></div>
+		<div class="col"><button class="btn btn-primary" type="button" id="delete_category" style="width:100%">';echo $delete; echo'</button></div>
     </div>
 </form>
 ';
@@ -83,7 +83,7 @@ echo'
     
 		    <div class="form-row">
                 <div class="col">
-                    <h3>Κατηγορία Χρήστη</h3>
+                    <h3>';echo $userCategory; echo'</h3>
                 </div>
             </div>
 			
@@ -93,12 +93,12 @@ echo'
                 </div>
             </div>
     <div class="form-row">
-        <div class="col"><small class="form-text text-muted">Επιλογή Κατηγορίας</small>';echo getUserCategory(0);echo'</div>
-        <div class="col"><small class="form-text text-muted">Όνομα</small><input name="user_category_name" id="user_category_name" class="form-control" type="text"></div>
+        <div class="col"><small class="form-text text-muted">';echo $selectCategory; echo'</small>';echo getUserCategory(0);echo'</div>
+        <div class="col"><small class="form-text text-muted">';echo $name; echo'</small><input name="user_category_name" id="user_category_name" class="form-control" type="text"></div>
 	</div>
     <div class="form-row">
-        <div class="col"><button class="btn btn-primary" type="submit" style="width:100%">Ανανέωση</button></div>
-		<div class="col"><button class="btn btn-primary" type="button" id="delete_user_category" style="width:100%">Διαγραφή</button></div>
+        <div class="col"><button class="btn btn-primary" type="submit" style="width:100%">';echo $update; echo'</button></div>
+		<div class="col"><button class="btn btn-primary" type="button" id="delete_user_category" style="width:100%">';echo $delete; echo'</button></div>
     </div>
 </form>
 
@@ -109,7 +109,7 @@ echo'
     
 		    <div class="form-row">
                 <div class="col">
-                    <h3>Ομάδα</h3>
+                    <h3>';echo $team; echo'</h3>
                 </div>
             </div>
 			
@@ -119,18 +119,18 @@ echo'
                 </div>
             </div>
     <div class="form-row">
-        <div class="col"><small class="form-text text-muted">Επιλογή Κατηγορίας</small>'; echo getAllTeam_categories(); echo'</div>
-		<div class="col"><small class="form-text text-muted">Επιλογή Ομάδας</small><select class="form-control" id="teams" name="teams"><option>Επιλέξτε Κατηγορία</option></select></div>
+        <div class="col"><small class="form-text text-muted">';echo $selectCategory; echo'</small>'; echo getAllTeam_categories(); echo'</div>
+		<div class="col"><small class="form-text text-muted">';echo $selectTeam; echo'</small><select class="form-control" id="teams" name="teams"><option>';echo $selectCategory; echo'</option></select></div>
 	</div>
 	
 	<div class="form-row">
-        <div class="col"><small class="form-text text-muted">Όνομα</small><input name="team_name" id="team_name" class="form-control" type="text"></div>
-		<div class="col"><small class="form-text text-muted">Επιλογή Κατηγορίας</small>';echo getAllTeam_categories2();echo'</div>
+        <div class="col"><small class="form-text text-muted">';echo $name; echo'</small><input name="team_name" id="team_name" class="form-control" type="text"></div>
+		<div class="col"><small class="form-text text-muted">';echo $selectCategory; echo'</small>';echo getAllTeam_categories2();echo'</div>
 	</div>
 	
     <div class="form-row">
-        <div class="col"><button class="btn btn-primary" type="submit" style="width:100%">Ανανέωση</button></div>
-		<div class="col"><button class="btn btn-primary" id="delete_team"  type="button" style="width:100%">Διαγραφή</button></div>
+        <div class="col"><button class="btn btn-primary" type="submit" style="width:100%">';echo $update; echo'</button></div>
+		<div class="col"><button class="btn btn-primary" id="delete_team"  type="button" style="width:100%">';echo $delete; echo'</button></div>
     </div>
 </form>
 echo';

@@ -3,12 +3,14 @@ require_once '../connect_db.php';
 require '../useful_functions.php';
 session_start();
 if (isset($_POST['game_id']) && isset($_SESSION['safe_key']) && isset($_SESSION['user_id'])) {
+	if($_SESSION['language'] == 'en')include ('../labels_en.php');
+	else include ('../labels_gr.php');
     if (security_check($_SESSION['safe_key'], $_SESSION['user_id']) == true) {
         $gid = $_POST['game_id'];
         echo '<tr>
-			  <th>Όνομα</th>
-			  <th>Επίθετο</th>
-			  <th>Ιδιοτητα</th>
+			  <th>';echo $name; echo'</th>
+			  <th>';echo $surname; echo'</th>
+			  <th>';echo $profession; echo'</th>
 			  <th></th>';
         $page = $_POST['current_page'] * 3;
         $sql = "SELECT U.id ,U.name ,U.surname,uc.name as prof from user U,human_power hp,user_categories uc 

@@ -4,6 +4,7 @@
 //Purpose: Add basketball Court
 
 require_once('./php/session_admin.php');
+require_once('./php/language_select.php');
 require_once('http_to_https.php');
 require_once('php/useful_functions.php');
 require_once('php/select_boxes.php');
@@ -15,7 +16,7 @@ require_once('php/select_boxes.php');
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>ΕΚΑΣΔΥΜ - Προσθήκη Γηπέδου</title>
+	<title>ΕΚΑΣΔΥΜ - <?php echo $courtInsert; ?></title>
 	<?php include('head.php'); ?>
 </head>
 
@@ -30,7 +31,7 @@ require_once('php/select_boxes.php');
 			<form method="post" action="php/insert/insert_court.php">
 				<div class="form-row">
 					<div class="col">
-						<h3>Προσθήκη Γηπέδου</h3>
+						<h3><?php echo $court; ?></h3>
 					</div>
 				</div>
 
@@ -40,10 +41,10 @@ require_once('php/select_boxes.php');
 					</div>
 				</div>
 				<div class="form-row">
-					<div class="col-xl-6"><small class="form-text text-muted">Όνομα&nbsp;</small>
+					<div class="col-xl-6"><small class="form-text text-muted"><?php echo $name; ?></small>
 						<input name="name" class="form-control" type="text">
 					</div>
-					<div class="col-xl-6"><small class="form-text text-muted">Πόλη</small>
+					<div class="col-xl-6"><small class="form-text text-muted"><?php echo $city; ?></small>
 						<?php echo getAllCities();?>
 					</div>
 				</div>
@@ -61,7 +62,7 @@ require_once('php/select_boxes.php');
 						<div id="map"></div>
 					</div>
 					<div class="col-xl-12">
-						<button class="btn btn-primary" name='submit' type="submit" onclick="return confirm('Είσται σίγουρος;')" style="width:100%;">Υποβολή</button>
+						<button class="btn btn-primary" name='submit' type="submit" onclick="return confirm('Είσται σίγουρος;')" style="width:100%;"><?php echo $addButton; ?></button>
 					</div>
 				</div>
 			</form>

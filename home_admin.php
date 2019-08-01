@@ -1,8 +1,9 @@
 <?php 
 //Access: Admin
 //Purpose: Admin Home Page
-require_once('./php/language_select.php');
+
 require_once('./php/session_admin.php');
+require_once('./php/language_select.php');
 require_once('http_to_https.php');
 require_once('php/useful_functions.php');
 require_once('php/select_boxes.php');
@@ -14,7 +15,7 @@ require_once('php/select_boxes.php');
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>ΕΚΑΣΔΥΜ - Αρχική Σελίδα</title>
+	<title>ΕΚΑΣΔΥΜ - <?php echo $homePage; ?></title>
 	<?php include('head.php'); ?>
 </head>
 

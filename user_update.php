@@ -1,8 +1,8 @@
 <?php  
 //Access: Admin 
 //Purpose: Update , Activate / Deactivate Users
-
 require_once('./php/session_admin.php');
+require_once('./php/language_select.php');
 require_once('http_to_https.php');
 require_once('php/useful_functions.php');
 require_once('php/select_boxes.php');
@@ -14,7 +14,7 @@ require_once('php/select_boxes.php');
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>ΕΚΑΣΔΥΜ - Αναβάθμιση Χρήστη</title>
+	<title>ΕΚΑΣΔΥΜ - <?php echo $userUpdate;?></title>
 	<?php include('head.php'); ?>
 </head>
 
@@ -30,7 +30,7 @@ require_once('php/select_boxes.php');
 
 				<div class="form-row">
 					<div class="col">
-						<h3>Χρήστης</h3>
+						<h3><?php echo $user; ?></h3>
 					</div>
 				</div>
 
@@ -40,7 +40,7 @@ require_once('php/select_boxes.php');
 					</div>
 				</div>
 				<div class="form-row">
-					<div class="col-xl-12"><small class="form-text text-muted">Χρήστης</small>
+					<div class="col-xl-12"><small class="form-text text-muted"><?php echo $selectUser; ?></small>
 
 						<?php echo getUsers(); ?>
 

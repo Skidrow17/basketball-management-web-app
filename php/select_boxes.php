@@ -1,5 +1,6 @@
 <?php
 function getStates($selected) {
+	
     echo '<select name="state" class="form-control" required>';
     if ($selected == 0) {
         echo '<option value="0" selected>Ενεργός</option><option value="1">Ανενεργός</option>';
@@ -23,6 +24,7 @@ function getHuman_Power_By_Game($game, $type) {
 }
 function getHuman_Power_By_Game1($game) {
     require 'connect_db.php';
+	include 'language_select.php';
     $sql = "Select U.id,U.name,U.surname from user U, human_power HP where HP.user_id=U.id AND HP.game_id = :gid";
     $lid = $dbh->prepare($sql);
     $lid->bindParam(':gid', $game, PDO::PARAM_INT);
@@ -36,11 +38,12 @@ function getHuman_Power_By_Game1($game) {
 }
 function getAllCities() {
     require 'connect_db.php';
+	include 'language_select.php';
     $sql = "SELECT id,name from city where active=0";
     $lid = $dbh->prepare($sql);
     $lid->execute();
     echo '<select name="city" id="city" class="form-control" required>';
-    echo "<option value=''>Επιλέξτε Πόλη</option>";
+    echo "<option value=''>";echo $selectCity; echo"</option>";
     while ($row = $lid->fetch(PDO::FETCH_ASSOC)) {
         echo '<option value=' . $row['id'] . '>' . $row['name'] . '</option>';
     }
@@ -48,11 +51,12 @@ function getAllCities() {
 }
 function getAllCourts() {
     require 'connect_db.php';
+	include 'language_select.php';
     $sql = "SELECT id,name from court where active=0";
     $lid = $dbh->prepare($sql);
     $lid->execute();
     echo '<select name="court" id="court" class="form-control" required>';
-    echo "<option value=''>Επιλέξτε Γήπεδο</option>";
+    echo "<option value=''>";echo $selectCourt; echo"</option>";
     while ($row = $lid->fetch(PDO::FETCH_ASSOC)) {
         echo '<option value=' . $row['id'] . '>' . $row['name'] . '</option>';
     }
@@ -60,11 +64,12 @@ function getAllCourts() {
 }
 function getAllRates() {
     require 'connect_db.php';
+	include 'language_select.php';
     $sql = "SELECT id,name from rate";
     $lid = $dbh->prepare($sql);
     $lid->execute();
     echo '<select name="rate" class="form-control" required>';
-    echo "<option value=''>Επιλέξτε Επιπεδο</option>";
+    echo "<option value=''>";echo $selectCity; echo"</option>";
     while ($row = $lid->fetch(PDO::FETCH_ASSOC)) {
         echo '<option value=' . $row['id'] . '>' . $row['name'] . '</option>';
     }
@@ -83,11 +88,12 @@ function getAllUser_categories() {
 }
 function getAllTeam_categories() {
     require 'connect_db.php';
+	include 'language_select.php';
     $sql = "SELECT id,name from team_categories where active = 0";
     $lid = $dbh->prepare($sql);
     $lid->execute();
     echo '<select name="team_category" id="team_category" class="form-control" required>';
-    echo "<option value=''>Επιλέξτε Κατηγορία</option>";
+    echo "<option value=''>";echo $selectCategory; echo "</option>";
     while ($row = $lid->fetch(PDO::FETCH_ASSOC)) {
         echo '<option value=' . $row['id'] . ' >' . $row['name'] . '</option>';
     }
@@ -95,11 +101,12 @@ function getAllTeam_categories() {
 }
 function getAllTeam_categories2() {
     require 'connect_db.php';
+	include 'language_select.php';
     $sql = "SELECT id,name from team_categories where active = 0";
     $lid = $dbh->prepare($sql);
     $lid->execute();
     echo '<select name="team_category2" id="team_category2" class="form-control" required>';
-    echo "<option value=''>Επιλέξτε Κατηγορία</option>";
+    echo "<option value=''>";echo $selectCategory; echo"</option>";
     while ($row = $lid->fetch(PDO::FETCH_ASSOC)) {
         echo '<option value=' . $row['id'] . ' >' . $row['name'] . '</option>';
     }
@@ -107,6 +114,7 @@ function getAllTeam_categories2() {
 }
 function getLivingPlace($selected) {
     require 'connect_db.php';
+	include 'language_select.php';
     $sql = "SELECT id,name from city where active = 0";
     $lid = $dbh->prepare($sql);
     $lid->execute();
@@ -119,15 +127,27 @@ function getLivingPlace($selected) {
 }
 function getDrivingLicence($selected) {
     echo '<select name="driving_licence" class="form-control" required>';
-    if ($selected == 0) {
-        echo '<option value="0" selected>Ναι</option><option value="1">Οχι</option>';
-    } else {
-        echo '<option value="0">Ναι</option><option value="1" selected>Οχι</option>';
-    }
+	
+	if($_SESSION['language']=='en'){
+		if ($selected == 0) {
+			echo '<option value="0" selected>Yes</option><option value="1">No</option>';
+		} else {
+			echo '<option value="0">Yes</option><option value="1" selected>No</option>';
+		}
+	}
+	
+	if($_SESSION['language']=='gr'){
+		if ($selected == 0 && $_SESSION['language']=='gr') {
+			echo '<option value="0" selected>Ναι</option><option value="1">Οχι</option>';
+		} else {
+			echo '<option value="0">Ναι</option><option value="1" selected>Οχι</option>';
+		}
+	}
     echo '</select>';
 }
 function getRate($selected) {
     require 'connect_db.php';
+	include 'language_select.php';
     $sql = "SELECT id,name from rate";
     $lid = $dbh->prepare($sql);
     $lid->execute();
@@ -140,6 +160,7 @@ function getRate($selected) {
 }
 function getCourt($selected) {
     require 'connect_db.php';
+	include 'language_select.php';
     $sql = "SELECT id,name from court where active = 0";
     $lid = $dbh->prepare($sql);
     $lid->execute();
@@ -152,11 +173,12 @@ function getCourt($selected) {
 }
 function getUserCategory($selected) {
     require 'connect_db.php';
+	include 'language_select.php';
     $sql = "SELECT id,name from user_categories where active = 0";
     $lid = $dbh->prepare($sql);
     $lid->execute();
     echo '<select name="user_category" id="user_category" class="form-control" required>';
-    echo "<option value=''>Επιλέξτε Κατηγορία</option>";
+    echo "<option value=''>";echo $selectCategory; echo"</option>";
     while ($row = $lid->fetch(PDO::FETCH_ASSOC)) {
         if ($row['id'] == $selected) echo '<option value=' . $row['id'] . ' selected>' . $row['name'] . '</option>';
         if ($row['id'] != $selected) echo '<option value=' . $row['id'] . '>' . $row['name'] . '</option>';
@@ -165,11 +187,12 @@ function getUserCategory($selected) {
 }
 function getUsers() {
     require 'connect_db.php';
+	include 'language_select.php';
     $sql = "SELECT id,name,surname from user";
     $lid = $dbh->prepare($sql);
     $lid->execute();
     echo '<select name="users" id="users" onchange="showUser(this.value)" class="form-control" required>';
-    echo '<option value="">Επιλέξτε χρήστη</option>';
+    echo '<option value="">';echo $selectUser; echo'</option>';
     while ($row = $lid->fetch(PDO::FETCH_ASSOC)) {
         echo '<option value=' . $row['id'] . '>' . $row['name'] . ' ' . $row['surname'] . '</option>';
     }
@@ -177,6 +200,7 @@ function getUsers() {
 }
 function getAllPlayableCategories() {
     require 'connect_db.php';
+	include 'language_select.php';
     $sql = "SELECT id,name from team_categories where active = 0";
     $lid = $dbh->prepare($sql);
     $lid->execute();
@@ -187,11 +211,12 @@ function getAllPlayableCategories() {
 }
 function getTeamById($id, $cat_id) {
     require 'connect_db.php';
+	include 'language_select.php';
     $sql = "SELECT id,name from team where category=:cid and  active = 0";
     $lid = $dbh->prepare($sql);
     $lid->bindParam(':cid', $cat_id, PDO::PARAM_INT);
     $lid->execute();
-    echo "<option value=''>Επιλέξτε Ομάδα</option>";
+    echo "<option value=''>";echo $selectTeam; echo"</option>";
     while ($row = $lid->fetch(PDO::FETCH_ASSOC)) {
         if ($row['id'] == $id) echo '<option value=' . $row['id'] . ' selected>' . $row['name'] . '</option>';
         if ($row['id'] != $id) echo '<option value=' . $row['id'] . '>' . $row['name'] . '</option>';
@@ -199,6 +224,7 @@ function getTeamById($id, $cat_id) {
 }
 function getPlayableCategories($user_id) {
     require 'connect_db.php';
+	include 'language_select.php';
     $playable_categories = array();
     $sql = "SELECT team_categories_id from playable_categories where user_id=:user_id";
     $x = $dbh->prepare($sql);
@@ -210,19 +236,18 @@ function getPlayableCategories($user_id) {
     $sql = "SELECT id,name from team_categories where active = 0 ";
     $lid = $dbh->prepare($sql);
     $lid->execute();
-    //echo '<select multiple="multiple" id="multiple_select" class="form-control">';
     while ($row = $lid->fetch(PDO::FETCH_ASSOC)) {
         if (in_array($row['id'], $playable_categories)) {
             echo '<input name="playable_categories[]" type="checkbox" value=' . $row['id'] . ' checked> ' . $row['name'] . '';
             echo "  ";
-        } // echo '<option value='.$row['id'].' selected>'.$row['name'].'</option>';
+        } 
         if (!in_array($row['id'], $playable_categories)) {
             echo '<input name="playable_categories[]" type="checkbox" value=' . $row['id'] . '> ' . $row['name'] . '';
             echo "  ";
-        } //echo '<option value='.$row['id'].'>'.$row['name'].'</option>';
+        } 
         
     }
-    //echo '</select>';
     
 }
+
 ?>

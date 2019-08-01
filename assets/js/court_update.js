@@ -5,7 +5,7 @@ $(document).ready(function() {
 
     $.ajax({
       type: "POST",
-      url: "php/update_court_load.php",
+      url: "update_court_load.php",
       data: post_id,
       success: function(result) {
 		autologout(result);

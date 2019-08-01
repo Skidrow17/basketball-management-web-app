@@ -2,7 +2,11 @@
 require_once '../connect_db.php';
 require_once '../useful_functions.php';
 session_start();
+
 if (isset($_POST['game_id']) && isset($_POST['id']) && isset($_SESSION['safe_key']) && isset($_SESSION['user_id'])) {
+	if($_SESSION['language'] == 'en')include ('../labels_en.php');
+	else include ('../labels_gr.php');
+
     if (security_check($_SESSION['safe_key'], $_SESSION['user_id']) == true) {
         $id = $_POST['game_id'];
         $cat_id = $_POST['id'];
@@ -58,7 +62,7 @@ if (isset($_POST['game_id']) && isset($_POST['id']) && isset($_SESSION['safe_key
         $run = $dbh->prepare($sql);
         $run->bindParam(':td', $cat_id, PDO::PARAM_INT);
         $run->execute();
-        echo "<option selected>Επιλέξτε Κριτή</option>";
+        echo "<option selected>";echo $selectJudge; echo"</option>";
         while ($row = $run->fetch(PDO::FETCH_ASSOC)) {
             echo '<option value="' . $row['id'] . '">' . $row['name'] . ' ' . $row['surname'] . '</option>';
         }

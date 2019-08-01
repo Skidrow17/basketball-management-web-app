@@ -1,8 +1,8 @@
 <?php 
 //Access: Admin
 //Purpose: Shows all logins happened on the system
-
 require_once("./php/session_admin.php");
+require_once('./php/language_select.php');
 require_once("http_to_https.php");
 require_once('php/useful_functions.php');?>
 
@@ -12,7 +12,7 @@ require_once('php/useful_functions.php');?>
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>ΕΚΑΣΔΥΜ - Ιστορικό Συνδέσεων</title>
+	<title>ΕΚΑΣΔΥΜ - <?php echo $loginHistory;?></title>
 	<?php include('head.php'); ?>
 </head>
 
@@ -27,7 +27,7 @@ require_once('php/useful_functions.php');?>
 			<form method="post">
 				<div class="form-row">
 					<div class="col">
-						<h1>Ιστορικό Συνδέσεων</h1>
+						<h1><?php echo $loginHistory;?></h1>
 					</div>
 				</div>
 
@@ -52,7 +52,7 @@ require_once('php/useful_functions.php');?>
 
 				<div class="form-row">
 					<div class="col">
-						<button class="btn btn-primary" style="width:100%;" id="export_all" value="Download PDF" type="button" download>Εξαγωγή σε CSV</button>
+						<button class="btn btn-primary" style="width:100%;" id="export_all" value="Download PDF" type="button" download><?php echo $exportCSVButton; ?></button>
 					</div>
 				</div>
 

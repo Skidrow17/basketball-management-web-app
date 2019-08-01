@@ -3,6 +3,7 @@
 //Purpose: Delete , Update , Insert Announcement
 
 require_once("./php/session.php");
+require_once('./php/language_select.php');
 require_once("http_to_https.php");
 require_once("php/useful_functions.php"); 
 ?>

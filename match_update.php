@@ -1,8 +1,8 @@
 <?php 
 //Access: Admin
 //Purpose: Updates the match details
-
 require_once('./php/session_admin.php');
+require_once('./php/language_select.php');
 require_once('http_to_https.php');
 require_once('php/useful_functions.php');
 require_once('php/select_boxes.php');
@@ -14,7 +14,7 @@ require_once('php/select_boxes.php');
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>ΕΚΑΣΔΥΜ - Ανανέωση Αγώνα</title>
+        <title>ΕΚΑΣΔΥΜ - <?php echo $matchUpdate; ?></title>
         <?php include('head.php'); ?>
     </head>
 
@@ -31,7 +31,7 @@ require_once('php/select_boxes.php');
 
                     <div class="form-row">
                         <div class="col">
-                            <h3>Αγώνας</h3>
+                            <h3><?php echo $match; ?></h3>
                         </div>
                     </div>
 
@@ -41,16 +41,16 @@ require_once('php/select_boxes.php');
                         </div>
                     </div>
                     <div class="form-row">
-                        <div class="col"><small class="form-text text-muted">Κατηγορία Ομάδας</small>
+                        <div class="col"><small class="form-text text-muted"><?php echo $teamCategory; ?></small>
 
                             <?php echo getAllTeam_Categories(); ?>
 
                         </div>
 
-                        <div class="col"><small class="form-text text-muted">Αγώνας</small>
+                        <div class="col"><small class="form-text text-muted"><?php echo $match; ?></small>
 
                             <select class="form-control" id="matches" name="matches">
-                                <option>Επιλέξτε Κατηγορία</option>
+                                <option><?php echo $selectCategory; ?></option>
                             </select>
 
                         </div>

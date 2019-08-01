@@ -3,6 +3,7 @@
 //Purpose: Delete ,Show, Sent Messages
 
 require_once("./php/session_admin.php");
+require_once('./php/language_select.php');
 require_once("http_to_https.php");
 require_once("php/useful_functions.php"); 
 ?>
@@ -13,7 +14,7 @@ require_once("php/useful_functions.php");
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>ΕΚΑΣΔΥΜ - Μηνύματα</title>
+	<title>ΕΚΑΣΔΥΜ - <?php echo $messages; ?></title>
 	<?php include('head.php'); ?>
 </head>
 
@@ -30,7 +31,7 @@ require_once("php/useful_functions.php");
 
 				<div class="form-row">
 					<div class="col">
-						<h3>Τα Μηνύματα Μου</h3>
+						<h3><?php echo $messages; ?></h3>
 					</div>
 				</div>
 
@@ -42,15 +43,15 @@ require_once("php/useful_functions.php");
 
 				<div class='form-row'>
 					<div class="col">
-						<button class="btn btn-primary btn-block" id='sent_message' value='1' type="button">Αποστολή Μηνύματος</div>
+						<button class="btn btn-primary btn-block" id='sent_message' value='1' type="button"><?php echo $messageSend; ?></div>
 				</div>
 				<div class='form-row'>
 					<div class="col">
-						<button class="btn btn-primary btn-block" id='incomming' value='1' type="button">Εισερχόμενα</div>
+						<button class="btn btn-primary btn-block" id='incomming' value='1' type="button"><?php echo $incommingMessages; ?></div>
 				</div>
 				<div class='form-row'>
 					<div class="col">
-						<button class="btn btn-primary btn-block" id='outgoing' value='2' type="button">Εξερχόμενα</button>
+						<button class="btn btn-primary btn-block" id='outgoing' value='2' type="button"><?php echo $outgoingMessages; ?></button>
 					</div>
 				</div>
 			</form>
@@ -90,18 +91,18 @@ require_once("php/useful_functions.php");
 				</div>
 
 				<div class="form-group">
-					<button class="btn btn-primary btn-block" id='back' type="button">Πίσω</button>
+					<button class="btn btn-primary btn-block" id='back' type="button"><?php echo $back; ?></button>
 				</div>
 			</form>
 
 			<form method="post" id='sent' action="./php/insert/insert_message.php" style="display: none;">
-				<small class="form-text text-muted" style="color:rgba(150,1,1,0.15);">Επιλέξτε παραλήπτη</small>
+				<small class="form-text text-muted" style="color:rgba(150,1,1,0.15);"><?php echo $searchContacts; ?></small>
 				<div class="form-group">
 					<select id="receiver_id" name="receiver_id">
 						<?php require_once './php/contacts.php'; ?>
 					</select>
 
-					<input type="text" id="search-data" name="searchData" placeholder="Αναζήτηση Παραλήπτη" autocomplete="off" />
+					<input type="text" id="search-data" name="searchData" placeholder=<?php echo $searchContacts; ?> autocomplete="off" />
 
 				</div>
 
@@ -114,12 +115,12 @@ require_once("php/useful_functions.php");
 				<div class='row'>
 					<div class='col'>
 						<div class="form-group">
-							<button id='back3' class="btn btn-primary btn-block" type="button" style="background-color:rgb(220,64,29);">Πίσω</button>
+							<button id='back3' class="btn btn-primary btn-block" type="button" style="background-color:rgb(220,64,29);"><?php echo $back; ?></button>
 						</div>
 					</div>
 					<div class='col'>
 						<div class="form-group">
-							<button class="btn btn-primary btn-block" type="submit" name='submit' style="background-color:rgb(220,64,29);">Αποστολή</button>
+							<button class="btn btn-primary btn-block" type="submit" name='submit' style="background-color:rgb(220,64,29);"><?php echo $addButton; ?></button>
 						</div>
 					</div>
 				</div>
@@ -129,7 +130,7 @@ require_once("php/useful_functions.php");
 				<div id="here">
 				</div>
 				<div class="form-group">
-					<button class="btn btn-primary btn-block" id='back2' type="button">Πίσω</button>
+					<button class="btn btn-primary btn-block" id='back2' type="button"><?php echo $back; ?></button>
 				</div>
 			</form>
 

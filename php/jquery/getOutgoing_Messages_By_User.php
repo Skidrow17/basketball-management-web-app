@@ -3,16 +3,18 @@ require_once '../connect_db.php';
 require_once '../useful_functions.php';
 session_start();
 if (isset($_POST['current_page']) && isset($_SESSION['safe_key']) && isset($_SESSION['user_id'])) {
+	if($_SESSION['language'] == 'en')include ('../labels_en.php');
+	else include ('../labels_gr.php');
     if (security_check($_SESSION['safe_key'], $_SESSION['user_id']) == true) {
         $page = $_POST['current_page'] * 4;
-        echo '  <tr>
-		  <th>Όνομα</th>
-		  <th>Επώνυμο</th>
-		  <th>Ημερομηνία</th>
-		  <th>Μήνυμα</th>
-		  <th>Κατάσταση</th>
-		  <th>Διαγραφή</th>
-		  ';
+       echo '  <tr>
+				  <th>';echo $name; echo '</th>
+				  <th>';echo $surname; echo '</th>
+				  <th>';echo $date; echo '</th>
+				  <th>';echo $message; echo '</th>
+				  <th>';echo $state; echo '</th>
+				  <th>';echo $delete; echo '</th>
+				  ';
         $sql = "SELECT M.id as message_id,M.message_read,U.name,U.surname,M.text_message,U.profile_pic,U.active,U.password,U.id,M.date_time FROM user U, message M where U.id=M.receiver_id AND sender_id=:id AND sender_delete=0 ORDER BY date_time desc limit :page,4";
         $run = $dbh->prepare($sql);
         $run->bindParam(':id', $_SESSION['user_id'], PDO::PARAM_INT);

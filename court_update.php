@@ -3,6 +3,7 @@
 //Purpose: Update and delete Basketball court
 
 require_once('./php/session_admin.php');
+require_once('./php/language_select.php');
 require_once('http_to_https.php');
 require_once('php/useful_functions.php');
 require_once('php/select_boxes.php');
@@ -14,7 +15,7 @@ require_once('php/select_boxes.php');
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>ΕΚΑΣΔΥΜ - Ανανέωση Γηπέδου</title>
+	<title>ΕΚΑΣΔΥΜ - <?php echo $courtUpdate; ?></title>
 	<?php include('head.php'); ?>
 </head>
 
@@ -28,7 +29,7 @@ require_once('php/select_boxes.php');
 
 				<div class="form-row">
 					<div class="col">
-						<h3>Γήπεδο</h3>
+						<h3><?php echo $court; ?></h3>
 					</div>
 				</div>
 
@@ -38,7 +39,7 @@ require_once('php/select_boxes.php');
 					</div>
 				</div>
 				<div class="form-row">
-					<div class="col-xl-12"><small class="form-text text-muted">Γήπεδο</small>
+					<div class="col-xl-12"><small class="form-text text-muted"><?php echo $court; ?></small>
 
 						<?php echo getAllCourts(); ?>
 

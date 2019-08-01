@@ -7,7 +7,7 @@
 	$restrictions = "Restrictions";
 	$userUpdateHistory = "User Update History";
  $add = "Add";
-	$humanPowerSorting = "People Per Match";
+	$humanPowerSorting = "Align People To Match";
 	$match = "Match";
 	$city = "City";
 	$teamCategory = "Team Category";
@@ -50,12 +50,107 @@
 	$oct = "'Oct'";
 	$nov = "'Nov'";
 	$dec = "'Dec'";
+  //Footer
+	$developer = "Developer";
+	$supervisors = "Supervisors";
+	$allRightsReserved = "UOWM © All Rights Reserved";
 	
- 
+	
+				    //Common 
+					$name = "Name";
+					$surname = "Surname";
+					$username = "Username";
+					$exportCSVButton = "Export CSV";
+					$addButton = "Submit";
+					$totalRestrictions = "Total Restrictions";
+					$update = "Update";
+					$delete = "Delete";
+					
+					
+  //Login History Labels
+	$loginTimeStamp = "Login Timestamp";
+	$logoutTimeStamp = "Logout Timestamp";
+	$loginDevice = "Login Device";
+	$safeKey = "Safe Key";
+  //Restriction History Labels 
+    $from = "From";
+	$to = "To";
+	$date = "Date";
+	$time = "Time";
+	$importingDate = "Importing Date";
+	$importingTime = "Importing Time";
+  //User Update History
+	$password = "Password";
+	$email = "Email";
+	$phone = "Phone";
+	$drivingLicence = "Driving Licence";
+	$livingPlace = "Living Place";
+	$profession = "Profession";
+	$profileImage = "Profile Image";
+	$accountState = "Account State";
+	$rating  = "Rating";
+	$updateDate = "Update Date";
+//========================================================
+   
+   //Match Referee Labels
+   $selectCategory = "Select Category";
+   $selectMatch = "Select Match";
+   $selectRefere = "Select Referee";
+   $selectJudge = "Select Judge";
+   $selectUser = "Select User";
+   $selectCity = "Select City";
+   $selectCourt = "Select Court";
+   $selectRate = "Select Rate";
+   $selectTeam = "Select Team";
+   
+   //Floating Message 
+   $needMore = "There is a need for ";
+   $needOneMore = "There is a need for ";
+   $referees = " referees";
+   $referee = " referee";
+   $judges = " judges";
+   $judge = " judge";
+   $and = " and ";
+   
+   // Add Match 
+   $numberOfReferees = "Number of referees";
+   $numberOfJudges = "Number of judges";
+   $gameRate = "Rate";
+   $version = "Version";
+   $file = "File";
+   $playableCategories = "Playable Categories";
+   
+   //Headers
+   $usersPerMatch = "Users Per Match";
+   $userUpdate = "User Update";
+   $courtUpdate = "Court Update";
+   $matchUpdate = "Match Update";
+   $updateGeneralInfo = "Update General Info";
 
-
-
-
-
-
+   $userInsert = "Add User";
+   $courtInsert = "Add Court";
+   $matchInsert = "Match Insert";
+   $addGeneralInfo = "Add General Info";
+   
+   //Messages
+   $messageSend = "Send A Message";
+   $incommingMessages = "Incoming Messages";
+   $outgoingMessages = "Outgoing Messages";
+   $searchContacts = "Search Contacts";
+   $choseContact = "Chose Contact";
+   $message = "Message";
+   $state = "State";
+   $delete = "Delete";
+   
+   //Announcements
+   $makeAnnouncement = "Make An Announcement";
+   $myAnnouncements = "My Announcements";
+   $allAnnouncements = "All Announcements";
+   $writer = "Writer";
+   $save = "Save";
+   
+   //both
+   $back = "Back";
+   $title = "Title";
+   
 ?>

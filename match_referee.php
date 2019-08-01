@@ -1,8 +1,8 @@
 <?php 
 //Access: Admin
 //Purpose: Matches the referees to current week games
-
 require_once('./php/session_admin.php');
+require_once('./php/language_select.php');
 require_once('http_to_https.php');
 require_once('php/useful_functions.php');
 require_once('php/select_boxes.php');?>
@@ -13,7 +13,7 @@ require_once('php/select_boxes.php');?>
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>ΕΚΑΣΔΥΜ - Εισαγωγή Διαιτητών</title>
+	<title>ΕΚΑΣΔΥΜ - <?php echo $humanPowerSorting; ?></title>
 	<?php include('head.php'); ?>
 	<link rel="stylesheet" href="assets/css/floatingText.css">
 </head>
@@ -33,7 +33,7 @@ require_once('php/select_boxes.php');?>
 			<hr>
 				<div class="form-row">
 					<div class="col">
-						<h3>Ταξινόμηση Διαιτητών</h3>
+						<h3><?php echo $humanPowerSorting; ?></h3>
 					</div>
 				</div>
 
@@ -66,44 +66,44 @@ require_once('php/select_boxes.php');?>
 				</div>
 
 				<div class="form-row">
-					<div class="col"><small class="form-text text-muted">Επιλέξτε Κατηγορία</small>
+					<div class="col"><small class="form-text text-muted"><?php echo $selectCategory;?></small>
 						<?php echo getAllTeam_Categories(); ?>
 					</div>
-					<div class="col"><small class="form-text text-muted">Επιλέξτε Αγώνα</small>
+					<div class="col"><small class="form-text text-muted"><?php echo $selectMatch;?></small>
 						<select class="form-control" id="matches" name="matches">
-							<option>Επιλέξτε Κατηγορία</option>
+							<option><?php echo $selectCategory; ?></option>
 						</select>
 					</div>
 				</div>
 
 				<div class="form-row">
-					<div class="col"><small class="form-text text-muted">Επιλέξτε Διαιτητή 1</small>
+					<div class="col"><small class="form-text text-muted"><?php echo $selectRefere;?> 1</small>
 						<select class="form-control" id="referee1" name="human_power[]" required>
-							<option value="">Επιλέξτε Αγώνα</option>
+							<option value=""><?php echo $selectMatch; ?></option>
 						</select>
 					</div>
-					<div class="col"><small class="form-text text-muted">Επιλέξτε Διαιτητή 2</small>
+					<div class="col"><small class="form-text text-muted"><?php echo $selectRefere;?> 2</small>
 						<select class="form-control" id="referee2" name="human_power[]" required>
-							<option value="">Επιλέξτε Αγώνα</option>
+							<option value=""><?php echo $selectMatch; ?></option>
 						</select>
 					</div>
 				</div>
 
 				<div class="form-row">
-					<div class="col"><small class="form-text text-muted">Επιλέξτε Κριτή 1</small>
+					<div class="col"><small class="form-text text-muted"><?php echo $selectJudge;?> 1</small>
 						<select class="form-control" id="judge1" name="human_power[]" required>
-							<option value="">Επιλέξτε Αγώνα</option>
+							<option value=""><?php echo $selectMatch; ?></option>
 						</select>
 					</div>
-					<div class="col"><small class="form-text text-muted">Επιλέξτε Κριτή 2</small>
+					<div class="col"><small class="form-text text-muted"><?php echo $selectJudge;?> 2</small>
 						<select class="form-control" id="judge2" name="human_power[]" required>
-							<option value="">Επιλέξτε Αγώνα</option>
+							<option value=""><?php echo $selectMatch; ?></option>
 						</select>
 					</div>
 				</div>
 
 				<div class="form-group">
-					<button class="btn btn-primary btn-block" onclick="return confirm('Είσται σίγουρος;')" type="submit" id="submit" name="submit" style="background-color:rgb(220,64,29);">Προσθήκη</button>
+					<button class="btn btn-primary btn-block" onclick="return confirm('Είσται σίγουρος;')" type="submit" id="submit" name="submit" style="background-color:rgb(220,64,29);"><?php echo $addButton; ?></button>
 				</div>
 			</form>
 		</div>

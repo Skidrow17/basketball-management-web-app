@@ -3,6 +3,8 @@ require_once '../connect_db.php';
 require_once '../useful_functions.php';
 session_start();
 if (isset($_POST['game_id']) && isset($_SESSION['safe_key']) && isset($_SESSION['user_id'])) {
+	if($_SESSION['language'] == 'en')include ('../labels_en.php');
+	else include ('../labels_gr.php');
     if (security_check($_SESSION['safe_key'], $_SESSION['user_id']) == true) {
         $id = $_POST['game_id'];
         $sql = "SELECT get_current_referee_by_game(id) as rf ,
@@ -23,19 +25,19 @@ if (isset($_POST['game_id']) && isset($_SESSION['safe_key']) && isset($_SESSION[
             $rr = $row['required_referees'];
             $rj = $row['required_judges'];
         }
-        if (($rr - $rf) > 1) echo "Χρειάζονται ακόμα ";
-        else echo "Χρειάζεται ακόμα ";
+        if (($rr - $rf) > 1) echo $needMore;
+        else echo $needOneMore;
         if ($rr != $rf) {
             echo $rr - $rf;
-            if (($rr - $rf) > 1) echo " διαιτητές";
-            else echo " διαιτητής";
+            if (($rr - $rf) > 1) echo $referees;
+            else echo $referee;
             $flag = 1;
         }
         if ($jg != $rj) {
-            if ($flag == 1) echo " και ";
+            if ($flag == 1) echo $and;
             echo $rj - $jg;
-            if (($rj - $jg) > 1) echo " κριτές";
-            else echo " κριτής";
+            if (($rj - $jg) > 1) echo $judges;
+            else echo $judge;
         }
     } else {
         session_destroy();

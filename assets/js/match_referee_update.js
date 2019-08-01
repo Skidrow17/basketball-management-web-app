@@ -17,6 +17,7 @@ $(document).ready(function() {
       data: post_id,
       success: function(result) {
 		autologout(result);
+		$(".pagination").show();
         $("#matches").html(result);
       }
     });
@@ -40,6 +41,7 @@ $(document).ready(function() {
   $("#previous").click(function() {
     if (current_page != 0) {
       current_page = current_page - 1;
+	   $("#current").text(current_page);
       var post = "game_id=" + current_game + "&current_page=" + current_page;
 	  getHumanPower(post);
     }
@@ -48,9 +50,24 @@ $(document).ready(function() {
   $("#next").click(function() {
     if (current_page < number_of_pages - 1) {
       current_page = current_page + 1;
+	   $("#current").text(current_page);
       var post = "game_id=" + current_game + "&current_page=" + current_page;
 	  getHumanPower(post);
     }
+  });
+  
+  $("#max").click(function() {
+    if (number_of_pages != 0) current_page = Math.ceil(number_of_pages - 1);
+    $("#current").text(current_page);
+    var post = "game_id="+current_game+"&current_page=" + current_page;
+	getHumanPower(post);
+  });
+
+  $("#min").click(function() {
+    current_page = parseInt(0);
+    $("#current").text(current_page);
+    var post = "game_id="+current_game+"&current_page=" + current_page;
+	getHumanPower(post);
   });
 
   $("#table").on("click", ".btn", function() {
@@ -81,6 +98,8 @@ $(document).ready(function() {
 	  success: function(result) {
 		autologout(result);
 		number_of_pages = result;
+		if (number_of_pages != 0) $("#max").text(Math.ceil(number_of_pages) - 1);
+        else $("#max").text(0);
 	  }
 	});
   }

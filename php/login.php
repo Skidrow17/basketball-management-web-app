@@ -20,6 +20,7 @@ if ((isset($_POST['password']) && isset($_POST['username'])) || (isset($_COOKIE[
                 if ((password_verify($password, $row['password']) == true)) {
                     if (security_check($safe_key, $row['id']) == true) {
 						$_SESSION['polling_time'] = round(microtime(true) * 1000) + 60000 * 2;
+						$_SESSION['language'] = 'en';
                         $_SESSION['user_id'] = $row['id'];
                         $_SESSION['username'] = $row['username'];
                         $_SESSION['name'] = $row['name'];
@@ -84,6 +85,7 @@ if ((isset($_POST['password']) && isset($_POST['username'])) || (isset($_COOKIE[
             while ($row = $run->fetch(PDO::FETCH_ASSOC)) {
                 if ((password_verify($password, $row['password']) == true)) {
 					$_SESSION['polling_time'] = round(microtime(true) * 1000) + 60000 * 2;
+					$_SESSION['language'] = 'en';
                     $_SESSION['user_id'] = $row['id'];
                     $_SESSION['username'] = $row['username'];
                     $_SESSION['name'] = $row['name'];
