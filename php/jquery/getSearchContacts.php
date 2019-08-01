@@ -1,8 +1,8 @@
 <?php
-
+session_start();
 require_once '../connect_db.php';
 require_once '../useful_functions.php';
-session_start();
+
 
 $stmt = $dbh->prepare("SELECT * FROM `user` WHERE CONCAT(name,' ',surname) like :searchVal");
 $val = $_POST['search'];

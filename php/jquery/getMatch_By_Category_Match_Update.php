@@ -2,10 +2,9 @@
 require_once '../connect_db.php';
 require_once '../useful_functions.php';
 session_start();
+include 'language.php';
 
 if (isset($_POST['id']) && isset($_SESSION['safe_key']) && isset($_SESSION['user_id'])) {
-	if($_SESSION['language'] == 'en')include ('../labels_en.php');
-	else include ('../labels_gr.php');
     if (security_check($_SESSION['safe_key'], $_SESSION['user_id']) == true) {
         $sql = "SELECT distinct
 				home.name AS team_id_1, 

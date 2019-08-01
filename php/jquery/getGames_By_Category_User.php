@@ -1,8 +1,9 @@
 <?php
+session_start();
 require_once '../connect_db.php';
 require '../useful_functions.php';
 require '../select_boxes.php';
-session_start();
+
 if (isset($_POST['current_page']) && isset($_SESSION['safe_key']) && isset($_SESSION['user_id'])) {
     if (security_check($_SESSION['safe_key'], $_SESSION['user_id']) == true) {
         $page = $_POST['current_page'] * 4;

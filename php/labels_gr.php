@@ -5,7 +5,7 @@
  $tabels = "Πίνακες";
 	$loginHistory = "Ιστορικό Συνδέσεων";
 	$restrictions = "Κωλύματα";
-	$userUpdateHistory = "Ιστορικο Αναβάθμησης χρήστη";
+	$userUpdateHistory = "Ιστορικό Αναβάθμισης χρήστη";
  $add = "Προσθήκη";
 	$humanPowerSorting = "Ταξινόμηση Διαιτητών";
 	$match = "Αγώνας";
@@ -37,7 +37,7 @@
 	$unassignedMatchesDashboard = "Αγώνες χωρίς διαιτητές";
 	$currentWeekMatchesDashoard =  "Τρέχων αγώνες";
  //Chart 
-	$chartLabel = "'Κωλύματα Ανα μήνα'";
+	$chartLabel = "'Κωλύματα Ανά μήνα'";
 	$jan = "'Ιαν'";
 	$feb = "'Φεβ'";
 	$mar = "'Μαρ'";
@@ -58,8 +58,13 @@
 	
 				  //Common 
 					$name = "Όνομα";
+					$username = "Όνομα Χρήστη";
 					$surname = "Επίθετο";
 					$exportCSVButton = "Εξαγωγή CSV";
+					$addButton = "Υποβολή";
+					$totalRestrictions = "Συνολικά Κωλύματα";
+					$update = "Αναβάθμηση";
+					$delete = "Διαγραφή";
 					
 					
   //Login History Labels
@@ -71,25 +76,81 @@
     $from = "Απο";
 	$to = "Μέχρι";
 	$date = "Ημερομηνία";
+	$time = "Χρόνος";
 	$importingDate = "Ημερομηνία Καταχώρισης";
-	$importingTime = "'Ωρα Καταχώρισης";
+	$importingTime = "Ώρα Καταχώρισης";
   //User Update History
 	$password = "Κωδικός";
 	$email = "Email";
 	$phone = "Κινητό";
 	$drivingLicence = "Δίπλωμα Οδήγησης";
 	$livingPlace = "Τόπος Κατοικίας";
-	$profession = "Ιδιοτητα";
+	$profession = "Ιδιότητα";
 	$profileImage = "Εικόνα Προφίλ";
 	$accountState = "Κατάσταση Λογαριασμού";
-	$rating  = "Αξιολόγιση";
-	$updateDate = "Χρόνος Αναβάθμησης";
+	$rating  = "Αξιολόγηση";
+	$updateDate = "Χρόνος Αναβάθμισης";
 //========================================================
  
+	 //Match Referee Labels
+   $selectCategory = "Επιλέξτε Κατηγορία";
+   $selectMatch = "Επιλέξτε Αγώνα";
+   $selectRefere = "Επιλέξτε Διαιτητή";
+   $selectJudge = "Επιλέξτε Κριτή";
+   $selectUser = "Επιλέξτε Χρήστη";
+   $selectCity = "Επιλέξτε Πόλη";
+   $selectCourt = "Επιλέξτε Γήπεδο";
+   $selectRate = "Επιλέξτε Επίπεδο";
+   $selectTeam = "Επιλέξτε Ομάδα";
+   
+   //Floating Message 
+   $needMore = "Χρειάζονται ακόμα ";
+   $needOneMore = "Χρειάζεται ακόμα ";
+   $referees = " διαιτητές";
+   $referee = " διαιτητής";
+   $judges = " κριτές";
+   $judge = " κριτής";
+   $and = " και ";
+   
+   // Add Match 
+   $numberOfReferees = "Πλήθος Διαιτητών";
+   $numberOfJudges = "Πλήθος Κριτών";
+   $gameRate = "Επίπεδο";
+   $version = "Έκδοση";
+   $file = "Αρχείο";
+   $playableCategories = "Αγώνες Που Μπορεί να Παίξει";
+   
+   //Headers
+   $usersPerMatch = "Χρήστες Ανά Αγώνα";
+   $userUpdate = "Αναβάθμιση Χρήστη";
+   $courtUpdate = "Αναβάθμιση Γηπέδου";
+   $matchUpdate = "Αναβάθμιση Αγώνα";
+   $updateGeneralInfo = "Αναβάθμιση Γενικών Πληροφοριών";
+
+   $userInsert = "Προσθήκη Χρήστη";
+   $courtInsert = "Προσθήκη Γηπέδου";
+   $matchInsert = "Προσθήκη Αγώνα";
+   $addGeneralInfo ="Προσθήκη Γενικών Πληροφοριών";
+   
+   //Messages
+   $messageSend = "Αποστολή Μηνύματος";
+   $incommingMessages = "Εισερχόμενα";
+   $outgoingMessages = "Εξερχόμενα";
+   $searchContacts = "Αναζήτηση Επαφών";
+   $choseContact = "Επιλέξτε Επαφή";
+   $message = "Μήνυμα";
+   $state = "Κατάσταση";
+   $delete = "Διαγραφή";
+   
+   //Announcements
+   $makeAnnouncement = "Προσθήκη Ανακοινώσεις";
+   $myAnnouncements = "Οι Ανακοινώσεις μου";
+   $allAnnouncements = "Όλες Οι Ανακοινώσεις";
+   $writer = "Συντάκτης";
+   $save = "Αποθήκευση";
+   
+   //both
+   $back = "Πίσω";
+   $title = "Τίτλος";
  
-
-
-
-
-
 ?>
