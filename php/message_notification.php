@@ -6,7 +6,7 @@ session_start();
 if (isset($_SESSION['safe_key'])) {
 	
 	if((round(microtime(true) * 1000)) > $_SESSION['polling_time'])
-		$_SESSION['polling_time'] = round(microtime(true) * 1000) + 60000 * 2;
+		$_SESSION['polling_time'] = round(microtime(true) * 1000) + 60000 * $_SESSION['polling_mins'];
 	
 	if (security_check($_SESSION['safe_key'], $_SESSION['user_id']) == true) {
 		if (isset($_SESSION['N_O_M']) && isset($_SESSION['polling_time'])) {

@@ -1,7 +1,9 @@
 <?php
+session_start();
 require_once '../connect_db.php';
 require_once '../useful_functions.php';
-session_start();
+require_once '../language.php';
+
 if (isset($_POST['aid']) && isset($_SESSION['safe_key']) && isset($_SESSION['user_id'])) {
     if (security_check($_SESSION['safe_key'], $_SESSION['user_id']) == true) {
         $aid = filter_var($_POST['aid'], FILTER_SANITIZE_NUMBER_INT);
@@ -19,22 +21,12 @@ if (isset($_POST['aid']) && isset($_SESSION['safe_key']) && isset($_SESSION['use
             $stmt->execute();
         }
         if ($stmt->rowCount() > 0) {
-            echo "Eπιτυχία Διαγραφής";
+            echo $deleteSuccessful;
         } else {
-            echo "Αποτυχία Διαγραφής";
+            echo $deleteUnsuccessful;
         }
     } else {
         session_destroy();
         echo 401;
     }
-} else {
-    if ($_SESSION['profession'] === 'Admin') {
-        header('Location: ../../admin_announcements.php');
-        die();
-    } else {
-        header('Location: ../../announcements.php');
-        die();
-    }
 }
-?>
-

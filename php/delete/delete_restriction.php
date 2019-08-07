@@ -1,7 +1,9 @@
 <?php
+session_start();
 require_once '../connect_db.php';
 require_once '../useful_functions.php';
-session_start();
+require_once '../language.php';
+
 if (isset($_POST['id']) && isset($_SESSION['safe_key']) && isset($_SESSION['user_id'])){
     if (security_check($_SESSION['safe_key'], $_SESSION['user_id']) == true && $_SESSION['profession'] === 'Admin') {
         $id = filter_var($_POST['id'], FILTER_SANITIZE_NUMBER_INT);
@@ -24,13 +26,14 @@ if (isset($_POST['id']) && isset($_SESSION['safe_key']) && isset($_SESSION['user
         $stmt->bindValue(':id', $id);
         $stmt->execute();
         if ($stmt->rowCount() > 0) {
-            echo 'Διαγράφηκε με επιτυχία';
+            echo $deleteSuccessful;
         } else {
-            echo 'Δεν Διαγράφηκε';
+            echo $deleteUnsuccessful;
         }
-        $message_sent = 'Διαγραφή Κωλύματος Από ' . $time_from . ' Μέχρι ' . $time_to . ' Στις ' . $date;
+		
+        $message_sent =  $restrictionDeleted." : ". $date . '  ' . $time_from . ' - ' . $time_to;
         $sql = "INSERT INTO `message`(`sender_id`, `receiver_id`, `text_message`) VALUES 
-	(?,?,?)";
+				(?,?,?)";
         $run = $dbh->prepare($sql);
         $run->execute([$_SESSION['user_id'], $user_id, $message_sent]);
     } else {

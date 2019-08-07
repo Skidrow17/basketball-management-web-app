@@ -3,7 +3,7 @@
 //Purpose: Modify Score , My Weekly Games , All my Games history
 
 require_once("./php/session.php");
-require_once('./php/language_select.php');
+require_once('./php/language.php');
 require_once("http_to_https.php");
 require_once("php/useful_functions.php");
 ?>
@@ -15,7 +15,7 @@ require_once("php/useful_functions.php");
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>ΕΚΑΣΔΥΜ - Αγώνες</title>
+	<title>ΕΚΑΣΔΥΜ - <?php echo $matches; ?></title>
 	<?php include('head.php'); ?>
 </head>
 
@@ -53,6 +53,7 @@ require_once("php/useful_functions.php");
 					</form>
 					
 					
+					
 					<form id = "spinnerPanel" method = "post" style="height:530px;">
 						<div class="lds-hourglass"></div>
 					</form>
@@ -71,7 +72,7 @@ require_once("php/useful_functions.php");
 
 					<div class="form-row">
 						<div class="col">
-							<h3>Όλοι Αγώνες Μου</h3>
+							<h3><?php echo $allMyGames; ?></h3>
 						</div>
 					</div>
 
@@ -147,7 +148,7 @@ require_once("php/useful_functions.php");
 					</div>
 
 					<div class="form-group">
-						<button class="btn btn-primary btn-block" id='back' type="button" style="background-color:rgb(220,110,86);">Πίσω</button>
+						<button class="btn btn-primary btn-block" id='back' type="button" style="background-color:rgb(220,110,86);"><?php echo $back; ?></button>
 					</div>
 				</form>
 

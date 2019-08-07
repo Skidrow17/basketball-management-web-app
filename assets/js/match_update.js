@@ -27,7 +27,7 @@ $(document).ready(function() {
 
         $.ajax({
             type: "POST",
-            url: "getMatch_By_Match_id.php",
+            url: "php/jquery/getMatch_By_Match_id.php",
             data: post_id,
             success: function(result) {
                 $("#tableta").html(result);

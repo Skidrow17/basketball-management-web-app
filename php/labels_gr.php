@@ -28,6 +28,7 @@
  //logedUser
 	 $messages = "Μηνύματα";
 	 $announcements = "Ανακοινώσεις";
+	 $settings = "Ρυθμίσεις";
 	 $logout = "Αποσύνδεση";
  //dashboard
 	$usersDashboard = "Χρήστες";
@@ -152,5 +153,7 @@
    //both
    $back = "Πίσω";
    $title = "Τίτλος";
+   $selectLanguage = "Επιλογή Γλώσσας";
+   $minutes = "Λεπτά";
  
 ?>

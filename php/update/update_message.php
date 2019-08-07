@@ -1,7 +1,9 @@
 <?php
+session_start();
 require_once '../connect_db.php';
 require_once '../useful_functions.php';
-session_start();
+require_once '../language.php';
+
 if (isset($_POST['message_id']) && isset($_POST['current_category']) 
  && isset($_SESSION['safe_key']) && isset($_SESSION['user_id'])) {
     if (security_check($_SESSION['safe_key'], $_SESSION['user_id']) == true) {
@@ -18,9 +20,9 @@ if (isset($_POST['message_id']) && isset($_POST['current_category'])
         $run = $dbh->prepare($sql);
         $run->execute([$state, $mid, $uid]);
         if ($run->rowCount() > 0) {
-            echo "Επιτυχής Διαγραφή";
+            echo $success;
         } else {
-            echo "Ανεπιτυχής Διαγραφή";
+            echo $fail;
         }
     } else {
         session_destroy();

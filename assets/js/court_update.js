@@ -5,7 +5,7 @@ $(document).ready(function() {
 
     $.ajax({
       type: "POST",
-      url: "update_court_load.php",
+      url: "php/jquery/get_court_by_court_id.php",
       data: post_id,
       success: function(result) {
 		autologout(result);
@@ -25,7 +25,6 @@ $(document).ready(function() {
         data: post_id,
         success: function(result) {
 		  autologout(result);
-          $.snackbar({ content: result });
 		  location.reload();
         }
       });

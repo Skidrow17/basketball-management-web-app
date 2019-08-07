@@ -14,7 +14,7 @@ require_once('php/useful_functions.php');
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>ΕΚΑΣΔΥΜ - Αρχική Σελίδα</title>
+	<title>ΕΚΑΣΔΥΜ - <?php echo $homePage; ?></title>
 	<?php include('head.php'); ?>
 </head>
 <body>
@@ -30,10 +30,10 @@ require_once('php/useful_functions.php');
 
 					<form name="button" method="post" action="./php/button_redirect.php">
 						<div class="illustration" style="background-size: cover; background-image:url(<?php echo $_SESSION['profile_pic']; ?>);"><i class="icon ion-ios-locked-outline" style="color:rgba(220,64,29,0);"></i></div>
-						<button id="button" name="button" value="1" class="btn btn-primary btn-block" type="submit">Ανακοινώσεις</button>
-						<button id="button" name="button" value="2" class="btn btn-primary btn-block" type="submit">Μηνύματα</button>
-						<button id="button" name="button" value="5" class="btn btn-primary btn-block" type="submit">Kωλύματα</button>
-						<button id="button" name="button" value="6" class="btn btn-primary btn-block" type="submit">Αγώνες</button>
+						<button id="button" name="button" value="1" class="btn btn-primary btn-block" type="submit"><?php echo $announcements; ?></button>
+						<button id="button" name="button" value="2" class="btn btn-primary btn-block" type="submit"><?php echo $messages; ?></button>
+						<button id="button" name="button" value="5" class="btn btn-primary btn-block" type="submit"><?php echo $restrictions; ?></button>
+						<button id="button" name="button" value="6" class="btn btn-primary btn-block" type="submit"><?php echo $matches; ?></button>
 					</form>
 
 			</div>
@@ -45,7 +45,7 @@ require_once('php/useful_functions.php');
 			<div style="background-color:transparent;" class="annoucements-look element">
 				<form id="announcementPanel" method="post" style="display:none;">
 					<div class='col'>
-						<h3 style='text-align: center;'>Ανακοινώσεις</h3>
+						<h3 style='text-align: center;'><?php echo $announcements; ?></h3>
 					</div>
 
 					<div class='form-row'>

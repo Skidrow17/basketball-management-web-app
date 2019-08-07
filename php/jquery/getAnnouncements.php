@@ -2,6 +2,7 @@
 session_start();
 require_once '../connect_db.php';
 require_once '../useful_functions.php';
+require_once '../language.php';
 
 if (isset($_POST['current_page']) && isset($_SESSION['safe_key']) && isset($_SESSION['user_id'])) {
     if ((security_check($_SESSION['safe_key'], $_SESSION['user_id']) == true)) {
@@ -18,11 +19,11 @@ if (isset($_POST['current_page']) && isset($_SESSION['safe_key']) && isset($_SES
                  <div style='word-wrap:break-word' class='col-xl-12'><h3 style='font-stretch: expanded;resize:none;font-family: 'Impact', Charcoal, sans-serif;' class='text-center text-secondary'>";
             echo $row['title'];
             echo "</h3></div>
-                 <div style='word-wrap:break-word' class='col-xl-12'><hr><small class='form-text text-muted'>Συντάκτης : ";
+                 <div style='word-wrap:break-word' class='col-xl-12'><hr><small class='form-text text-muted'>"; echo $writer; echo " : ";
             echo $row['name'];
             echo " ";
             echo $row['surname'];
-            echo "</small><small class='form-text text-muted'>Ημερομηνία : ";
+            echo "</small><small class='form-text text-muted'>"; echo $date; echo " : ";
             echo $row['date_time'];
             echo "</small></div>
                  <div style='word-wrap:break-word' class='col-xl-12'><hr><textarea style='resize:none;' rows='10' class='form-control' style='color:rgb(0,0,0);'readonly> ";

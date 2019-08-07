@@ -9,7 +9,6 @@ $(document).ready(function() {
         data: post_id,
         success: function(result) {
 		  autologout(result);
-          $.snackbar({ content: result });
           location.reload();
         }
       });

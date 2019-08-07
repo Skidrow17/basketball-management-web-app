@@ -1,7 +1,9 @@
 <?php
-require_once '../connect_db.php';
-require '../useful_functions.php';
 session_start();
+require_once '../connect_db.php';
+require_once '../useful_functions.php';
+require_once '../language.php';
+
 if (isset($_POST['game_id'])) {
     if (security_check($_SESSION['safe_key'], $_SESSION['user_id']) == true) {
         $team_score_1 = filter_var($_POST['team_score_1'], FILTER_SANITIZE_NUMBER_INT);
@@ -13,16 +15,16 @@ if (isset($_POST['game_id'])) {
         $run = $dbh->prepare($sql);
         $run->execute([$team_score_1, $team_score_2, $state, $game_id, $user_id]);
         if ($run->rowCount() > 0) {
-            $_SESSION['server_response'] = 'Το σκόρ ανανεώθηκε με επιτυχία';
+            $_SESSION['server_response'] = $success;
             header('Location: ../../match.php');
             die();
         } else {
-            $_SESSION['server_response'] = 'Το σκόρ δεν ανανεώθηκε';
+            $_SESSION['server_response'] = $fail;
             header('Location: ../../match.php');
             die();
         }
     } else {
-        $_SESSION['server_response'] = 'Login απο άλλη συσκευή';
+        $_SESSION['server_response'] = $loggedInFromAnotherDevice;
         header('Location: ../../index.php');
         die();
     }

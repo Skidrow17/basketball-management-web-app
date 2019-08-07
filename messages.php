@@ -13,7 +13,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>ΕΚΑΣΔΥΜ - Μηνύματα</title>
+	<title>ΕΚΑΣΔΥΜ - <?php echo $messages ?></title>
 	<?php include('head.php'); ?>
 </head>
 
@@ -28,13 +28,13 @@
 			<div class='col-xl-6'>
 				<div class="annoucements-look">
 					<form method="post" action="./php/insert/insert_message.php">
-						<small class="form-text text-muted">Επιλέξτε παραλήπτη</small>
+						<small class="form-text text-muted"><?php echo $choseContact; ?></small>
 						<div class="form-group">
 							<select id="receiver_id" name="receiver_id">
 								<?php require_once './php/contacts.php'; ?>
 							</select>
 
-							<input type="text" id="search-data" name="searchData" placeholder="Αναζήτηση Παραλήπτη" autocomplete="off" />
+							<input type="text" id="search-data" name="searchData" placeholder="<?php echo $searchContacts; ?>" autocomplete="off" />
 
 							<div id="search-result"></div>
 						</div>
@@ -43,7 +43,7 @@
 							<textarea class="form-control" name="text" id="text" style="padding:50px;background-color:rgba(220,64,29,0.3);"></textarea>
 						</div>
 						<div class="form-group">
-							<button class="btn btn-primary btn-block" name='submit' type="submit">Αποστολή</button>
+							<button class="btn btn-primary btn-block" name='submit' type="submit"><?php echo $addButton; ?></button>
 						</div>
 					</form>
 				</div>
@@ -56,7 +56,7 @@
 
 						<div class="form-row">
 							<div class="col">
-								<h3>Τα Μηνύματα Μου</h3>
+								<h3><?php echo $messages; ?></h3>
 							</div>
 						</div>
 
@@ -68,11 +68,11 @@
 
 						<div class='form-row'>
 							<div class="col">
-								<button class="btn btn-primary btn-block" id='incomming' value='1' type="button">Εισερχόμενα</div>
+								<button class="btn btn-primary btn-block" id='incomming' value='1' type="button"><?php echo $incommingMessages; ?></div>
 						</div>
 						<div class='form-row'>
 							<div class="col">
-								<button class="btn btn-primary btn-block" id='outgoing' value='2' type="button">Εξερχόμενα</button>
+								<button class="btn btn-primary btn-block" id='outgoing' value='2' type="button"><?php echo $outgoingMessages; ?></button>
 							</div>
 						</div>
 

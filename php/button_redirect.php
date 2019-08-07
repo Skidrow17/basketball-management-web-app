@@ -1,6 +1,8 @@
 <?php
-require 'useful_functions.php';
 session_start();
+require 'useful_functions.php';
+require 'language.php';
+
 if (security_check($_SESSION['safe_key'], $_SESSION['user_id']) == true) {
     if ($_POST["button"] == 1) {
         header('Location:../announcements.php');
@@ -21,7 +23,7 @@ if (security_check($_SESSION['safe_key'], $_SESSION['user_id']) == true) {
     }
 } else {
     session_destroy();
-    $_SESSION['server_response'] = 'Login απο άλλη συσκευή';
+    $_SESSION['server_response'] = $loggedInFromAnotherDevice;
     header('Location: ../index.php');
     die();
 }

@@ -38,7 +38,9 @@ $(document).ready(function() {
                     content: result
                 });
                 n_o_g();
-                getAnnoucements();
+				current_page = 0;
+                var post = "current_page=0";
+				getAnnoucements(post);
             }
         });
     });

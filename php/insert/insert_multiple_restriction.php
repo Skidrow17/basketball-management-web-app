@@ -1,15 +1,19 @@
 <?php
+session_start();
 require_once '../connect_db.php';
 require_once '../useful_functions.php';
-session_start();
-$f = "00:00:00";
-$t = "23:59:59";
-$x = 0;
-$parts = explode(", ", $_POST["dates"]);
-echo $_POST["dates"];
-$timezone = date_default_timezone_get();
-$now = date('m/d/Y h:i:s a', time());
+require_once '../language.php';
+
+
 if (isset($_POST['submit'])) {
+	
+	$f = "00:00:00";
+	$t = "23:59:59";
+	$x = 0;
+	$parts = explode(", ", $_POST["dates"]);
+	$timezone = date_default_timezone_get();
+	$now = date('m/d/Y h:i:s a', time());
+
     if (security_check($_SESSION['safe_key'], $_SESSION['user_id']) == true) {
         for ($i = 0;$i < sizeof($parts);$i++) {
             $newDate = str_replace("/", "-", $parts[$i]);
@@ -25,11 +29,12 @@ if (isset($_POST['submit'])) {
             }
         }
         $y = sizeof($parts) - 1;
-        $_SESSION['server_response'] = 'Τα κωλύματα προστέθηκαν με επιτυχία';
+	
+        $_SESSION['server_response'] = $success;
         header('Location: ../../add_restriction.php');
     } else {
         session_destroy();
-        $_SESSION['server_response'] = 'Login απο άλλη συσκευή';
+        $_SESSION['server_response'] = $loggedInFromAnotherDevice;
         header('Location: ../../index.php');
     }
 } else {

@@ -3,8 +3,8 @@
 //Access: Authorized User
 //Purpose: Add Restiction
 
-require_once("./php/session.php");
-require_once('./php/language_select.php');
+require_once("php/session.php");
+require_once('php/language.php');
 require_once("http_to_https.php");
 require_once('php/useful_functions.php');
 ?>
@@ -15,7 +15,7 @@ require_once('php/useful_functions.php');
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>ΕΚΑΣΔΥΜ - Προσθήκη Κωλυμάτος</title>
+	<title>ΕΚΑΣΔΥΜ - <?php echo $restrictions; ?></title>
 	<?php include('head.php'); ?>
 </head>
 
@@ -32,7 +32,7 @@ require_once('php/useful_functions.php');
 					<form method="post" id='single' action="./php/insert/insert_restriction.php" style="display:none;" autocomplete="off">
 						<div class="form-row">
 							<div class="col-sm-2">
-								<button class="btn btn-primary btn-block" id='back' type="button">Πίσω</button>
+								<button class="btn btn-primary btn-block" id='back' type="button"> <?php echo $back; ?></button>
 							</div>
 						</div>
 
@@ -43,7 +43,7 @@ require_once('php/useful_functions.php');
 						</div>
 
 						<div class="form-row">
-							<div class="col"><small class="form-text text-muted">Επιλογή Ημερομηνίας</small></div>
+							<div class="col"><small class="form-text text-muted"> <?php echo $date; ?></small></div>
 							<div class="col">
 								<div class="form-group">
 									<input placeholder='Πατήστε μέσα στο πεδίο' style='border:1px solid rgb(220,110,86);' name='date' type='date' required>
@@ -51,13 +51,13 @@ require_once('php/useful_functions.php');
 							</div>
 						</div>
 						<div class="form-row">
-							<div class="col"><small class="form-text text-muted" style="color:rgb(220,64,29);">Επιλογή ώρας έναρξης</small></div>
+							<div class="col"><small class="form-text text-muted" style="color:rgb(220,64,29);"> <?php echo $from; ?></small></div>
 							<div class="col">
 								<input type="time" name="time_from" id='time_from' required>
 							</div>
 						</div>
 						<div class="form-row">
-							<div class="col"><small class="form-text text-muted" style="text-align:left;">Επιλογή ώρας τερματισμού</small></div>
+							<div class="col"><small class="form-text text-muted" style="text-align:left;"> <?php echo $to; ?></small></div>
 							<div class="col">
 								<input type="time" name="time_to" id='time_to' required>
 							</div>
@@ -65,7 +65,7 @@ require_once('php/useful_functions.php');
 						</div>
 
 						<div class="form-group">
-							<button class="btn btn-primary btn-block" name='submit' type="submit">Προσθήκη Κωλύματος</button>
+							<button class="btn btn-primary btn-block" name='submit' type="submit"><?php echo $addButton; ?></button>
 						</div>
 					</form>
 
@@ -73,7 +73,7 @@ require_once('php/useful_functions.php');
 
 						<div class="form-row">
 							<div class="col">
-								<h3>Κωλυμάτα</h3>
+								<h3><?php echo $restrictions; ?></h3>
 							</div>
 						</div>
 
@@ -84,10 +84,10 @@ require_once('php/useful_functions.php');
 						</div>
 						<div class='form-row'>
 							<div class="col">
-								<button class="btn btn-primary btn-block" id='restriction' value='1' type="button">Κώλυμα</button>
+								<button class="btn btn-primary btn-block" id='restriction' value='1' type="button"> <?php echo $restriction; ?></button>
 							</div>
 							<div class="col">
-								<button class="btn btn-primary btn-block" id='multiple_restriction' value='2' type="button">Πολλαπλά Κωλυμάτα</button>
+								<button class="btn btn-primary btn-block" id='multiple_restriction' value='2' type="button"> <?php echo $multipleRestrictions; ?></button>
 							</div>
 						</div>
 
@@ -96,7 +96,7 @@ require_once('php/useful_functions.php');
 					<form method="post" id='multiple' action="./php/insert/insert_multiple_restriction.php" style="display:none;" autocomplete="off">
 						<div class="form-row">
 							<div class="col-sm-2">
-								<button class="btn btn-primary btn-block" id='back2' type="button">Πίσω</button>
+								<button class="btn btn-primary btn-block" id='back2' type="button"><?php echo $back; ?></button>
 							</div>
 						</div>
 
@@ -108,14 +108,14 @@ require_once('php/useful_functions.php');
 
 						<div class="form-row">
 
-							<div class="col"><small class="form-text text-muted">Πολλαπλή επιλογή ημερομηνίας</small></div>
+							<div class="col"><small class="form-text text-muted"><?php echo $multiDateSelection; ?></small></div>
 						</div>
 						<div class="form-group">
-							<input id='dates' name='dates' placeholder='Πατήστε μέσα στο πεδίο' style='border:1px solid rgb(220,110,86);' type="text" class="datepicker-here form-control" data-language='gr' data-multiple-dates="365" data-multiple-dates-separator=", " data-position='top left' onfocus="blur();" required>
+							<input id='dates' name='dates' placeholder='<?php echo $clickInsideTheHolder; ?>' style='border:1px solid rgb(220,110,86);' type="text" class="datepicker-here form-control" data-language='gr' data-multiple-dates="365" data-multiple-dates-separator=", " data-position='top left' onfocus="blur();" required>
 						</div>
 
 						<div class="form-group">
-							<button class="btn btn-primary btn-block" name='submit' type="submit">Προσθήκη Κωλυμάτων</button>
+							<button class="btn btn-primary btn-block" name='submit' type="submit"><?php echo $addButton; ?></button>
 						</div>
 					</form>
 					</form>
@@ -129,7 +129,7 @@ require_once('php/useful_functions.php');
 
 						<div class="form-row">
 							<div class="col">
-								<h3>Κωλύματα</h3>
+								<h3><?php echo $restrictions; ?></h3>
 							</div>
 						</div>
 

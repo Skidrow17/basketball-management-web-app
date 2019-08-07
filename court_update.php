@@ -2,8 +2,8 @@
 //Access: Admin
 //Purpose: Update and delete Basketball court
 
-require_once('./php/session_admin.php');
-require_once('./php/language_select.php');
+require_once('php/session_admin.php');
+require_once('php/language_select.php');
 require_once('http_to_https.php');
 require_once('php/useful_functions.php');
 require_once('php/select_boxes.php');
@@ -51,10 +51,10 @@ require_once('php/select_boxes.php');
 								<div id="map"></div>
 							</div>
 							<div class="col">
-								<button class="btn btn-primary" name='submit' type="submit" style="width:100%;">Υποβολή</button>
+								<button class="btn btn-primary" name='submit' type="submit" style="width:100%;"><?php echo $update; ?></button>
 							</div>
 							<div class="col">
-								<button class="btn btn-primary" type="button" id='delete_court' style="width:100%;">Διαγραφή</button>
+								<button class="btn btn-primary" type="button" id='delete_court' style="width:100%;"><?php echo $delete; ?></button>
 							</div>
 
 						</div>

@@ -24,13 +24,13 @@ function getHuman_Power_By_Game($game, $type) {
 }
 function getHuman_Power_By_Game1($game) {
     require 'connect_db.php';
-	include 'language_select.php';
+	include 'language.php';
     $sql = "Select U.id,U.name,U.surname from user U, human_power HP where HP.user_id=U.id AND HP.game_id = :gid";
     $lid = $dbh->prepare($sql);
     $lid->bindParam(':gid', $game, PDO::PARAM_INT);
     $lid->execute();
     echo '<select class="form-control" required>';
-    echo "<option value=''>Διαιτητές/Κριτές</option>";
+    echo "<option value=''>";echo $referees."/".$judges; echo "</option>";
     while ($row = $lid->fetch(PDO::FETCH_ASSOC)) {
         echo '<option value=' . $row['id'] . '>' . $row['name'] . ' ' . $row['surname'] . '</option>';
     }
@@ -38,7 +38,7 @@ function getHuman_Power_By_Game1($game) {
 }
 function getAllCities() {
     require 'connect_db.php';
-	include 'language_select.php';
+	include 'language.php';
     $sql = "SELECT id,name from city where active=0";
     $lid = $dbh->prepare($sql);
     $lid->execute();
@@ -51,7 +51,7 @@ function getAllCities() {
 }
 function getAllCourts() {
     require 'connect_db.php';
-	include 'language_select.php';
+	include 'language.php';
     $sql = "SELECT id,name from court where active=0";
     $lid = $dbh->prepare($sql);
     $lid->execute();
@@ -64,7 +64,7 @@ function getAllCourts() {
 }
 function getAllRates() {
     require 'connect_db.php';
-	include 'language_select.php';
+	include 'language.php';
     $sql = "SELECT id,name from rate";
     $lid = $dbh->prepare($sql);
     $lid->execute();
@@ -88,7 +88,7 @@ function getAllUser_categories() {
 }
 function getAllTeam_categories() {
     require 'connect_db.php';
-	include 'language_select.php';
+	include 'language.php';
     $sql = "SELECT id,name from team_categories where active = 0";
     $lid = $dbh->prepare($sql);
     $lid->execute();
@@ -101,7 +101,7 @@ function getAllTeam_categories() {
 }
 function getAllTeam_categories2() {
     require 'connect_db.php';
-	include 'language_select.php';
+	include 'language.php';
     $sql = "SELECT id,name from team_categories where active = 0";
     $lid = $dbh->prepare($sql);
     $lid->execute();
@@ -114,7 +114,7 @@ function getAllTeam_categories2() {
 }
 function getLivingPlace($selected) {
     require 'connect_db.php';
-	include 'language_select.php';
+	include 'language.php';
     $sql = "SELECT id,name from city where active = 0";
     $lid = $dbh->prepare($sql);
     $lid->execute();
@@ -147,7 +147,7 @@ function getDrivingLicence($selected) {
 }
 function getRate($selected) {
     require 'connect_db.php';
-	include 'language_select.php';
+	include 'language.php';
     $sql = "SELECT id,name from rate";
     $lid = $dbh->prepare($sql);
     $lid->execute();
@@ -160,7 +160,7 @@ function getRate($selected) {
 }
 function getCourt($selected) {
     require 'connect_db.php';
-	include 'language_select.php';
+	include 'language.php';
     $sql = "SELECT id,name from court where active = 0";
     $lid = $dbh->prepare($sql);
     $lid->execute();
@@ -173,7 +173,7 @@ function getCourt($selected) {
 }
 function getUserCategory($selected) {
     require 'connect_db.php';
-	include 'language_select.php';
+	include 'language.php';
     $sql = "SELECT id,name from user_categories where active = 0";
     $lid = $dbh->prepare($sql);
     $lid->execute();
@@ -187,7 +187,7 @@ function getUserCategory($selected) {
 }
 function getUsers() {
     require 'connect_db.php';
-	include 'language_select.php';
+	include 'language.php';
     $sql = "SELECT id,name,surname from user";
     $lid = $dbh->prepare($sql);
     $lid->execute();
@@ -200,7 +200,7 @@ function getUsers() {
 }
 function getAllPlayableCategories() {
     require 'connect_db.php';
-	include 'language_select.php';
+	include 'language.php';
     $sql = "SELECT id,name from team_categories where active = 0";
     $lid = $dbh->prepare($sql);
     $lid->execute();
@@ -211,7 +211,7 @@ function getAllPlayableCategories() {
 }
 function getTeamById($id, $cat_id) {
     require 'connect_db.php';
-	include 'language_select.php';
+	include 'language.php';
     $sql = "SELECT id,name from team where category=:cid and  active = 0";
     $lid = $dbh->prepare($sql);
     $lid->bindParam(':cid', $cat_id, PDO::PARAM_INT);
@@ -224,7 +224,7 @@ function getTeamById($id, $cat_id) {
 }
 function getPlayableCategories($user_id) {
     require 'connect_db.php';
-	include 'language_select.php';
+	include 'language.php';
     $playable_categories = array();
     $sql = "SELECT team_categories_id from playable_categories where user_id=:user_id";
     $x = $dbh->prepare($sql);

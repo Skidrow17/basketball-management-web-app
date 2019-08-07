@@ -3,6 +3,7 @@ session_start();
 require_once '../connect_db.php';
 require '../useful_functions.php';
 require '../select_boxes.php';
+include '../language.php';
 
 if (isset($_POST['current_page']) && isset($_SESSION['safe_key']) && isset($_SESSION['user_id'])) {
     if (security_check($_SESSION['safe_key'], $_SESSION['user_id']) == true) {
@@ -40,18 +41,18 @@ if (isset($_POST['current_page']) && isset($_SESSION['safe_key']) && isset($_SES
 				 
 				  <div class='form-row'>
 				
-				   <div class='col'> <li class='list-group-item' style='color:#ffffff;background-color:#dc6e56;'>Ομάδα 1 : " . $row['team_id_1'] . "</div>
+				   <div class='col'> <li class='list-group-item' style='color:#ffffff;background-color:#dc6e56;'>";echo $team; echo" 1 : " . $row['team_id_1'] . "</div>
 				
 					</div>
 					
 					<div class='form-row'>
-				   <div class='col'> <li class='list-group-item' style='color:#ffffff;background-color:#dc6e56;'>Σκόρ 1 : " . $row['team_score_1'] . "</div>
-				  <div class='col'> <li class='list-group-item' style='color:#000000;background-color:#ffffff;'>Σκόρ 2 : " . $row['team_score_2'] . "</div>
+				   <div class='col'> <li class='list-group-item' style='color:#ffffff;background-color:#dc6e56;'>";echo $score; echo" 1 : " . $row['team_score_1'] . "</div>
+				  <div class='col'> <li class='list-group-item' style='color:#000000;background-color:#ffffff;'>";echo $score; echo" 2 : " . $row['team_score_2'] . "</div>
 					</div>
 					
 					
 					<div class='form-row'>
-				  <div class='col'> <li class='list-group-item' style='color:#000000;background-color:#ffffff;'>Ομάδα 2 : " . $row['team_id_2'] . "</div>
+				  <div class='col'> <li class='list-group-item' style='color:#000000;background-color:#ffffff;'>";echo $team; echo" 2 : " . $row['team_id_2'] . "</div>
 					</div>
 					
 			   <div class='form-row'>
@@ -75,8 +76,7 @@ if (isset($_POST['current_page']) && isset($_SESSION['safe_key']) && isset($_SES
                     ";
             echo "
 				  <div class='form-row'>
-				 <div class='col'><button class='btn btn-primary col' id='location' name='button' value='" . $row['id'] . "' type='button'>Τοποθεσία</button></div>
-				  <div class='col'><button class='btn btn-primary col' id='score' name='button' value='" . $row['id'] . "' type='button'>Αλλαγή Σκόρ</button></div>
+				  <div class='col'><button class='btn btn-primary col' id='score' name='button' value='" . $row['id'] . "' type='button'>";echo $changeScore; echo"</button></div>
 				  </div>
 				  ";
         }

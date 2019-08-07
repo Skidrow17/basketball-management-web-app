@@ -5,10 +5,10 @@
         <div class="collapse navbar-collapse" id="navcol-1">
             <ul class="nav navbar-nav ml-auto">
                 <li class="nav-item" role="presentation">
-                    <a class="nav-link" href="home_user.php"></i><i class="fa fa-home"></i> Αρχική </a>
+                    <a class="nav-link" href="home_user.php"></i><i class="fa fa-home"></i> <?php echo $homePage; ?> </a>
                 </li>
                 <li class="dropdown" style="background-color:rgba(255,255,255,0);"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#" style="background-color:rgba(255,255,255,0);"><i class="fa fa-user"></i> <?php echo $_SESSION["username"]; ?></a>
-                    <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="announcements.php">Ανακοινώσεις</a><a class="dropdown-item" role="presentation" href="messages.php">Μηνύματα</a><a class="dropdown-item" role="presentation" href="add_restriction.php">Κωλύματα</a><a class="dropdown-item" role="presentation" href="match.php">Αγώνες</a><a class="dropdown-item" role="presentation" href="./php/logout.php">Αποσύνδεση</a></div>
+                    <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="announcements.php"><?php echo $announcements; ?></a><a class="dropdown-item" role="presentation" href="messages.php"><?php echo $messages; ?></a><a class="dropdown-item" role="presentation" href="add_restriction.php"><?php echo $restrictions; ?></a><a class="dropdown-item" role="presentation" href="match.php"><?php echo $matches; ?></a><a class="dropdown-item" role="presentation" href="./php/logout.php"><?php echo $logout; ?></a></div>
                 </li>
             </ul>
         </div>

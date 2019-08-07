@@ -2,8 +2,8 @@
 //Access: Authorized User
 //Purpose: Delete , Update , Insert Announcement
 
-require_once("./php/session.php");
-require_once('./php/language_select.php');
+require_once("php/session.php");
+require_once('php/language_select.php');
 require_once("http_to_https.php");
 require_once("php/useful_functions.php"); 
 ?>
@@ -14,7 +14,7 @@ require_once("php/useful_functions.php");
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>ΕΚΑΣΔΥΜ - Ανακοινώσεις</title>
+	<title>ΕΚΑΣΔΥΜ - <?php echo $announcements; ?></title>
 	<?php include('head.php'); ?>
 </head>
 
@@ -31,7 +31,7 @@ require_once("php/useful_functions.php");
 			<div class='col-xl-6'>
 				<div class="annoucements-look">
 					<form method="post" action="./php/insert/insert_announcement.php" style="background-color:rgba(238,238,238,0.74);margin:0px;">
-						<small class="form-text text-muted" style="color:rgba(150,1,1,0.15);">Τίτλος</small>
+						<small class="form-text text-muted" style="color:rgba(150,1,1,0.15);"><?php echo $title; ?></small>
 						<div class="form-group">
 							<div>
 								<input type="text" name="title" required></input>
@@ -41,7 +41,7 @@ require_once("php/useful_functions.php");
 								<textarea rows="7" class="form-control" name="text" id="text" style="padding:50px;background-color:rgba(220,64,29,0.3);" required></textarea>
 						</div>
 						<div class="form-group">
-							<button class="btn btn-primary btn-block" type="submit">Ανακοίνωση</button>
+							<button class="btn btn-primary btn-block" type="submit"><?php echo $addButton; ?></button>
 						</div>
 					</form>
 				</div>
@@ -52,7 +52,7 @@ require_once("php/useful_functions.php");
 				<div class="annoucements-look element">
 					<form method="post" id = "announcementPanel" style="display:none;">
 
-						<h3 style='text-align: center;'>Οι Ανακοινώσεις Μου</h3>
+						<h3 style='text-align: center;'><?php echo $myAnnouncements; ?></h3>
 						<div class='form-row'>
 							<div class='col'>
 								<hr>

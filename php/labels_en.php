@@ -28,6 +28,7 @@
  //logedUser
 	$messages = "Messages";
 	$announcements = "Announcements";
+	$settings = "Settings";
 	$logout = "Logout";
  //dashboard
 	$usersDashboard = "Users";
@@ -137,7 +138,7 @@
    $incommingMessages = "Incoming Messages";
    $outgoingMessages = "Outgoing Messages";
    $searchContacts = "Search Contacts";
-   $choseContact = "Chose Contact";
+   $choseContact = "Choose Contact";
    $message = "Message";
    $state = "State";
    $delete = "Delete";
@@ -146,11 +147,49 @@
    $makeAnnouncement = "Make An Announcement";
    $myAnnouncements = "My Announcements";
    $allAnnouncements = "All Announcements";
-   $writer = "Writer";
+   $writer = "Author";
    $save = "Save";
    
    //both
    $back = "Back";
    $title = "Title";
+   $selectLanguage = "Select Language";
+   $minutes = "Minutes";
+   $matches = "Matches";
+   
+   //Notification Messages 
+   $success = "Success";
+   $fail = "Fail";
+   $welcome = "Welcome";
+   $deleteSuccessful = "Successful Delete";
+   $deleteUnsuccessful = "Unsuccessful Delete";
+   $chooseCategory = "Choose Category";
+   $chooseCity = "Choose City";
+   $chooseCourt = "Choose Court";
+   $chooseTeam = "Choose Team";
+   $chooseSameTeam = "You Chosed Same Team";
+   $loggedInFromAnotherDevice = "Logged in from another device";
+   $successfulLogout = "Logged out successfully";
+   
+   
+   //Message About Restriction Send
+   $restrictionDeleted = "Restriction Deleted";
+   
+   //Logged as User
+   $restriction = "Restriction";
+   $multipleRestrictions = "Multiple Restrictions";
+   $multiDateSelection = "Multiple Date Selection";
+   $clickInsideTheHolder = "Click inside the holder";
+   $allMyGames = "All my matches";
+   $score = "Score";
+   $location = "Location";
+   $changeScore = "Change Score";
+   $matchState = "Match State";
+   $halfTime = "Half Time";
+   $fullTime = "Full Time";
+   
+   
+   
+   
    
 ?>

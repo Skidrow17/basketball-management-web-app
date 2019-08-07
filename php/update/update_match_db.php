@@ -1,7 +1,9 @@
 <?php
-require_once '../connect_db.php';
-require '../useful_functions.php';
 session_start();
+require_once '../connect_db.php';
+require_once '../useful_functions.php';
+require_once '../language.php';
+
 if (isset($_POST['submit'])) {
     if (security_check($_SESSION['safe_key'], $_SESSION['user_id']) == true && $_SESSION['profession'] === 'Admin') {
         $match_id = filter_var($_POST['matches'], FILTER_SANITIZE_NUMBER_INT);
@@ -18,16 +20,16 @@ if (isset($_POST['submit'])) {
         $run = $dbh->prepare($sql);
         $run->execute([$team_id_1, $team_id_2, $court_id, $combinedDT, $rate, $referee_num, $judge_num, $match_id]);
         if ($run->rowCount() > 0) {
-            $_SESSION['server_response'] = 'Ανανεώθηκε με επιτυχία';
+            $_SESSION['server_response'] = $success;
             header('Location: ../../match_update.php');
             die();
         } else {
-            $_SESSION['server_response'] = 'Δεν Ανανεώθηκε';
+            $_SESSION['server_response'] = $fail;
             header('Location: ../../match_update.php');
             die();
         }
     } else {
-        $_SESSION['server_response'] = 'Login απο άλλη συσκευή';
+        $_SESSION['server_response'] = $loggedInFromAnotherDevice;
         header('Location: ../../index.php');
         die();
     }

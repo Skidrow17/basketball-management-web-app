@@ -2,19 +2,20 @@
 session_start();
 require_once '../connect_db.php';
 require_once '../useful_functions.php';
+require_once '../language.php';
 
 if (isset($_POST['current_page']) && isset($_SESSION['safe_key']) && isset($_SESSION['user_id'])) {
     if (security_check($_SESSION['safe_key'], $_SESSION['user_id']) == true) {
         $page = $_POST['current_page'] * 7;
-        $date = date('Y/m/d', time());
-        $date = new DateTime($date);
-        $current_week = $date->format("W");
+        $date1 = date('Y/m/d', time());
+        $date1 = new DateTime($date1);
+        $current_week = $date1->format("W");
         echo '<tr>
-		  <th>Ημερομηνία</th>
-		  <th>Ώρα Έναρξης</th>
-		  <th>Ώρα Λήξης</th>
-		  <th>Ώρα Καταχώρισης</th>
-		  <th>Διαγραφή</th>
+		  <th>';echo $date; echo '</th>
+		  <th>';echo $from; echo '</th>
+		  <th>';echo $to; echo '</th>
+		  <th>';echo $importingDate; echo '</th>
+		  <th>';echo $delete; echo '</th>
 		  ';
         $sql = "Select R.id,R.time_to,R.time_from,R.date,R.register_timestamp from restriction R where R.user_id=:uid order by R.date desc limit :page,7";
         $run = $dbh->prepare($sql);
@@ -39,4 +40,3 @@ if (isset($_POST['current_page']) && isset($_SESSION['safe_key']) && isset($_SES
     }
 }
 ?>
-

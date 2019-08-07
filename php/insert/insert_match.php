@@ -1,8 +1,10 @@
 <?php
-require_once '../connect_db.php';
-require '../useful_functions.php';
 session_start();
-if (isset($_POST['submit'])) {
+require_once '../connect_db.php';
+require_once '../useful_functions.php';
+require_once '../language.php';
+
+if (isset($_POST['submit']) && isset($_SESSION['safe_key']) && isset($_SESSION['user_id'])) {
     if (security_check($_SESSION['safe_key'], $_SESSION['user_id']) == true && $_SESSION['profession'] === 'Admin') {
         $team1 = filter_var($_POST['team1'], FILTER_SANITIZE_STRING);
         $team2 = filter_var($_POST['team2'], FILTER_SANITIZE_STRING);
@@ -21,27 +23,27 @@ if (isset($_POST['submit'])) {
         $stmt->execute([$match_week, $match_year]);
         if ($team1 != $team2) {
             $sql = "INSERT INTO `game`(`team_id_1`, `team_id_2`,`court_id`,`date_time`,`rate`,`required_referees`,`required_judges`) VALUES 
-	(?,?,?,?,?,?,?)";
+					(?,?,?,?,?,?,?)";
             $run = $dbh->prepare($sql);
             $run->execute([$team1, $team2, $court, $dateTime, $rate, $referee_num, $judge_num]);
             if ($run->rowCount() > 0) {
-                $_SESSION['server_response'] = 'Eπιτυχία';
+                $_SESSION['server_response'] = $success;
                 header('Location: ../../add_match.php');
                 die();
             } else {
-                $_SESSION['server_response'] = 'Αποτυχία';
+                $_SESSION['server_response'] = $fail;
                 header('Location: ../../add_match.php');
                 die();
             }
         } else {
-            $_SESSION['server_response'] = 'Επιλέξατε την ίδια ομάδα';
+            $_SESSION['server_response'] = $chooseSameTeam;
             header('Location: ../../add_match.php');
             die();
         }
     } else {
         session_destroy();
-        $_SESSION['server_response'] = 'Eπιτυχία';
-        header('Location: ../../index.php?server_response=Login απο άλλη συσκευή');
+        $_SESSION['server_response'] = $loggedInFromAnotherDevice;
+        header('Location: ../../index.php');
         die();
     }
 } else {

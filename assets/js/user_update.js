@@ -14,6 +14,6 @@ function showUser(str) {
       document.getElementById("txtHint").innerHTML = this.responseText;
     }
   };
-  xmlhttp.open("GET", "update_user_load.php?q=" + str, true);
+  xmlhttp.open("GET", "php/jquery/get_user_by_user_id.php?q=" + str, true);
   xmlhttp.send();
 }

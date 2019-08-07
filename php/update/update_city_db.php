@@ -1,7 +1,9 @@
 <?php
-require_once '../connect_db.php';
-require '../useful_functions.php';
 session_start();
+require_once '../connect_db.php';
+require_once '../useful_functions.php';
+require_once '../language.php';
+
 if (isset($_POST['city_name']) && isset($_POST['city'])) {
     if (security_check($_SESSION['safe_key'], $_SESSION['user_id']) == true && $_SESSION['profession'] === 'Admin') {
         $name = filter_var($_POST['city_name'], FILTER_SANITIZE_STRING);
@@ -11,16 +13,16 @@ if (isset($_POST['city_name']) && isset($_POST['city'])) {
         echo $sql;
         $run->execute([$name, $id]);
         if ($run->rowCount() > 0) {
-            $_SESSION['server_response'] = 'Ανανεώθηκε με επιτυχία';
+            $_SESSION['server_response'] = $success;
             header('Location: ../../update_general_info.php?id=1');
             die();
         } else {
-            $_SESSION['server_response'] = 'Δεν Ανανεώθηκε';
+            $_SESSION['server_response'] = $fail;
             header('Location: ../../update_general_info.php?id=1');
             die();
         }
     } else {
-        $_SESSION['server_response'] = 'Login απο άλλη συσκευή';
+        $_SESSION['server_response'] = $loggedInFromAnotherDevice;
         header('Location: ../../index.php');
         die();
     }

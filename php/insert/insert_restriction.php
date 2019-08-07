@@ -1,7 +1,9 @@
 <?php
-require_once '../connect_db.php';
-require '../useful_functions.php';
 session_start();
+require_once '../connect_db.php';
+require_once '../useful_functions.php';
+require_once '../language.php';
+
 if (isset($_POST['submit'])) {
     if (security_check($_SESSION['safe_key'], $_SESSION['user_id']) == true) {
         if (strtotime($_POST["time_to"]) <= strtotime($_POST['time_from'])) header('Location: ../../add_restriction?server_response=Λανθασμένος Χρόνος');
@@ -13,12 +15,12 @@ if (isset($_POST['submit'])) {
         $run->bindParam(':time_from', $_POST["time_from"], PDO::PARAM_STR);
         $run->bindParam(':time_to', $_POST["time_to"], PDO::PARAM_STR);
         $run->execute();
-        $_SESSION['server_response'] = 'Το κώλυμα προσθέθηκε με επιτυχία' . " " . $_POST["time_from"] . "->" . $_POST['time_to'];
+        $_SESSION['server_response'] = $success;
         header('Location: ../../add_restriction.php');
         die();
     } else {
         session_destroy();
-        $_SESSION['server_response'] = 'Login απο άλλη συσκευή';
+        $_SESSION['server_response'] = $loggedInFromAnotherDevice;
         header('Location: ../../index.php');
         die();
     }

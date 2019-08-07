@@ -11,7 +11,7 @@ if ((isset($_POST['password']) && isset($_POST['username'])) || (isset($_COOKIE[
         $username = preg_replace("/[^a-zA-Z0-9]+/", "", $_COOKIE['uname']);
         $password = preg_replace("/[^a-zA-Z0-9]+/", "", $_COOKIE['pwd']);
         $safe_key = preg_replace("/[^a-zA-Z0-9]+/", "", $_COOKIE['safe_key']);
-        $sql = "SELECT U.id,U.username,U.password,U.name,U.surname,U.email,U.phone,U.profile_pic,U.active,U_C.name as profession FROM user U , user_categories U_C where U.profession=U_C.id AND U.username=:username";
+        $sql = "SELECT U.language,U.polling_time,U.id,U.username,U.password,U.name,U.surname,U.email,U.phone,U.profile_pic,U.active,U_C.name as profession FROM user U , user_categories U_C where U.profession=U_C.id AND U.username=:username";
         $run = $dbh->prepare($sql);
         $run->bindParam(':username', $username, PDO::PARAM_STR);
         $run->execute();
@@ -19,8 +19,9 @@ if ((isset($_POST['password']) && isset($_POST['username'])) || (isset($_COOKIE[
             while ($row = $run->fetch(PDO::FETCH_ASSOC)) {
                 if ((password_verify($password, $row['password']) == true)) {
                     if (security_check($safe_key, $row['id']) == true) {
-						$_SESSION['polling_time'] = round(microtime(true) * 1000) + 60000 * 2;
-						$_SESSION['language'] = 'en';
+						$_SESSION['polling_mins'] = $row['polling_time'];
+						$_SESSION['polling_time'] = round(microtime(true) * 1000) + 60000 * $row['polling_mins'];
+						$_SESSION['language'] = $row['language'];
                         $_SESSION['user_id'] = $row['id'];
                         $_SESSION['username'] = $row['username'];
                         $_SESSION['name'] = $row['name'];
@@ -77,15 +78,16 @@ if ((isset($_POST['password']) && isset($_POST['username'])) || (isset($_COOKIE[
         $username = preg_replace("/[^a-zA-Z0-9]+/", "", $_POST['username']);
         $password = preg_replace("/[^a-zA-Z0-9]+/", "", $_POST['password']);
         $safe_key = randomString(15);
-        $sql = "SELECT U.id,U.username,U.password,U.name,U.surname,U.email,U.phone,U.profile_pic,U.active,U_C.name as profession FROM user U , user_categories U_C where U.profession=U_C.id AND U.username=:username";
+        $sql = "SELECT U.language,U.polling_time,U.id,U.username,U.password,U.name,U.surname,U.email,U.phone,U.profile_pic,U.active,U_C.name as profession FROM user U , user_categories U_C where U.profession=U_C.id AND U.username=:username";
         $run = $dbh->prepare($sql);
         $run->bindParam(':username', $username, PDO::PARAM_STR);
         $run->execute();
         if ($run->rowCount() > 0) {
             while ($row = $run->fetch(PDO::FETCH_ASSOC)) {
                 if ((password_verify($password, $row['password']) == true)) {
-					$_SESSION['polling_time'] = round(microtime(true) * 1000) + 60000 * 2;
-					$_SESSION['language'] = 'en';
+					$_SESSION['polling_mins'] = $row['polling_time'];
+					$_SESSION['polling_time'] = round(microtime(true) * 1000) + 60000 * $row['polling_mins'];
+					$_SESSION['language'] = $row['language'];
                     $_SESSION['user_id'] = $row['id'];
                     $_SESSION['username'] = $row['username'];
                     $_SESSION['name'] = $row['name'];

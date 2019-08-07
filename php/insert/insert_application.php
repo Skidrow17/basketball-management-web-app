@@ -1,8 +1,10 @@
 <?php
-require_once '../connect_db.php';
-require '../useful_functions.php';
 session_start();
-if (isset($_POST['version'])) {
+require_once '../connect_db.php';
+require_once '../useful_functions.php';
+require_once '../language.php';
+
+if (isset($_POST['version']) && isset($_SESSION['safe_key']) && isset($_SESSION['user_id'])) {
     if (security_check($_SESSION['safe_key'], $_SESSION['user_id']) == true && $_SESSION['profession'] === 'Admin') {
         $version = filter_var($_POST['version'], FILTER_SANITIZE_STRING);
         $apk_file = $_FILES['apk_file']['name'];
@@ -28,17 +30,17 @@ if (isset($_POST['version'])) {
         $run = $dbh->prepare($sql);
         $run->execute(["Ekasdym.apk", $version]);
         if ($run->rowCount() > 0) {
-            $_SESSION['server_response'] = 'Eπιτυχία';
+            $_SESSION['server_response'] = $success;
             header('Location: ../../add_general_info.php?id=5');
             die();
         } else {
-            $_SESSION['server_response'] = 'Αποτυχία';
+            $_SESSION['server_response'] = $fail;
             header('Location: ../../add_general_info.php?id=5');
             die();
         }
     } else {
         session_destroy();
-        $_SESSION['server_response'] = 'Login απο άλλη συσκευή';
+        $_SESSION['server_response'] = $loggedInFromAnotherDevice;
         header('Location: ../../index.php');
         die();
     }
