@@ -1,8 +1,8 @@
 <?php 
 //Access: Admin
 //Purpose: Registers a new user to the system
-require_once('./php/session_admin.php');
-require_once('./php/language_select.php');
+require_once('php/session_admin.php');
+require_once('php/language.php');
 require_once('http_to_https.php');
 require_once('php/useful_functions.php');
 require_once('php/select_boxes.php');

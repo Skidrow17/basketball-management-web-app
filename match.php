@@ -2,8 +2,8 @@
 //Access: Authorized User
 //Purpose: Modify Score , My Weekly Games , All my Games history
 
-require_once("./php/session.php");
-require_once('./php/language.php');
+require_once("php/session.php");
+require_once('php/language.php');
 require_once("http_to_https.php");
 require_once("php/useful_functions.php");
 ?>

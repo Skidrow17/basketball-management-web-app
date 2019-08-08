@@ -161,8 +161,8 @@
    $success = "Success";
    $fail = "Fail";
    $welcome = "Welcome";
-   $deleteSuccessful = "Successful Delete";
-   $deleteUnsuccessful = "Unsuccessful Delete";
+   $deleteSuccessful = "Success";
+   $deleteUnsuccessful = "Fail";
    $chooseCategory = "Choose Category";
    $chooseCity = "Choose City";
    $chooseCourt = "Choose Court";
@@ -187,9 +187,5 @@
    $matchState = "Match State";
    $halfTime = "Half Time";
    $fullTime = "Full Time";
-   
-   
-   
-   
    
 ?>

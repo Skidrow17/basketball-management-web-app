@@ -2,7 +2,7 @@
 session_start();
 require_once '../connect_db.php';
 require_once '../useful_functions.php';
-include 'language.php';
+require_once '../language.php';
 
 if (isset($_POST['game_id']) && isset($_POST['id']) && isset($_SESSION['safe_key']) && isset($_SESSION['user_id'])) {
     if (security_check($_SESSION['safe_key'], $_SESSION['user_id']) == true) {
@@ -22,7 +22,7 @@ if (isset($_POST['game_id']) && isset($_POST['id']) && isset($_SESSION['safe_key
         $timestamp = strtotime($game_start_time) + 60 * 60 * 2;
         $game_end_time = date('H:m:s', $timestamp);
         $sql = "SELECT distinct U.id from user U,restriction R 
-				WHERE U.id=R.user_id AND R.time_to>:game_start_time 
+				WHERE U.active = 0 AND U.id=R.user_id AND R.time_to>:game_start_time 
 				AND R.time_from < :game_end_time AND R.date=:date";
         $run = $dbh->prepare($sql);
         $run->bindParam(':game_start_time', $game_start_time, PDO::PARAM_STR);
@@ -36,7 +36,7 @@ if (isset($_POST['game_id']) && isset($_POST['id']) && isset($_SESSION['safe_key
         }
         /////////////////////////////////////
         $sql = "SELECT distinct U.id from user U,game G,human_power HP 
-				WHERE G.id = HP.game_id AND U.id = HP.user_id AND DATE(G.date_time)=:date 
+				WHERE U.active = 0 AND G.id = HP.game_id AND U.id = HP.user_id AND DATE(G.date_time)=:date 
 				AND TIME( DATE_ADD(G.date_time, INTERVAL 2 HOUR))>=:game_start_time AND TIME(G.date_time)<=:game_end_time";
         $run = $dbh->prepare($sql);
         $run->bindParam(':game_start_time', $game_start_time, PDO::PARAM_STR);
@@ -52,10 +52,10 @@ if (isset($_POST['game_id']) && isset($_POST['id']) && isset($_SESSION['safe_key
         ////////////////////////////////////
         $rest = substr($not_in, 0, -1);
         if (strlen($rest) != 0) $sql = "SELECT U.id , U.name,U.surname from user U,playable_categories PC 
-										WHERE U.id=PC.user_id AND U.profession=3 AND PC.team_categories_id=:td 
+										WHERE U.active = 0 AND U.id=PC.user_id AND U.profession=3 AND PC.team_categories_id=:td 
 										AND U.id not in( " . $rest . " ) ORDER BY U.rate DESC";
         else $sql = "SELECT U.id , U.name,U.surname 
-					 FROM user U,playable_categories PC where U.id=PC.user_id AND U.profession=3
+					 FROM user U,playable_categories PC where U.active = 0 AND U.id=PC.user_id AND U.profession=3
 					 AND PC.team_categories_id=:td AND U.id order by U.rate desc";
         $run = $dbh->prepare($sql);
         $run->bindParam(':td', $cat_id, PDO::PARAM_INT);

@@ -1,6 +1,5 @@
 <?php
 require_once 'connect_db.php';
-session_start();
 if (isset($_SESSION['safe_key']) && isset($_SESSION['user_id'])) {
     if (security_check($_SESSION['safe_key'], $_SESSION['user_id']) == true) {
         $sql2 = "SELECT id,name,surname FROM `user` order by id";

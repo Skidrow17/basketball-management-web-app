@@ -2,7 +2,7 @@
 session_start();
 require_once '../connect_db.php';
 require_once '../useful_functions.php';
-include 'language.php';
+require_once '../language.php';
 
 if (isset($_POST['current_page']) && isset($_SESSION['safe_key']) && isset($_SESSION['user_id'])) {
 	 if (security_check($_SESSION['safe_key'], $_SESSION['user_id']) == true) {

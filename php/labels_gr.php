@@ -155,5 +155,37 @@
    $title = "Τίτλος";
    $selectLanguage = "Επιλογή Γλώσσας";
    $minutes = "Λεπτά";
+   $matches = "Αγώνες";
+   
+   //Notification Messages 
+   $success = "Επιτυχία";
+   $fail = "Αποτυχία";
+   $welcome = "Καλώς ήρθες";
+   $deleteSuccessful = "Επιτυχία";
+   $deleteUnsuccessful = "Αποτυχία";
+   $chooseCategory = "Επέλεξε Κατηγορία";
+   $chooseCity = "Επέλεξε Πόλη";
+   $chooseCourt = "Επέλεξε Γήπεδο";
+   $chooseTeam = "Επέλεξε Ομάδα";
+   $chooseSameTeam = "Επέλεξες την ίδια ομάδα";
+   $loggedInFromAnotherDevice = "Σύνδεση απο άλλη συσκευή";
+   $successfulLogout = "Επιτυχημένη Επανασύνδεση";
+   
+   
+   //Message About Restriction Send
+   $restrictionDeleted = "Διαγραφή Κωλύματος";
+   
+   //Logged as User
+   $restriction = "Κώλυμα";
+   $multipleRestrictions = "Πολλαπλά Κωλύματα";
+   $multiDateSelection = "Πολλαπλή Επιλογή Ημερομηνίας";
+   $clickInsideTheHolder = "Πατήστε μέσα στο πλαίσιο";
+   $allMyGames = "Οι αγώνες μου";
+   $score = "Σκορ";
+   $location = "Τοποθεσία";
+   $changeScore = "Αλλαγή Σκορ";
+   $matchState = "Κατάσταση Αγώνα";
+   $halfTime = "Ημίχρονο";
+   $fullTime = "Τελικό";
  
 ?>

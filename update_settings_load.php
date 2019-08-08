@@ -3,7 +3,7 @@
 require_once 'php/connect_db.php';
 require_once 'php/select_boxes.php';
 require_once 'php/useful_functions.php';
-require_once 'php/language_select.php';
+require_once 'php/language.php';
 
 if (isset($_SESSION['safe_key']) && isset($_SESSION['user_id'])) {
 	if (security_check($_SESSION['safe_key'], $_SESSION['user_id']) == true && $_SESSION['profession'] === 'Admin') {
