@@ -59,6 +59,7 @@ require_once("php/useful_functions.php");
 							</div>
 						</div>
 
+
 						<nav>
 							<ul class="pagination">
 								<li class="page-item"><a class="page-link" id='previous' aria-label="Previous"><span aria-hidden="true">«</span></a></li>
