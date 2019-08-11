@@ -48,8 +48,14 @@ function getAnnoucements(post_id) {
         data: post_id,
         success: function(result) {
             autologout(result);
-            spinnerActivation();
-            $("#here").html(result);
+			console.log(result.length);
+			if(result.length != 5){
+				spinnerActivation();
+				$("#here").html(result);
+			}else {
+				$("#noAnnouncements").fadeIn(1000);
+				$("#spinnerPanel").hide();
+			}
         }
     });
 }
@@ -58,7 +64,6 @@ function n_o_g() {
     $.ajax({
         url: "php/jquery/getN_O_Announcements.php",
         success: function(result) {
-            spinnerActivation();
             autologout(result);
             number_of_pages = result;
             $("#current").text(0);

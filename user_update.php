@@ -53,7 +53,7 @@ require_once('php/select_boxes.php');
 		</div>
 
 		<?php include('footer.php'); ?>
-			<script src="assets/js/user_update.js"></script>
+		<script src="assets/js/user_update.js"></script>
 
 </body>
 

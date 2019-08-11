@@ -3,7 +3,7 @@
 //Purpose: User Home page
 
 require_once("php/session.php");
-require_once('php/language_select.php');
+require_once('php/language.php');
 require_once("http_to_https.php");
 require_once('php/useful_functions.php');
 ?>
@@ -76,6 +76,12 @@ require_once('php/useful_functions.php');
 				
 				<form id = "spinnerPanel" method = "post" style="height:580px;">
 					<div class="lds-hourglass"></div>
+				</form>
+				
+				<form id = "noAnnouncements" method = "post" style="height:580px;display:none;">
+					<div>
+						<h3 style="position: relative;padding-top:30%;"><?php echo $noDataAvailable; ?></h3>
+					</div>
 				</form>
 				
 			</div>

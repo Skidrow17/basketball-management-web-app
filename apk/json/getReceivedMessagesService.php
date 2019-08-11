@@ -4,7 +4,7 @@ require_once 'connect_db.php';
 require_once 'useful_functions.php';
 $fetch = array();
 
-if(isset($_GET['safe_key']) && isset($_GET['id'])){
+if(isset($_GET['safety_key']) && isset($_GET['id'])){
 	if (security_check($_GET['safety_key'], $_GET['id']) == true) {
 		$sql2 = "SELECT count(*) FROM message where receiver_id=:id ";
 		$result = $dbh->prepare($sql2);

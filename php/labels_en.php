@@ -188,4 +188,7 @@
    $halfTime = "Half Time";
    $fullTime = "Full Time";
    
+   
+   $noDataAvailable = "No Data Available";
+   
 ?>

@@ -6,7 +6,7 @@ require_once '../language.php';
 
 if (isset($_POST['language']) && isset($_POST['pollingTime'])
 	&& isset($_SESSION['safe_key']) && isset($_SESSION['user_id'])) {
-    if (security_check($_SESSION['safe_key'], $_SESSION['user_id']) == true && $_SESSION['profession'] === 'Admin') {
+    if (security_check($_SESSION['safe_key'], $_SESSION['user_id']) == true) {
         $language = filter_var($_POST['language'], FILTER_SANITIZE_STRING);
         $pollingTime = filter_var($_POST['pollingTime'], FILTER_SANITIZE_NUMBER_INT);
 		$user_id = filter_var($_SESSION['user_id'], FILTER_SANITIZE_NUMBER_INT);

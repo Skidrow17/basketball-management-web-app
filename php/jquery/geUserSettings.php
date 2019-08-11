@@ -6,7 +6,7 @@ require_once 'php/useful_functions.php';
 require_once 'php/language.php';
 
 if (isset($_SESSION['safe_key']) && isset($_SESSION['user_id'])) {
-	if (security_check($_SESSION['safe_key'], $_SESSION['user_id']) == true && $_SESSION['profession'] === 'Admin') {
+	if (security_check($_SESSION['safe_key'], $_SESSION['user_id']) == true) {
 		$sql = "Select language,polling_time from user where id=:uid";
 		$run = $dbh->prepare($sql);
 		$run->bindParam(':uid', $_SESSION["user_id"], PDO::PARAM_INT);

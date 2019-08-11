@@ -34,7 +34,7 @@ require_once("php/useful_functions.php");
 					</div>
 				</div>
 
-				<?php include 'update_settings_load.php';?>
+				<?php include 'php/jquery/geUserSettings.php';?>
 
 				<button class="btn btn-primary btn-block" type="submit" name='submit' style="background-color:rgb(220,64,29);"><?php echo $addButton; ?></button>
 

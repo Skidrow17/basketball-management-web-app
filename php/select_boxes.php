@@ -1,13 +1,23 @@
 <?php
 function getStates($selected) {
 	
-    echo '<select name="state" class="form-control" required>';
-    if ($selected == 0) {
-        echo '<option value="0" selected>Ενεργός</option><option value="1">Ανενεργός</option>';
-    } else {
-        echo '<option value="0">Ενεργός</option><option value="1" selected>Ανενεργός</option>';
-    }
-    echo '</select>';
+	if($_SESSION['language'] == 'gr'){
+		echo '<select name="state" class="form-control" required>';
+		if ($selected == 0) {
+			echo '<option value="0" selected>Ενεργός</option><option value="1">Ανενεργός</option>';
+		} else {
+			echo '<option value="0">Ενεργός</option><option value="1" selected>Ανενεργός</option>';
+		}
+		echo '</select>';
+	}else{
+		echo '<select name="state" class="form-control" required>';
+		if ($selected == 0) {
+			echo '<option value="0" selected>Active</option><option value="1">Inactive</option>';
+		} else {
+			echo '<option value="0">Active</option><option value="1" selected>Inactive</option>';
+		}
+		echo '</select>';
+	}
 }
 function getHuman_Power_By_Game($game, $type) {
     require 'connect_db.php';
@@ -69,7 +79,7 @@ function getAllRates() {
     $lid = $dbh->prepare($sql);
     $lid->execute();
     echo '<select name="rate" class="form-control" required>';
-    echo "<option value=''>";echo $selectCity; echo"</option>";
+    echo "<option value=''>";echo $selectRate; echo"</option>";
     while ($row = $lid->fetch(PDO::FETCH_ASSOC)) {
         echo '<option value=' . $row['id'] . '>' . $row['name'] . '</option>';
     }
