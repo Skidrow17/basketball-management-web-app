@@ -89,9 +89,14 @@ function getAnnoucements(post_id) {
         data: post_id,
         success: function(result) {
 			autologout(result);
-			$("#announcementPanel").fadeIn(1000);
-			$("#spinnerPanel").hide();
-            $("#here").html(result);
+			if(number_of_pages != 0){
+				spinnerActivation();
+				$("#here").html(result);
+			}else {
+				console.log(number_of_pages);
+				$("#noData").fadeIn(1000);
+				$("#spinnerPanel").hide();
+			}
         }
     });
 }
@@ -106,4 +111,9 @@ function n_o_g() {
             $("#max").text(Math.ceil(number_of_pages - 1));
         }
     });
+}
+
+function spinnerActivation() {
+    $("#announcementPanel").fadeIn(1000);
+    $("#spinnerPanel").hide();
 }

@@ -1,18 +1,16 @@
 <?php
-
 require_once 'connect_db.php';
 require_once 'useful_functions.php';
 $fetch = array();
 
-$f = "00:00:00";
-$t = "23:59:59";
-$x = 0;
-$parts = explode("/", $_GET["date"]);
-$timezone = date_default_timezone_get();
-$now = date('m/d/Y h:i:s a', time());
-
 if(isset($_GET['safe_key']) && isset($_GET['user_id'])){
 	if (security_check($_GET['safe_key'], $_GET['user_id']) == true) {
+		$f = "00:00:00";
+		$t = "23:59:59";
+		$x = 0;
+		$parts = explode("/", $_GET["date"]);
+		$timezone = date_default_timezone_get();
+		$now = date('m/d/Y h:i:s a', time());
 		$user_id = filter_var($_GET["user_id"], FILTER_SANITIZE_NUMBER_INT);
 
 		for ($i = 0; $i < sizeof($parts); $i++) {

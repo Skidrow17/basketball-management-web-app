@@ -9,7 +9,7 @@ if (isset($_GET['password']) && isset($_GET['username'])) {
 	$password = $_GET['password'];
 	$username = preg_replace("/[^a-zA-Z0-9]+/", "", $_GET['username']);
 
-	$sql = "SELECT U.id,U.username,U.password,U.name,U.surname,U.email,U.phone,U.profile_pic,U.active,U_C.name as profession FROM user U , user_categories U_C where U.profession=U_C.id AND username=:username";
+	$sql = "SELECT U.polling_time,U.id,U.username,U.password,U.name,U.surname,U.email,U.phone,U.profile_pic,U.active,U_C.name as profession FROM user U , user_categories U_C where U.profession=U_C.id AND username=:username";
 	$run = $dbh->prepare($sql);
 	$run->bindParam(':username', $username, PDO::PARAM_STR);
 	$run->execute();

@@ -59,7 +59,6 @@ require_once("php/useful_functions.php");
 							</div>
 						</div>
 
-
 						<nav>
 							<ul class="pagination">
 								<li class="page-item"><a class="page-link" id='previous' aria-label="Previous"><span aria-hidden="true">«</span></a></li>
@@ -80,6 +79,12 @@ require_once("php/useful_functions.php");
 					
 					<form id = "spinnerPanel" method = "post" style="height:590px;">
 						<div class="lds-hourglass"></div>
+					</form>
+
+					<form id = "noData" method = "post" style="height:590px;display:none;">
+						<div>
+							<h3 style="position: relative;padding-top:30%;"><?php echo $noDataAvailable; ?></h3>
+						</div>
 					</form>
 				
 				

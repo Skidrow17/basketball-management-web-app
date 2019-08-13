@@ -13,13 +13,13 @@ $(document).ready(function() {
     if (x == 2) {
       url1 = "getAnnouncements_By_User.php";
       url2 = "getN_O_Announcements_By_User.php";
+	  n_o_g(url2);
       myFunction(url1);
-      n_o_g(url2);
     } else if (x == 3) {
       url1 = "getAnnouncements_By_Admin.php";
       url2 = "getN_O_Announcements.php";
+	  n_o_g(url2);
       myFunction(url1);
-      n_o_g(url2);
     }
   });
 
@@ -179,7 +179,15 @@ function myFunction(ur) {
     data: post_id,
     success: function(result) {
 	  autologout(result);
-      $("#here").html(result);
+	  console.log(number_of_pages);
+		if(number_of_pages != 0){
+			spinnerActivation();
+			$("#here").html(result);
+		}else {
+			$("#noData").fadeIn(1000);
+			$("#spinnerPanel").hide();
+			$("#show_announcement").hide();
+		}
     }
   });
 }
@@ -194,4 +202,9 @@ function n_o_g(ur) {
       $("#max").text(Math.ceil(number_of_pages - 1));
     }
   });
+}
+
+function spinnerActivation() {
+    $("#show_announcement").fadeIn(1000);
+    $("#spinnerPanel").hide();
 }

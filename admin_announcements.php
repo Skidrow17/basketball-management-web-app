@@ -78,6 +78,16 @@ require_once("php/useful_functions.php");
 				</div>
 
 			</form>
+			
+			
+			
+			<form id = "noData" method = "post" style="height:590px;display:none;">
+				<div>
+					<h3 style="position: relative;"><?php echo $noDataAvailable; ?></h3>
+				</div>
+			</form>
+			
+			
 
 			<form id='menu' method="post">
 
@@ -107,6 +117,9 @@ require_once("php/useful_functions.php");
 				</div>
 
 			</form>
+			
+			
+				
 
 		</div>
 

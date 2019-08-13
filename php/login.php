@@ -33,19 +33,21 @@ if ((isset($_POST['password']) && isset($_POST['username'])) || (isset($_COOKIE[
                         $_SESSION['L_L_H'] = getLastLoginHistoryId($row['id']);
                         if ($row['active'] == 0) {
                             if ($row['profession'] === 'Admin') {
-                                $_SESSION["server_response"] = 'Καλώς ήρθες ' . $row['name'] . ' ' . $row['surname'] . '';
+                                if($_SESSION['language'] == 'gr') $_SESSION["server_response"] = 'Καλώς ήρθες ' . $row['name'] . ' ' . $row['surname'] . '';
+								else $_SESSION["server_response"] = 'Welcome ' . $row['name'] . ' ' . $row['surname'] . '';
                                 header('Location: ../home_admin.php');
                                 die();
                             } else {
-                                $_SESSION["server_response"] = 'Καλώς ήρθες ' . $row['name'] . ' ' . $row['surname'] . '';
-                                header('Location: ../home_user.php');
+                                if($_SESSION['language'] == 'gr') $_SESSION["server_response"] = 'Καλώς ήρθες ' . $row['name'] . ' ' . $row['surname'] . '';
+								else $_SESSION["server_response"] = 'Welcome ' . $row['name'] . ' ' . $row['surname'] . '';
                                 die();
                             }
                         } else {
                             setcookie('uname', '', time() - 7000000, '/');
                             setcookie('pwd', '', time() - 7000000, '/');
                             setcookie('safe_key', '', time() - 7000000, '/');
-                            $_SESSION["server_response"] = 'Ανενεργός Λογαριασμός';
+                            if($_SESSION['language'] == 'gr') $_SESSION["server_response"] = 'Ανενεργός Λογαριασμός';
+							else $_SESSION["server_response"] = 'Inactive Account';
                             header('Location: ../index.php');
                             die();
                         }
@@ -53,7 +55,8 @@ if ((isset($_POST['password']) && isset($_POST['username'])) || (isset($_COOKIE[
                         setcookie('uname', '', time() - 7000000, '/');
                         setcookie('pwd', '', time() - 7000000, '/');
                         setcookie('safe_key', '', time() - 7000000, '/');
-                        $_SESSION["server_response"] = 'Login Απο άλλη συσκευή';
+						if($_SESSION['language'] == 'gr') $_SESSION["server_response"] = 'Login Απο άλλη συσκευή';
+						else $_SESSION["server_response"] = 'Logged In from another device';
                         header('Location: ../index.php');
                         die();
                     }
@@ -61,7 +64,8 @@ if ((isset($_POST['password']) && isset($_POST['username'])) || (isset($_COOKIE[
                     setcookie('uname', '', time() - 7000000, '/');
                     setcookie('pwd', '', time() - 7000000, '/');
                     setcookie('safe_key', '', time() - 7000000, '/');
-                    $_SESSION["server_response"] = 'Λάνθασμένος κωδικός';
+                    if($_SESSION['language'] == 'gr') $_SESSION["server_response"] = 'Λάνθασμένος κωδικός';
+					else $_SESSION["server_response"] = 'Wrong Password';
                     header('Location: ../index.php');
                     die();
                 }
@@ -110,27 +114,32 @@ if ((isset($_POST['password']) && isset($_POST['username'])) || (isset($_COOKIE[
                     setcookie("safe_key", $safe_key, $cookie_time, '/');
                     if ($row['active'] == 0) {
                         if ($row['profession'] === 'Admin') {
-                            $_SESSION["server_response"] = 'Καλώς ήρθες ' . $row['name'] . ' ' . $row['surname'] . '';
+                            if($_SESSION['language'] == 'gr') $_SESSION["server_response"] = 'Καλώς ήρθες ' . $row['name'] . ' ' . $row['surname'] . '';
+							else $_SESSION["server_response"] = 'Welcome ' . $row['name'] . ' ' . $row['surname'] . '';
                             header('Location: ../home_admin.php');
                             die();
                         } else {
-                            $_SESSION["server_response"] = 'Καλώς ήρθες ' . $row['name'] . ' ' . $row['surname'] . '';
+                            if($_SESSION['language'] == 'gr') $_SESSION["server_response"] = 'Καλώς ήρθες ' . $row['name'] . ' ' . $row['surname'] . '';
+							else $_SESSION["server_response"] = 'Welcome ' . $row['name'] . ' ' . $row['surname'] . '';
                             header('Location: ../home_user.php');
                             die();
                         }
                     } else {
-                        $_SESSION["server_response"] = 'Ανενεργός Λογαριασμός';
+                        if($_SESSION['language'] == 'gr') $_SESSION["server_response"] = 'Ανενεργός Λογαριασμός';
+						else $_SESSION["server_response"] = 'Inactive Account';
                         header('Location: ../index.php');
                         die();
                     }
                 } else {
-                    $_SESSION["server_response"] = 'Λάνθασμένος κωδικός';
+					if($_SESSION['language'] == 'gr') $_SESSION["server_response"] = 'Λάνθασμένος κωδικός';
+					else $_SESSION["server_response"] = 'Wrong Password';
                     header('Location: ../index.php');
                     die();
                 }
             }
         } else {
-            $_SESSION["server_response"] = 'Eλένξτε ξανά το username';
+			if($_SESSION['language'] == 'gr') $_SESSION["server_response"] = 'Eλένξτε ξανά το username';
+			else $_SESSION["server_response"] = 'Non Existing Username';
             header('Location: ../index.php');
             die();
         }
