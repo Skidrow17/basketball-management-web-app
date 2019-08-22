@@ -17,15 +17,30 @@ if (isset($_GET['password']) && isset($_GET['username'])) {
 	if ($run->rowCount() > 0) {
 		while ($row = $run->fetch(PDO::FETCH_ASSOC)) {
 			if ((password_verify($password, $row['password'])) || (preg_replace('/[^\p{L}\p{N}\s]/u', '', $row['password']) === preg_replace('/[^\p{L}\p{N}\s]/u', '', $password))) {
-				$sql = "INSERT INTO login_history (user_id,safe_key,device_name,ip) VALUES (:id,:safe_key,:device_name,:ip)";
-				$res = $dbh->prepare($sql);
-				$res->bindParam(':safe_key', $safe_key, PDO::PARAM_STR);
-				$res->bindParam(':id', $row['id'], PDO::PARAM_INT);
-				$res->bindParam(':ip', $_SERVER['REMOTE_ADDR'], PDO::PARAM_STR);
-				$res->bindParam(':device_name', $_GET['device_name'], PDO::PARAM_STR);
-				$res->execute();
+				if(isset($_GET['safe_key']) && isset($_GET['id'])){
+					if (security_check($_GET['safe_key'], $_GET['id']) == false) {
+						$sql = "INSERT INTO login_history (user_id,safe_key,device_name,ip) VALUES (:id,:safe_key,:device_name,:ip)";
+						$res = $dbh->prepare($sql);
+						$res->bindParam(':safe_key', $safe_key, PDO::PARAM_STR);
+						$res->bindParam(':id', $row['id'], PDO::PARAM_INT);
+						$res->bindParam(':ip', $_SERVER['REMOTE_ADDR'], PDO::PARAM_STR);
+						$res->bindParam(':device_name', $_GET['device_name'], PDO::PARAM_STR);
+						$res->execute();
+						$fetch['safe_key']['key'] = $safe_key;
+					}else{
+						$fetch['safe_key']['key'] = $_GET['safe_key'];
+					}
+				}else{
+					$sql = "INSERT INTO login_history (user_id,safe_key,device_name,ip) VALUES (:id,:safe_key,:device_name,:ip)";
+					$res = $dbh->prepare($sql);
+					$res->bindParam(':safe_key', $safe_key, PDO::PARAM_STR);
+					$res->bindParam(':id', $row['id'], PDO::PARAM_INT);
+					$res->bindParam(':ip', $_SERVER['REMOTE_ADDR'], PDO::PARAM_STR);
+					$res->bindParam(':device_name', $_GET['device_name'], PDO::PARAM_STR);
+					$res->execute();
+					$fetch['safe_key']['key'] = $safe_key;
+				}
 				$fetch['ERROR']['error_code'] = "200";
-				$fetch['safe_key']['key'] = $safe_key;
 				$fetch['user'] = $row;
 			}else{
 				$fetch['ERROR']['error_code'] = "402";
