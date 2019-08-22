@@ -6,13 +6,9 @@ $fetch = array();
 
 if(isset($_GET['safety_key']) && isset($_GET['id'])){
 	if (security_check($_GET['safety_key'], $_GET['id']) == true) {
-		$sql2 = "SELECT count(*) FROM message where receiver_id=:id ";
-		$result = $dbh->prepare($sql2);
-		$result->bindParam(':id', $_GET['id'], PDO::PARAM_INT);
-		$result->execute();
-		$number_of_rows = $result->fetchColumn();
-
-		$sql = "SELECT U.name,U.surname,M.text_message 
+		
+		$sql = "SELECT get_number_of_received_messages_by_user(receiver_id) as number_of_messages,
+				U.name,U.surname,M.text_message 
 				FROM user U, message M 
 				WHERE U.id=M.sender_id AND  
 				receiver_id=:id 
@@ -21,21 +17,21 @@ if(isset($_GET['safety_key']) && isset($_GET['id'])){
 		$run = $dbh->prepare($sql);
 		$run->bindParam(':id', $_GET['id'], PDO::PARAM_INT);
 		$run->execute();
+		
+		while ($row = $run->fetch(PDO::FETCH_ASSOC)) {
+			$fetch['Received_Messages'][] = $row;
+		}
 
-		$sql3 = "UPDATE login_history 
+		$sql  = "UPDATE login_history 
 				 SET logout_date_time=? 
 				 WHERE user_id=? order by id desc Limit 1";
 				 
-		$stmt = $dbh->prepare($sql3);
+		$stmt = $dbh->prepare($sql);
 		$stmt->execute([date('Y/m/d H:i:s'), $_GET['id']]);
 
-		while ($row = $run->fetch(PDO::FETCH_ASSOC)) {
-			$fetch['Received_Messages'][] = $row;
-			$fetch['Number_of_messages']['n_o_m'] = $number_of_rows;
-			$fetch['ERROR']['error_code'] = "200";
-		}
-
-		$sql = "SELECT A.title,A.text,U.name,U.surname 
+		
+		$sql = "SELECT get_number_of_announcements() as number_of_announcements,
+				A.title,A.text,U.name,U.surname 
 				FROM announcement A,user U WHERE U.id=A.user_id 
 				ORDER BY date_time DESC LIMIT 1";
 				
@@ -44,9 +40,10 @@ if(isset($_GET['safety_key']) && isset($_GET['id'])){
 
 		while ($row = $run->fetch(PDO::FETCH_ASSOC)) {
 			$fetch['Last_Announcement'][] = $row;
-			$fetch['Number_of_annoucements']['n_o_a'] = getNumberOfAnnouncements();
 		}
-
+		
+		$fetch['ERROR']['error_code'] = "200";
+		
 		echo json_encode($fetch);
 	} else {
 		$fetch['ERROR']['error_code'] = "403";

@@ -1,7 +1,6 @@
 <?php
-
 require_once 'connect_db.php';
-require 'useful_functions.php';
+require_once 'useful_functions.php';
 $fetch = array();
 
 if(isset($_GET['safe_key']) && isset($_GET['user_id'])){

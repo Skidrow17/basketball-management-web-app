@@ -190,5 +190,6 @@
    
    
    $noDataAvailable = "No Data Available";
+   $newMessages = "New Messages";
    
 ?>

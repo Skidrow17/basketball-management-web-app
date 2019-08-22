@@ -11,6 +11,7 @@ if ((isset($_POST['password']) && isset($_POST['username'])) || (isset($_COOKIE[
         $username = preg_replace("/[^a-zA-Z0-9]+/", "", $_COOKIE['uname']);
         $password = preg_replace("/[^a-zA-Z0-9]+/", "", $_COOKIE['pwd']);
         $safe_key = preg_replace("/[^a-zA-Z0-9]+/", "", $_COOKIE['safe_key']);
+		
         $sql = "SELECT U.language,U.polling_time,U.id,U.username,U.password,U.name,U.surname,U.email,U.phone,U.profile_pic,U.active,U_C.name as profession FROM user U , user_categories U_C where U.profession=U_C.id AND U.username=:username";
         $run = $dbh->prepare($sql);
         $run->bindParam(':username', $username, PDO::PARAM_STR);
@@ -19,6 +20,7 @@ if ((isset($_POST['password']) && isset($_POST['username'])) || (isset($_COOKIE[
             while ($row = $run->fetch(PDO::FETCH_ASSOC)) {
                 if ((password_verify($password, $row['password']) == true)) {
                     if (security_check($safe_key, $row['id']) == true) {
+						
 						$_SESSION['polling_mins'] = $row['polling_time'];
 						$_SESSION['polling_time'] = round(microtime(true) * 1000) + 60000 * $_SESSION['polling_mins'];
 						$_SESSION['language'] = $row['language'];
@@ -32,7 +34,7 @@ if ((isset($_POST['password']) && isset($_POST['username'])) || (isset($_COOKIE[
                         $_SESSION['N_O_M'] = getNumberOfMessages($row['username']);
                         $_SESSION['L_L_H'] = getLastLoginHistoryId($row['id']);
                         if ($row['active'] == 0) {
-                            if ($row['profession'] === 'Admin') {
+                            if ($_SESSION['profession'] === 'Admin') {
                                 if($_SESSION['language'] == 'gr') $_SESSION["server_response"] = 'Καλώς ήρθες ' . $row['name'] . ' ' . $row['surname'] . '';
 								else $_SESSION["server_response"] = 'Welcome ' . $row['name'] . ' ' . $row['surname'] . '';
                                 header('Location: ../home_admin.php');
@@ -40,6 +42,7 @@ if ((isset($_POST['password']) && isset($_POST['username'])) || (isset($_COOKIE[
                             } else {
                                 if($_SESSION['language'] == 'gr') $_SESSION["server_response"] = 'Καλώς ήρθες ' . $row['name'] . ' ' . $row['surname'] . '';
 								else $_SESSION["server_response"] = 'Welcome ' . $row['name'] . ' ' . $row['surname'] . '';
+								header('Location: ../home_user.php');
                                 die();
                             }
                         } else {
@@ -55,8 +58,7 @@ if ((isset($_POST['password']) && isset($_POST['username'])) || (isset($_COOKIE[
                         setcookie('uname', '', time() - 7000000, '/');
                         setcookie('pwd', '', time() - 7000000, '/');
                         setcookie('safe_key', '', time() - 7000000, '/');
-						if($_SESSION['language'] == 'gr') $_SESSION["server_response"] = 'Login Απο άλλη συσκευή';
-						else $_SESSION["server_response"] = 'Logged In from another device';
+					    $_SESSION["server_response"] = 'Login Απο άλλη συσκευή';
                         header('Location: ../index.php');
                         die();
                     }
@@ -78,7 +80,7 @@ if ((isset($_POST['password']) && isset($_POST['username'])) || (isset($_COOKIE[
             header('Location: ../index.php');
             die();
         }
-    } else if (isset($_POST['username']) && isset($_POST['password'])) {
+    }elseif(isset($_POST['username']) && isset($_POST['password'])){
         $username = preg_replace("/[^a-zA-Z0-9]+/", "", $_POST['username']);
         $password = preg_replace("/[^a-zA-Z0-9]+/", "", $_POST['password']);
         $safe_key = randomString(15);
@@ -148,5 +150,7 @@ if ((isset($_POST['password']) && isset($_POST['username'])) || (isset($_COOKIE[
         header('Location: ../index.php');
         die();
     }
+}else{
+	echo "error";
 }
 ?>

@@ -1,7 +1,6 @@
 <?php
-
 require_once 'connect_db.php';
-require 'useful_functions.php';
+require_once 'useful_functions.php';
 $fetch = array();
 
 if(isset($_GET['safe_key']) && isset($_GET['user_id'])){
@@ -15,11 +14,9 @@ if(isset($_GET['safe_key']) && isset($_GET['user_id'])){
 		$run->execute();
 
 		if ($run->rowCount() > 0) {
-			$fetch['insert_message'] = "Επιτυχία";
 			$fetch['ERROR']['error_code'] = "200";
 		} else {
-			$fetch['insert_message'] = "Αποτυχία";
-			$fetch['ERROR']['error_code'] = "200";
+			$fetch['ERROR']['error_code'] = "201";
 		}
 		echo json_encode($fetch);
 	} else {

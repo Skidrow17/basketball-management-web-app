@@ -30,11 +30,9 @@ if(isset($_GET['safe_key']) && isset($_GET['user_id'])){
 		$y = sizeof($parts) - 1;
 
 		if ($x == $y) {
-			$fetch['insert_message'] = $x . "/" . $y . " Επιτυχία";
 			$fetch['ERROR']['error_code'] = "200";
 		} else {
-			$fetch['insert_message'] = "Αποτυχία";
-			$fetch['ERROR']['error_code'] = "200";
+			$fetch['ERROR']['error_code'] = "201";
 		}
 		echo json_encode($fetch);
 	} else {

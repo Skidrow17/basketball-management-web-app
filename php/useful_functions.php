@@ -164,4 +164,13 @@ function getReadyToPlayGames() {
     return $nom;
 }
 
+function getLocale(){
+	echo   '<script type="text/javascript">
+				function localeJS() {
+					var userLang = navigator.language || navigator.userLanguage;
+					return userLang;
+				}
+			</script>';
+	return '<script>localeJS();</script>';
+}
 ?>

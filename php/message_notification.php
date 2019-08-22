@@ -1,20 +1,22 @@
 <?php
+session_start();
 require_once 'connect_db.php';
 require_once 'useful_functions.php';
-session_start();
+require_once 'language.php';
 
-if (isset($_SESSION['safe_key'])) {
+if (isset($_SESSION['safe_key'])&&isset($_SESSION['user_id'])) {
 	
 	if((round(microtime(true) * 1000)) > $_SESSION['polling_time'])
 		$_SESSION['polling_time'] = round(microtime(true) * 1000) + 60000 * $_SESSION['polling_mins'];
 	
 	if (security_check($_SESSION['safe_key'], $_SESSION['user_id']) == true) {
 		if (isset($_SESSION['N_O_M']) && isset($_SESSION['polling_time'])) {
-			if (getNumberOfMessages($_SESSION['username']) == $_SESSION['N_O_M']) {
+			$numberOfMessagesInDB = getNumberOfMessages($_SESSION['username']);
+			if ($numberOfMessagesInDB == $_SESSION['N_O_M']) {
 				echo '{"code" : 1,
 					  "polling_time" : '.$_SESSION['polling_time'].'
 					  }';
-			} else {
+			} elseif(( $numberOfMessagesInDB - $_SESSION['N_O_M']) == 1){
 				$sql = "SELECT U.name,U.surname,M.text_message FROM user U, message M 
 						WHERE 
 						U.id=M.sender_id 
@@ -38,7 +40,13 @@ if (isset($_SESSION['safe_key'])) {
 				echo '{"code" : "'.$fullMessage.'",
 					   "polling_time" :'.$_SESSION['polling_time'].'
 					 }';
+			}elseif(( $numberOfMessagesInDB - $_SESSION['N_O_M']) > 1){
+				echo '{"code" : "'.($numberOfMessagesInDB - $_SESSION['N_O_M']).' '.$newMessages.'",
+					   "polling_time" :'.$_SESSION['polling_time'].'
+					 }';
+				$_SESSION['N_O_M'] = $numberOfMessagesInDB;
 			}
+			
 			$sql = "UPDATE login_history SET logout_date_time=? WHERE id=?";
 			$stmt = $dbh->prepare($sql);
 			$stmt->execute([date('Y/m/d H:i:s'), $_SESSION['L_L_H']]);
@@ -49,13 +57,13 @@ if (isset($_SESSION['safe_key'])) {
 		}
 	} else {
 	   echo '{"code" : 2,
-		 "polling_time" :'.$_SESSION["polling_time"].'
-		 }';
+			"polling_time" :'.$_SESSION["polling_time"].'
+			}';
 	}
 } else {
    echo '{"code" : 2,
-	  "polling_time" :'.$_SESSION["polling_time"].'
-	 }';
+		"polling_time" :'.$_SESSION["polling_time"].'
+		}';
 }
 
 ?>
