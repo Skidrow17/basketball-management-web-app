@@ -154,10 +154,10 @@ function getReadyToPlayGames() {
 			 game 
 			 WHERE YEARWEEK(date_time,1) = YEARWEEK(NOW(),1) 
 			 AND id 
-			 IN (SELECT id FROM human_power HP,game G 
+			 NOT IN (SELECT id FROM human_power HP,game G 
 			 WHERE G.id = HP.game_id
-			 AND get_current_referee_by_game(G.id) != G.required_referees 
-			 OR get_current_judge_by_game(G.id) != G.required_judges)";
+			 AND get_current_referee_by_game(G.id) = G.required_referees 
+			 AND get_current_judge_by_game(G.id) = G.required_judges)";
 			 
     $result = $dbh->prepare($sql2);
     $result->execute();
