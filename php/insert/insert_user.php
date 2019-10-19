@@ -17,6 +17,8 @@ if (isset($_POST['submit'])) {
         $rate = filter_var($_POST['rate'], FILTER_SANITIZE_NUMBER_INT);
         $living_place = filter_var($_POST['city'], FILTER_SANITIZE_NUMBER_INT);
         $profile_pic = $_FILES['profile_pic']['name'];
+		$active = 0;
+		$password_recovery = '';
         
 		if(isset($_POST['playable_categories']))
 			$playable_categories = $_POST['playable_categories'];
@@ -26,10 +28,10 @@ if (isset($_POST['submit'])) {
 		
         $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
         if (empty($profile_pic)) {
-            $sql = "INSERT INTO `user`(`username`, `password`, `name`,`surname`,`email`,`phone`,`driving_licence`,`living_place`,`profession`,`rate`) 
-					VALUES (?,?,?,?,?,?,?,?,?,?)";
+            $sql = "INSERT INTO `user`(`username`, `password`, `name`,`surname`,`email`,`phone`,`driving_licence`,`living_place`,`profession`,`rate`,`password_recovery_url`) 
+					VALUES (?,?,?,?,?,?,?,?,?,?,?)";
             $run = $dbh->prepare($sql);
-            $run->execute([$username, $password, $name, $surname, $email, $phone, $driving_licence, $living_place, $profession, $rate]);
+            $run->execute([$username, $password, $name, $surname, $email, $phone, $driving_licence, $living_place, $profession, $rate,$password_recovery]);
         } else {
             $pic_name = $_FILES['profile_pic']['name'];
             $temp_name = $_FILES['profile_pic']['tmp_name'];
@@ -44,11 +46,13 @@ if (isset($_POST['submit'])) {
             } else {
                 echo 'You should select a file to upload !!';
             }
-            $sql = "INSERT INTO `user`(`username`, `password`, `name`,`surname`,`email`,`phone`,`driving_licence`,`living_place`,`profile_pic`,`profession`,`rate`) 
-					VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+            $sql = "INSERT INTO `user`(`username`, `password`, `name`,`surname`,`email`,`phone`,`driving_licence`,`living_place`,`profile_pic`,`profession`,`rate`,`active`,`password_recovery_url`) 
+					VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+			
             $run = $dbh->prepare($sql);
-            $run->execute([$username, $password, $name, $surname, $email, $phone, $driving_licence, $living_place, $url_location . $pic_name, $profession, $rate]);
-        }
+            $run->execute([$username, $password, $name, $surname, $email, $phone, $driving_licence, $living_place, $url_location . $pic_name, $profession, $rate, $active ,$password_recovery]);
+			
+		}
         $sql = "select id from user order by id desc limit 1";
         $run1 = $dbh->prepare($sql);
         $run1->execute();
@@ -63,11 +67,12 @@ if (isset($_POST['submit'])) {
         }
         if ($run->rowCount() > 0) {
             $_SESSION['server_response'] = $success;
+			sent_mail($email,$username,$_POST['password']);
             header('Location: ../../register.php');
             die();
         } else {
             $_SESSION['server_response'] = $fail;
-            header('Location: ../../register.php');
+			header('Location: ../../register.php');
             die();
         }
     } else {

@@ -58,6 +58,33 @@ $(document).ready(function() {
     var post = "cid=" + current_category + "&current_page=" + current_page;
 	myFunction(post);	
   });
+  
+  $("#password_recovery").click(function() {
+	  
+	  if($("#username").val()!==""){
+		  var txt;
+		  var username = $("#username").val();
+		  if (confirm("Θα θελατε να επαναφέρετε τον κωδικό για το παρακατω username;"+"  "+username)) {
+			txt = true;
+		  } else {
+			txt = false;
+		  }
+		  var post_propoerties="username="+username;
+			$.ajax({
+			type: "POST",
+			url: "php/jquery/passwordRecover.php",
+			data: post_propoerties,
+			success: function(result) {
+			  alert(result);
+			}
+		  });
+	  }else{
+		 alert("Παρακαλώ εισάγετε όνομα χρήστη"); 
+	  }
+  });
+  
+  
+  
 });
 
 function myFunction(post_id) {
