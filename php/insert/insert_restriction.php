@@ -28,5 +28,3 @@ if (isset($_POST['submit'])) {
     header('Location: ../../add_restriction.php');
     die();
 }
-?>
-

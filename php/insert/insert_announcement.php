@@ -48,5 +48,3 @@ if (isset($_POST['title']) && isset($_POST['text']) && isset($_SESSION['safe_key
         die();
     }
 }
-?>
-

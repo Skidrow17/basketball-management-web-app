@@ -50,5 +50,3 @@ if (isset($_POST['submit']) && isset($_SESSION['safe_key']) && isset($_SESSION['
     header('Location: ../../add_match.php');
     die();
 }
-?>
-

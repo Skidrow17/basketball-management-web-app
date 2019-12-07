@@ -36,5 +36,3 @@ if (isset($_POST['submit']) && isset($_SESSION['safe_key']) && isset($_SESSION['
     header('Location: ../../match_referee.php');
     die();
 }
-?>
-

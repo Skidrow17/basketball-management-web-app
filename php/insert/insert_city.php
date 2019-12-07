@@ -29,5 +29,3 @@ if (isset($_POST['name']) && isset($_SESSION['safe_key']) && isset($_SESSION['us
     header('Location: ../../add_general_info.php?id=1');
     die();
 }
-?>
-

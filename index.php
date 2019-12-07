@@ -43,14 +43,14 @@ header('Location: ./php/login.php');
 				<form method="post" action="./php/login.php">
 					<div class="illustration"><i class="icon ion-ios-locked-outline" style="color:rgb(220,110,86);"></i></div>
 					<div class="form-group">
-						<input class="form-control" type="text" name="username" id="username" placeholder="username" required>
+						<input class="form-control" type="text" name="username" id="username" placeholder="Όνομα Χρήστη" required>
 					</div>
 					<div class="form-group">
-						<input class="form-control" type="password" name="password" id="password" placeholder="Password" required>
+						<input class="form-control" type="password" name="password" id="password" placeholder="Κωδικός" required>
 					</div>
 					<div class="form-group">
-						<button class="btn btn-primary btn-block" type="submit">Log In</button>
-					</div><a href="#" class="forgot">Forgot your email or password?</a>
+						<button class="btn btn-primary btn-block" type="submit">Είσοδος</button>
+					</div><a href="#" id="password_recovery" class="forgot">Ξεχάσατε τον κωδικό σας;</a>
 				</form>
 			</div>
 		</div>

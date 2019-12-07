@@ -192,4 +192,9 @@
    $noDataAvailable = "No Data Available";
    $newMessages = "New Messages";
    
+   $period1 = "1st Period";
+   $period2 = "2nd Period";
+   $period3 = "3rd Period";
+   $period4 = "4th Period";
+   $final = "Final";
 ?>

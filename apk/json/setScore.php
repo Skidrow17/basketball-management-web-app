@@ -5,9 +5,9 @@ $fetch = array();
 
 if(isset($_GET['safe_key']) && isset($_GET['user_id'])){
 	if (security_check($_GET['safe_key'], $_GET['user_id']) == true) {
-		$sql = "UPDATE game SET team_score_1=?, team_score_2=? WHERE id=?";
+		$sql = "UPDATE game SET team_score_1=?, team_score_2=?, state=? WHERE id=?";
 		$run = $dbh->prepare($sql);
-		$run->execute([$_GET['team_score_1'], $_GET['team_score_2'], $_GET['match_id']]);
+		$run->execute([$_GET['team_score_1'], $_GET['team_score_2'],$_GET['state'],$_GET['match_id']]);
 
 		if ($run->rowCount() > 0) {
 			$fetch['ERROR']['error_code'] = "200";
