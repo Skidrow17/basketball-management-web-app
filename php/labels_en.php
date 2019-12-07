@@ -197,4 +197,7 @@
    $period3 = "3rd Period";
    $period4 = "4th Period";
    $final = "Final";
+   $wrongTime = "Wrong Times";
+   $restriction_lock = "Restriction got locked for the current week";
+   $multiple_restriction_lock = "Multiple restrictions got locked for this week";
 ?>

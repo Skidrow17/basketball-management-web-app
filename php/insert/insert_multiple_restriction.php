@@ -13,8 +13,27 @@ if (isset($_POST['submit'])) {
 	$parts = explode(", ", $_POST["dates"]);
 	$timezone = date_default_timezone_get();
 	$now = date('m/d/Y h:i:s a', time());
-
-    if (security_check($_SESSION['safe_key'], $_SESSION['user_id']) == true) {
+	
+	$match_week = date("W", strtotime(date("Y/m/d")));
+	$match_year = date("Y", strtotime(date("Y/m/d")));
+	$sql = "SELECT COUNT(*) as nor FROM human_power HP,game G WHERE G.Id = HP.game_id AND Week(G.date_time,1) = ? AND Year(G.date_time) = ?";
+	$run = $dbh->prepare($sql);
+	$run->execute([$match_week,$match_year]);
+	$restrictions_closed = false;
+	
+	while ($row = $run->fetch(PDO::FETCH_ASSOC)) {
+	  if($row['nor'] != 0){
+		  $restrictions_closed = true;
+	  }
+	}
+	
+	if($restrictions_closed){
+		echo $date;
+		echo $restrictions_closed;
+		$_SESSION['server_response'] = $multiple_restriction_lock;
+		header('Location: ../../add_restriction.php');
+		die();
+	}else if (security_check($_SESSION['safe_key'], $_SESSION['user_id']) == true) {
         for ($i = 0;$i < sizeof($parts);$i++) {
             $newDate = str_replace("/", "-", $parts[$i]);
             $sql = "INSERT INTO `restriction`(`user_id`, `date`, `time_from` , `time_to` ) VALUES (:user_id,:date,:time_from,:time_to)";
