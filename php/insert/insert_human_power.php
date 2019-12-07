@@ -16,6 +16,21 @@ if (isset($_POST['submit']) && isset($_SESSION['safe_key']) && isset($_SESSION['
                 $r->execute([$id, $human_power[$i]]);
                 if ($r->rowCount() > 0) $counter = $counter + 1;
             }
+			
+			$sql = "Select date_time from game where id=:gid";
+			$run = $dbh->prepare($sql);
+			$run->bindParam(':gid',$id, PDO::PARAM_INT);
+			$run->execute();
+			$date = '';
+			while ($row = $run->fetch(PDO::FETCH_ASSOC)) {
+				$datefromdb = strtotime($row["date_time"]);
+				$date = date('Y/m/d', $datefromdb);
+			}
+			$match_week = date("W", strtotime($date));
+			$match_year = date("Y", strtotime($date));
+			$sql = "UPDATE restriction SET deletable = 1 WHERE WEEK(date,1)=? AND YEAR(date)=?";
+			$stmt = $dbh->prepare($sql);
+			$stmt->execute([$match_week, $match_year]);
         }
         if ($counter > 0) {
             $_SESSION['server_response'] = $success;
