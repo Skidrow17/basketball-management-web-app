@@ -155,7 +155,7 @@
    $title = "Τίτλος";
    $selectLanguage = "Επιλογή Γλώσσας";
    $minutes = "Λεπτά";
-   $matches = "Αγώνες";
+   $matches = "Οι Αγώνες μου";
    
    //Notification Messages 
    $success = "Επιτυχία";
@@ -200,4 +200,5 @@
    $wrongTime = "Λανθασμένος Χρόνος";
    $restriction_lock = "Τα κωλύματα της τρέχουσας βδομάδας έχουν κλειδώσει";
    $multiple_restriction_lock = "Τα πολλαπλά κωλύματα έχουν κλειδώσει";
+   $weekly_matches = "Εβδομαδιαίοι αγώνες";
 ?>
