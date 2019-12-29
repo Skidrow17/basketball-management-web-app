@@ -38,8 +38,8 @@ require_once("php/useful_functions.php");
 
             <div class="row">
                 <div class="col">
-                    <button class="btn btn-primary btn-block" type="button" id='passwrod_change_request'
-                        style="background-color:rgb(220,64,29);"><?php echo $passwrod_change_request; ?></button>
+                    <button class="btn btn-primary btn-block" type="button" id='password_change_request'
+                        style="background-color:rgb(220,64,29);"><?php echo $password_change_request; ?></button>
                 </div>
                 <div class="col">
 
