@@ -6,9 +6,14 @@ require_once '../language.php';
 $url = "https://zafora.ece.uowm.gr/~ictest00909/EKA/password_recover.php?code=";
 
 
-if (isset($_POST['username'])) {
+if (isset($_POST['username']) || isset($_SESSION['username'])) {
 	
-    $uname = filter_var($_POST['username'], FILTER_SANITIZE_STRING);
+	$uname = "";
+	if(isset($_POST['username'])){
+		$uname = filter_var($_POST['username'], FILTER_SANITIZE_STRING);
+	}else{
+		$uname = filter_var($_SESSION['username'], FILTER_SANITIZE_STRING);
+	}
 	$sql = "SELECT id,email,password_recovery_url FROM user where username = :uname";
 	$run = $dbh->prepare($sql);
 	$run->bindParam(':uname', $uname, PDO::PARAM_STR);
@@ -24,14 +29,18 @@ if (isset($_POST['username'])) {
 			$mod->execute([$recover_encode,$row['id']]);
 			recovery_email_send($row['email'],$url.$recover_encode);
 		}else{
-			echo "check your email";
+			if(!isset($_SESSION['language'])){
+				echo "Αποστολή αίτησης αλλαγής κωδικού πρόσβασης στο ηλεκτρονικό ταχυδρομείο";
+			}else{
+				echo $please_check_email;
+			}
 		}
 		$userExists = true;
 	}
 	
-	if(!$userExists)
+	if(!$userExists){
 		echo 'Μη έγκυρο όνομα χρήστη';
+	}
   
 }
 ?>
-

@@ -12,44 +12,52 @@ require_once("php/useful_functions.php");
 <html>
 
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>ΕΚΑΣΔΥΜ - <?php echo $announcements; ?></title>
-	<?php include('head.php'); ?>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ΕΚΑΣΔΥΜ - <?php echo $announcements; ?></title>
+    <?php include('head.php'); ?>
 </head>
 
 <body>
-		<main class="page lanidng-page">
-			<section class="portfolio-block photography"></section>
-		</main>
-		
-		<?php include('admin_nav_bar.php'); ?>
+    <main class="page lanidng-page">
+        <section class="portfolio-block photography"></section>
+    </main>
 
-		<div class="admin-look">
-			<form method="post" action="./php/update/update_settings_db.php">
+    <?php include('admin_nav_bar.php'); ?>
 
-				<div class="form-row">
-					<div class="col">
-						<h3 id='heading'><?php echo $settings; ?></h3>
-					</div>
-				</div>
+    <div class="admin-look">
+        <form method="post" action="./php/update/update_settings_db.php">
 
-				<?php include 'php/jquery/geUserSettings.php';?>
+            <div class="form-row">
+                <div class="col">
+                    <h3 id='heading'><?php echo $settings; ?></h3>
+                </div>
+            </div>
 
-				<button class="btn btn-primary btn-block" type="submit" name='submit' style="background-color:rgb(220,64,29);"><?php echo $addButton; ?></button>
+            <?php include 'php/jquery/geUserSettings.php';?>
 
-				</div>
+            <div class="row">
+                <div class="col">
+                    <button class="btn btn-primary btn-block" type="button" id='passwrod_change_request'
+                        style="background-color:rgb(220,64,29);"><?php echo $passwrod_change_request; ?></button>
+                </div>
+                <div class="col">
 
-				<div class="form-row">
-				<div class="col">
-					<hr>
-				</div>
-				</div>
+                    <button class="btn btn-primary btn-block" type="submit" name='submit'
+                        style="background-color:rgb(220,64,29);"><?php echo $addButton; ?></button>
+                </div>
+            </div>
+    </div>
 
-			</form>
-		</div>
+    <div class="form-row">
+        <div class="col">
+            <hr>
+        </div>
+    </div>
 
-		<?php include('footer.php'); ?>
+    <?php include('footer.php'); ?>
+    <script src="assets/js/password_change_logged.js"></script>
+
 
 </body>
 
