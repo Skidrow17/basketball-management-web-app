@@ -16,11 +16,6 @@ if (isset($_POST['submit']) && isset($_SESSION['safe_key']) && isset($_SESSION['
         $judge_num = filter_var($_POST['judge_num'], FILTER_SANITIZE_NUMBER_INT);
         $team_category = filter_var($_POST['team_category'], FILTER_SANITIZE_NUMBER_INT);
         $dateTime = $date . ' ' . $time;
-        $match_week = date("W", strtotime($date));
-        $match_year = date("Y", strtotime($date));
-        $sql = "UPDATE restriction SET deletable=1 WHERE WEEK(date)=? AND YEAR(date)=?";
-        $stmt = $dbh->prepare($sql);
-        $stmt->execute([$match_week, $match_year]);
         if ($team1 != $team2) {
             $sql = "INSERT INTO `game`(`team_id_1`, `team_id_2`,`court_id`,`date_time`,`rate`,`required_referees`,`required_judges`) VALUES 
 					(?,?,?,?,?,?,?)";
@@ -50,5 +45,3 @@ if (isset($_POST['submit']) && isset($_SESSION['safe_key']) && isset($_SESSION['
     header('Location: ../../add_match.php');
     die();
 }
-?>
-

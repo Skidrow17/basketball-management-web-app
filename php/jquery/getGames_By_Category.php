@@ -7,6 +7,7 @@ require '../select_boxes.php';
 if (isset($_POST['current_page']) && isset($_SESSION['safe_key']) && isset($_SESSION['user_id'])) {
     $page = $_POST['current_page'] * 4;
     echo '  <tr>
+	  <th>Κατάσταση Αγώνα</th>
       <th>Ομάδα 1</th>
       <th>Ομαδα 2</th>
       <th>Σκορ 1</th>
@@ -18,7 +19,7 @@ if (isset($_POST['current_page']) && isset($_SESSION['safe_key']) && isset($_SES
 	  ';
     $sql = "SELECT distinct
     home.name AS team_id_1, 
-    away.name AS team_id_2,r.id,r.team_score_1,r.team_score_2,r.date_time,ci.name as city,c.latitude,c.longitude
+    away.name AS team_id_2,r.id,r.state,r.team_score_1,r.team_score_2,r.date_time,ci.name as city,c.latitude,c.longitude
     FROM 
     game AS r
     JOIN team AS home 
@@ -31,8 +32,16 @@ if (isset($_POST['current_page']) && isset($_SESSION['safe_key']) && isset($_SES
     $run->execute();
     $run->execute();
     while ($row = $run->fetch(PDO::FETCH_ASSOC)) {
-        echo '<tr>
-        <td>' . $row['team_id_1'] . '</td>
+        echo '<tr>';
+		if($row['state'] == 0 || $row['state'] > 5){
+			echo '<td>Άγνωστο</td>';
+		}else if($row['state'] == 5){
+			echo '<td>Τελικός</td>';
+		}
+		else{
+			echo '<td>'.$row['state'].'η περίοδος</td>';
+		}
+        echo '<td>' . $row['team_id_1'] . '</td>
         <td>' . $row['team_id_2'] . '</td>
 		<td>' . $row['team_score_1'] . '</td>
 		<td>' . $row['team_score_2'] . '</td>

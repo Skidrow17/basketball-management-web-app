@@ -29,5 +29,3 @@ if (isset($_POST['submit'])) {
     header('Location: ../../add_general_info.php?id=3');
     die();
 }
-?>
-

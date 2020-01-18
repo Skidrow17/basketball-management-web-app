@@ -180,14 +180,7 @@ function myFunction(ur) {
     success: function(result) {
 	  autologout(result);
 	  console.log(number_of_pages);
-		if(number_of_pages != 0){
-			spinnerActivation();
-			$("#here").html(result);
-		}else {
-			$("#noData").fadeIn(1000);
-			$("#spinnerPanel").hide();
-			$("#show_announcement").hide();
-		}
+	  $("#here").html(result);
     }
   });
 }
@@ -202,9 +195,4 @@ function n_o_g(ur) {
       $("#max").text(Math.ceil(number_of_pages - 1));
     }
   });
-}
-
-function spinnerActivation() {
-    $("#show_announcement").fadeIn(1000);
-    $("#spinnerPanel").hide();
 }

@@ -2,14 +2,14 @@ var intervalID = window.setInterval(returnwasset, 5000);
 var buzzer = $("#buzzer")[0];
 
 function returnwasset() {
-  console.log(Math.floor(Date.now()) - pollingTime);
+  //console.log(Math.floor(Date.now()) - pollingTime);
   if(Math.floor(Date.now() > pollingTime)){
 	  $.ajax({
 		type: "POST",
 		url: "php/message_notification.php",
 		success: function(response) {
 		  var jsonObj = JSON.parse(response);
-		  console.log(jsonObj);
+		  //console.log(jsonObj);
 		  if (jsonObj.code == 2) {
 			window.location.replace("./php/auto_logout.php");
 		  } else if (jsonObj.code != 1) {

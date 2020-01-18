@@ -155,7 +155,7 @@
    $title = "Title";
    $selectLanguage = "Select Language";
    $minutes = "Minutes";
-   $matches = "Matches";
+   $matches = "My Matches";
    
    //Notification Messages 
    $success = "Success";
@@ -192,4 +192,22 @@
    $noDataAvailable = "No Data Available";
    $newMessages = "New Messages";
    
+   $period1 = "1st Period";
+   $period2 = "2nd Period";
+   $period3 = "3rd Period";
+   $period4 = "4th Period";
+   $final = "Final";
+   $wrongTime = "Wrong Times";
+   $restriction_lock = "Restriction got locked for the current week";
+   $multiple_restriction_lock = "Multiple restrictions got locked for this week";
+   $weekly_matches = "Weekly Matches";
+   $password_change_request = "Password Change Request";
+   $email_request_sent = "Passwrod Change Request Email Sent";
+   $please_check_email = "Please Check your Email Box";
+   $ranking = "Ranking";
+   $wins = "Wins";
+   $loses = "Loses";
+   $total_games = "Tolal Matches";
+   $points = "Points";
+
 ?>

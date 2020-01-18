@@ -44,10 +44,10 @@ require("http_to_https.php");
 						<input class="form-control" type="password" name="password1" id="password1" placeholder="Κωδικός" required>
 					</div>
 					<div class="form-group">
-						<input class="form-control" type="password" name="password2" id="password2" placeholder="Επαληθευση" required>
+						<input class="form-control" type="password" name="password2" id="password2" placeholder="Επαλήθευση" required>
 					</div>
 					<div class="form-group">
-						<button class="btn btn-primary btn-block" name="submit" id="submit" value="<?php echo $_GET['code']; ?>" type="submit" disabled>Επαναφορά</button>
+						<button class="btn btn-primary btn-block" name="submit" id="submit" value="<?php if(isset($_GET['code'])){echo $_GET['code'];} ?>" type="submit" disabled>Επαναφορά</button>
 					</div><b><a href="#" id="progress" class="forgot"></a></b>
 				</form>
 			</div>

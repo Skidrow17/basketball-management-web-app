@@ -155,7 +155,7 @@
    $title = "Τίτλος";
    $selectLanguage = "Επιλογή Γλώσσας";
    $minutes = "Λεπτά";
-   $matches = "Αγώνες";
+   $matches = "Οι Αγώνες μου";
    
    //Notification Messages 
    $success = "Επιτυχία";
@@ -191,4 +191,23 @@
    
    $noDataAvailable = "Δεν υπάρχουν διαθέσιμα δεδομένα";
    $newMessages = "Nέα Mηνύματα";
+   
+   $period1 = "1η περίοδος";
+   $period2 = "2η περίοδος";
+   $period3 = "3η περίοδος";
+   $period4 = "4η περίοδος";
+   $final = "Τελικό";
+   $wrongTime = "Λανθασμένος Χρόνος";
+   $restriction_lock = "Τα κωλύματα της τρέχουσας βδομάδας έχουν κλειδώσει";
+   $multiple_restriction_lock = "Τα πολλαπλά κωλύματα έχουν κλειδώσει";
+   $weekly_matches = "Εβδομαδιαίοι αγώνες";
+   $password_change_request = "Αίτημα αλλαγής κωδικού πρόσβασης";
+   $email_request_sent = "Αποστολή αίτησης αλλαγής κωδικού πρόσβασης στο ηλεκτρονικό ταχυδρομείο";
+   $please_check_email = "Παρακαλώ ελέγξτε τα εισερχόμενα Email";
+   $ranking = "Kατάταξη";
+   $wins = "Νίκες";
+   $loses = "Ήττες";
+   $total_games = "Συνολικοί Αγώνες";
+   $points = "Πόντοι";
+
 ?>

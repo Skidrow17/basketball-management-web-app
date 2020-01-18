@@ -6,7 +6,7 @@ $json_array = array();
 
 $sql = "SELECT distinct
 		home.name AS team_id_1, 
-		away.name AS team_id_2,r.id,r.team_score_1,r.team_score_2,r.date_time,c.latitude,c.longitude
+		away.name AS team_id_2,r.id,r.team_score_1,r.team_score_2,r.date_time,c.latitude,c.longitude,r.state
 		FROM 
 		game AS r
 		JOIN team AS home 

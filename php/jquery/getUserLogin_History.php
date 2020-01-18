@@ -18,7 +18,8 @@ if (isset($_POST['current_page']) && isset($_SESSION['safe_key']) && isset($_SES
         $run->bindParam(':page', $page, PDO::PARAM_INT);
 		$run->bindParam(':uid', $_SESSION['user_id'], PDO::PARAM_INT);
         $run->execute();
-        $run->execute();
+		echo "<table id='here'>";
+					
         while ($row = $run->fetch(PDO::FETCH_ASSOC)) {
             echo "<tr>";
             echo "<td>" . $row['login_date_time'] . "</td>";
@@ -27,6 +28,8 @@ if (isset($_POST['current_page']) && isset($_SESSION['safe_key']) && isset($_SES
             echo "<td>" . $row['ip'] . "</td>";
             echo "</tr>";
         }
+		echo "</table>";
+		
     } else {
         session_destroy();
         echo 401;

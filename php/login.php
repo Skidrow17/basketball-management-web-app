@@ -9,7 +9,7 @@ $safe_key = '';
 if ((isset($_POST['password']) && isset($_POST['username'])) || (isset($_COOKIE['uname']) && isset($_COOKIE['pwd']) && isset($_COOKIE['safe_key']))) {
     if (isset($_COOKIE['uname']) && isset($_COOKIE['pwd']) && isset($_COOKIE['safe_key'])) {
         $username = preg_replace("/[^a-zA-Z0-9]+/", "", $_COOKIE['uname']);
-        $password = preg_replace("/[^a-zA-Z0-9]+/", "", $_COOKIE['pwd']);
+        $password = filter_var($_COOKIE['pwd'], FILTER_SANITIZE_STRING);
         $safe_key = preg_replace("/[^a-zA-Z0-9]+/", "", $_COOKIE['safe_key']);
 		
         $sql = "SELECT U.language,U.polling_time,U.id,U.username,U.password,U.name,U.surname,U.email,U.phone,U.profile_pic,U.active,U_C.name as profession FROM user U , user_categories U_C where U.profession=U_C.id AND U.username=:username";
@@ -82,7 +82,7 @@ if ((isset($_POST['password']) && isset($_POST['username'])) || (isset($_COOKIE[
         }
     }elseif(isset($_POST['username']) && isset($_POST['password'])){
         $username = preg_replace("/[^a-zA-Z0-9]+/", "", $_POST['username']);
-        $password = preg_replace("/[^a-zA-Z0-9]+/", "", $_POST['password']);
+        $password = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
         $safe_key = randomString(15);
         $sql = "SELECT U.language,U.polling_time,U.id,U.username,U.password,U.name,U.surname,U.email,U.phone,U.profile_pic,U.active,U_C.name as profession FROM user U , user_categories U_C where U.profession=U_C.id AND U.username=:username";
         $run = $dbh->prepare($sql);
@@ -133,15 +133,13 @@ if ((isset($_POST['password']) && isset($_POST['username'])) || (isset($_COOKIE[
                         die();
                     }
                 } else {
-					if($_SESSION['language'] == 'gr') $_SESSION["server_response"] = 'Λάνθασμένος κωδικός';
-					else $_SESSION["server_response"] = 'Wrong Password';
+					$_SESSION["server_response"] = 'Λάνθασμένος κωδικός';
                     header('Location: ../index.php');
                     die();
                 }
             }
         } else {
-			if($_SESSION['language'] == 'gr') $_SESSION["server_response"] = 'Eλένξτε ξανά το username';
-			else $_SESSION["server_response"] = 'Non Existing Username';
+			$_SESSION["server_response"] = 'Eλένξτε ξανά το username';
             header('Location: ../index.php');
             die();
         }

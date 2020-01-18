@@ -85,5 +85,3 @@ if (isset($_POST['submit'])) {
     header('Location: ../../register.php');
     die();
 }
-?>
-

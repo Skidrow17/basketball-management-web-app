@@ -1,4 +1,5 @@
 <?php
+
 /**
  * PHPMailer SPL autoloader.
  * PHP Version 5
@@ -21,6 +22,9 @@
  * PHPMailer SPL autoloader.
  * @param string $classname The name of the class to load
  */
+
+
+
 function PHPMailerAutoload($classname)
 {
     //Can't use __DIR__ as it's only in PHP 5.3+
@@ -29,6 +33,8 @@ function PHPMailerAutoload($classname)
         require $filename;
     }
 }
+
+$conf['show_php_errors'] = E_ALL & ~E_DEPRECATED;
 
 if (version_compare(PHP_VERSION, '5.1.2', '>=')) {
     //SPL autoloading was introduced in PHP 5.1.2

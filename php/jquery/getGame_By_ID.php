@@ -9,7 +9,7 @@ if (isset($_POST['game_id']) && isset($_SESSION['safe_key']) && isset($_SESSION[
         $gid = filter_var($_POST['game_id'], FILTER_SANITIZE_NUMBER_INT);
         $sql = "SELECT distinct
 		home.name AS team_id_1, 
-		away.name AS team_id_2,r.id,r.team_score_1,r.team_score_2,r.date_time,c.latitude,c.longitude
+		away.name AS team_id_2,r.id,r.state,r.team_score_1,r.team_score_2,r.date_time,c.latitude,c.longitude
 		FROM 
 		game AS r
 		JOIN team AS home 
@@ -30,9 +30,39 @@ if (isset($_POST['game_id']) && isset($_SESSION['safe_key']) && isset($_SESSION[
                 </div>
             </div>
 		<div class="form-row">
-                <div class="col"><small class="form-text text-muted">'; echo $matchState; echo'</small>
-                      <div class="form-check"><input name="state" value="1" class="form-check-input" type="radio" id="formCheck-1" checked><label class="form-check-label" for="formCheck-1" style="color:rgb(220,64,29);">'; echo $halfTime; echo'</label></div>
-                    <div class="form-check"><input  name="state" value="2"  class="form-check-input" type="radio" id="formCheck-1"><label class="form-check-label" for="formCheck-1" style="color:rgb(220,64,29);">'; echo $fullTime; echo'</label></div><small class="form-text text-muted">' . $row['team_id_1'] . '</small></div>
+        <div class="col"><small class="form-text text-muted">'; echo $matchState; echo'</small> 
+				 <class = "col"><select name="state" class="mdb-select md-form">';
+				 
+				 if($row['state'] == 1){
+					echo '<option value="1" checked>'.$period1.'</option>';
+				 }else if($row['state'] == 2){
+					echo '<option value="2" checked>'.$period2.'</option>';		  
+				 }else if($row['state'] == 3){
+					echo '<option value="3" checked>'.$period3.'</option>';		  
+				 }else if($row['state'] == 4){
+					echo '<option value="4" checked>'.$period4.'</option>';		  
+				 }else if($row['state'] == 5){
+					echo '<option value="5" checked>'.$final.'</option>';		  
+				 }
+				 
+				 if($row['state'] != 1){
+					echo '<option value="1" checked>'.$period1.'</option>';
+				 }
+				 if($row['state'] != 2){
+					echo '<option value="2" checked>'.$period2.'</option>';		  
+				 }
+				 if($row['state'] != 3){
+					echo '<option value="3" checked>'.$period3.'</option>';		  
+				 }
+				 if($row['state'] != 4){
+					echo '<option value="4" checked>'.$period4.'</option>';		  
+				 }
+				 if($row['state'] != 5){
+					echo '<option value="5" checked>'.$final.'</option>';		  
+				 }
+				  
+				echo '</select>
+			<small class="form-text text-muted">' . $row['team_id_1'] . '</small></div>
 		</div>
 		<div class="form-group"><input class="form-control" name="team_score_1" value=' . $row['team_score_1'] . ' type="number"></div>
 		<div class="form-row">

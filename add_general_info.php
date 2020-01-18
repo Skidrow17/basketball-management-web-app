@@ -14,21 +14,21 @@ require_once('php/select_boxes.php');
 <html>
 
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>ΕΚΑΣΔΥΜ - <?php echo $addGeneralInfo; ?></title>
-	<?php include('head.php'); ?>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ΕΚΑΣΔΥΜ - <?php echo $addGeneralInfo; ?></title>
+    <?php include('head.php'); ?>
 </head>
 
 <body>
-	<main class="page lanidng-page">
-		<section class="portfolio-block photography"></section>
-	</main>
+    <main class="page lanidng-page">
+        <section class="portfolio-block photography"></section>
+    </main>
 
-	<?php include('admin_nav_bar.php'); ?>
-		<div class="admin-look">
+    <?php include('admin_nav_bar.php'); ?>
+    <div class="admin-look">
 
-			<?php if(isset($_GET['id'])){ if($_GET['id']==4) { 
+        <?php if(isset($_GET['id'])){ if($_GET['id']==4) { 
 			echo '
 			<form method="post" action="./php/insert/insert_team.php">
 
@@ -142,8 +142,8 @@ require_once('php/select_boxes.php');
 			';
 			}}?>
 
-		</div>
-		<?php include('footer.php'); ?>
+    </div>
+    <?php include('footer.php'); ?>
 
 </body>
 

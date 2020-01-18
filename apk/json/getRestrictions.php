@@ -6,7 +6,7 @@ $fetch = array();
 
 if(isset($_GET['safe_key']) && isset($_GET['id'])){
 	if (security_check($_GET['safe_key'], $_GET['id']) == true) {
-		$sql = "Select R.id,R.time_to,R.time_from,R.date from restriction R where R.user_id=:uid AND R.deletable=0 order by R.date desc";
+		$sql = "Select R.id,R.time_to,R.time_from,R.date from restriction R where R.user_id=:uid AND R.deletable = 0 order by R.date desc";
 		$run = $dbh->prepare($sql);
 		$run->bindParam(':uid', $_GET['id'], PDO::PARAM_INT);
 		$run->execute();
