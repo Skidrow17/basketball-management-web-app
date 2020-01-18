@@ -1,5 +1,8 @@
 <?php
+<<<<<<< HEAD
 
+=======
+>>>>>>> d466851b18f7aaa81a99bb5c3a5dca33a64c1ffc
 /**
  * PHPMailer SPL autoloader.
  * PHP Version 5
