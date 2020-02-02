@@ -8,7 +8,7 @@ require_once('../language.php');
 if (isset($_POST['cid']) && isset($_SESSION['safe_key']) && isset($_SESSION['user_id'])) {
     if (security_check($_SESSION['safe_key'], $_SESSION['user_id']) == true) {
 		echo $_POST["gid"];
-        $sql = "Select id,name,wins,loses,total_games,points from team where category =:cid AND team_group =:gid order by points desc";
+        $sql = "Select id,name,wins,loses,total_games,points from team where category =:cid AND team_group =:gid AND active = 0 order by points desc";
         $run = $dbh->prepare($sql);
 		$run->bindParam(':cid', $_POST["cid"], PDO::PARAM_INT);
 		$run->bindParam(':gid', $_POST["gid"], PDO::PARAM_INT);
