@@ -37,12 +37,20 @@ require_once('php/select_boxes.php');
 						</div>
 					</div>
 
-					<?php echo getAllTeam_Categories(); ?>
-						
-						<div style="overflow-x:auto;">
-							<table id='ranking_table'>
-							</table>
+					<div class="form-row">
+						<div class="col-xl-6"><small class="form-text text-muted"><?php echo $selectCategory; ?></small>
+							<div class = "col"><?php echo getAllTeam_Categories(); ?></div>
 						</div>
+
+						<div class="col-xl-6" id="group_text" style="display:none;"><small class="form-text text-muted"><?php echo $select_group; ?></small>
+							<div class = "col" id = "groups" contenteditable="false"></div>
+						</div>
+					</div>
+						
+					<div style="overflow-x:auto;">
+						<table id='ranking_table'>
+						</table>
+					</div>
 
 				</form>
 			</div>
