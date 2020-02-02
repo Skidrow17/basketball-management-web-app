@@ -204,5 +204,12 @@
    $password_change_request = "Password Change Request";
    $email_request_sent = "Passwrod Change Request Email Sent";
    $please_check_email = "Please Check your Email Box";
+   $ranking = "Ranking";
+   $wins = "Wins";
+   $loses = "Loses";
+   $total_games = "Tolal Matches";
+   $points = "Points";
+   $group = "Group";
+   $select_group = "Select Group";
 
 ?>

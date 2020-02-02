@@ -8,11 +8,14 @@ $sql = "SELECT * from team_categories ";
 
 $run = $dbh->prepare($sql);
 $run->execute();
-
 $fetch = array();
-
-while ($row = $run->fetch(PDO::FETCH_ASSOC)) {
-	$fetch['Categories'][] = $row;
+if ($run->rowCount() > 0) {
+	while ($row = $run->fetch(PDO::FETCH_ASSOC)) {
+		$fetch['Categories'][] = $row;
+		$fetch['ERROR']['error_code'] = "200";
+	}
+} else {
+	$fetch['ERROR']['error_code'] = "204";
 }
 
 echo json_encode($fetch);

@@ -19,9 +19,13 @@ $run = $dbh->prepare($sql);
 $run->bindParam(':id', $_GET['id'], PDO::PARAM_INT);
 $run->execute();
 $fetch = array();
-
-while ($row = $run->fetch(PDO::FETCH_ASSOC)) {
-	$fetch['Match_Details'][] = $row;
+if ($run->rowCount() > 0) {
+	while ($row = $run->fetch(PDO::FETCH_ASSOC)) {
+		$fetch['Match_Details'][] = $row;
+		$fetch['ERROR']['error_code'] = "200";
+	}
+} else {
+	$fetch['ERROR']['error_code'] = "204";
 }
 
 echo json_encode($fetch);

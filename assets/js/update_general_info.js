@@ -30,6 +30,21 @@ $(document).ready(function() {
     });
   });
 
+  
+  $("#teams").change(function() {
+    var teamId = $(this).val();
+    var post_id = "tid=" + teamId;
+    $.ajax({
+      type: "POST",
+      url: "php/jquery/getGroupByTeamId.php",
+      data: post_id,
+      success: function(result) {
+        autologout(result.trim());
+        $("#team_group").val(result.trim()).change();
+      }
+    });
+  });
+
   $("#teams").change(function() {
     $("#team_name").val($("#teams option:selected").text());
   });

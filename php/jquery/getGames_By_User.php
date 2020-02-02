@@ -41,18 +41,18 @@ if (isset($_POST['current_page']) && isset($_SESSION['safe_key']) && isset($_SES
 				 
 				  <div class='form-row'>
 				
-				   <div class='col'> <li class='list-group-item' style='color:#ffffff;background-color:#dc6e56;'>";echo $team; echo" 1 : " . $row['team_id_1'] . "</div>
+				   <div class='col'> <li class='list-group-item' style='color:#ffffff;background-color:#dc6e56;'>";echo $team; echo" : " . $row['team_id_1'] . "</div>
 				
 					</div>
 					
 					<div class='form-row'>
-				   <div class='col'> <li class='list-group-item' style='color:#ffffff;background-color:#dc6e56;'>";echo $score; echo" 1 : " . $row['team_score_1'] . "</div>
-				  <div class='col'> <li class='list-group-item' style='color:#000000;background-color:#ffffff;'>";echo $score; echo" 2 : " . $row['team_score_2'] . "</div>
+				   <div class='col'> <li class='list-group-item' style='color:#ffffff;background-color:#dc6e56;'>";echo $score; echo" : " . $row['team_score_1'] . "</div>
+				  <div class='col'> <li class='list-group-item' style='color:#000000;background-color:#ffffff;'>";echo $score; echo" : " . $row['team_score_2'] . "</div>
 					</div>
 					
 					
 					<div class='form-row'>
-				  <div class='col'> <li class='list-group-item' style='color:#000000;background-color:#ffffff;'>";echo $team; echo" 2 : " . $row['team_id_2'] . "</div>
+				  <div class='col'> <li class='list-group-item' style='color:#000000;background-color:#ffffff;'>";echo $team; echo" : " . $row['team_id_2'] . "</div>
 					</div>
 					
 			   <div class='form-row'>

@@ -122,6 +122,19 @@ function getAllTeam_categories2() {
     }
     echo '</select>';
 }
+function getAllTeam_Group() {
+    require 'connect_db.php';
+	include 'language.php';
+    $sql = "SELECT id,name from team_groups where active = 0";
+    $lid = $dbh->prepare($sql);
+    $lid->execute();
+    echo '<select name="team_group" id="team_group" class="form-control" required>';
+    echo "<option value=''>";echo $select_group; echo "</option>";
+    while ($row = $lid->fetch(PDO::FETCH_ASSOC)) {
+        echo '<option value=' . $row['id'] . ' >' . $row['name'] . '</option>';
+    }
+    echo '</select>';
+}
 function getLivingPlace($selected) {
     require 'connect_db.php';
 	include 'language.php';

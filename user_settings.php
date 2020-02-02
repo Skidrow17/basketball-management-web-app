@@ -93,6 +93,7 @@ require_once('php/useful_functions.php');
                                 <li class='page-item' style='color:rgb(220,64,29);'><a id="next" name="next"
                                         class='page-link' aria-label='Previous'><span aria-hidden='true'>»</span></a>
                                 </li>
+								
                             </ul>
                         </nav>
                     </div>

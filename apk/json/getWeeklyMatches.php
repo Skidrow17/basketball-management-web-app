@@ -17,9 +17,14 @@ $sql = "SELECT distinct
 		
 $run = $dbh->prepare($sql);
 $run->execute();
-$fetch = array();
-$fetch['ERROR']['error_code'] = "200";
-while ($row = $run->fetch(PDO::FETCH_ASSOC)) {
-	$fetch['Match_Details'][] = $row;
+
+
+if ($run->rowCount() > 0) {
+	while ($row = $run->fetch(PDO::FETCH_ASSOC)) {
+		$fetch['Match_Details'][] = $row;
+		$fetch['ERROR']['error_code'] = "200";
+	}
+} else {
+	$fetch['ERROR']['error_code'] = "204";
 }
 echo json_encode($fetch);

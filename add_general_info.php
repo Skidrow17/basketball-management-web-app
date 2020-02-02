@@ -46,6 +46,7 @@ require_once('php/select_boxes.php');
 			<div class="form-row">
 				<div class="col-xl-12"><small class="form-text text-muted">';echo $name; echo'</small><input name="name" type="text" class="form-control" required /></div>
 				<div class="col-xl-12"><small class="form-text text-muted">';echo $selectCategory; echo'</small>'; echo getAllTeam_Categories(); echo '</div>
+				<div class="col-xl-12"><small class="form-text text-muted">';echo $select_group; echo'</small>'; echo getAllTeam_Group(); echo '</div>
 				<div class="col-xl-12"><button class="btn btn-primary" type="submit" name="submit" style="width:100%">';echo $addButton; echo'</button></div>
 			</div>
 			</form>
