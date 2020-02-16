@@ -6,7 +6,9 @@ $fetch = array();
 
 if(isset($_GET['safe_key']) && isset($_GET['id'])){
 	if (security_check($_GET['safe_key'], $_GET['id']) == true) {
-		$sql = "SELECT get_last_login_by_user(id) as last_login,id,name,surname,profile_pic,phone from user where id!=:id order by get_last_login_by_user(id) desc";
+		//$sql = "SELECT get_last_login_by_user(id) as last_login,id,name,surname,profile_pic,phone from user where id!=:id order by get_last_login_by_user(id) desc";
+		$sql = "SELECT get_last_login_by_user(id) as last_login,id,name,surname,profile_pic,phone from user where id!=:id order by name asc";
+
 		$run = $dbh->prepare($sql);
 		$run->bindParam(':id', $_GET['id'], PDO::PARAM_INT);
 		$run->execute();
