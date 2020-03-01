@@ -12,6 +12,19 @@ if (isset($_POST['title']) && isset($_POST['text']) && isset($_SESSION['safe_key
         $sql = "INSERT INTO `announcement`(`user_id`,`title`, `text`) VALUES (?,?,?)";
         $run = $dbh->prepare($sql);
         $run->execute([$user_id, $title, $text]);
+
+
+        $sql = "SELECT mobile_token FROM user WHERE id != :sender_id";
+        $result = $dbh->prepare($sql);
+        $result->bindParam(':sender_id', $user_id, PDO::PARAM_INT);
+        $result->execute();
+
+        while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+            if(strlen($row["mobile_token"]) == 152){
+                sentPushNotification($title,$row['mobile_token'],$text);
+            }
+        }
+
         if ($run->rowCount() > 0) {
             if ($_SESSION['profession'] === 'Admin') {
                 $_SESSION['server_response'] = $success;

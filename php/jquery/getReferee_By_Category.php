@@ -53,10 +53,10 @@ if (isset($_POST['game_id']) && isset($_POST['id']) && isset($_SESSION['safe_key
         $rest = substr($not_in, 0, -1);
         if (strlen($rest) != 0) $sql = "SELECT U.id , U.name,U.surname from user U,playable_categories PC 
 										WHERE U.active = 0 AND U.id=PC.user_id AND U.profession=2 AND PC.team_categories_id=:td 
-										AND U.id not in( " . $rest . " ) ORDER BY U.rate DESC";
+										AND U.id not in( " . $rest . " ) ORDER BY U.name ASC";
         else $sql = "SELECT U.id , U.name,U.surname 
 					 FROM user U,playable_categories PC where U.active = 0 AND U.id=PC.user_id AND U.profession=2 
-					 AND PC.team_categories_id=:td AND U.id order by U.rate desc";
+					 AND PC.team_categories_id=:td AND U.id order by U.name ASC";
         $run = $dbh->prepare($sql);
         $run->bindParam(':td', $cat_id, PDO::PARAM_INT);
         $run->execute();

@@ -60,14 +60,12 @@ function myFunction() {
     data: post_id,
     success: function(result) {
 	  autologout(result);
-	  console.log(result.length);
-      if(result.length != 229){
-		spinnerActivation();
-		$("#here").html(result);
+    if(result.length != 229){
+		  spinnerActivation();
+		  $("#here").html(result);
 	  }else {
-		console.log('GG');
-		$("#noData").fadeIn(1000);
-		$("#spinnerPanel").hide();
+		  $("#noData").fadeIn(1000);
+		  $("#spinnerPanel").hide();
 	  }    
 	}
   });

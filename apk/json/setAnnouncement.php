@@ -16,6 +16,17 @@ if(isset($_GET['safe_key']) && isset($_GET['user_id'])){
 		$run->bindParam(':text', $text, PDO::PARAM_STR);
 		$run->execute();
 
+		// $sql = "SELECT mobile_token FROM user WHERE id == :sender_id";
+        // $result = $dbh->prepare($sql);
+        // $result->bindParam(':sender_id', $user_id, PDO::PARAM_INT);
+        // $result->execute();
+
+        // while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+        //     if(strlen($row["mobile_token"]) == 152){
+        //         sentPushNotification($title,$row['mobile_token'],$text);
+        //     }
+        // }
+
 		if ($run->rowCount() > 0) {
 			$fetch['ERROR']['error_code'] = "200";
 		} else {

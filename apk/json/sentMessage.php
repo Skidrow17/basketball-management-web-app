@@ -19,6 +19,24 @@ if(isset($_GET['safe_key']) && isset($_GET['sender_id'])){
 			$fetch['ERROR']['error_code'] = "201";
 		}
 
+		$sql = "SELECT id,name,surname,mobile_token FROM user WHERE id IN (:receiver_id,:sender_id)";
+        $result = $dbh->prepare($sql);
+        $result->bindParam(':receiver_id', $receiver_id, PDO::PARAM_INT);
+        $result->bindParam(':sender_id', $sender_id, PDO::PARAM_INT);
+        $result->execute();
+        $sender_name = "";
+        $receiver_token = "";
+        while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+            if($row["id"] == $sender_id){
+                $sender_name = $row["name"]." ".$row["surname"];
+            }else{
+                $receiver_token = $row["mobile_token"];
+            }
+        }
+
+        sentPushNotification($sender_name,$receiver_token,$text_message);
+
+
 		echo json_encode($fetch);
 	} else {
 		$fetch['ERROR']['error_code'] = "403";

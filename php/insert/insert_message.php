@@ -10,9 +10,28 @@ if (isset($_POST['submit']) && isset($_SESSION['safe_key']) && isset($_SESSION['
         $receiver_id = filter_var($_POST["receiver_id"], FILTER_SANITIZE_NUMBER_INT);
         $text = filter_var($_POST['text'], FILTER_SANITIZE_STRING);
         $sql = "INSERT INTO `message`(`sender_id`, `receiver_id`, `text_message`) VALUES 
-				(?,?,?)";
+                (?,?,?)";
         $run = $dbh->prepare($sql);
         $run->execute([$sender_id, $receiver_id, $text]);
+
+
+        $sql = "SELECT id,name,surname,mobile_token FROM user WHERE id IN (:receiver_id,:sender_id)";
+        $result = $dbh->prepare($sql);
+        $result->bindParam(':receiver_id', $receiver_id, PDO::PARAM_INT);
+        $result->bindParam(':sender_id', $sender_id, PDO::PARAM_INT);
+        $result->execute();
+        $sender_name = "";
+        $receiver_token = "";
+        while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+            if($row["id"] == $sender_id){
+                $sender_name = $row["name"]." ".$row["surname"];
+            }else{
+                $receiver_token = $row["mobile_token"];
+            }
+        }
+
+        sentPushNotification($sender_name,$receiver_token,$text);
+
         if ($run->rowCount() > 0) {
             if ($_SESSION['profession'] === 'Admin') {
                 $_SESSION['server_response'] = $success;
