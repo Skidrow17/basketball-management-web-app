@@ -36,6 +36,25 @@ if (isset($_POST['id']) && isset($_SESSION['safe_key']) && isset($_SESSION['user
 				(?,?,?)";
         $run = $dbh->prepare($sql);
         $run->execute([$_SESSION['user_id'], $user_id, $message_sent]);
+
+        $sql = "SELECT id,name,surname,mobile_token FROM user WHERE id IN (:receiver_id,:sender_id)";
+        $result = $dbh->prepare($sql);
+        $result->bindParam(':receiver_id', $user_id, PDO::PARAM_INT);
+        $result->bindParam(':sender_id', $_SESSION['user_id'], PDO::PARAM_INT);
+        $result->execute();
+        $sender_name = "";
+        $receiver_token = "";
+        while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+            if($row["id"] == $sender_id){
+                $sender_name = $row["name"]." ".$row["surname"];
+            }else{
+                $receiver_token = $row["mobile_token"];
+            }
+        }
+
+        sentPushNotification($sender_name,$receiver_token,$message_sent);
+
+
     } else {
         session_destroy();
         echo 401;

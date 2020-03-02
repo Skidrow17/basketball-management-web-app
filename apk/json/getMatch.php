@@ -8,7 +8,7 @@ if(isset($_GET['safe_key']) && isset($_GET['id'])){
 	if (security_check($_GET['safe_key'], $_GET['id']) == true) {
 		$sql = "SELECT 
 				home.name AS team_id_1, 
-				away.name AS team_id_2,r.id,r.state,r.team_score_1,r.team_score_2,r.date_time,c.latitude,c.longitude
+				away.name AS team_id_2,r.id,r.state,r.team_score_1,r.team_score_2,DATE_FORMAT(r.date_time, '%d/%m/%Y %H:%i') as date_time,c.latitude,c.longitude
 				FROM 
 				game AS r
 				JOIN team AS home 

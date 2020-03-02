@@ -211,5 +211,7 @@
    $points = "Points";
    $group = "Group";
    $select_group = "Select Group";
+   $comment = "Comment";
+
 
 ?>

@@ -16,6 +16,8 @@ if (isset($_POST['submit'])) {
 	
 	$match_week = date("W", strtotime(date("Y/m/d")));
 	$match_year = date("Y", strtotime(date("Y/m/d")));
+	$comment = filter_var($_POST['comment'], FILTER_SANITIZE_STRING);
+
 	$sql = "SELECT COUNT(*) as nor FROM human_power HP,game G WHERE G.Id = HP.game_id AND Week(G.date_time,1) = ? AND Year(G.date_time) = ?";
 	$run = $dbh->prepare($sql);
 	$run->execute([$match_week,$match_year]);
@@ -36,12 +38,13 @@ if (isset($_POST['submit'])) {
 	}else if (security_check($_SESSION['safe_key'], $_SESSION['user_id']) == true) {
         for ($i = 0;$i < sizeof($parts);$i++) {
             $newDate = str_replace("/", "-", $parts[$i]);
-            $sql = "INSERT INTO `restriction`(`user_id`, `date`, `time_from` , `time_to` ) VALUES (:user_id,:date,:time_from,:time_to)";
+            $sql = "INSERT INTO `restriction`(`user_id`, `date`, `time_from` , `time_to`,`comment` ) VALUES (:user_id,:date,:time_from,:time_to,:comment)";
             $run = $dbh->prepare($sql);
             $run->bindParam(':user_id', $_SESSION["user_id"], PDO::PARAM_INT);
             $run->bindParam(':date', $newDate, PDO::PARAM_STR);
             $run->bindParam(':time_from', $f, PDO::PARAM_STR);
-            $run->bindParam(':time_to', $t, PDO::PARAM_STR);
+			$run->bindParam(':time_to', $t, PDO::PARAM_STR);
+			$run->bindParam(':comment', $comment, PDO::PARAM_STR);
             $run->execute();
             if ($run->rowCount() > 0) {
                 $x = $x + 1;

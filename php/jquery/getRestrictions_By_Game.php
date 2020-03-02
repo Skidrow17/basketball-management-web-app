@@ -26,9 +26,10 @@ if (isset($_POST['id']) && isset($_SESSION['safe_key']) && isset($_SESSION['user
 		  <th>';echo $date; echo'</th>
 		  <th>';echo $totalRestrictions; echo'</th>
 		  <th>';echo $from; echo'</th>
-		  <th>';echo $to; echo'</th>
+          <th>';echo $to; echo'</th>
+          <th>';echo $comment; echo'</th>
 		  <th></th>';
-        $sql = "SELECT R.id ,U.name ,get_number_of_restrictions(U.id) as n_o_r,U.surname,R.time_to,R.time_from,R.date 
+        $sql = "SELECT R.id ,U.name ,get_number_of_restrictions(U.id) as n_o_r,U.surname,R.time_to,R.time_from,R.date,R.comment
 				FROM user U,restriction R , playable_categories PC 
 				WHERE U.active = 0 AND PC.user_id = U.id AND PC.team_categories_id = :categoryId AND U.id=R.user_id 
 				AND R.time_to>:game_start_time AND R.time_from < :game_end_time AND R.date=:date order by n_o_r desc limit :page,3";
@@ -46,7 +47,8 @@ if (isset($_POST['id']) && isset($_SESSION['safe_key']) && isset($_SESSION['user
 			<td>' . $row['date'] . '</td>
 			<td>' . $row['n_o_r'] . '</td>
 			<td>' . $row['time_from'] . '</td>
-			<td>' . $row['time_to'] . '</td>
+            <td>' . $row['time_to'] . '</td>
+            <td>' . $row['comment'] . '</td>
 			<td><button value=' . $row['id'] . ' id="delete_btn" type="button" name="delete_btn" class="btn"><i class="fa fa-trash"></i></button></td>
 			</tr>';
         }

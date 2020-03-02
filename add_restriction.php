@@ -45,15 +45,13 @@ require_once('php/useful_functions.php');
 						<div class="form-row">
 							<div class="col"><small class="form-text text-muted"> <?php echo $date; ?></small></div>
 							<div class="col">
-								<div class="form-group">
-									<input placeholder='Πατήστε μέσα στο πεδίο' style='border:1px solid rgb(220,110,86);' name='date' type='date' required>
-								</div>
+								<input placeholder='Πατήστε μέσα στο πεδίο' style='border:1px solid rgb(220,110,86);' name='date' type='date' required>
 							</div>
 						</div>
 						<div class="form-row">
 							<div class="col"><small class="form-text text-muted" style="color:rgb(220,64,29);"> <?php echo $from; ?></small></div>
 							<div class="col">
-								<input type="time" name="time_from" id='time_from' required>
+								<input type="time" name="time_from" id='time' required>
 							</div>
 						</div>
 						<div class="form-row">
@@ -62,6 +60,14 @@ require_once('php/useful_functions.php');
 								<input type="time" name="time_to" id='time_to' required>
 							</div>
 
+						</div>
+						<div class="form-row">
+							<div class="col"><small class="form-text text-muted"> <?php echo $comment; ?></small></div>
+							<div class="col">
+								<div class="form-group">
+								<input type="text" style='border:1px solid rgb(220,110,86);' id="comment" name="comment" aria-describedby="emailHelp">
+								</div>
+							</div>
 						</div>
 
 						<div class="form-group">
@@ -107,11 +113,14 @@ require_once('php/useful_functions.php');
 						</div>
 
 						<div class="form-row">
-
 							<div class="col"><small class="form-text text-muted"><?php echo $multiDateSelection; ?></small></div>
 						</div>
 						<div class="form-group">
 							<input id='dates' name='dates' placeholder='<?php echo $clickInsideTheHolder; ?>' style='border:1px solid rgb(220,110,86);' type="text" class="datepicker-here form-control" data-language='gr' data-multiple-dates="365" data-multiple-dates-separator=", " data-position='top left' onfocus="blur();" required>
+						</div>
+
+						<div class="form-group">
+						<input type="text" class="form-control"  style='border:1px solid rgb(220,110,86);' id="comment" name="comment" aria-describedby="emailHelp" placeholder="<?php echo $comment; ?>">
 						</div>
 
 						<div class="form-group">
@@ -173,7 +182,7 @@ require_once('php/useful_functions.php');
 
 		<?php include('footer.php'); ?>
 		<script src="assets/js/restrictions.js"></script>
-
+	
 </body>
 
 </html>

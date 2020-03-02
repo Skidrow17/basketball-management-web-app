@@ -21,7 +21,7 @@ if (isset($_SESSION['safe_key']) && isset($_SESSION['user_id']) && isset($_POST[
         echo "<th>";echo $rating; echo"</th>";
         echo "<th>";echo $updateDate; echo"</th>";
         echo "</tr>";
-        $sql = "SELECT name,surname,password,email,phone,driving_licence,living_place,profession,profile_pic,active,rate,update_time 
+        $sql = "SELECT name,surname,password,email,phone,driving_licence,living_place,profession,profile_pic,active,rate,DATE_FORMAT(update_time, '%d/%m/%Y %H:%i') as update_time 
 				FROM user_update_history 
 				ORDER BY update_time desc limit :page,9";
         $run = $dbh->prepare($sql);

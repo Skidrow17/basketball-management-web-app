@@ -8,7 +8,7 @@ if (isset($_POST['current_page']) && isset($_SESSION['safe_key']) && isset($_SES
     if (security_check($_SESSION['safe_key'], $_SESSION['user_id']) == true) {
         $uid = filter_var($_SESSION['user_id'], FILTER_SANITIZE_NUMBER_INT);
         $page = $_POST['current_page'];
-        $sql = "SELECT U.name,U.surname,A.id,A.title,A.text,A.date_time from announcement A , user U where A.user_id=U.id AND U.id=:uid order by date_time desc limit :cp,1 ";
+        $sql = "SELECT U.name,U.surname,A.id,A.title,A.text,DATE_FORMAT(A.date_time , '%d/%m/%Y %H:%i') as date_time from announcement A , user U where A.user_id=U.id AND U.id=:uid order by date_time desc limit :cp,1 ";
         $run = $dbh->prepare($sql);
         $run->bindParam(':cp', $page, PDO::PARAM_INT);
         $run->bindParam(':uid', $uid, PDO::PARAM_INT);

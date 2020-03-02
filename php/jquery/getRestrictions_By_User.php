@@ -14,7 +14,7 @@ if (isset($_POST['current_page']) && isset($_SESSION['safe_key']) && isset($_SES
 		  <th>';echo $importingDate; echo '</th>
 		  <th>';echo $delete; echo '</th>
 		  ';
-        $sql = "Select R.id,R.time_to,R.time_from,R.date,R.register_timestamp,R.deletable from restriction R where R.user_id=:uid AND deletable = 0 order by R.date desc limit :page,7";
+        $sql = "Select R.id,R.time_to,R.time_from,DATE_FORMAT(R.date, '%d/%m/%Y %H:%i') as date, DATE_FORMAT(R.register_timestamp, '%d/%m/%Y %H:%i') as register_timestamp ,R.deletable from restriction R where R.user_id=:uid AND deletable = 0 order by R.date desc limit :page,7";
         $run = $dbh->prepare($sql);
         $run->bindParam(':page', $page, PDO::PARAM_INT);
         $run->bindParam(':uid', $_SESSION['user_id'], PDO::PARAM_INT);
