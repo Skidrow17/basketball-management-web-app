@@ -5,6 +5,10 @@ require 'useful_functions.php';
 $fetch = array();
 
 if(isset($_GET['safe_key']) && isset($_GET['user_id'])){
+
+	$announcement_id = filter_var($_GET["announcement_id"], FILTER_SANITIZE_NUMBER_INT);
+	$user_id = filter_var($_GET["user_id"], FILTER_SANITIZE_NUMBER_INT);
+
 	if (security_check($_GET['safe_key'], $_GET['user_id']) == true) {
 		$profession = 0;
 		$sql = "SELECT profession from user where id=?";
@@ -19,8 +23,8 @@ if(isset($_GET['safe_key']) && isset($_GET['user_id'])){
 			$sql = 'delete from announcement WHERE id =:id AND user_id=:user_id';
 
 			$run = $dbh->prepare($sql);
-			$run->bindValue(':id', $_GET["announcement_id"]);
-			$run->bindValue(':user_id', $_GET["user_id"]);
+			$run->bindValue(':id', $announcement_id);
+			$run->bindValue(':user_id', $user_id);
 			$run->execute();
 
 			if ($run->rowCount() > 0) {
@@ -33,7 +37,7 @@ if(isset($_GET['safe_key']) && isset($_GET['user_id'])){
 			$sql = 'delete from announcement WHERE id =:id';
 
 			$run = $dbh->prepare($sql);
-			$run->bindValue(':id', $_GET["announcement_id"]);
+			$run->bindValue(':id', $announcement_id);
 			$run->execute();
 
 			if ($run->rowCount() > 0) {

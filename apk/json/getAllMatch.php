@@ -15,8 +15,9 @@ $sql = "SELECT distinct
 		ON r.team_id_2 = away.id , court c , team t where yearweek(r.date_time,1) = yearweek(curdate(),1) 
 		AND r.team_id_1=t.id AND t.category=:id And C.id=r.court_id order by date_time desc ";
 		
+$id = filter_var($_GET["id"], FILTER_SANITIZE_NUMBER_INT);		
 $run = $dbh->prepare($sql);
-$run->bindParam(':id', $_GET['id'], PDO::PARAM_INT);
+$run->bindParam(':id', $id, PDO::PARAM_INT);
 $run->execute();
 $fetch = array();
 if ($run->rowCount() > 0) {

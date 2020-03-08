@@ -6,6 +6,7 @@ $fetch = array();
 
 if (isset($_GET['safe_key']) && isset($_GET['id']))
 {
+    $id = filter_var($_GET["id"], FILTER_SANITIZE_NUMBER_INT);		
     if ($_SERVER['REQUEST_METHOD'] == 'POST')
     {
         $DefaultId = 0;
@@ -16,7 +17,7 @@ if (isset($_GET['safe_key']) && isset($_GET['id']))
 
 		$sql = "UPDATE user SET profile_pic=? where id = ?";
         $run = $dbh->prepare($sql);
-        $run->execute([$AbsoluteImagePath, $_GET['id']]);
+        $run->execute([$AbsoluteImagePath, $id]);
 		
         if ($run->rowCount() > 0) 
         {

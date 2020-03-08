@@ -5,6 +5,7 @@ require 'useful_functions.php';
 $fetch = array();
 
 if(isset($_GET['safe_key']) && isset($_GET['id'])){
+	$id = filter_var($_GET["id"], FILTER_SANITIZE_NUMBER_INT);		
 	if (security_check($_GET['safe_key'], $_GET['id']) == true) {
 		$sql = "SELECT 
 				home.name AS team_id_1, 
@@ -16,7 +17,7 @@ if(isset($_GET['safe_key']) && isset($_GET['id'])){
 				JOIN team AS away 
 				ON r.team_id_2 = away.id , court c , human_power HP where yearweek(r.date_time,1) = yearweek(curdate(),1) AND C.id=r.court_id AND HP.game_id=r.id AND HP.user_id=:uid";
 		$run = $dbh->prepare($sql);
-		$run->bindParam(':uid', $_GET['id'], PDO::PARAM_INT);
+		$run->bindParam(':uid', $id, PDO::PARAM_INT);
 		$run->execute();
 
 		if ($run->rowCount() > 0) {

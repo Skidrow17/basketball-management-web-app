@@ -5,6 +5,7 @@ require_once 'useful_functions.php';
 $fetch = array();
 
 if(isset($_GET['safety_key']) && isset($_GET['id'])){
+	$id = filter_var($_GET["id"], FILTER_SANITIZE_NUMBER_INT);		
 	if (security_check($_GET['safety_key'], $_GET['id']) == true) {
 		
 		$sql = "SELECT get_number_of_received_messages_by_user(receiver_id) as number_of_messages,
@@ -15,7 +16,7 @@ if(isset($_GET['safety_key']) && isset($_GET['id'])){
 				ORDER BY date_time desc LIMIT 1";
 				
 		$run = $dbh->prepare($sql);
-		$run->bindParam(':id', $_GET['id'], PDO::PARAM_INT);
+		$run->bindParam(':id', $id, PDO::PARAM_INT);
 		$run->execute();
 		
 		while ($row = $run->fetch(PDO::FETCH_ASSOC)) {
@@ -27,7 +28,7 @@ if(isset($_GET['safety_key']) && isset($_GET['id'])){
 				 WHERE user_id=? order by id desc Limit 1";
 				 
 		$stmt = $dbh->prepare($sql);
-		$stmt->execute([date('Y/m/d H:i:s'), $_GET['id']]);
+		$stmt->execute([date('Y/m/d H:i:s'), $id]);
 
 		
 		$sql = "SELECT get_number_of_announcements() as number_of_announcements,
