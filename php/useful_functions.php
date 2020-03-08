@@ -354,8 +354,8 @@ function sentPushNotification($sender_name,$receiver_token,$message) {
   (
     'message' 	=> $message,
     'title'		=> $sender_name,
-    'subtitle'	=> 'This is a subtitle. subtitle',
-    'tickerText'=> 'Ticker text here...Ticker text here...Ticker text here',
+    'subtitle'	=> '',
+    'tickerText'=> '',
     'vibrate'	=> 1,
     'sound'		=> 1,
     'largeIcon'	=> 'large_icon',
