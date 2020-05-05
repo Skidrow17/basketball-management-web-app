@@ -59,7 +59,8 @@ if (isset($_GET['q']) && isset($_SESSION['safe_key']) && isset($_SESSION['user_i
         }
     } else {
         session_destroy();
-        echo 401;
+        header('HTTP/1.0 401 Unauthorized');
+        echo 'HTTP/1.0 401 Unauthorized';
     }
 }
 ?>

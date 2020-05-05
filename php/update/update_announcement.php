@@ -20,7 +20,8 @@ if (isset($_POST['message']) && isset($_POST['title']) && isset($_POST['aid'])
         }
     } else {
         session_destroy();
-		echo 401;
+		header('HTTP/1.0 401 Unauthorized');
+        echo 'HTTP/1.0 401 Unauthorized';
     }
 } else {
     if ($_SESSION['profession'] === 'Admin') {

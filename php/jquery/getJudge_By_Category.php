@@ -66,7 +66,8 @@ if (isset($_POST['game_id']) && isset($_POST['id']) && isset($_SESSION['safe_key
         }
     } else {
         session_destroy();
-        echo 401;
+        header('HTTP/1.0 401 Unauthorized');
+        echo 'HTTP/1.0 401 Unauthorized';
     }
 }
 ?>
