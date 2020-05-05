@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 include 'connect_db.php';
 $a = array();
 $month = [];
