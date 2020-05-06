@@ -32,9 +32,9 @@ if (isset($_POST['password']) && isset($_POST['username']) && isset($_POST['safe
                 $_SESSION['profession'] = $row['profession'];
                 $_SESSION['N_O_M'] = getNumberOfMessages($row['username']);
                 $_SESSION['L_L_H'] = getLastLoginHistoryId($row['id']);
-				setcookie("uname", $_POST['username'], $cookie_time, '/');
-                setcookie("pwd", $_POST['password'], $cookie_time, '/');
-                setcookie("safe_key", $_POST['safe_key'], $cookie_time, '/');
+				setcookie("uname", $_POST['username'], $cookie_time, '/',null,null,true);
+                setcookie("pwd", $_POST['password'], $cookie_time, '/',null,null,true);
+                setcookie("safe_key", $_POST['safe_key'], $cookie_time, '/',null,null,true);
                 header('Location: ../home_admin.php');
             }
         }
