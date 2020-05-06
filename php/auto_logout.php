@@ -3,23 +3,8 @@ session_start();
 require 'useful_functions.php';
 require 'language.php';
 
-setcookie('uname', '', [
-    'expires' => time() - 7000000,
-    'path' => '/',
-    'secure' => true,
-    'samesite' => 'None',
-    'httponly' => true,
-]);
-
-setcookie('pwd', '', [
-    'expires' => time() - 7000000,
-    'path' => '/',
-    'secure' => true,
-    'samesite' => 'None',
-    'httponly' => true,
-]);
-
-
+setcookie('uname', '', time() - 7000000, '/','',true,true);
+setcookie('pwd', '', time() - 7000000, '/','',true,true);
 
 $_SESSION['server_response'] = 'Logged in από άλλη συσκευή';
 header('location: ../index.php');
