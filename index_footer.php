@@ -21,7 +21,7 @@
                         <li></li>
                     </ul>
                 </div>
-                <div class="col-lg-3 item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="http://zafora.icte.uowm.gr/~ictest00909/EKA/apk/Ekasdym.apk"><i class="icon ion-social-android"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a>
+                <div class="col-lg-3 item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="apk/Ekasdym.apk"><i class="icon ion-social-android"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a>
                     <p class="copyright">UOWM © All Rights Reserved
                         <script>
                             document.write(new Date().getFullYear())
