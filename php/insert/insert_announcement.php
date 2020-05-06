@@ -1,4 +1,8 @@
 <?php
+
+//Access: Authorizes User & Admin
+//Purpose: imports new announcement + sent notification
+
 session_start();
 require_once '../connect_db.php';
 require_once '../useful_functions.php';

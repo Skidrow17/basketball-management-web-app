@@ -1,4 +1,8 @@
 <?php
+
+//Access: Admin
+//Purpose: import new court on the system
+
 session_start();
 require_once '../connect_db.php';
 require_once '../useful_functions.php';

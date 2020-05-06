@@ -1,4 +1,8 @@
 <?php
+
+//Access: Authorizes User
+//Purpose: Deletes the restrictions imported from user
+
 session_start();
 require_once '../connect_db.php';
 require_once '../useful_functions.php';

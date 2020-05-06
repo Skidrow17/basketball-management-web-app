@@ -1,4 +1,8 @@
 <?php
+
+//Access: Admin
+//Purpose: removes people from that are assigned to matches
+
 session_start();
 require_once '../connect_db.php';
 require_once '../useful_functions.php';

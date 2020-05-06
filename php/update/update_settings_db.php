@@ -1,4 +1,8 @@
 <?php
+
+//Access: Authorized User & Admin
+//Purpose: updates settings like langueage and polling time
+
 session_start();
 require_once '../connect_db.php';
 require_once '../useful_functions.php';

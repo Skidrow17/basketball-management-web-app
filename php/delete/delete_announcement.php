@@ -1,4 +1,8 @@
 <?php
+
+//Access: Authorized User & Admin
+//Purpose: delete owned announcements
+
 session_start();
 require_once '../connect_db.php';
 require_once '../useful_functions.php';

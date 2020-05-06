@@ -1,5 +1,8 @@
 <?php
 
+//Access: Admin
+//Purpose: updates points,wins,lose per league
+
 session_start();
 require_once '../connect_db.php';
 require_once '../useful_functions.php';
