@@ -23,9 +23,7 @@
                 </div>
                 <div class="col-lg-3 item social"><a href="https://www.facebook.com/silvan17"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="apk/Ekasdym.apk"><i class="icon ion-social-android"></i></a><a href="https://www.instagram.com/____buckethead____/"><i class="icon ion-social-instagram"></i></a>
                     <p class="copyright"><?php echo $allRightsReserved; ?>
-                        <script>
-                            document.write(new Date().getFullYear())
-                        </script>
+                        <span id="years"></span>
                     </p>
                 </div>
             </div>
@@ -46,6 +44,7 @@
     <script src="assets/js/i18n/datepicker.gr.js"></script>
     <script src="assets/js/cookies.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
+    <script>document.getElementById('years').innerHTML += new Date().getFullYear();</script>
     <?php
 		if (isset($_SESSION['server_response'])) {
 			$message = filter_var($_SESSION['server_response'], FILTER_SANITIZE_STRING);
@@ -53,6 +52,7 @@
 			unset($_SESSION['server_response']);
 		}
 	?>
+
 	
 
 </div>
