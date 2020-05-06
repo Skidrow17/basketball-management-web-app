@@ -46,26 +46,26 @@ if ((isset($_POST['password']) && isset($_POST['username'])) || (isset($_COOKIE[
                                 die();
                             }
                         } else {
-                            setcookie('uname', '', time() - 7000000, '/',null,null,true);
-                            setcookie('pwd', '', time() - 7000000, '/',null,null,true);
-                            setcookie('safe_key', '', time() - 7000000, '/',null,null,true);
+                            setcookie('uname', '', time() - 7000000, '/',null,true,true);
+                            setcookie('pwd', '', time() - 7000000, '/',null,true,true);
+                            setcookie('safe_key', '', time() - 7000000, '/',null,true,true);
                             if($_SESSION['language'] == 'gr') $_SESSION["server_response"] = 'Ανενεργός Λογαριασμός';
 							else $_SESSION["server_response"] = 'Inactive Account';
                             header('Location: ../index.php');
                             die();
                         }
                     } else {
-                        setcookie('uname', '', time() - 7000000, '/',null,null,true);
-                        setcookie('pwd', '', time() - 7000000, '/',null,null,true);
-                        setcookie('safe_key', '', time() - 7000000, '/',null,null,true);
+                        setcookie('uname', '', time() - 7000000, '/',null,true,true);
+                        setcookie('pwd', '', time() - 7000000, '/',null,true,true);
+                        setcookie('safe_key', '', time() - 7000000, '/',null,true,true);
 					    $_SESSION["server_response"] = 'Login Απο άλλη συσκευή';
                         header('Location: ../index.php');
                         die();
                     }
                 } else {
-                    setcookie('uname', '', time() - 7000000, '/',null,null,true);
-                    setcookie('pwd', '', time() - 7000000, '/',null,null,true);
-                    setcookie('safe_key', '', time() - 7000000, '/',null,null,true);
+                    setcookie('uname', '', time() - 7000000, '/',null,true,true);
+                    setcookie('pwd', '', time() - 7000000, '/',null,true,true);
+                    setcookie('safe_key', '', time() - 7000000, '/',null,true,true);
                     if($_SESSION['language'] == 'gr') $_SESSION["server_response"] = 'Λάνθασμένος κωδικός';
 					else $_SESSION["server_response"] = 'Wrong Password';
                     header('Location: ../index.php');
