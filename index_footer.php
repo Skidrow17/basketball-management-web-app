@@ -1,3 +1,9 @@
+<?php 
+
+//Access: Guest 
+//Purpose: contains the footer of the intro page
+
+?>
 <div class="footer-clean">
 
     <footer>

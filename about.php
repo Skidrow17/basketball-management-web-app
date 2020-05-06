@@ -1,7 +1,9 @@
 <?php 
 
 //Access: Everyone 
-//Purpose: About Us require( "http_to_https.php"); 
+//Purpose: Information About Us 
+
+require( "http_to_https.php"); 
 
 ?>
 <!DOCTYPE html>

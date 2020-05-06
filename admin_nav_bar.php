@@ -1,3 +1,9 @@
+<?php 
+
+//Access: Admin 
+//Purpose: contains the navigation bar visible from admin
+
+?>
 <nav class="navbar navbar-light navbar-expand-md fixed-top navbar-transparency" id="nav_bar">
     <div class="container">
         <a class="navbar-brand" href="http://ekasdym.gr/news/"><img src="assets/img/ekas.png" height="40px" width="40px" alt="logo"></a>

@@ -1,3 +1,9 @@
+<?php 
+
+//Access: Everyone 
+//Purpose: contains the footer of all pages; 
+
+?>
 <div class="footer-clean">
 
     <footer>
