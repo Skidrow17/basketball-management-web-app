@@ -52,6 +52,7 @@ if ((isset($_POST['password']) && isset($_POST['username'])) || (isset($_COOKIE[
                                 'path' => '/',
                                 'secure' => true,
                                 'samesite' => 'None',
+                                'httponly' => true,
                             ]);
 
                             setcookie('pwd', '', [
@@ -59,6 +60,7 @@ if ((isset($_POST['password']) && isset($_POST['username'])) || (isset($_COOKIE[
                                 'path' => '/',
                                 'secure' => true,
                                 'samesite' => 'None',
+                                'httponly' => true,
                             ]);
 
                             setcookie('safe_key', '', [
@@ -66,6 +68,7 @@ if ((isset($_POST['password']) && isset($_POST['username'])) || (isset($_COOKIE[
                                 'path' => '/',
                                 'secure' => true,
                                 'samesite' => 'None',
+                                'httponly' => true,
                             ]);
 
                             if($_SESSION['language'] == 'gr') $_SESSION["server_response"] = 'Ανενεργός Λογαριασμός';
@@ -80,6 +83,7 @@ if ((isset($_POST['password']) && isset($_POST['username'])) || (isset($_COOKIE[
                             'path' => '/',
                             'secure' => true,
                             'samesite' => 'None',
+                            'httponly' => true,
                         ]);
 
                         setcookie('pwd', '', [
@@ -87,6 +91,7 @@ if ((isset($_POST['password']) && isset($_POST['username'])) || (isset($_COOKIE[
                             'path' => '/',
                             'secure' => true,
                             'samesite' => 'None',
+                            'httponly' => true,
                         ]);
 
                         setcookie('safe_key', '', [
@@ -94,6 +99,7 @@ if ((isset($_POST['password']) && isset($_POST['username'])) || (isset($_COOKIE[
                             'path' => '/',
                             'secure' => true,
                             'samesite' => 'None',
+                            'httponly' => true,
                         ]);
 
 					    $_SESSION["server_response"] = 'Login Απο άλλη συσκευή';
@@ -107,6 +113,7 @@ if ((isset($_POST['password']) && isset($_POST['username'])) || (isset($_COOKIE[
                         'path' => '/',
                         'secure' => true,
                         'samesite' => 'None',
+                        'httponly' => true,
                     ]);
 
                     setcookie('pwd', '', [
@@ -114,6 +121,7 @@ if ((isset($_POST['password']) && isset($_POST['username'])) || (isset($_COOKIE[
                         'path' => '/',
                         'secure' => true,
                         'samesite' => 'None',
+                        'httponly' => true,
                     ]);
 
                     setcookie('safe_key', '', [
@@ -121,6 +129,7 @@ if ((isset($_POST['password']) && isset($_POST['username'])) || (isset($_COOKIE[
                         'path' => '/',
                         'secure' => true,
                         'samesite' => 'None',
+                        'httponly' => true,
                     ]);
 
                     if($_SESSION['language'] == 'gr') $_SESSION["server_response"] = 'Λάνθασμένος κωδικός';
@@ -174,6 +183,7 @@ if ((isset($_POST['password']) && isset($_POST['username'])) || (isset($_COOKIE[
                         'path' => '/',
                         'secure' => true,
                         'samesite' => 'None',
+                        'httponly' => true,
                     ]);
 
                     setcookie('pwd', $password, [
@@ -181,6 +191,7 @@ if ((isset($_POST['password']) && isset($_POST['username'])) || (isset($_COOKIE[
                         'path' => '/',
                         'secure' => true,
                         'samesite' => 'None',
+                        'httponly' => true,
                     ]);
 
                     setcookie('safe_key',$safe_key, [
@@ -188,6 +199,7 @@ if ((isset($_POST['password']) && isset($_POST['username'])) || (isset($_COOKIE[
                         'path' => '/',
                         'secure' => true,
                         'samesite' => 'None',
+                        'httponly' => true,
                     ]);
 
                     if ($row['active'] == 0) {

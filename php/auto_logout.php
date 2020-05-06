@@ -8,6 +8,7 @@ setcookie('uname', '', [
     'path' => '/',
     'secure' => true,
     'samesite' => 'None',
+    'httponly' => true,
 ]);
 
 setcookie('pwd', '', [
@@ -15,6 +16,7 @@ setcookie('pwd', '', [
     'path' => '/',
     'secure' => true,
     'samesite' => 'None',
+    'httponly' => true,
 ]);
 
 
