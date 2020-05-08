@@ -1,4 +1,8 @@
 <?php
+
+//Access: Authorized User
+//Purpose: retrieves number of restrictions by user
+
 require_once '../connect_db.php';
 require '../useful_functions.php';
 session_start();

@@ -1,4 +1,8 @@
 <?php
+
+//Access: Admin
+//Purpose: Retrieves all the available judges and assign them to a select box sorted by name
+
 session_start();
 require_once '../connect_db.php';
 require_once '../useful_functions.php';

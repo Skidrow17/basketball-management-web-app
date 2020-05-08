@@ -1,4 +1,8 @@
 <?php
+
+//Access: Authorized User
+//Purpose: Retrieves the games assigned to the logged user
+
 session_start();
 require_once '../connect_db.php';
 require_once '../useful_functions.php';
@@ -29,6 +33,7 @@ if (isset($_POST['current_page']) && isset($_SESSION['safe_key']) && isset($_SES
 				ON r.team_id_2 = away.id , court c , team t,city ci,human_power hp 
 				WHERE r.id=hp.game_id AND hp.user_id=:uid 
 				AND c.city=ci.id AND r.team_id_1=t.id AND t.category=:id And C.id=r.court_id order by id desc limit :cp,4 ";
+
         $run = $dbh->prepare($sql);
         $run->bindParam(':id', $_POST['cid'], PDO::PARAM_INT);
         $run->bindParam(':uid', $_SESSION['user_id'], PDO::PARAM_INT);

@@ -1,4 +1,8 @@
 <?php
+
+//Access: Admin
+//Purpose: retrieves number of user update records for all user
+
 require_once '../connect_db.php';
 require_once '../useful_functions.php';
 session_start();

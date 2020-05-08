@@ -1,4 +1,8 @@
 <?php
+
+//Access: Authorized User & Admin
+//Purpose: shows the ranking of selected league
+
 session_start();
 require_once '../connect_db.php';
 require_once '../select_boxes.php';

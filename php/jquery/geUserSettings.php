@@ -1,5 +1,8 @@
 <?php
 
+//Access: Authorized User & Admin
+//Purpose: retrieves the settings and gives the ability to modify language and polling time per user
+
 require_once 'php/connect_db.php';
 require_once 'php/select_boxes.php';
 require_once 'php/useful_functions.php';

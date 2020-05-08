@@ -1,4 +1,8 @@
 <?php
+
+//Access: Admin
+//Purpose: retrieves the number of matches by category owned by the logged user
+
 require_once '../connect_db.php';
 require_once '../useful_functions.php';
 session_start();

@@ -1,4 +1,8 @@
 <?php
+
+//Access: Admin
+//Purpose: Displays all people involved in a match with the ability to remove them 
+
 session_start();
 require_once '../connect_db.php';
 require_once '../useful_functions.php';

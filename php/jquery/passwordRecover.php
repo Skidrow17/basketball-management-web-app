@@ -1,4 +1,8 @@
 <?php
+
+//Access: Everyone
+//Purpose: recovery password email sent
+
 session_start();
 require_once '../connect_db.php';
 require_once '../useful_functions.php';

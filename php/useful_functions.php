@@ -1,4 +1,8 @@
 <?php
+ 
+//Access: Admin & Authorized User
+//Purpose: containss useful function 
+
 function getLastId() {
     require 'connect_db.php';
     $sql = "SELECT id from login_history order by id desc limit 1";

@@ -1,5 +1,8 @@
 <?php
  
+//Access: Admin & Authorized User
+//Purpose: english language labels used inside the system
+
  // NavBar Admin
  $homePage = "Home";
  $tabels = "Tables";

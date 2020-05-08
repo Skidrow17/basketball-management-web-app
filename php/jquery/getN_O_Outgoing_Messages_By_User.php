@@ -1,4 +1,8 @@
 <?php
+
+//Access: Authorized User
+//Purpose: retrieves number of the sent messages of the user
+
 require_once '../connect_db.php';
 require_once '../useful_functions.php';
 session_start();

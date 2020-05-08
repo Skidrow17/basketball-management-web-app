@@ -1,4 +1,8 @@
 <?php
+ 
+//Access: Admin & Authorized User
+//Purpose: login helper + register cookies + session
+
 require 'connect_db.php';
 require 'useful_functions.php';
 session_start();

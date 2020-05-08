@@ -1,4 +1,8 @@
 ﻿<?php
+ 
+//Access: Authorized User
+//Purpose: Starts session
+
 session_start();
 
 error_reporting(E_ALL);

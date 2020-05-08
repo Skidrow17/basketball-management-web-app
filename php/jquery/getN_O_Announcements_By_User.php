@@ -1,4 +1,8 @@
 <?php
+
+//Access: Authorized User
+//Purpose: retrieves the number of total announcemets created from the user
+
 require_once '../connect_db.php';
 require '../useful_functions.php';
 session_start();

@@ -1,4 +1,8 @@
 ﻿<?php
+
+//Access: Authorized User & Admin
+//Purpose: Autologout in case the user loged in from different device
+
 session_start();
 require 'useful_functions.php';
 require 'language.php';

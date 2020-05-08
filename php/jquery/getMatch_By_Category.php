@@ -1,4 +1,8 @@
 <?php
+
+//Access: Admin
+//Purpose: Retrieves matches by selecting the category of the teams
+
 session_start();
 require_once '../connect_db.php';
 require_once '../useful_functions.php';

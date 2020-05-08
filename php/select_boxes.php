@@ -1,4 +1,8 @@
 <?php
+ 
+//Access: Admin & Authorized User
+//Purpose: containes all the selectboxes fuctions for dynamic assignemnt of selectbox values
+
 function getStates($selected) {
 	
 	if($_SESSION['language'] == 'gr'){

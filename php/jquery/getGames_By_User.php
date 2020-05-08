@@ -1,4 +1,8 @@
 <?php
+
+//Access: Authorized User
+//Purpose: Display details of specific game selected from user with the ability to edit score and match phase
+
 session_start();
 require_once '../connect_db.php';
 require_once '../useful_functions.php';

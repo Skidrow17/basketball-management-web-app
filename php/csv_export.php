@@ -1,4 +1,8 @@
 <?php
+
+//Access: Admin
+//Purpose: export history table information in csv format
+
 require_once 'connect_db.php';
 require 'useful_functions.php';
 session_start();
@@ -34,4 +38,5 @@ if (security_check($_SESSION['safe_key'], $_SESSION['user_id']) == true && $_SES
 } else {
     session_destroy();
     header('Location: ../index.php?server_response=Login απο άλλη συσκευή');
+    die();
 }

@@ -1,4 +1,8 @@
 <?php
+
+//Access: Admin
+//Purpose: dashboard that exposes system informations
+
 include 'connect_db.php';
 $a = array();
 $month = [];

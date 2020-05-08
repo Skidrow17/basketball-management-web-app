@@ -1,4 +1,8 @@
 <?php
+
+//Access: Admin
+//Purpose: retrieves the number of matches of logged user
+
 require_once '../connect_db.php';
 require_once '../useful_functions.php';
 session_start();

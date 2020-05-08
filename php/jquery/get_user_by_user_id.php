@@ -1,4 +1,8 @@
 <?php
+
+//Access: Admin
+//Purpose: exposes the information of a selected user for information update purpose
+
 session_start();
 require_once '../connect_db.php';
 require_once '../select_boxes.php';

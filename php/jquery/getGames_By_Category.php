@@ -1,4 +1,8 @@
 <?php
+
+//Access: Authorized User
+//Purpose: Retrieves all matches 
+
 session_start();
 require_once '../connect_db.php';
 require '../useful_functions.php';

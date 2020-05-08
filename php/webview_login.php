@@ -1,4 +1,8 @@
 <?php
+ 
+//Access: Admin
+//Purpose: login to the website from the android apk
+
 require 'connect_db.php';
 require 'useful_functions.php';
 session_start();

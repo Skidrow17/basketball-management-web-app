@@ -1,4 +1,8 @@
 <?php
+ 
+//Access: Admin & Authorized User
+//Purpose: logout helper that unregister the cookies
+
 session_start();
 require 'language.php';
 

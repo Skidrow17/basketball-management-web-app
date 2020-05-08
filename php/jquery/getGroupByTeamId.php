@@ -1,4 +1,8 @@
 <?php
+
+//Access: Authorized User
+//Purpose: retrieves the group of a selected team
+
 session_start();
 require_once '../connect_db.php';
 require_once '../useful_functions.php';

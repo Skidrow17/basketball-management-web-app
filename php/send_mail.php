@@ -1,4 +1,7 @@
 <?php
+ 
+//Access: Evreryone
+//Purpose: contains email helper functions 
 
 require_once 'PHPMailer/PHPMailerAutoload.php';
 	

@@ -1,4 +1,8 @@
 <?php
+
+//Access: Authorized User & Admin
+//Purpose: display all contacts in the system
+
 require_once 'connect_db.php';
 if (isset($_SESSION['safe_key']) && isset($_SESSION['user_id'])) {
     if (security_check($_SESSION['safe_key'], $_SESSION['user_id']) == true) {

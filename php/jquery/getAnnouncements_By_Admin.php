@@ -1,4 +1,8 @@
 <?php
+
+//Access: Admin
+//Purpose: retrieves all announcements in the system for with delete permission
+
 session_start();
 require_once '../connect_db.php';
 require_once '../useful_functions.php';

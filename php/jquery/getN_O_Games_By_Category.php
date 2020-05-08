@@ -1,4 +1,8 @@
 <?php
+
+//Access: Admin
+//Purpose: retrieves the number of matches by category of all users in the system
+
 require_once '../connect_db.php';
 require '../useful_functions.php';
 session_start();

@@ -1,4 +1,8 @@
 <?php
+
+//Access: Authorized User
+//Purpose: button management of the user 
+
 session_start();
 require 'useful_functions.php';
 require 'language.php';

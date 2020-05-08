@@ -1,4 +1,8 @@
 <?php
+
+//Access: Admin
+//Purpose: retrieves  number of the referes and judges assigned to specific match
+
 require_once '../connect_db.php';
 require_once '../useful_functions.php';
 session_start();

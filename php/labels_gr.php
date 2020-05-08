@@ -1,5 +1,8 @@
 <?php
- 
+  
+//Access: Admin & Authorized User
+//Purpose: greek language labels used inside the system
+
  // NavBar Admin
  $homePage = "Αρχική";
  $tabels = "Πίνακες";
