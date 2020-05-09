@@ -13,7 +13,7 @@ require_once('php/useful_functions.php');
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ΕΚΑΣΔΥΜ - <?php echo $homePage; ?></title>
+    <title>ΕΚΑΣΔΥΜ - <?php echo $settings; ?></title>
     <?php include('head.php'); ?>
 </head>
 
