@@ -1,5 +1,8 @@
 <?php
 
+//Access: Everyone
+//Purpose: gets all group categories
+
 require_once 'connect_db.php';
 
 $json_array = array();

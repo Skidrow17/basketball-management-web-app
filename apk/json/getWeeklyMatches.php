@@ -1,5 +1,8 @@
 <?php
 
+//Access: Everyone
+//Purpose: retrieve weekly matches
+
 require_once 'connect_db.php';
 
 $json_array = array();

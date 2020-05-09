@@ -1,5 +1,8 @@
 <?php
 
+//Access: Authorized User & Admin
+//Purpose: connects to the database
+
 $host = '/zstorage/home/ictest00909/mysql/run/mysql.sock';
 $dbname = 'eok';
 $user = 'root';

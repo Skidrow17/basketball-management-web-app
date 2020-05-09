@@ -1,5 +1,8 @@
 <?php
 
+//Access: Authorized User & Admin
+//Purpose: Usefull functions used in the APIs
+
 function randomString($length) {
 	$str = "";
 	$characters = array_merge(range('A','Z'), range('a','z'), range('0','9'));

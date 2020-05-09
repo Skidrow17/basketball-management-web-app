@@ -1,5 +1,8 @@
 <?php
 
+//Access: Everyone
+//Purpose: retrieves all matches 
+
 require_once 'connect_db.php';
 
 $json_array = array();

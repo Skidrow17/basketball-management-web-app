@@ -1,4 +1,8 @@
 <?php
+
+//Access: Authorized User & Admin
+//Purpose: profile pic change
+
 require_once 'connect_db.php';
 require_once 'useful_functions.php';
 

@@ -1,5 +1,8 @@
 <?php
 
+//Access: Authorized User & Admin
+//Purpose: gives the ability to deletes message
+
 require_once 'connect_db.php';
 require 'useful_functions.php';
 $fetch = array();

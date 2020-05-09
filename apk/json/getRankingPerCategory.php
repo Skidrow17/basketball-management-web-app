@@ -1,5 +1,8 @@
 <?php
 
+//Access: Everyone
+//Purpose: retrieves all ranking per category
+
 require_once 'connect_db.php';
 require 'useful_functions.php';
 $fetch = array();

@@ -1,5 +1,8 @@
 <?php 
 
+//Access: Authorized User & Admin
+//Purpose: push notifications to registered mobile devices
+
 define( 'API_ACCESS_KEY', 'AAAApMEIeNU:APA91bEfkVs_--4jAPOVgmaoB3FL6mz1EDLyMki3ftV3mpazrF4PNsnC1UWL25jWHos0rydUNxO48ro9lFNRWYO0MMizo3yZxiriiDj69GbIzBdCv2NYMzQdPZ5Jyx_6jL3mK_6UIFG8' );
 // set only for one for safety
 $registrationId = 'cnHrMS5k6Qs:APA91bH_5iQ4QC_tLUnUBsuMjL8HPD_hiEnrccgB-nZYSs-HTc0T0XHZGwS9owq5soHkcon4rGJ9Jr0HiQHM1H-NZYr4Pyr0QHZfhE5lV0he5NS9dmVkgfJAVJksHj6qapeAZqWrw77R';

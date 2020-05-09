@@ -1,5 +1,8 @@
 <?php
 
+//Access: Authorized User & Admin
+//Purpose: login helper
+
 if (isset($_GET['password']) && isset($_GET['username'])) {
 	require 'connect_db.php';
 	require 'useful_functions.php';

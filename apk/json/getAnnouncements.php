@@ -1,5 +1,8 @@
 <?php
 
+//Access: Authorized User & Admin
+//Purpose: gets all announcements
+
 require_once 'connect_db.php';
 require_once 'useful_functions.php';
 $fetch = array();

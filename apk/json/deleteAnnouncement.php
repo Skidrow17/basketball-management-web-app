@@ -1,5 +1,8 @@
 <?php
 
+//Access: Authorized User & Admin
+//Purpose: delets the announcements from the apk
+
 require_once 'connect_db.php';
 require 'useful_functions.php';
 $fetch = array();

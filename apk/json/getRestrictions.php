@@ -1,5 +1,8 @@
 <?php
 
+//Access: Authorized User
+//Purpose: gets all restrictions with the ability to delete
+
 require_once 'connect_db.php';
 require_once 'useful_functions.php';
 $fetch = array();
