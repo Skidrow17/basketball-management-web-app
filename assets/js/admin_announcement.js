@@ -19,6 +19,8 @@ $(document).ready(function() {
       url2 = "getN_O_Announcements.php";
 	    n_o_g(url2);
       myFunction(url1);
+    }else if(x == 1){
+      $("#show_announcement").hide();
     }
   });
 
