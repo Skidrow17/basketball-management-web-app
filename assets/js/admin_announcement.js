@@ -174,7 +174,6 @@ function myFunction(ur) {
     async: true,
     success: function(result) {
     autologout(result);
-    console.log(number_of_pages);
       if(number_of_pages == 0){
         $("#menu").show();
         $('#show').prop('disabled', true);
