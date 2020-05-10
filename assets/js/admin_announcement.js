@@ -9,16 +9,15 @@ $(document).ready(function() {
 
   $("#add,#show,#show_all").click(function() {
     x = $(this).val();
-
     if (x == 2) {
       url1 = "getAnnouncements_By_User.php";
       url2 = "getN_O_Announcements_By_User.php";
-	  n_o_g(url2);
+	    n_o_g(url2);
       myFunction(url1);
     } else if (x == 3) {
       url1 = "getAnnouncements_By_Admin.php";
       url2 = "getN_O_Announcements.php";
-	  n_o_g(url2);
+	    n_o_g(url2);
       myFunction(url1);
     }
   });
@@ -34,7 +33,7 @@ $(document).ready(function() {
         url: "php/jquery/" + url1,
         data: post,
         success: function(result) {
-		  autologout(result);
+		    autologout(result);
           $("#here").html(result);
         }
       });
@@ -52,7 +51,7 @@ $(document).ready(function() {
         url: "php/jquery/" + url1,
         data: post,
         success: function(result) {
-		  autologout(result);
+		    autologout(result);
           $("#here").html(result);
         }
       });
@@ -69,7 +68,7 @@ $(document).ready(function() {
       url: "php/delete/delete_announcement.php",
       data: post_id,
       success: function(result) {
-		autologout(result);
+		  autologout(result);
         $.snackbar({ content: result });
         n_o_g(url2);
         myFunction(url1);
@@ -79,14 +78,9 @@ $(document).ready(function() {
 
   $("#here").on("click", "#modify", function() {
     var btn = $(this).val();
-
     var message = $("#message").val();
     var title = $("#u_title").text();
-
     var post_id = "aid=" + btn + "&message=" + message + "&title=" + title;
-
-    //alert(message);
-    //alert(title);
 
     $.ajax({
       type: "POST",
@@ -177,10 +171,18 @@ function myFunction(ur) {
     type: "POST",
     url: "php/jquery/" + ur,
     data: post_id,
+    async: true,
     success: function(result) {
-	  autologout(result);
-	  console.log(number_of_pages);
-	  $("#here").html(result);
+    autologout(result);
+    console.log(number_of_pages);
+      if(number_of_pages == 0){
+        $("#menu").show();
+        $('#show').prop('disabled', true);
+      }else{
+        $("#menu").hide();
+        $('#show').prop('disabled', false);
+      }
+	    $("#here").html(result);
     }
   });
 }
@@ -188,8 +190,9 @@ function myFunction(ur) {
 function n_o_g(ur) {
   $.ajax({
     url: "php/jquery/" + ur,
+    async: false,
     success: function(result) {
-	  autologout(result);
+    autologout(result);
       number_of_pages = result;
       $("#current").text(0);
       $("#max").text(Math.ceil(number_of_pages - 1));
