@@ -8,9 +8,7 @@ $(document).ready(function() {
 	
   if($("#receiver_id").val()==null)
 	  autologout(401);
-  
-  console.log($("#receiver_id").val());
-  
+    
   $("#incomming,#outgoing").click(function() {
     var category = $(this).val();
     current_category = category;
