@@ -15,7 +15,7 @@ if (security_check($_SESSION['safe_key'], $_SESSION['user_id']) == true) {
 		if(sizeof($outerArray) == 6){
 			$sql = "UPDATE team SET total_games = ?,wins = ?, loses = ?,points = ? where id = ?";
 			$run = $dbh->prepare($sql);
-			$run->execute([$outerArray[2], $outerArray[3], $outerArray[4], $outerArray[5], $outerArray[0]]);
+			$run->execute([$outerArray[3]+$outerArray[4], $outerArray[3], $outerArray[4], $outerArray[5], $outerArray[0]]);
 			if ($run->rowCount() > 0) {
 				$successfull = true;
 			}
