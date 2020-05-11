@@ -23,7 +23,7 @@ if (isset($_POST['game_id']) && isset($_POST['id']) && isset($_SESSION['safe_key
             $date = $splitTimeStamp[0];
             $game_start_time = $splitTimeStamp[1];
         }
-        $timestamp = strtotime($game_start_time) + 60 * 60 * 2;
+        $timestamp = strtotime($game_start_time) + 60 * 80;
         $game_end_time = date('H:m:s', $timestamp);
         $sql = "SELECT distinct U.id from user U,restriction R 
 				WHERE U.active = 0 AND U.id=R.user_id AND R.time_to>:game_start_time 

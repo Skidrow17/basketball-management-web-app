@@ -21,7 +21,7 @@ if (isset($_POST['id']) && isset($_SESSION['safe_key']) && isset($_SESSION['user
             $date1 = $splitTimeStamp[0];
             $game_start_time = $splitTimeStamp[1];
         }
-        $timestamp = strtotime($game_start_time) + 60 * 60 * 2;
+        $timestamp = strtotime($game_start_time) + 60 * 80;
         $game_end_time = date('H:m:s', $timestamp);
         $page = $_POST['current_page'] * 3;
         echo '<tr>

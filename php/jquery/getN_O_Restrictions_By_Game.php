@@ -19,7 +19,7 @@ if (isset($_POST['id']) && isset($_SESSION['safe_key']) && isset($_SESSION['user
             $date = $splitTimeStamp[0];
             $game_start_time = $splitTimeStamp[1];
         }
-        $timestamp = strtotime($game_start_time) + 60 * 60 * 2;
+        $timestamp = strtotime($game_start_time) + 60 * 80;
         $game_end_time = date('H:m:s', $timestamp);
         $sql = "SELECT count(*) as n_o_r 
 				FROM user U,restriction R , playable_categories PC where PC.user_id = U.id 
