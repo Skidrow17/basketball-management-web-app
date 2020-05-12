@@ -40,6 +40,10 @@ if (isset($_SESSION['safe_key']) && isset($_SESSION['user_id'])) {
 			echo $row['polling_time'];
 			echo '" class="form-control" type="number" required>
 				</div>';
+
+			echo  '<div class="col"><small class="form-text text-muted">'; echo $profileImage; echo '</small>
+					<input required name="profile_pic" class="col-xl-12" type="file" />
+				  </div>';
 		}
 	} else {
 		session_destroy();

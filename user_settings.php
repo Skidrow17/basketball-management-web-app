@@ -26,7 +26,7 @@ require_once('php/useful_functions.php');
 
         <div class='col-xl-6'>
             <div class="annoucements-look element">
-                <form method="post" action="./php/update/update_settings_db.php">
+                <form method="post" action="./php/update/update_settings_db.php" enctype="multipart/form-data">
 
                     <div class="form-row">
                         <div class="col">

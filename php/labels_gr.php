@@ -172,7 +172,7 @@
    $chooseTeam = "Επέλεξε Ομάδα";
    $chooseSameTeam = "Επέλεξες την ίδια ομάδα";
    $loggedInFromAnotherDevice = "Σύνδεση απο άλλη συσκευή";
-   $successfulLogout = "Επιτυχημένη Επανασύνδεση";
+   $successfulLogout = "Επιτυχημένη Αποσύνδεση";
    
    
    //Message About Restriction Send

@@ -26,7 +26,7 @@ require_once("php/useful_functions.php");
     <?php include('admin_nav_bar.php'); ?>
 
     <div class="admin-look">
-        <form method="post" action="./php/update/update_settings_db.php">
+        <form method="post" action="./php/update/update_settings_db.php" enctype="multipart/form-data">
 
             <div class="form-row">
                 <div class="col">
@@ -35,6 +35,7 @@ require_once("php/useful_functions.php");
             </div>
 
             <?php include 'php/jquery/geUserSettings.php';?>
+            
 
             <div class="row">
                 <div class="col">
