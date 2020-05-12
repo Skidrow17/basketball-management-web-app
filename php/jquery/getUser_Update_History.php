@@ -25,12 +25,11 @@ if (isset($_SESSION['safe_key']) && isset($_SESSION['user_id']) && isset($_POST[
         echo "<th>";echo $rating; echo"</th>";
         echo "<th>";echo $updateDate; echo"</th>";
         echo "</tr>";
-        $sql = "SELECT name,surname,password,email,phone,driving_licence,living_place,profession,profile_pic,active,rate,DATE_FORMAT(update_time, '%d/%m/%Y %H:%i') as update_time 
+        $sql = "SELECT name,surname,password,email,phone,driving_licence,living_place,profession,profile_pic,active,rate,DATE_FORMAT(update_time, '%d/%m/%Y %H:%i') as update_time_diff_format
 				FROM user_update_history 
 				ORDER BY update_time desc limit :page,9";
         $run = $dbh->prepare($sql);
         $run->bindParam(':page', $page, PDO::PARAM_INT);
-        $run->execute();
         $run->execute();
         while ($row = $run->fetch(PDO::FETCH_ASSOC)) {
             echo "<tr>";
@@ -45,7 +44,7 @@ if (isset($_SESSION['safe_key']) && isset($_SESSION['user_id']) && isset($_POST[
             echo "<td>" . $row['profile_pic'] . "</td>";
             echo "<td>" . $row['active'] . "</td>";
             echo "<td>" . $row['rate'] . "</td>";
-            echo "<td>" . $row['update_time'] . "</td>";
+            echo "<td>" . $row['update_time_diff_format'] . "</td>";
             echo "</tr>";
         }
     } else {

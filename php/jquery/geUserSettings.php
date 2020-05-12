@@ -42,7 +42,7 @@ if (isset($_SESSION['safe_key']) && isset($_SESSION['user_id'])) {
 				</div>';
 
 			echo  '<div class="col"><small class="form-text text-muted">'; echo $profileImage; echo '</small>
-					<input required name="profile_pic" class="col-xl-12" type="file" />
+					<input name="profile_pic" class="col-xl-12" type="file" />
 				  </div>';
 		}
 	} else {
