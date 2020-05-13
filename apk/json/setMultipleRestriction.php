@@ -27,9 +27,9 @@ if(isset($_GET['safe_key']) && isset($_GET['user_id'])){
 	   $fetch['ERROR']['error_code'] = "202";
 	   echo json_encode($fetch);
 	}else if (security_check($_GET['safe_key'], $_GET['user_id']) == true) {
-		$f = "00:00:00";
-		$t = "23:59:59";
-		$x = 0;
+		$time_from = "00:00:00";
+		$time_to = "23:59:59";
+		$number_of_restrictions_imported = 0;
 		$parts = explode("/", $_GET["date"]);
 		$timezone = date_default_timezone_get();
 		$now = date('m/d/Y h:i:s a', time());
@@ -40,19 +40,19 @@ if(isset($_GET['safe_key']) && isset($_GET['user_id'])){
 			$run = $dbh->prepare($sql);
 			$run->bindParam(':user_id', $user_id, PDO::PARAM_INT);
 			$run->bindParam(':date', $parts[$i], PDO::PARAM_STR);
-			$run->bindParam(':time_from', $f, PDO::PARAM_STR);
-			$run->bindParam(':time_to', $t, PDO::PARAM_STR);
+			$run->bindParam(':time_from', $time_from, PDO::PARAM_STR);
+			$run->bindParam(':time_to', $time_to, PDO::PARAM_STR);
 			$run->bindParam(':comment',$comment, PDO::PARAM_STR);
 			$run->execute();
 
 			if ($run->rowCount() > 0) {
-				$x = $x + 1;
+				$number_of_restrictions_imported = $number_of_restrictions_imported + 1;
 			}
 		}
 
-		$y = sizeof($parts) - 1;
+		$total_number_of_restrictions = sizeof($parts) - 1;
 
-		if ($x == $y) {
+		if ($total_number_of_restrictions == $number_of_restrictions_imported) {
 			$fetch['ERROR']['error_code'] = "200";
 		} else {
 			$fetch['ERROR']['error_code'] = "201";
