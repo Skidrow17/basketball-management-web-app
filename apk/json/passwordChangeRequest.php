@@ -24,7 +24,7 @@ if(isset($_GET['safe_key']) && isset($_GET['id'])){
 			$sql = "UPDATE user SET password_recovery_url = ? where id = ?";
 			$mod = $dbh->prepare($sql);
 			$mod->execute([$recover_encode,$row['id']]);
-			recovery_email_send($row['email'],$recover_encode);
+			recovery_email_send_mobile($row['email'],$recover_encode);
 			$fetch['ERROR']['error_code'] = "200";
 		}else{
 			$fetch['ERROR']['error_code'] = "206";
