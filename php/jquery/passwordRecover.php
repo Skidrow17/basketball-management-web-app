@@ -7,7 +7,8 @@ session_start();
 require_once '../connect_db.php';
 require_once '../useful_functions.php';
 require_once '../language.php';
-$url = "https://zafora.ece.uowm.gr/~ictest00909/EKA/password_recover.php?code=";
+
+$url = "https://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . '/../../../password_recover.php?code=';
 
 
 if (isset($_POST['username']) || isset($_SESSION['username'])) {
@@ -36,7 +37,7 @@ if (isset($_POST['username']) || isset($_SESSION['username'])) {
 			if(!isset($_SESSION['language'])){
 				echo "Αποστολή αίτησης αλλαγής κωδικού πρόσβασης στο ηλεκτρονικό ταχυδρομείο";
 			}else{
-				echo $please_check_email;
+		 		echo $please_check_email;
 			}
 		}
 		$userExists = true;
