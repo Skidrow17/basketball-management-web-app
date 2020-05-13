@@ -182,178 +182,174 @@ function getLocale(){
 function sent_mail($mail,$username,$password)
 {
 	require_once '../../PHPMailer/PHPMailerAutoload.php';
+  $url = "https://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . '/../../';
+  $strmail = (string)$mail;
 
-//echo $mail;
-$strmail = (string)$mail;
+  $mail = new PHPMailer;
 
+  $mail->isSMTP();                                   // Set mailer to use SMTP
+  $mail->Host = 'smtp.mail.yahoo.fr';                    // Specify main and backup SMTP servers
+  $mail->SMTPAuth = true;                            // Enable SMTP authentication
+  $mail->Username = 'ekasdymannouncements@yahoo.com';          // SMTP username
+  $mail->Password = 'diplomaThesis12345'; // SMTP password
+  $mail->SMTPSecure = 'ssl';                         // Enable TLS encryption, `ssl` also accepted
+  $mail->Port = 465;                                 // TCP port to connect to
+  $mail->setFrom('ekasdymannouncements@yahoo.com', 'EKASDYM');
+  $mail->addReplyTo('ekasdymannouncements@yahoo.com', 'EKASDYM');
+  $mail->addAddress($strmail);   // Add a recipient
 
-$mail = new PHPMailer;
+  $mail->isHTML(true);  // Set email format to HTML
 
-$mail->isSMTP();                                   // Set mailer to use SMTP
-$mail->Host = 'smtp.mail.yahoo.fr';                    // Specify main and backup SMTP servers
-$mail->SMTPAuth = true;                            // Enable SMTP authentication
-$mail->Username = 'ekasdymannouncements@yahoo.com';          // SMTP username
-$mail->Password = 'diplomaThesis12345'; // SMTP password
-$mail->SMTPSecure = 'ssl';                         // Enable TLS encryption, `ssl` also accepted
-$mail->Port = 465;                                 // TCP port to connect to
-$mail->setFrom('ekasdymannouncements@yahoo.com', 'EKASDYM');
-$mail->addReplyTo('ekasdymannouncements@yahoo.com', 'EKASDYM');
-$mail->addAddress($strmail);   // Add a recipient
+  $bodyContent = '<!DOCTYPE html>
+  <html>
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+  body {
+    font-family: Arial;
+  }
 
-$mail->isHTML(true);  // Set email format to HTML
+  .coupon {
+    border: 5px dotted #bbb;
+    width: 80%;
+    border-radius: 15px;
+    margin: 0 auto;
+    max-width: 600px;
+  }
 
-$bodyContent = '<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-body {
-  font-family: Arial;
-}
+  .container {
+    padding: 2px 16px;
+    background-color: #f1f1f1;
+  }
 
-.coupon {
-  border: 5px dotted #bbb;
-  width: 80%;
-  border-radius: 15px;
-  margin: 0 auto;
-  max-width: 600px;
-}
+  .promo {
+    background: #ccc;
+    padding: 3px;
+  }
 
-.container {
-  padding: 2px 16px;
-  background-color: #f1f1f1;
-}
+  .expire {
+    color: red;
+  }
+  </style>
+  </head>
+  <body>
 
-.promo {
-  background: #ccc;
-  padding: 3px;
-}
-
-.expire {
-  color: red;
-}
-</style>
-</head>
-<body>
-
-<div class="coupon">
-  <div class="container">
-    <h3><b>User Details</b></h3>
+  <div class="coupon">
+    <div class="container">
+      <h3><b>User Details</b></h3>
+    </div>
+    <div class="container">
+    <p>Url: <span class="promo">'.$url.'</span></p>
+      <p>Username: <span class="promo">'.$username.'</span></p>
+      <p class="expire">Password:'.$password.'</p>
+    </div>
   </div>
-  <div class="container">
-	<p>Url: <span class="promo">https://zafora.ece.uowm.gr/~ictest00909/EKA/</span></p>
-    <p>Username: <span class="promo">'.$username.'</span></p>
-    <p class="expire">Password:'.$password.'</p>
-  </div>
-</div>
 
-</body>
-</html> 
-';
+  </body>
+  </html> 
+  ';
 
-$mail->Subject = 'EKASDYM';
-$mail->Body    = $bodyContent;
+  $mail->Subject = 'EKASDYM';
+  $mail->Body    = $bodyContent;
 
-if(!$mail->send()) {
-    echo 'Message could not be sent.';
-    echo 'Mailer Error: ' . $mail->ErrorInfo;
-} else {
-    echo 'ok ';
-}
+  if(!$mail->send()) {
+      echo 'Message could not be sent.';
+      echo 'Mailer Error: ' . $mail->ErrorInfo;
+  } else {
+      echo 'ok ';
+  }
 }
 
 
 function recovery_email_send($mail,$recovery_url)
 {
-require_once '../../PHPMailer/PHPMailerAutoload.php';
+  require_once '../../PHPMailer/PHPMailerAutoload.php';
+  include 'language.php';
 
-//echo $mail;
-$strmail = (string)$mail;
+  //echo $mail;
+  $strmail = (string)$mail;
 
 
-$mail = new PHPMailer;
+  $mail = new PHPMailer;
 
-$mail->isSMTP();                                   // Set mailer to use SMTP
-$mail->Host = 'smtp.mail.yahoo.fr';                    // Specify main and backup SMTP servers
-$mail->SMTPAuth = true;                            // Enable SMTP authentication
-$mail->Username = 'ekasdymannouncements@yahoo.com';          // SMTP username
-$mail->Password = 'diplomaThesis12345'; // SMTP password
-$mail->SMTPSecure = 'ssl';                         // Enable TLS encryption, `ssl` also accepted
-$mail->Port = 465;                                 // TCP port to connect to
-$mail->setFrom('ekasdymannouncements@yahoo.com', 'EKASDYM');
-$mail->addReplyTo('ekasdymannouncements@yahoo.com', 'EKASDYM');
-$mail->addAddress($strmail);   // Add a recipient
+  $mail->isSMTP();                                   // Set mailer to use SMTP
+  $mail->Host = 'smtp.mail.yahoo.fr';                    // Specify main and backup SMTP servers
+  $mail->SMTPAuth = true;                            // Enable SMTP authentication
+  $mail->Username = 'ekasdymannouncements@yahoo.com';          // SMTP username
+  $mail->Password = 'diplomaThesis12345'; // SMTP password
+  $mail->SMTPSecure = 'ssl';                         // Enable TLS encryption, `ssl` also accepted
+  $mail->Port = 465;                                 // TCP port to connect to
+  $mail->setFrom('ekasdymannouncements@yahoo.com', 'EKASDYM');
+  $mail->addReplyTo('ekasdymannouncements@yahoo.com', 'EKASDYM');
+  $mail->addAddress($strmail);   // Add a recipient
 
-$mail->isHTML(true);  // Set email format to HTML
+  $mail->isHTML(true);  // Set email format to HTML
 
-$bodyContent = '<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-body {
-  font-family: Arial;
-}
+  $bodyContent = '<!DOCTYPE html>
+  <html>
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+  body {
+    font-family: Arial;
+  }
 
-.coupon {
-  border: 5px dotted #bbb;
-  width: 80%;
-  border-radius: 15px;
-  margin: 0 auto;
-  max-width: 600px;
-}
+  .coupon {
+    border: 5px dotted #bbb;
+    width: 80%;
+    border-radius: 15px;
+    margin: 0 auto;
+    max-width: 600px;
+  }
 
-.container {
-  padding: 2px 16px;
-  background-color: #f1f1f1;
-}
+  .container {
+    padding: 2px 16px;
+    background-color: #f1f1f1;
+  }
 
-.promo {
-  background: #ccc;
-  padding: 3px;
-}
+  .promo {
+    background: #ccc;
+    padding: 3px;
+  }
 
-.expire {
-  color: red;
-}
-</style>
-</head>
-<body>
+  .expire {
+    color: red;
+  }
+  </style>
+  </head>
+  <body>
 
-<div class="coupon">
-  <div class="container">
-    <h3><b>Password Recover</b></h3>
+  <div class="coupon">
+    <div class="container">
+      <h3><b>Password Recover</b></h3>
+    </div>
+    <div class="container">
+      <p>Press The Link: <a href="'.$recovery_url.'">Verify</a></p>
+    
+    </div>
   </div>
-  <div class="container">
-    <p>Press The Link: <a href="'.$recovery_url.'">Verify</a></p>
-	
-  </div>
-</div>
 
-</body>
-</html> 
-';
+  </body>
+  </html> 
+  ';
 
-$mail->Subject = 'EKASDYM';
-$mail->Body    = $bodyContent;
+  $mail->Subject = 'EKASDYM';
+  $mail->Body    = $bodyContent;
 
-if(!$mail->send()) {
-    echo 'Message could not be sent.';
-    echo 'Mailer Error: ' . $mail->ErrorInfo;
-} else {
-    echo 'Η αίτηση στάλθηκε στην διεύθυνση : '.$strmail;
-}
+  if(!$mail->send()) {
+      echo 'Message could not be sent.';
+      echo 'Mailer Error: ' . $mail->ErrorInfo;
+  } else {
+      echo $request_sent.' : '.$strmail;
+  }
 
 }
 
 function sentPushNotification($sender_name,$receiver_token,$message) {
   define( 'API_ACCESS_KEY', 'AAAApMEIeNU:APA91bEfkVs_--4jAPOVgmaoB3FL6mz1EDLyMki3ftV3mpazrF4PNsnC1UWL25jWHos0rydUNxO48ro9lFNRWYO0MMizo3yZxiriiDj69GbIzBdCv2NYMzQdPZ5Jyx_6jL3mK_6UIFG8' );
-  // set only for one for safety
-  //$registrationId = 'cnHrMS5k6Qs:APA91bH_5iQ4QC_tLUnUBsuMjL8HPD_hiEnrccgB-nZYSs-HTc0T0XHZGwS9owq5soHkcon4rGJ9Jr0HiQHM1H-NZYr4Pyr0QHZfhE5lV0he5NS9dmVkgfJAVJksHj6qapeAZqWrw77R';
-  //$registrationId = '/topics/allDevices';
-  // prep the bundle
+
   $msg = array
   (
     'message' 	=> $message,
