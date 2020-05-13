@@ -4,7 +4,7 @@
 //Purpose: login helper
 
 if (isset($_GET['password']) && isset($_GET['username'])) {
-	require_once '../../php/connect_db.php';
+	require '../../php/connect_db.php';
 	require 'useful_functions.php';
 
 	$safe_key = randomString(15);
