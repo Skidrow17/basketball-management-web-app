@@ -4,45 +4,55 @@
 //Purpose: containss useful function 
 
 function getLastId() {
-    require 'connect_db.php';
-    $sql = "SELECT id from login_history order by id desc limit 1";
-    $lid = $dbh->prepare($sql);
-    $lid->execute();
-    while ($r = $lid->fetch(PDO::FETCH_ASSOC)) {
-        $last_id = $r['id'];
-    }
-    return $last_id;
+  require 'connect_db.php';
+  $sql = "SELECT id from login_history order by id desc limit 1";
+  $lid = $dbh->prepare($sql);
+  $lid->execute();
+  while ($r = $lid->fetch(PDO::FETCH_ASSOC)) {
+      $last_id = $r['id'];
+  }
+  return $last_id;
+}
+function randomNumber($length) {
+	$str = "";
+	$characters = array_merge(range('0','9'));
+	$max = count($characters) - 1;
+	for ($i = 0; $i < $length; $i++) {
+		$rand = mt_rand(0, $max);
+		$str .= $characters[$rand];
+	}
+	return $str;
 }
 function getLastLoginHistoryId($user_id) {
-    require 'connect_db.php';
-    $sql = "SELECT id from login_history where user_id=:id order by id desc limit 1";
-    $lid = $dbh->prepare($sql);
-    $lid->bindParam(':id', $user_id, PDO::PARAM_STR);
-    $lid->execute();
-    $last_id = 0;
-    while ($r = $lid->fetch(PDO::FETCH_ASSOC)) {
-        $last_id = $r['id'];
-    }
-    return $last_id;
+  require 'connect_db.php';
+  $sql = "SELECT id from login_history where user_id=:id order by id desc limit 1";
+  $lid = $dbh->prepare($sql);
+  $lid->bindParam(':id', $user_id, PDO::PARAM_STR);
+  $lid->execute();
+  $last_id = 0;
+  while ($r = $lid->fetch(PDO::FETCH_ASSOC)) {
+      $last_id = $r['id'];
+  }
+  return $last_id;
 }
 function notification($message) {
-    echo "<script>";
-    echo "$(function() {";
-    echo "$.snackbar({content: '" . $message . "'});";
-    echo "});";
-    echo "</script>";
+  echo "<script>";
+  echo "$(function() {";
+  echo "$.snackbar({content: '" . $message . "'});";
+  echo "});";
+  echo "</script>";
 }
 function getNumberOfMatches($user_id) {
-    require 'connect_db.php';
-    $sql2 = "SELECT 
-		count(*)
-		FROM 
-		game r, court c , human_power HP where C.id=r.court_id AND HP.game_id=r.id AND HP.user_id=:user_id";
-    $result = $dbh->prepare($sql2);
-    $result->bindParam(':user_id', $user_id, PDO::PARAM_STR);
-    $result->execute();
-    $nom = $result->fetchColumn();
-    return $nom;
+  require 'connect_db.php';
+  $sql2 = "SELECT 
+  count(*)
+  FROM 
+  game r, court c , human_power HP where C.id=r.court_id AND HP.game_id=r.id AND HP.user_id=:user_id";
+  $result = $dbh->prepare($sql2);
+  $result->bindParam(':user_id', $user_id, PDO::PARAM_STR);
+  $result->execute();
+  $nom = $result->fetchColumn();
+  return $nom;
 }
 function getNumberOfAllMatches() {
     require 'connect_db.php';
@@ -150,7 +160,6 @@ function getNumberOfCurrentMatches() {
     $nom = $result->fetchColumn();
     return $nom;
 }
-
 function getReadyToPlayGames() {
     require 'connect_db.php';
     $sql2 = "SELECT count(*)
@@ -168,7 +177,6 @@ function getReadyToPlayGames() {
     $nom = $result->fetchColumn();
     return $nom;
 }
-
 function getLocale(){
 	echo   '<script type="text/javascript">
 				function localeJS() {

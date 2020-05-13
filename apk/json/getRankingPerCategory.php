@@ -4,7 +4,7 @@
 //Purpose: retrieves all ranking per category
 
 require_once '../../php/connect_db.php';
-require 'useful_functions.php';
+require '../../php/useful_functions.php';
 $fetch = array();
 
 $cid = filter_var($_GET["cid"], FILTER_SANITIZE_NUMBER_INT);		

@@ -215,6 +215,7 @@
    $group = "Group";
    $select_group = "Select Group";
    $comment = "Comment";
+   $request_sent = "Request Successfuly Sent To Address";
 
 
 ?>

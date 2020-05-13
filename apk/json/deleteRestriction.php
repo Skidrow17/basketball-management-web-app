@@ -4,7 +4,7 @@
 //Purpose: deletes the restiction
 
 require_once '../../php/connect_db.php';
-require 'useful_functions.php';
+require '../../php/useful_functions.php';
 $fetch = array();
 
 if(isset($_GET['safe_key']) && isset($_GET['user_id'])){

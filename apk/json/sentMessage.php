@@ -4,7 +4,7 @@
 //Purpose: sent messages between users
 
 require_once '../../php/connect_db.php';
-require_once 'useful_functions.php';
+require_once '../../php/useful_functions.php';
 $fetch = array();
 
 if(isset($_GET['safe_key']) && isset($_GET['sender_id'])){

@@ -5,7 +5,7 @@
 
 if (isset($_GET['password']) && isset($_GET['username'])) {
 	require '../../php/connect_db.php';
-	require 'useful_functions.php';
+	require '../../php/useful_functions.php';
 
 	$safe_key = randomString(15);
 	$fetch = array();

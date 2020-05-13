@@ -4,7 +4,7 @@
 //Purpose: profile pic change
 
 require_once '../../php/connect_db.php';
-require_once 'useful_functions.php';
+require_once '../../php/useful_functions.php';
 
 $fetch = array();
 
