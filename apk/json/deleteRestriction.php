@@ -3,7 +3,7 @@
 //Access: Authorized User 
 //Purpose: deletes the restiction
 
-require_once 'connect_db.php';
+require_once '../../php/connect_db.php';
 require 'useful_functions.php';
 $fetch = array();
 

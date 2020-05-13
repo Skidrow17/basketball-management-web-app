@@ -3,7 +3,7 @@
 //Access: Authorized User & Admin
 //Purpose: password change 
 
-require_once 'connect_db.php';
+require_once '../../php/connect_db.php';
 require_once 'useful_functions.php';
 
 $fetch = array();

@@ -3,7 +3,7 @@
 //Access: Everyone
 //Purpose: gets android version
 
-require_once 'connect_db.php';
+require_once '../../php/connect_db.php';
 require 'useful_functions.php';
 $fetch = array();
 

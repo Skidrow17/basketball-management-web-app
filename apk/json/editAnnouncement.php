@@ -3,7 +3,7 @@
 //Access: Authorized User & Admin
 //Purpose: edits the owned announcements 
 
-require_once 'connect_db.php';
+require_once '../../php/connect_db.php';
 require_once 'useful_functions.php';
 $fetch = array();
 

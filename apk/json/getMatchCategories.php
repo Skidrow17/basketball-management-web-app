@@ -3,7 +3,7 @@
 //Access: Everyone
 //Purpose: Retrieves all match categories
 
-require_once 'connect_db.php';
+require_once '../../php/connect_db.php';
 
 $json_array = array();
 

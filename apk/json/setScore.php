@@ -3,7 +3,7 @@
 //Access: Authorized User
 //Purpose: set score to owned messages
 
-require_once 'connect_db.php';
+require_once '../../php/connect_db.php';
 require_once 'useful_functions.php';
 $fetch = array();
 
