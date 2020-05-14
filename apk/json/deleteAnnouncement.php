@@ -14,9 +14,10 @@ if(isset($_GET['safe_key']) && isset($_GET['user_id'])){
 
 	if (security_check($_GET['safe_key'], $_GET['user_id']) == true) {
 		$profession = 0;
-		$sql = "SELECT profession from user where id=?";
+		$sql = "SELECT profession from user where id=:user_id";
 		$run = $dbh->prepare($sql);
-		$run->execute([$_GET['user_id']]);
+		$run->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+		$run->execute();
 
 		while ($row = $run->fetch(PDO::FETCH_ASSOC)) {
 			$profession = $row['profession'];

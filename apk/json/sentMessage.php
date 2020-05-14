@@ -13,9 +13,12 @@ if(isset($_GET['safe_key']) && isset($_GET['sender_id'])){
 		$receiver_id = filter_var($_GET["receiver_id"], FILTER_SANITIZE_NUMBER_INT);
 		$text_message = filter_var($_GET["text_message"], FILTER_SANITIZE_STRING);
 
-		$sql = "INSERT INTO `message`(`sender_id`, `receiver_id`, `text_message`) VALUES (?,?,?)";
+		$sql = "INSERT INTO `message`(`sender_id`, `receiver_id`, `text_message`) VALUES (:sender_id, :receiver_id, :text_message)";
 		$run = $dbh->prepare($sql);
-		$run->execute([$sender_id, $receiver_id, $text_message]);
+		$run->bindParam(':sender_id',$sender_id,PDO::PARAM_INT);
+		$run->bindParam(':receiver_id',$receiver_id,PDO::PARAM_INT);
+		$run->bindParam(':text_message',$text_message,PDO::PARAM_STR);
+		$run->execute();
 
 		if ($run->rowCount() > 0) {
 			$fetch['ERROR']['error_code'] = "200";
@@ -23,7 +26,7 @@ if(isset($_GET['safe_key']) && isset($_GET['sender_id'])){
 			$fetch['ERROR']['error_code'] = "201";
 		}
 
-		$sql = "SELECT id,name,surname,mobile_token FROM user WHERE id IN (:receiver_id,:sender_id)";
+		$sql = "SELECT id, name, surname, mobile_token FROM user WHERE id IN (:receiver_id, :sender_id)";
         $result = $dbh->prepare($sql);
         $result->bindParam(':receiver_id', $receiver_id, PDO::PARAM_INT);
         $result->bindParam(':sender_id', $sender_id, PDO::PARAM_INT);
@@ -37,10 +40,7 @@ if(isset($_GET['safe_key']) && isset($_GET['sender_id'])){
                 $receiver_token = $row["mobile_token"];
             }
         }
-
         sentPushNotification($sender_name,$receiver_token,$text_message);
-
-
 		echo json_encode($fetch);
 	} else {
 		$fetch['ERROR']['error_code'] = "403";

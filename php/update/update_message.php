@@ -17,12 +17,15 @@ if (isset($_POST['message_id']) && isset($_POST['current_category'])
         $state = 1;
         $sql = "";
         if ($cid == 1) {
-            $sql = "UPDATE message SET receiver_delete=? WHERE id=? AND receiver_id=?";
+            $sql = "UPDATE message SET receiver_delete = :state WHERE id = :mid AND receiver_id = :uid";
         } elseif ($cid == 2) {
-            $sql = "UPDATE message SET sender_delete=? WHERE id=? AND sender_id=?";
+            $sql = "UPDATE message SET sender_delete = :state WHERE id = :mid AND sender_id = :uid";
         }
         $run = $dbh->prepare($sql);
-        $run->execute([$state, $mid, $uid]);
+        $run->bindParam(':state', $state, PDO::PARAM_INT);
+        $run->bindParam(':mid', $mid, PDO::PARAM_INT);
+        $run->bindParam(':uid', $uid, PDO::PARAM_INT);
+        $run->execute();
         if ($run->rowCount() > 0) {
             echo $success;
         } else {

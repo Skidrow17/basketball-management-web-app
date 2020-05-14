@@ -17,7 +17,9 @@ if (isset($_POST['version']) && isset($_SESSION['safe_key']) && isset($_SESSION[
         $uploadOk = 1;
         $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
         if ($imageFileType != "apk") {
-            header('Location: ../../add_general_info.php?id=5&server_response=Επιτρέποντε μονο .apk αρχεία');
+            $_SESSION['server_response'] = 'Επιτρέποντε μονο .apk αρχεία';
+            header('Location: ../../add_general_info.php?id=5');
+            die();
             $uploadOk = 0;
         }
         if ($uploadOk == 0) {
@@ -29,10 +31,12 @@ if (isset($_POST['version']) && isset($_SESSION['safe_key']) && isset($_SESSION[
                 echo "Sorry, there was an error uploading your file.";
             }
         }
-        $sql = "INSERT INTO `apk_version`(`apk_name`,`version_number`) VALUES 
-	(?,?)";
+        $apk_name = "Ekasdym.apk";
+        $sql = "INSERT INTO `apk_version`(`apk_name`,`version_number`) VALUES (:apk_name, :version)";
         $run = $dbh->prepare($sql);
-        $run->execute(["Ekasdym.apk", $version]);
+        $run->bindParam(':apk_name',$apk_name,PDO::PARAM_STR);
+        $run->bindParam(':version',$version,PDO::PARAM_STR);
+        $run->execute();
         if ($run->rowCount() > 0) {
             $_SESSION['server_response'] = $success;
             header('Location: ../../add_general_info.php?id=5');

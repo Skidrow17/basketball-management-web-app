@@ -22,9 +22,16 @@ if (isset($_POST['submit']) && isset($_SESSION['safe_key']) && isset($_SESSION['
         $dateTime = $date . ' ' . $time;
         if ($team1 != $team2) {
             $sql = "INSERT INTO `game`(`team_id_1`, `team_id_2`,`court_id`,`date_time`,`rate`,`required_referees`,`required_judges`) VALUES 
-					(?,?,?,?,?,?,?)";
+					                  (:team1, :team2, :court, :dateTime, :rate, :referee_num, :judge_num)";
             $run = $dbh->prepare($sql);
-            $run->execute([$team1, $team2, $court, $dateTime, $rate, $referee_num, $judge_num]);
+            $run->bindParam(':team1', $team1, PDO::PARAM_STR);
+            $run->bindParam(':team2', $team2, PDO::PARAM_STR);
+            $run->bindParam(':court', $court, PDO::PARAM_STR);
+            $run->bindParam(':dateTime', $dateTime, PDO::PARAM_STR);
+            $run->bindParam(':rate', $rate, PDO::PARAM_STR);
+            $run->bindParam(':referee_num', $referee_num, PDO::PARAM_STR);
+            $run->bindParam(':judge_num', $judge_num, PDO::PARAM_STR);
+            $run->execute();
             if ($run->rowCount() > 0) {
                 $_SESSION['server_response'] = $success;
                 header('Location: ../../add_match.php');

@@ -13,11 +13,12 @@ if (isset($_POST['submit']) && isset($_SESSION['safe_key']) && isset($_SESSION['
         $sender_id = filter_var($_SESSION['user_id'], FILTER_SANITIZE_NUMBER_INT);
         $receiver_id = filter_var($_POST["receiver_id"], FILTER_SANITIZE_NUMBER_INT);
         $text = filter_var($_POST['text'], FILTER_SANITIZE_STRING);
-        $sql = "INSERT INTO `message`(`sender_id`, `receiver_id`, `text_message`) VALUES 
-                (?,?,?)";
+        $sql = "INSERT INTO `message`(`sender_id`, `receiver_id`, `text_message`) VALUES (:sender_id, :receiver_id, :text)";
         $run = $dbh->prepare($sql);
-        $run->execute([$sender_id, $receiver_id, $text]);
-
+        $run->bindParam(':sender_id', $sender_id, PDO::PARAM_INT);
+        $run->bindParam(':receiver_id', $receiver_id, PDO::PARAM_INT);
+        $run->bindParam(':text', $text, PDO::PARAM_STR);
+        $run->execute();
 
         $sql = "SELECT id,name,surname,mobile_token FROM user WHERE id IN (:receiver_id,:sender_id)";
         $result = $dbh->prepare($sql);

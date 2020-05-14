@@ -14,9 +14,13 @@ if(isset($_GET['safe_key']) && isset($_GET['id'])){
 		$text = filter_var($_GET['text'], FILTER_SANITIZE_STRING);
 		$user_id = filter_var($_GET['id'], FILTER_SANITIZE_STRING);
 
-		$sql = "UPDATE announcement SET title=? ,text=? WHERE id=? AND user_id=?";
+		$sql = "UPDATE announcement SET title=:title ,text=:text WHERE id=:id AND user_id=:user_id";
 		$stmt = $dbh->prepare($sql);
-		$stmt->execute([$title, $text, $id, $user_id]);
+		$stmt->bindParam(':title',$title,PDO::PARAM_STR);
+		$stmt->bindParam(':text',$text,PDO::PARAM_STR);
+		$stmt->bindParam(':id',$id,PDO::PARAM_INT);
+		$stmt->bindParam(':user_id',$user_id,PDO::PARAM_INT);
+		$stmt->execute();
 
 		if ($stmt->rowCount() > 0) {
 			$fetch['ERROR']['error_code'] = "200";

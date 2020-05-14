@@ -11,9 +11,10 @@ require_once '../language.php';
 if (isset($_POST['submit'])) {
     if (security_check($_SESSION['safe_key'], $_SESSION['user_id']) == true && $_SESSION['profession'] === 'Admin') {
         $name = filter_var($_POST['name'], FILTER_SANITIZE_STRING);
-        $sql = "INSERT INTO `user_categories`(`name`) VALUES (?)";
+        $sql = "INSERT INTO `user_categories`(`name`) VALUES (:name)";
         $run = $dbh->prepare($sql);
-        $run->execute([$name]);
+        $run->bindParam(':name', $name, PDO::PARAM_STR);
+        $run->execute();
         if ($run->rowCount() > 0) {
             $_SESSION['server_response'] = $success;
             header('Location: ../../add_general_info.php?id=3');

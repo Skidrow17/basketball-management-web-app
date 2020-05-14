@@ -15,9 +15,13 @@ if(isset($_GET['safe_key']) && isset($_GET['user_id'])){
 	$match_id = filter_var($_GET["match_id"], FILTER_SANITIZE_NUMBER_INT);
 
 	if (security_check($_GET['safe_key'], $_GET['user_id']) == true) {
-		$sql = "UPDATE game SET team_score_1=?, team_score_2=?, state=? WHERE id=?";
+		$sql = "UPDATE game SET team_score_1 = :team_score_1, team_score_2 = :team_score_2, state=:state WHERE id = :match_id";
 		$run = $dbh->prepare($sql);
-		$run->execute([$team_score_1, $team_score_2,$state,$match_id]);
+		$run->bindParam(':team_score_1',$team_score_1,PDO::PARAM_INT);
+		$run->bindParam(':team_score_2',$team_score_2,PDO::PARAM_INT);
+		$run->bindParam(':state',$state,PDO::PARAM_INT);
+		$run->bindParam(':match_id',$match_id,PDO::PARAM_INT);
+		$run->execute();
 
 		if ($run->rowCount() > 0) {
 			$fetch['ERROR']['error_code'] = "200";

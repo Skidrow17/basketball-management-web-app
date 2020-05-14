@@ -15,13 +15,15 @@ if (isset($_POST['submit']) && isset($_SESSION['safe_key']) && isset($_SESSION['
         $human_power = $_POST['human_power'];
         if (!empty($human_power)) {
             for ($i = 0;$i < count($human_power);$i++) {
-                $sql = "INSERT INTO `human_power`(`game_id`, `user_id`) VALUES (?,?)";
-                $r = $dbh->prepare($sql);
-                $r->execute([$id, $human_power[$i]]);
+                $sql = "INSERT INTO `human_power`(`game_id`, `user_id`) VALUES (:id, :user_id)";
+                $run = $dbh->prepare($sql);
+                $run->bindParam(':id', $id, PDO::PARAM_INT);
+                $run->bindParam(':user_id', $human_power[$i], PDO::PARAM_INT);
+                $run->execute();
                 if ($r->rowCount() > 0) $counter = $counter + 1;
             }
 			
-			$sql = "Select date_time from game where id=:gid";
+			$sql = "SELECT date_time FROM game WHERE id=:gid";
 			$run = $dbh->prepare($sql);
 			$run->bindParam(':gid',$id, PDO::PARAM_INT);
 			$run->execute();
@@ -32,9 +34,11 @@ if (isset($_POST['submit']) && isset($_SESSION['safe_key']) && isset($_SESSION['
 			}
 			$match_week = date("W", strtotime($date));
 			$match_year = date("Y", strtotime($date));
-			$sql = "UPDATE restriction SET deletable = 1 WHERE WEEK(date,1)=? AND YEAR(date)=?";
-			$stmt = $dbh->prepare($sql);
-			$stmt->execute([$match_week, $match_year]);
+			$sql = "UPDATE restriction SET deletable = 1 WHERE WEEK(date,1) = :match_week AND YEAR(date) = :match_year";
+            $stmt = $dbh->prepare($sql);
+            $stmt->bindParam(':match_week', $match_week, PDO::PARAM_STR);
+            $stmt->bindParam(':match_year', $match_year, PDO::PARAM_STR);
+			$stmt->execute();
         }
         if ($counter > 0) {
             $_SESSION['server_response'] = $success;

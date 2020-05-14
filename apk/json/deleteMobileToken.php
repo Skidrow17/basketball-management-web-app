@@ -10,10 +10,13 @@ $fetch = array();
 if(isset($_GET['safe_key']) && isset($_GET['id'])){
 
 	$id = filter_var($_GET["id"], FILTER_SANITIZE_NUMBER_INT);
+	$empty_mobile_token = '';
 	if (security_check($_GET['safe_key'], $_GET['id']) == true) {
-		$sql = "UPDATE user SET mobile_token=? WHERE id=?";
+		$sql = "UPDATE user SET mobile_token=:mobile_token WHERE id=:id";
 		$run = $dbh->prepare($sql);
-		$run->execute(["", $id]);
+		$run->bindParam(':mobile_token',$empty_mobile_token,PDO::PARAM_STR);
+		$run->bindParam(':id',$id,PDO::PARAM_INT);
+		$run->execute();
 
 		if ($run->rowCount() > 0) {
 			$fetch['ERROR']['error_code'] = "200";

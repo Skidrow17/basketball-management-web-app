@@ -50,10 +50,13 @@ if (isset($_SESSION['safe_key'])&&isset($_SESSION['user_id'])) {
 					 }';
 				$_SESSION['N_O_M'] = $numberOfMessagesInDB;
 			}
-			
-			$sql = "UPDATE login_history SET logout_date_time=? WHERE id=?";
+			$current_date_time = date('Y/m/d H:i:s');
+			$last_login_history_id = $_SESSION['L_L_H'];
+			$sql = "UPDATE login_history SET logout_date_time = :date_time WHERE id = :last_login_history_id";
 			$stmt = $dbh->prepare($sql);
-			$stmt->execute([date('Y/m/d H:i:s'), $_SESSION['L_L_H']]);
+			$stmt->bindParam(':date_time',$current_date_time,PDO::PARAM_STR);
+			$stmt->bindParam(':last_login_history_id',$last_login_history_id,PDO::PARAM_INT);
+			$stmt->execute();
 		} else {
 			echo '{"code" : 1,
 				   "polling_time" :0

@@ -36,12 +36,18 @@ if (isset($_POST['id']) && isset($_SESSION['safe_key']) && isset($_SESSION['user
         }
 		
         $message_sent =  $restrictionDeleted." : ". $date . '  ' . $time_from . ' - ' . $time_to;
-        $sql = "INSERT INTO `message`(`sender_id`, `receiver_id`, `text_message`) VALUES 
-				(?,?,?)";
-        $run = $dbh->prepare($sql);
-        $run->execute([$_SESSION['user_id'], $user_id, $message_sent]);
+        $sender_id = $_SESSION['user_id'];
+        $receiver_id = $user_id;
 
-        $sql = "SELECT id,name,surname,mobile_token FROM user WHERE id IN (:receiver_id,:sender_id)";
+        $sql = "INSERT INTO `message`(`sender_id`, `receiver_id`, `text_message`) VALUES (:sender_id, :receiver_id, :text_message)";
+        $run = $dbh->prepare($sql);
+
+        $run->bindParam(':sender_id',$sender_id,PDO::PARAM_INT);
+        $run->bindParam(':receiver_id',$receiver_id,PDO::PARAM_INT);
+        $run->bindParam(':text_message',$message_sent,PDO::PARAM_STR);
+        $run->execute();
+
+        $sql = "SELECT id,name,surname,mobile_token FROM user WHERE id IN (:receiver_id, :sender_id)";
         $result = $dbh->prepare($sql);
         $result->bindParam(':receiver_id', $user_id, PDO::PARAM_INT);
         $result->bindParam(':sender_id', $_SESSION['user_id'], PDO::PARAM_INT);

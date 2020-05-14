@@ -13,9 +13,12 @@ if (isset($_POST['title']) && isset($_POST['text']) && isset($_SESSION['safe_key
         $user_id = filter_var($_SESSION['user_id'], FILTER_SANITIZE_NUMBER_INT);
         $title = filter_var($_POST['title'], FILTER_SANITIZE_STRING);
         $text = filter_var($_POST['text'], FILTER_SANITIZE_STRING);
-        $sql = "INSERT INTO `announcement`(`user_id`,`title`, `text`) VALUES (?,?,?)";
+        $sql = "INSERT INTO `announcement`(`user_id`,`title`, `text`) VALUES (:user_id, :title, :text)";
         $run = $dbh->prepare($sql);
-        $run->execute([$user_id, $title, $text]);
+        $run->bindParam(':user_id',$user_id,PDO::PARAM_INT);
+        $run->bindParam(':title',$title,PDO::PARAM_STR);
+        $run->bindParam(':text',$text,PDO::PARAM_STR);
+        $run->execute();
 
 
         $sql = "SELECT mobile_token FROM user WHERE id != :sender_id";

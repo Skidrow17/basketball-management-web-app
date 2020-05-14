@@ -27,11 +27,13 @@ if(isset($_GET['safety_key']) && isset($_GET['id'])){
 		}
 
 		$sql  = "UPDATE login_history 
-				 SET logout_date_time=? 
-				 WHERE user_id=? order by id desc Limit 1";
+				 SET logout_date_time=:date_time
+				 WHERE user_id=:id order by id desc Limit 1";
 				 
 		$stmt = $dbh->prepare($sql);
-		$stmt->execute([date('Y/m/d H:i:s'), $id]);
+		$stmt->bindParam(':date_time',date('Y/m/d H:i:s'),PDO::PARAM_STR);
+		$stmt->bindParam(':id',$id,PDO::PARAM_INT);
+		$stmt->execute();
 
 		
 		$sql = "SELECT get_number_of_announcements() as number_of_announcements,

@@ -127,9 +127,11 @@ if (isset($_POST['id'])) {
             $stmt->execute();
             $flag = 1;
             for ($i = 0;$i < count($playable_categories);$i++) {
-                $sql = "INSERT INTO `playable_categories`(`user_id`, `team_categories_id`) VALUES (?,?)";
-                $r = $dbh->prepare($sql);
-                $r->execute([$id, $playable_categories[$i]]);
+                $sql = "INSERT INTO `playable_categories`(`user_id`, `team_categories_id`) VALUES (:id, :team_categories_id)";
+                $run = $dbh->prepare($sql);
+                $run->bindParam(':id', $id, PDO::PARAM_INT);
+                $run->bindParam(':team_categories_id', $playable_categories[$i], PDO::PARAM_INT);
+                $run->execute();
             }
         }else {
 			$sql = "DELETE FROM playable_categories WHERE user_id =:id";
