@@ -13,9 +13,14 @@ if (security_check($_SESSION['safe_key'], $_SESSION['user_id']) == true) {
 	$successfull = false;
 	foreach (json_decode(file_get_contents('php://input')) as $outerArray ) {
 		if(sizeof($outerArray) == 6){
-			$sql = "UPDATE team SET total_games = ?,wins = ?, loses = ?,points = ? where id = ?";
+			$sql = "UPDATE team SET total_games = :total_games,wins = :wins, loses = :loses,points = :points where id = :match_id";
 			$run = $dbh->prepare($sql);
-			$run->execute([$outerArray[3]+$outerArray[4], $outerArray[3], $outerArray[4], $outerArray[5], $outerArray[0]]);
+			$run->bindParam(':total_games', $outerArray[3]+$outerArray[4], PDO::PARAM_STR);
+			$run->bindParam(':wins', $outerArray[3], PDO::PARAM_INT);
+			$run->bindParam(':loses', $outerArray[4], PDO::PARAM_INT);
+			$run->bindParam(':points', $outerArray[5], PDO::PARAM_INT);
+			$run->bindParam(':match_id', $outerArray[0], PDO::PARAM_INT);
+			$run->execute();
 			if ($run->rowCount() > 0) {
 				$successfull = true;
 			}

@@ -14,9 +14,11 @@ if (isset($_POST['submit'])) {
 		$comment = filter_var($_POST['comment'], FILTER_SANITIZE_STRING);
 		$match_week = date("W", strtotime($_POST['date']));
 		$match_year = date("Y", strtotime($_POST['date']));
-		$sql = "SELECT COUNT(*) as nor FROM human_power HP,game G WHERE G.Id = HP.game_id AND Week(G.date_time,1) = ? AND Year(G.date_time) = ?";
-        $run = $dbh->prepare($sql);
-        $run->execute([$match_week,$match_year]);
+		$sql = "SELECT COUNT(*) as nor FROM human_power HP,game G WHERE G.Id = HP.game_id AND Week(G.date_time,1) = :match_week AND Year(G.date_time) = :match_year";
+		$run = $dbh->prepare($sql);
+		$run->bindParam(':match_week', $match_week, PDO::PARAM_STR);
+		$run->bindParam(':match_year', $match_year, PDO::PARAM_STR);
+        $run->execute();
 		$restrictions_closed = false;
         while ($row = $run->fetch(PDO::FETCH_ASSOC)) {
           if($row['nor'] != 0){

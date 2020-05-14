@@ -24,9 +24,12 @@ if (isset($_POST["submit"]) && isset($_POST["password1"])) {
         }
 		
 		if($userId != -1){
-			$sql = "UPDATE user SET password = ?,password_recovery_url=? where id = ?";
+			$sql = "UPDATE user SET password = :hashedPassword, password_recovery_url = :nullPasswordRecoveryUrl where id = :userId";
 			$run = $dbh->prepare($sql);
-			$run->execute([$hashedPassword,$nullPasswordRecoveryUrl,$userId]);
+			$run->bindParam(':hashedPassword', $hashedPassword, PDO::PARAM_STR);
+			$run->bindParam(':nullPasswordRecoveryUrl', $nullPasswordRecoveryUrl, PDO::PARAM_STR);
+			$run->bindParam(':userId', $userId, PDO::PARAM_INT);
+			$run->execute();
 			$_SESSION['server_response'] = "Ο κωδικός πρόσβασής σας άλλαξε με επιτυχία";
 			header('Location: ../../index.php');
 			die();

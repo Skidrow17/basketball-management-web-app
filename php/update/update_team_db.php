@@ -14,11 +14,13 @@ if (isset($_POST['team_name']) && isset($_POST['team_category2']) && isset($_POS
         $category = filter_var($_POST['team_category2'], FILTER_SANITIZE_NUMBER_INT);
         $id = filter_var($_POST['teams'], FILTER_SANITIZE_NUMBER_INT);
         $team_group = filter_var($_POST['team_group'], FILTER_SANITIZE_NUMBER_INT);
-
-        $sql = "UPDATE team SET name=?,category=?,team_group = ? where id = ?";
+        $sql = "UPDATE team SET name=:name, category = :category, team_group = :team_group where id = :id";
         $run = $dbh->prepare($sql);
-        echo $sql;
-        $run->execute([$name, $category, $team_group, $id]);
+        $run->bindParam(':name', $name, PDO::PARAM_STR);
+        $run->bindParam(':category', $category, PDO::PARAM_INT);       
+        $run->bindParam(':team_group', $team_group, PDO::PARAM_INT);
+        $run->bindParam(':id', $id, PDO::PARAM_INT);  
+        $run->execute();
         if ($run->rowCount() > 0) {
             $_SESSION['server_response'] = $success;
             header('Location: ../../update_general_info.php?id=4');

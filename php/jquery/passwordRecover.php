@@ -29,9 +29,11 @@ if (isset($_POST['username']) || isset($_SESSION['username'])) {
 	while ($row = $run->fetch(PDO::FETCH_ASSOC)) {
 		
 		if(empty($row["password_recovery_url"]!="")){
-			$sql = "UPDATE user SET password_recovery_url = ? where id = ?";
+			$sql = "UPDATE user SET password_recovery_url = :recover_encode where id = :user_id";
 			$mod = $dbh->prepare($sql);
-			$mod->execute([$recover_encode,$row['id']]);
+			$mod->bindParam(':recover_encode', $recover_encode, PDO::PARAM_STR);
+			$mod->bindParam(':user_id', $row['id'], PDO::PARAM_INT);
+			$mod->execute();
 			recovery_email_send($row['email'],$url.$recover_encode);
 		}else{
 			if(!isset($_SESSION['language'])){

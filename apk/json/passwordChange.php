@@ -24,9 +24,12 @@ if(isset($_GET['safe_key']) && isset($_GET['id'])){
 	}
 	
 	if($userId != -1){
-		$sql = "UPDATE user SET password = ?,password_recovery_url=? where id = ?";
+		$sql = "UPDATE user SET password = :hashedPassword,password_recovery_url=:nullPasswordRecoveryUrl where id = :userId";
 		$run = $dbh->prepare($sql);
-		$run->execute([$hashedPassword,$nullPasswordRecoveryUrl,$userId]);
+		$run->bindParam(':hashedPassword', $hashedPassword, PDO::PARAM_STR);
+		$run->bindParam(':nullPasswordRecoveryUrl', $nullPasswordRecoveryUrl, PDO::PARAM_STR);
+		$run->bindParam(':userId', $userId, PDO::PARAM_INT);
+		$run->execute();
 		$fetch['ERROR']['error_code'] = "200";
 	}else{
 		$fetch['ERROR']['error_code'] = "406";

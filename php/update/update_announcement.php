@@ -14,9 +14,13 @@ if (isset($_POST['message']) && isset($_POST['title']) && isset($_POST['aid'])
         $message = filter_var($_POST['message'], FILTER_SANITIZE_STRING);
         $title = filter_var($_POST['title'], FILTER_SANITIZE_STRING);
         $id = filter_var($_POST['aid'], FILTER_SANITIZE_NUMBER_INT);
-        $sql = "UPDATE announcement SET title=?,text=? where id = ? AND user_id=?";
+        $sql = "UPDATE announcement SET title=:title,text=:message where id = :id AND user_id=:user_id";
         $run = $dbh->prepare($sql);
-        $run->execute([$title, $message, $id, $_SESSION['user_id']]);
+        $run->bindParam(':title', $title, PDO::PARAM_STR);
+        $run->bindParam(':message', $message, PDO::PARAM_STR);
+        $run->bindParam(':id', $id, PDO::PARAM_INT);
+        $run->bindParam(':user_id', $_SESSION['user_id'], PDO::PARAM_INT);
+        $run->execute();
         if ($run->rowCount() > 0) {
             echo $success;
         } else {

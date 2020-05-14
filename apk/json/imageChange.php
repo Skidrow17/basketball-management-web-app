@@ -19,9 +19,11 @@ if (isset($_GET['safe_key']) && isset($_GET['id']))
 		$ImagePath = "../../assets/img/users/$ImageName.jpg";
 		$AbsoluteImagePath = "assets/img/users/$ImageName.jpg";
 
-		$sql = "UPDATE user SET profile_pic=? where id = ?";
+		$sql = "UPDATE user SET profile_pic=:profile_pic where id = :id";
         $run = $dbh->prepare($sql);
-        $run->execute([$AbsoluteImagePath, $id]);
+        $run->bindParam(':profile_pic', $AbsoluteImagePath, PDO::PARAM_STR);
+        $run->bindParam(':id', $id, PDO::PARAM_INT);
+        $run->execute();
 		
         if ($run->rowCount() > 0) 
         {

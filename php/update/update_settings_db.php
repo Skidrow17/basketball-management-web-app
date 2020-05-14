@@ -20,9 +20,12 @@ if (isset($_POST['language']) && isset($_POST['pollingTime'])
         }
         
         if (empty($profile_pic)) {
-            $sql = "UPDATE user SET polling_time = ?,language = ? where id = ?";
+            $sql = "UPDATE user SET polling_time = :pollingTime,language = :language where id = :user_id";
             $run = $dbh->prepare($sql);
-            $run->execute([$pollingTime, $language, $user_id]);
+            $run->bindParam(':pollingTime', $pollingTime, PDO::PARAM_STR);
+			$run->bindParam(':language', $language, PDO::PARAM_STR);
+			$run->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+            $run->execute();
         }else{
             $pic_name = $_FILES['profile_pic']['name'];
             $temp_name = $_FILES['profile_pic']['tmp_name'];
@@ -37,9 +40,13 @@ if (isset($_POST['language']) && isset($_POST['pollingTime'])
             } else {
                 echo 'You should select a file to upload !!';
             }
-            $sql = "UPDATE user SET polling_time = ?,language = ?,profile_pic = ? where id = ?";
+            $sql = "UPDATE user SET polling_time = :pollingTime,language = :language,profile_pic = :profile_pic where id = :user_id";
             $run = $dbh->prepare($sql);
-            $run->execute([$pollingTime, $language, $url_location.$pic_name, $user_id]);
+            $run->bindParam(':pollingTime', $pollingTime, PDO::PARAM_STR);
+			$run->bindParam(':language', $language, PDO::PARAM_STR);
+			$run->bindParam(':profile_pic', $url_location.$pic_name, PDO::PARAM_STR);
+			$run->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+            $run->execute();
         }
 
         if ($run->rowCount() > 0) {

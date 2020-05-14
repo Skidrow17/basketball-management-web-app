@@ -35,13 +35,36 @@ if (isset($_POST['id'])) {
         if (empty($profile_pic)) {
             if ($password !== '') {
                 $hashed_pass = password_hash($password, PASSWORD_DEFAULT);
-                $sql = "UPDATE user SET username=?, password=? , name=? , surname=?,email=?,phone=?,driving_licence=?,profession=?,active=?,rate=?,living_place=? where id = ?";
+                $sql = "UPDATE user SET username=:username, password=:hashed_pass, name=:name, surname=:surname, email=:email, phone=:phone, driving_licence=:driving_licence, profession=:profession, active=:active, rate=:rate, living_place=:living_place where id = :id";
                 $run = $dbh->prepare($sql);
-                $run->execute([$username, $hashed_pass, $name, $surname, $email, $phone, $driving_licence, $profession, $active, $rate, $living_place, $id]);
+                $run->bindParam(':username', $username, PDO::PARAM_STR);
+                $run->bindParam(':hashed_pass', $hashed_pass, PDO::PARAM_STR);
+                $run->bindParam(':name', $name, PDO::PARAM_STR);
+                $run->bindParam(':surname', $surname, PDO::PARAM_STR); 
+                $run->bindParam(':email', $email, PDO::PARAM_STR);
+                $run->bindParam(':phone', $phone, PDO::PARAM_STR); 
+                $run->bindParam(':driving_licence', $driving_licence, PDO::PARAM_INT);
+                $run->bindParam(':profession', $profession, PDO::PARAM_INT); 
+                $run->bindParam(':active', $active, PDO::PARAM_INT);
+                $run->bindParam(':rate', $rate, PDO::PARAM_INT); 
+                $run->bindParam(':living_place', $living_place, PDO::PARAM_INT);
+                $run->bindParam(':id', $id, PDO::PARAM_INT); 
+                $run->execute();
             } else {
-                $sql = "UPDATE user SET username=?, name=? , surname=?,email=?,phone=?,driving_licence=?,profession=?,active=?,rate=?,living_place=? where id = ?";
+                $sql = "UPDATE user SET username=:username, name=:name, surname=:surname, email=:email, phone=:phone, driving_licence=:driving_licence, profession=:profession, active=:active, rate=:rate, living_place=:living_place where id = :id";
                 $run = $dbh->prepare($sql);
-                $run->execute([$username, $name, $surname, $email, $phone, $driving_licence, $profession, $active, $rate, $living_place, $id]);
+                $run->bindParam(':username', $username, PDO::PARAM_STR);
+                $run->bindParam(':name', $name, PDO::PARAM_STR);
+                $run->bindParam(':surname', $surname, PDO::PARAM_STR); 
+                $run->bindParam(':email', $email, PDO::PARAM_STR);
+                $run->bindParam(':phone', $phone, PDO::PARAM_STR); 
+                $run->bindParam(':driving_licence', $driving_licence, PDO::PARAM_INT);
+                $run->bindParam(':profession', $profession, PDO::PARAM_INT); 
+                $run->bindParam(':active', $active, PDO::PARAM_INT);
+                $run->bindParam(':rate', $rate, PDO::PARAM_INT); 
+                $run->bindParam(':living_place', $living_place, PDO::PARAM_INT);
+                $run->bindParam(':id', $id, PDO::PARAM_INT); 
+                $run->execute();
             }
         } else {
             $pic_name = $_FILES['profile_pic']['name'];
@@ -59,13 +82,38 @@ if (isset($_POST['id'])) {
             }
             if ($password !== '') {
                 $hashed_pass = password_hash($password, PASSWORD_DEFAULT);
-                $sql = "UPDATE user SET profile_pic=?, username=?, password=? , name=? , surname=?,email=?,phone=?,driving_licence=?,profession=?,active=?,rate=?,living_place=? where id = ?";
+                $sql = "UPDATE user SET profile_pic=:profile_pic, username=:username, password=:hashed_pass, name=:name, surname=:surname, email=:email, phone=:phone, driving_licence=:driving_licence, profession=:profession, active=:active, rate=:rate, living_place=:living_place where id = :id";
                 $run = $dbh->prepare($sql);
-                $run->execute([$url_location . $pic_name, $username, $hashed_pass, $name, $surname, $email, $phone, $driving_licence, $profession, $active, $rate, $living_place, $id]);
+                $run->bindParam(':profile_pic', $url_location . $pic_name, PDO::PARAM_STR);
+                $run->bindParam(':username', $username, PDO::PARAM_STR);
+                $run->bindParam(':hashed_pass', $hashed_pass, PDO::PARAM_STR);
+                $run->bindParam(':name', $name, PDO::PARAM_STR);
+                $run->bindParam(':surname', $surname, PDO::PARAM_STR); 
+                $run->bindParam(':email', $email, PDO::PARAM_STR);
+                $run->bindParam(':phone', $phone, PDO::PARAM_STR); 
+                $run->bindParam(':driving_licence', $driving_licence, PDO::PARAM_INT);
+                $run->bindParam(':profession', $profession, PDO::PARAM_INT); 
+                $run->bindParam(':active', $active, PDO::PARAM_INT);
+                $run->bindParam(':rate', $rate, PDO::PARAM_INT); 
+                $run->bindParam(':living_place', $living_place, PDO::PARAM_INT);
+                $run->bindParam(':id', $id, PDO::PARAM_INT); 
+                $run->execute();
             } else {
-                $sql = "UPDATE user SET  profile_pic=?, username=?, name=? , surname=?,email=?,phone=?,driving_licence=?,profession=?,active=?,rate=?,living_place=? where id = ?";
+                $sql = "UPDATE user SET profile_pic=:profile_pic, username=:username, name=:name, surname=:surname, email=:email, phone=:phone, driving_licence=:driving_licence, profession=:profession, active=:active, rate=:rate, living_place=:living_place where id = :id";
                 $run = $dbh->prepare($sql);
-                $run->execute([$url_location . $pic_name, $username, $name, $surname, $email, $phone, $driving_licence, $profession, $active, $rate, $living_place, $id]);
+                $run->bindParam(':profile_pic', $url_location . $pic_name, PDO::PARAM_STR);
+                $run->bindParam(':username', $username, PDO::PARAM_STR);
+                $run->bindParam(':name', $name, PDO::PARAM_STR);
+                $run->bindParam(':surname', $surname, PDO::PARAM_STR); 
+                $run->bindParam(':email', $email, PDO::PARAM_STR);
+                $run->bindParam(':phone', $phone, PDO::PARAM_STR); 
+                $run->bindParam(':driving_licence', $driving_licence, PDO::PARAM_INT);
+                $run->bindParam(':profession', $profession, PDO::PARAM_INT); 
+                $run->bindParam(':active', $active, PDO::PARAM_INT);
+                $run->bindParam(':rate', $rate, PDO::PARAM_INT); 
+                $run->bindParam(':living_place', $living_place, PDO::PARAM_INT);
+                $run->bindParam(':id', $id, PDO::PARAM_INT); 
+                $run->execute();
             }
         }
         $flag = 0;

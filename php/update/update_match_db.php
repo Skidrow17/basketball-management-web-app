@@ -20,9 +20,17 @@ if (isset($_POST['submit'])) {
         $judge_num = filter_var($_POST['judge_num'], FILTER_SANITIZE_NUMBER_INT);
         $rate = filter_var($_POST['rate'], FILTER_SANITIZE_NUMBER_INT);
         $combinedDT = date('Y-m-d H:i:s', strtotime("$date $time"));
-        $sql = "UPDATE game SET team_id_1=?,team_id_2=?,court_id=?,date_time=?,rate=?,required_referees=?,required_judges=? where id = ?";
+        $sql = "UPDATE game SET team_id_1=:team_id_1,team_id_2=:team_id_2,court_id=:court_id,date_time=:combinedDT,rate=:rate,required_referees=:referee_num,required_judges=:judge_num where id = :match_id";
         $run = $dbh->prepare($sql);
-        $run->execute([$team_id_1, $team_id_2, $court_id, $combinedDT, $rate, $referee_num, $judge_num, $match_id]);
+        $run->bindParam(':team_id_1', $team_id_1, PDO::PARAM_INT);
+        $run->bindParam(':team_id_2', $team_id_2, PDO::PARAM_INT);
+        $run->bindParam(':court_id', $court_id, PDO::PARAM_INT);
+        $run->bindParam(':combinedDT', $combinedDT, PDO::PARAM_STR);
+        $run->bindParam(':rate', $rate, PDO::PARAM_INT);
+        $run->bindParam(':referee_num', $referee_num, PDO::PARAM_INT);
+        $run->bindParam(':judge_num', $judge_num, PDO::PARAM_INT);
+        $run->bindParam(':match_id', $match_id, PDO::PARAM_INT);
+        $run->execute();
         if ($run->rowCount() > 0) {
             $_SESSION['server_response'] = $success;
             header('Location: ../../match_update.php');

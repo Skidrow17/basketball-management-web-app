@@ -13,7 +13,7 @@ if(isset($_GET['safe_key']) && isset($_GET['id'])){
 	$uid = filter_var($_GET['id'], FILTER_SANITIZE_STRING);
 	$sql = "SELECT id,email,password_recovery_url FROM user where id = :id";
 	$run = $dbh->prepare($sql);
-	$run->bindParam(':id', $uid, PDO::PARAM_STR);
+	$run->bindParam(':id', $uid, PDO::PARAM_INT);
 	$run->execute();
 	$recover_encode = randomNumber(6);
 	$userExists = false;
@@ -21,9 +21,11 @@ if(isset($_GET['safe_key']) && isset($_GET['id'])){
 
 	while ($row = $run->fetch(PDO::FETCH_ASSOC)) {	
 		if(empty($row["password_recovery_url"]!="")){
-			$sql = "UPDATE user SET password_recovery_url = ? where id = ?";
+			$sql = "UPDATE user SET password_recovery_url = :recover_encode where id = :userid";
 			$mod = $dbh->prepare($sql);
-			$mod->execute([$recover_encode,$row['id']]);
+			$mod->bindParam(':recover_encode', $recover_encode, PDO::PARAM_STR);
+			$mod->bindParam(':userid', $row['id'], PDO::PARAM_INT);
+			$mod->execute();
 			recovery_email_send_mobile($row['email'],$recover_encode);
 			$fetch['ERROR']['error_code'] = "200";
 		}else{

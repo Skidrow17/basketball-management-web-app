@@ -15,10 +15,14 @@ if (isset($_POST['submit'])) {
         $longitude = filter_var($_POST['longitude'], FILTER_SANITIZE_STRING);
         $location = filter_var($_POST['living_place'], FILTER_SANITIZE_NUMBER_INT);
         $id = filter_var($_POST['court'], FILTER_SANITIZE_NUMBER_INT);
-        $sql = "UPDATE court SET name=?,longitude=?,latitude=?,city=? where id = ?";
+        $sql = "UPDATE court SET name = :name, longitude = :longitude, latitude = :latitude, city = :location where id = :id";
         $run = $dbh->prepare($sql);
-        echo $sql;
-        $run->execute([$name, $longitude, $latitude, $location, $id]);
+        $run->bindParam(':name', $name, PDO::PARAM_STR);
+        $run->bindParam(':longitude', $longitude, PDO::PARAM_STR);
+        $run->bindParam(':latitude', $latitude, PDO::PARAM_STR);
+        $run->bindParam(':location', $location, PDO::PARAM_INT);
+        $run->bindParam(':id', $id, PDO::PARAM_INT);
+        $run->execute();
         echo $location;
         if ($run->rowCount() > 0) {
             $_SESSION['server_response'] = $success;
