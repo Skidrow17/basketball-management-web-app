@@ -15,7 +15,8 @@ if (security_check($_SESSION['safe_key'], $_SESSION['user_id']) == true) {
 		if(sizeof($outerArray) == 6){
 			$sql = "UPDATE team SET total_games = :total_games,wins = :wins, loses = :loses,points = :points where id = :match_id";
 			$run = $dbh->prepare($sql);
-			$run->bindParam(':total_games', $outerArray[3]+$outerArray[4], PDO::PARAM_STR);
+			$total_games = $outerArray[3]+$outerArray[4];
+			$run->bindParam(':total_games', $total_games, PDO::PARAM_STR);
 			$run->bindParam(':wins', $outerArray[3], PDO::PARAM_INT);
 			$run->bindParam(':loses', $outerArray[4], PDO::PARAM_INT);
 			$run->bindParam(':points', $outerArray[5], PDO::PARAM_INT);
