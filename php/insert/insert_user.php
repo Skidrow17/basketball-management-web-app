@@ -63,7 +63,7 @@ if (isset($_POST['submit'])) {
             }
             $sql = "INSERT INTO `user`(`username`, `password`, `name`,`surname`,`email`,`phone`,`driving_licence`,`living_place`,`profile_pic`,`profession`,`rate`,`active`,`password_recovery_url`) 
 					VALUES (:username, :password, :name, :surname, :email, :phone, :driving_licence, :living_place, :profile_pic, :profession, :rate, :active, :password_recovery_url)";
-			
+			$profile_img = $url_location . $pic_name;
             $run = $dbh->prepare($sql);
             $run->bindParam(':username', $username, PDO::PARAM_STR);
             $run->bindParam(':password', $password, PDO::PARAM_STR);
@@ -73,7 +73,7 @@ if (isset($_POST['submit'])) {
             $run->bindParam(':phone', $phone, PDO::PARAM_STR); 
             $run->bindParam(':driving_licence', $driving_licence, PDO::PARAM_INT);
             $run->bindParam(':living_place', $living_place, PDO::PARAM_INT);
-            $run->bindParam(':profile_pic', $url_location . $pic_name, PDO::PARAM_STR);
+            $run->bindParam(':profile_pic', $profile_img, PDO::PARAM_STR);
             $run->bindParam(':profession', $profession, PDO::PARAM_INT);
             $run->bindParam(':rate', $rate, PDO::PARAM_INT);  
             $run->bindParam(':active', $active, PDO::PARAM_INT);  
@@ -88,7 +88,7 @@ if (isset($_POST['submit'])) {
         if (!empty($playable_categories)) {
             for ($i = 0;$i < count($playable_categories);$i++) {
                 $sql = "INSERT INTO `playable_categories`(`user_id`, `team_categories_id`) 
-						VALUES (?,?)";
+						VALUES (:user_id,:team_categories_id)";
                 $run = $dbh->prepare($sql);
                 $run->bindParam(':user_id', $id, PDO::PARAM_INT);
                 $run->bindParam(':team_categories_id', $playable_categories[$i], PDO::PARAM_INT);
