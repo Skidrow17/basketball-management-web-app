@@ -40,11 +40,12 @@ if (isset($_POST['language']) && isset($_POST['pollingTime'])
             } else {
                 echo 'You should select a file to upload !!';
             }
+            $profile_img = $url_location.$pic_name;
             $sql = "UPDATE user SET polling_time = :pollingTime,language = :language,profile_pic = :profile_pic where id = :user_id";
             $run = $dbh->prepare($sql);
             $run->bindParam(':pollingTime', $pollingTime, PDO::PARAM_STR);
 			$run->bindParam(':language', $language, PDO::PARAM_STR);
-			$run->bindParam(':profile_pic', $url_location.$pic_name, PDO::PARAM_STR);
+			$run->bindParam(':profile_pic', $profile_img, PDO::PARAM_STR);
 			$run->bindParam(':user_id', $user_id, PDO::PARAM_INT);
             $run->execute();
         }
