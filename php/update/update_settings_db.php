@@ -20,7 +20,7 @@ if (isset($_POST['language']) && isset($_POST['pollingTime'])
         }
         
         if (empty($profile_pic)) {
-            $sql = "UPDATE user SET polling_time = :pollingTime,language = :language where id = :user_id";
+            $sql = "UPDATE user SET polling_time = :pollingTime, language = :language WHERE id = :user_id";
             $run = $dbh->prepare($sql);
             $run->bindParam(':pollingTime', $pollingTime, PDO::PARAM_STR);
 			$run->bindParam(':language', $language, PDO::PARAM_STR);
@@ -41,7 +41,7 @@ if (isset($_POST['language']) && isset($_POST['pollingTime'])
                 echo 'You should select a file to upload !!';
             }
             $profile_img = $url_location.$pic_name;
-            $sql = "UPDATE user SET polling_time = :pollingTime,language = :language,profile_pic = :profile_pic where id = :user_id";
+            $sql = "UPDATE user SET polling_time = :pollingTime, language = :language, profile_pic = :profile_pic WHERE id = :user_id";
             $run = $dbh->prepare($sql);
             $run->bindParam(':pollingTime', $pollingTime, PDO::PARAM_STR);
 			$run->bindParam(':language', $language, PDO::PARAM_STR);
@@ -66,4 +66,3 @@ if (isset($_POST['language']) && isset($_POST['pollingTime'])
     }
 }
 ?>
-
