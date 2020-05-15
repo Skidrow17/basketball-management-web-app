@@ -33,9 +33,20 @@ if (isset($_POST['submit'])) {
         $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
         if (empty($profile_pic)) {
             $sql = "INSERT INTO `user`(`username`, `password`, `name`,`surname`,`email`,`phone`,`driving_licence`,`living_place`,`profession`,`rate`,`password_recovery_url`) 
-					VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+					VALUES (:username, :password, :name, :surname, :email, :phone, :driving_licence, :living_place, :profession, :rate, :password_recovery)";
             $run = $dbh->prepare($sql);
-            $run->execute([$username, $password, $name, $surname, $email, $phone, $driving_licence, $living_place, $profession, $rate,$password_recovery]);
+            $run->bindParam(':username', $username, PDO::PARAM_STR);
+            $run->bindParam(':password', $password, PDO::PARAM_STR);
+            $run->bindParam(':name', $name, PDO::PARAM_STR);
+            $run->bindParam(':surname', $surname, PDO::PARAM_STR); 
+            $run->bindParam(':email', $email, PDO::PARAM_STR);
+            $run->bindParam(':phone', $phone, PDO::PARAM_STR); 
+            $run->bindParam(':driving_licence', $driving_licence, PDO::PARAM_INT);
+            $run->bindParam(':living_place', $living_place, PDO::PARAM_INT);
+            $run->bindParam(':profession', $profession, PDO::PARAM_INT);
+            $run->bindParam(':rate', $rate, PDO::PARAM_INT);  
+            $run->bindParam(':password_recovery', $password_recovery, PDO::PARAM_STR); 
+            $run->execute();
         } else {
             $pic_name = $_FILES['profile_pic']['name'];
             $temp_name = $_FILES['profile_pic']['tmp_name'];
@@ -51,10 +62,23 @@ if (isset($_POST['submit'])) {
                 echo 'You should select a file to upload !!';
             }
             $sql = "INSERT INTO `user`(`username`, `password`, `name`,`surname`,`email`,`phone`,`driving_licence`,`living_place`,`profile_pic`,`profession`,`rate`,`active`,`password_recovery_url`) 
-					VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+					VALUES (:username, :password, :name, :surname, :email, :phone, :driving_licence, :living_place, :profile_pic, :profession, :rate, :active, :password_recovery_url)";
 			
             $run = $dbh->prepare($sql);
-            $run->execute([$username, $password, $name, $surname, $email, $phone, $driving_licence, $living_place, $url_location . $pic_name, $profession, $rate, $active ,$password_recovery]);
+            $run->bindParam(':username', $username, PDO::PARAM_STR);
+            $run->bindParam(':password', $password, PDO::PARAM_STR);
+            $run->bindParam(':name', $name, PDO::PARAM_STR);
+            $run->bindParam(':surname', $surname, PDO::PARAM_STR); 
+            $run->bindParam(':email', $email, PDO::PARAM_STR);
+            $run->bindParam(':phone', $phone, PDO::PARAM_STR); 
+            $run->bindParam(':driving_licence', $driving_licence, PDO::PARAM_INT);
+            $run->bindParam(':living_place', $living_place, PDO::PARAM_INT);
+            $run->bindParam(':profile_pic', $url_location . $pic_name, PDO::PARAM_STR);
+            $run->bindParam(':profession', $profession, PDO::PARAM_INT);
+            $run->bindParam(':rate', $rate, PDO::PARAM_INT);  
+            $run->bindParam(':active', $active, PDO::PARAM_INT);  
+            $run->bindParam(':password_recovery_url', $password_recovery, PDO::PARAM_STR); 
+            $run->execute();
 			
 		}
         $sql = "select id from user order by id desc limit 1";
@@ -65,8 +89,10 @@ if (isset($_POST['submit'])) {
             for ($i = 0;$i < count($playable_categories);$i++) {
                 $sql = "INSERT INTO `playable_categories`(`user_id`, `team_categories_id`) 
 						VALUES (?,?)";
-                $r = $dbh->prepare($sql);
-                $r->execute([$id, $playable_categories[$i]]);
+                $run = $dbh->prepare($sql);
+                $run->bindParam(':user_id', $id, PDO::PARAM_INT);
+                $run->bindParam(':team_categories_id', $playable_categories[$i], PDO::PARAM_INT);
+                $run->execute();
             }
         }
         if ($run->rowCount() > 0) {
