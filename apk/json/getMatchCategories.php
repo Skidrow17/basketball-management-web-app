@@ -7,7 +7,7 @@ require_once '../../php/connect_db.php';
 
 $json_array = array();
 
-$sql = "SELECT * from team_categories ";
+$sql = "SELECT * FROM team_categories WHERE active = 0";
 
 $run = $dbh->prepare($sql);
 $run->execute();
