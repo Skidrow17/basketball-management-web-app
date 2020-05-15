@@ -80,11 +80,12 @@ if (isset($_POST['id'])) {
             } else {
                 echo 'You should select a file to upload !!';
             }
+            $profile_img = $url_location . $pic_name;
             if ($password !== '') {
                 $hashed_pass = password_hash($password, PASSWORD_DEFAULT);
                 $sql = "UPDATE user SET profile_pic=:profile_pic, username=:username, password=:hashed_pass, name=:name, surname=:surname, email=:email, phone=:phone, driving_licence=:driving_licence, profession=:profession, active=:active, rate=:rate, living_place=:living_place where id = :id";
                 $run = $dbh->prepare($sql);
-                $run->bindParam(':profile_pic', $url_location . $pic_name, PDO::PARAM_STR);
+                $run->bindParam(':profile_pic', $profile_img, PDO::PARAM_STR);
                 $run->bindParam(':username', $username, PDO::PARAM_STR);
                 $run->bindParam(':hashed_pass', $hashed_pass, PDO::PARAM_STR);
                 $run->bindParam(':name', $name, PDO::PARAM_STR);
@@ -101,7 +102,7 @@ if (isset($_POST['id'])) {
             } else {
                 $sql = "UPDATE user SET profile_pic=:profile_pic, username=:username, name=:name, surname=:surname, email=:email, phone=:phone, driving_licence=:driving_licence, profession=:profession, active=:active, rate=:rate, living_place=:living_place where id = :id";
                 $run = $dbh->prepare($sql);
-                $run->bindParam(':profile_pic', $url_location . $pic_name, PDO::PARAM_STR);
+                $run->bindParam(':profile_pic', $profile_img, PDO::PARAM_STR);
                 $run->bindParam(':username', $username, PDO::PARAM_STR);
                 $run->bindParam(':name', $name, PDO::PARAM_STR);
                 $run->bindParam(':surname', $surname, PDO::PARAM_STR); 
