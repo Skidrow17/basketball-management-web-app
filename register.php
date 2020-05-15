@@ -89,7 +89,7 @@ require_once('php/select_boxes.php');
 				</div>
 				<div class="form-row">
 					<div class="col-xl-12">
-						<button name="submit" class="btn btn-primary btn-lg col-xl-12" type="submit" style="width:290px;"><?php echo $addButton; ?></button>
+					<button name="submit" class="btn btn-primary btn-lg col-xl-12" type="submit"><?php echo $addButton; ?></button>
 					</div>
 				</div>
 			</form>
