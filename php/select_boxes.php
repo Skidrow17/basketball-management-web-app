@@ -215,7 +215,7 @@ function getUserCategory($selected) {
 function getUsers() {
     require 'connect_db.php';
 	include 'language.php';
-    $sql = "SELECT id,name,surname from user";
+    $sql = "SELECT id,name,surname FROM user ORDER BY name";
     $lid = $dbh->prepare($sql);
     $lid->execute();
     echo '<select name="users" id="users" onchange="showUser(this.value)" class="form-control" required>';
