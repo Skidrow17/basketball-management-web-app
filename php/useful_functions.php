@@ -442,7 +442,7 @@ function recovery_email_send($mail,$recovery_url)
 }
 
 function sentPushNotification($sender_name,$receiver_token,$message) {
-  define( 'API_ACCESS_KEY', 'AAAApMEIeNU:APA91bEfkVs_--4jAPOVgmaoB3FL6mz1EDLyMki3ftV3mpazrF4PNsnC1UWL25jWHos0rydUNxO48ro9lFNRWYO0MMizo3yZxiriiDj69GbIzBdCv2NYMzQdPZ5Jyx_6jL3mK_6UIFG8' );
+  $API_ACCESS_KEY = 'AAAApMEIeNU:APA91bEfkVs_--4jAPOVgmaoB3FL6mz1EDLyMki3ftV3mpazrF4PNsnC1UWL25jWHos0rydUNxO48ro9lFNRWYO0MMizo3yZxiriiDj69GbIzBdCv2NYMzQdPZ5Jyx_6jL3mK_6UIFG8';
 
   $msg = array
   (
@@ -464,7 +464,7 @@ function sentPushNotification($sender_name,$receiver_token,$message) {
   
   $headers = array
   (
-    'Authorization: key=' . API_ACCESS_KEY,
+    'Authorization: key=' . $API_ACCESS_KEY,
     'Content-Type: application/json'
   );
   
@@ -478,4 +478,5 @@ function sentPushNotification($sender_name,$receiver_token,$message) {
   $result = curl_exec($ch );
   curl_close( $ch );
 }
+
 ?>
