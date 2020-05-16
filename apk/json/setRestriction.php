@@ -9,11 +9,10 @@ $fetch = array();
 
 if(isset($_GET['safe_key']) && isset($_GET['user_id'])){
 	
-	
+	update_last_seen_time($_GET['user_id']);
 	$match_week = date("W", strtotime($_GET['date']));
 	$match_year = date("Y", strtotime($_GET['date']));
 	$comment = filter_var($_GET["comment"], FILTER_SANITIZE_STRING);
-
 	$sql = "SELECT COUNT(*) as nor FROM human_power HP,game G WHERE G.Id = HP.game_id AND Week(G.date_time,1) = :match_week AND Year(G.date_time) = :match_year";
 	$run = $dbh->prepare($sql);
 	$run->bindParam(':match_week', $match_week, PDO::PARAM_STR);

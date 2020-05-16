@@ -15,6 +15,7 @@ if(isset($_GET['safe_key']) && isset($_GET['user_id'])){
 	$match_id = filter_var($_GET["match_id"], FILTER_SANITIZE_NUMBER_INT);
 
 	if (security_check($_GET['safe_key'], $_GET['user_id']) == true) {
+		update_last_seen_time($_GET['user_id']);
 		$sql = "UPDATE game SET team_score_1 = :team_score_1, team_score_2 = :team_score_2, state=:state WHERE id = :match_id";
 		$run = $dbh->prepare($sql);
 		$run->bindParam(':team_score_1',$team_score_1,PDO::PARAM_INT);

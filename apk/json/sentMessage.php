@@ -9,6 +9,7 @@ $fetch = array();
 
 if(isset($_GET['safe_key']) && isset($_GET['sender_id'])){
 	if (security_check($_GET['safe_key'], $_GET['sender_id']) == true) {
+		update_last_seen_time($_GET['sender_id']);
 		$sender_id = filter_var($_GET["sender_id"], FILTER_SANITIZE_NUMBER_INT);
 		$receiver_id = filter_var($_GET["receiver_id"], FILTER_SANITIZE_NUMBER_INT);
 		$text_message = filter_var($_GET["text_message"], FILTER_SANITIZE_STRING);

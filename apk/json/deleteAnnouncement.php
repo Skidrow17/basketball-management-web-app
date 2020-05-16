@@ -13,6 +13,7 @@ if(isset($_GET['safe_key']) && isset($_GET['user_id'])){
 	$user_id = filter_var($_GET["user_id"], FILTER_SANITIZE_NUMBER_INT);
 
 	if (security_check($_GET['safe_key'], $_GET['user_id']) == true) {
+		update_last_seen_time($_GET['user_id']);
 		$profession = 0;
 		$sql = "SELECT profession from user where id=:user_id";
 		$run = $dbh->prepare($sql);

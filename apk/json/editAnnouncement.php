@@ -9,6 +9,7 @@ $fetch = array();
 
 if(isset($_GET['safe_key']) && isset($_GET['id'])){
 	if (security_check($_GET['safe_key'], $_GET['id']) == true) {
+		update_last_seen_time($_GET['id']);
 		$id = filter_var($_GET['announcement_id'], FILTER_SANITIZE_NUMBER_INT);
 		$title = filter_var($_GET['title'], FILTER_SANITIZE_STRING);
 		$text = filter_var($_GET['text'], FILTER_SANITIZE_STRING);

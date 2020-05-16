@@ -10,6 +10,7 @@ $fetch = array();
 if(isset($_GET['safe_key']) && isset($_GET['id'])){
 	$id = filter_var($_GET["id"], FILTER_SANITIZE_NUMBER_INT);		
 	if (security_check($_GET['safe_key'], $_GET['id']) == true) {
+		update_last_seen_time($_GET['id']);
 		$sql = "SELECT M.id,U.name,U.surname,M.text_message,M.sender_id,U.profile_pic,DATE_FORMAT(M.date_time, '%d/%m/%Y %H:%i') as date_time,M.message_read FROM user U, message M where U.id=M.sender_id AND receiver_delete=0 AND receiver_id=:id ORDER BY M.date_time desc ";
 		$run = $dbh->prepare($sql);
 		$run->bindParam(':id', $id, PDO::PARAM_INT);

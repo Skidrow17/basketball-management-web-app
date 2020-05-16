@@ -3,6 +3,16 @@
 //Access: Admin & Authorized User
 //Purpose: containss useful function 
 
+function update_last_seen_time($user_id) {
+  require 'connect_db.php';
+  $sql = "UPDATE login_history SET logout_date_time = :logout_datetime WHERE id = :log_out_id";
+  $res = $dbh->prepare($sql);
+  $log_out_id = getLastLoginHistoryId($user_id);
+  $logout_datetime = date('Y-m-d H:i:s');
+  $res->bindParam(':log_out_id', $log_out_id, PDO::PARAM_INT);
+  $res->bindParam(':logout_datetime', $logout_datetime, PDO::PARAM_STR);
+  $res->execute();
+}
 function getLastId() {
   require 'connect_db.php';
   $sql = "SELECT id from login_history order by id desc limit 1";

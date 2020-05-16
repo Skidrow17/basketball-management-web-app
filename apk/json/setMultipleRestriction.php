@@ -8,8 +8,7 @@ require_once '../../php/useful_functions.php';
 $fetch = array();
 
 if(isset($_GET['safe_key']) && isset($_GET['user_id'])){
-	
-	
+	update_last_seen_time($_GET['user_id']);
 	$match_week = date("W", strtotime(date("Y/m/d")));
 	$match_year = date("Y", strtotime(date("Y/m/d")));
 	$comment = filter_var($_GET["comment"], FILTER_SANITIZE_STRING);

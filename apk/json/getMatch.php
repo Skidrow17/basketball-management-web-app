@@ -10,6 +10,7 @@ $fetch = array();
 if(isset($_GET['safe_key']) && isset($_GET['id'])){
 	$id = filter_var($_GET["id"], FILTER_SANITIZE_NUMBER_INT);		
 	if (security_check($_GET['safe_key'], $_GET['id']) == true) {
+		update_last_seen_time($_GET['id']);
 		$sql = "SELECT 
 				home.name AS team_id_1, 
 				away.name AS team_id_2,r.id,r.state,r.team_score_1,r.team_score_2,DATE_FORMAT(r.date_time, '%d/%m/%Y %H:%i') as date_time,c.latitude,c.longitude
