@@ -3,6 +3,11 @@
 //Access: Admin & Authorized User
 //Purpose: containss useful function 
 
+define( 'API_ACCESS_KEY', 'AAAApMEIeNU:APA91bEfkVs_--4jAPOVgmaoB3FL6mz1EDLyMki3ftV3mpazrF4PNsnC1UWL25jWHos0rydUNxO48ro9lFNRWYO0MMizo3yZxiriiDj69GbIzBdCv2NYMzQdPZ5Jyx_6jL3mK_6UIFG8');
+define( 'EMAIL', 'ekasdymannouncements@yahoo.com');
+define( 'PASSWORD', 'diplomaThesis12345');
+define( 'ORGANIZATION','EKASDYM');
+
 function update_last_seen_time($user_id) {
   require 'connect_db.php';
   $sql = "UPDATE login_history SET logout_date_time = :logout_datetime WHERE id = :log_out_id";
@@ -208,12 +213,12 @@ function sent_mail($mail,$username,$password)
   $mail->isSMTP();                                   // Set mailer to use SMTP
   $mail->Host = 'smtp.mail.yahoo.fr';                    // Specify main and backup SMTP servers
   $mail->SMTPAuth = true;                            // Enable SMTP authentication
-  $mail->Username = 'ekasdymannouncements@yahoo.com';          // SMTP username
-  $mail->Password = 'diplomaThesis12345'; // SMTP password
+  $mail->Username = EMAIL;          // SMTP username
+  $mail->Password = PASSWORD; // SMTP password
   $mail->SMTPSecure = 'ssl';                         // Enable TLS encryption, `ssl` also accepted
   $mail->Port = 465;                                 // TCP port to connect to
-  $mail->setFrom('ekasdymannouncements@yahoo.com', 'EKASDYM');
-  $mail->addReplyTo('ekasdymannouncements@yahoo.com', 'EKASDYM');
+  $mail->setFrom(EMAIL, ORGANIZATION);
+  $mail->addReplyTo(EMAIL, ORGANIZATION);
   $mail->addAddress($strmail);   // Add a recipient
 
   $mail->isHTML(true);  // Set email format to HTML
@@ -268,7 +273,7 @@ function sent_mail($mail,$username,$password)
   </html> 
   ';
 
-  $mail->Subject = 'EKASDYM';
+  $mail->Subject = ORGANIZATION;
   $mail->Body    = $bodyContent;
 
   if(!$mail->send()) {
@@ -287,12 +292,12 @@ function recovery_email_send_mobile($mail,$recoveryKey)
   $mail->isSMTP();                                   // Set mailer to use SMTP
   $mail->Host = 'smtp.mail.yahoo.fr';                    // Specify main and backup SMTP servers
   $mail->SMTPAuth = true;                            // Enable SMTP authentication
-  $mail->Username = 'ekasdymannouncements@yahoo.com';          // SMTP username
-  $mail->Password = 'diplomaThesis12345'; // SMTP password
+  $mail->Username = EMAIL;          // SMTP username
+  $mail->Password = PASSWORD; // SMTP password
   $mail->SMTPSecure = 'ssl';                         // Enable TLS encryption, `ssl` also accepted
   $mail->Port = 465;                                 // TCP port to connect to
-  $mail->setFrom('ekasdymannouncements@yahoo.com', 'EKASDYM');
-  $mail->addReplyTo('ekasdymannouncements@yahoo.com', 'EKASDYM');
+  $mail->setFrom(EMAIL, ORGANIZATION);
+  $mail->addReplyTo(EMAIL, ORGANIZATION);
   $mail->addAddress($strmail);   // Add a recipient
 
   $mail->isHTML(true);  // Set email format to HTML
@@ -345,7 +350,7 @@ function recovery_email_send_mobile($mail,$recoveryKey)
   </html> 
   ';
 
-  $mail->Subject = 'EKASDYM';
+  $mail->Subject = ORGANIZATION;
   $mail->Body    = $bodyContent;
 
   if(!$mail->send()) {
@@ -370,12 +375,12 @@ function recovery_email_send($mail,$recovery_url)
   $mail->isSMTP();                                   // Set mailer to use SMTP
   $mail->Host = 'smtp.mail.yahoo.fr';                    // Specify main and backup SMTP servers
   $mail->SMTPAuth = true;                            // Enable SMTP authentication
-  $mail->Username = 'ekasdymannouncements@yahoo.com';          // SMTP username
-  $mail->Password = 'diplomaThesis12345'; // SMTP password
+  $mail->Username = EMAIL;          // SMTP username
+  $mail->Password = PASSWORD; // SMTP password
   $mail->SMTPSecure = 'ssl';                         // Enable TLS encryption, `ssl` also accepted
   $mail->Port = 465;                                 // TCP port to connect to
-  $mail->setFrom('ekasdymannouncements@yahoo.com', 'EKASDYM');
-  $mail->addReplyTo('ekasdymannouncements@yahoo.com', 'EKASDYM');
+  $mail->setFrom(EMAIL, ORGANIZATION);
+  $mail->addReplyTo(EMAIL, ORGANIZATION);
   $mail->addAddress($strmail);   // Add a recipient
 
   $mail->isHTML(true);  // Set email format to HTML
@@ -429,7 +434,7 @@ function recovery_email_send($mail,$recovery_url)
   </html> 
   ';
 
-  $mail->Subject = 'EKASDYM';
+  $mail->Subject = ORGANIZATION;
   $mail->Body    = $bodyContent;
 
   if(!$mail->send()) {
@@ -442,8 +447,6 @@ function recovery_email_send($mail,$recovery_url)
 }
 
 function sentPushNotification($sender_name,$receiver_token,$message) {
-  $API_ACCESS_KEY = 'AAAApMEIeNU:APA91bEfkVs_--4jAPOVgmaoB3FL6mz1EDLyMki3ftV3mpazrF4PNsnC1UWL25jWHos0rydUNxO48ro9lFNRWYO0MMizo3yZxiriiDj69GbIzBdCv2NYMzQdPZ5Jyx_6jL3mK_6UIFG8';
-
   $msg = array
   (
     'message' 	=> $message,
@@ -464,7 +467,7 @@ function sentPushNotification($sender_name,$receiver_token,$message) {
   
   $headers = array
   (
-    'Authorization: key=' . $API_ACCESS_KEY,
+    'Authorization: key=' . API_ACCESS_KEY,
     'Content-Type: application/json'
   );
   
