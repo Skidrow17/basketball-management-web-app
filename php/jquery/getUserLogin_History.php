@@ -12,7 +12,7 @@ if (isset($_POST['current_page']) && isset($_SESSION['safe_key']) && isset($_SES
     if (security_check($_SESSION['safe_key'], $_SESSION['user_id']) == true) {
         $page = $_POST['current_page'] * 7;
         
-        $sql = "SELECT DATE_FORMAT(LH.login_date_time, '%d/%m/%Y %H:%i') as login_date_time,DATE_FORMAT(LH.logout_date_time, '%d/%m/%Y %H:%i') as logout_date_time,LH.safe_key,LH.ip,LH.device_name from user U,login_history LH where U.id=LH.user_id AND user_id = :uid ORDER BY LH.logout_date_time desc limit :page,7";
+        $sql = "SELECT DATE_FORMAT(LH.login_date_time, '%d/%m/%Y %H:%i') as login_date_time,DATE_FORMAT(LH.logout_date_time, '%d/%m/%Y %H:%i') as logout_date_time,LH.safe_key,LH.ip,LH.device_name from user U,login_history LH where U.id=LH.user_id AND user_id = :uid ORDER BY LH.login_date_time desc limit :page,7";
         $run = $dbh->prepare($sql);
         $run->bindParam(':page', $page, PDO::PARAM_INT);
 		$run->bindParam(':uid', $_SESSION['user_id'], PDO::PARAM_INT);

@@ -20,7 +20,7 @@ if (isset($_POST['current_page']) && isset($_SESSION['safe_key']) && isset($_SES
 			<th>';echo $safeKey; echo'</th>
 			<th>';echo $loginDevice; echo'</th>
 			<th>IP</th>';
-        $sql = "SELECT U.name,U.surname,LH.login_date_time,LH.logout_date_time,LH.safe_key,LH.ip,LH.device_name from user U,login_history LH where U.id=LH.user_id ORDER BY DATE(LH.logout_date_time) DESC,TIME(LH.logout_date_time) DESC limit :page,9";
+        $sql = "SELECT U.name,U.surname,LH.login_date_time,LH.logout_date_time,LH.safe_key,LH.ip,LH.device_name from user U,login_history LH where U.id=LH.user_id ORDER BY LH.login_date_time DESC limit :page,9";
         $run = $dbh->prepare($sql);
         $run->bindParam(':page', $page, PDO::PARAM_INT);
         $run->execute();
