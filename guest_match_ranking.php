@@ -4,8 +4,8 @@
 
 session_start();
 include 'php/useful_functions.php';
-include 'php/labels_gr.php';
-require_once('php/select_boxes.php');
+require 'php/labels_gr.php';
+include 'php/select_boxes.php';
 require("http_to_https.php");
 if(isset($_COOKIE['uname'])&&isset($_COOKIE['pwd'])&&isset($_COOKIE['safe_key']))
 header('Location: ./php/login.php');
