@@ -48,7 +48,6 @@ function getAnnoucements(post_id) {
         data: post_id,
         success: function(result) {
             autologout(result);
-			console.log(result.length);
 			if(result.length != 5){
 				spinnerActivation();
 				$("#here").html(result);
