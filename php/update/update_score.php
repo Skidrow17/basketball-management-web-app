@@ -15,9 +15,9 @@ if (isset($_POST['game_id'])) {
         $state = filter_var($_POST['state'], FILTER_SANITIZE_NUMBER_INT);
         $game_id = filter_var($_POST['game_id'], FILTER_SANITIZE_NUMBER_INT);
         $user_id = filter_var($_SESSION['user_id'], FILTER_SANITIZE_NUMBER_INT);
-        $sql = "UPDATE game SET team_score_1 = :id, team_score_2 = :team_score_2 , state = :state WHERE id=:game_id AND id IN (SELECT HP.game_id from human_power HP where HP.user_id = :user_id)";
+        $sql = "UPDATE game SET team_score_1 = :team_score_1, team_score_2 = :team_score_2 , state = :state WHERE id=:game_id AND id IN (SELECT HP.game_id from human_power HP where HP.user_id = :user_id)";
         $run = $dbh->prepare($sql);
-        $run->bindParam(':team_score_1', $id, PDO::PARAM_INT);
+        $run->bindParam(':team_score_1', $team_score_1, PDO::PARAM_INT);
         $run->bindParam(':team_score_2', $team_score_2, PDO::PARAM_INT);
         $run->bindParam(':state', $state, PDO::PARAM_INT);
         $run->bindParam(':game_id', $game_id, PDO::PARAM_INT);

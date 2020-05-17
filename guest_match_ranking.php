@@ -5,6 +5,7 @@
 session_start();
 include 'php/useful_functions.php';
 include 'php/labels_gr.php';
+require_once('php/select_boxes.php');
 require("http_to_https.php");
 if(isset($_COOKIE['uname'])&&isset($_COOKIE['pwd'])&&isset($_COOKIE['safe_key']))
 header('Location: ./php/login.php');
@@ -41,27 +42,38 @@ header('Location: ./php/login.php');
 	</nav>
 
 	<div class='form-row'>
-
 		<div class='col-xl-12'>
-			<div class="login-dark">
-				<form method="post" action="./php/login.php">
-					<div class="illustration"><i class="icon ion-ios-locked-outline" style="color:rgb(220,110,86);"></i></div>
-					<div class="form-group">
-						<input class="form-control" type="text" name="username" id="username" placeholder="Όνομα Χρήστη" required>
+			<div class="annoucements-look element">
+				<form id='hide' method="post" style="background-color:rgba(238,238,238,0.74);">
+
+					<div class="form-row">
+						<div class="col">
+							<h3><?php echo $ranking; ?></h3>
+						</div>
 					</div>
-					<div class="form-group">
-						<input class="form-control" type="password" name="password" id="password" placeholder="Κωδικός" required>
+
+					<div class="form-row">
+						<div class="col-xl-6"><small class="form-text text-muted"><?php echo $selectCategory; ?></small>
+							<div class = "col"><?php echo getAllTeam_Categories(); ?></div>
+						</div>
+
+						<div class="col-xl-6" id="group_text" style="display:none;"><small class="form-text text-muted"><?php echo $select_group; ?></small>
+							<div class = "col" id = "groups" contenteditable="false"></div>
+						</div>
 					</div>
-					<div class="form-group">
-						<button class="btn btn-primary btn-block" type="submit">Είσοδος</button>
-					</div><a href="#" id="password_recovery" class="forgot">Ξεχάσατε τον κωδικό σας;</a>
+						
+					<div style="overflow-x:auto;">
+						<table id='ranking_table'>
+						</table>
+					</div>
+
 				</form>
 			</div>
 		</div>
 	</div>
 
 	<?php include('index_footer.php'); ?>
-		<script src="assets/js/index.js"></script>
+	<script src="assets/js/ranking_update.js"></script>
 
 </body>
 

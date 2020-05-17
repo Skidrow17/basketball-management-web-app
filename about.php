@@ -4,6 +4,7 @@
 //Purpose: Information About Us 
 
 require( "http_to_https.php"); 
+include 'php/labels_gr.php';
 
 ?>
 <!DOCTYPE html>
@@ -31,9 +32,10 @@ require( "http_to_https.php");
             </button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="nav navbar-nav ml-auto">
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="index.php"
-                            style="background-color:rgba(255,0,0,0);"><i class="fa fa-home"></i> Αρχική Σελίδα</a>
-                    </li>
+					<li class="nav-item" role="presentation"><a class="nav-link" href="index.php" style="background-color:rgba(255,0,0,0);"><i class="fa fa-home"></i> <?php echo $homePage; ?></a></li>
+					<li class="nav-item" role="presentation"><a class="nav-link" href="guest_all_matches.php" style="background-color:rgba(255,0,0,0);"><i class="fa fa-eercast"></i> <?php echo $weekly_matches; ?></a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="guest_match_ranking.php" style="background-color:rgba(255,0,0,0);"><i class="fa fa-newspaper-o"></i> <?php echo $ranking; ?></a></li>
+					<li class="nav-item" role="presentation"><a class="nav-link" href="about.php" style="background-color:rgba(255,0,0,0);"><i class="fa fa-info-circle"></i> <?php echo $about_us; ?></a></li>
                 </ul>
             </div>
         </div>
@@ -89,7 +91,7 @@ require( "http_to_https.php");
         </div>
 
         <div class='col-xl-4'>
-            <div class="login-dark" style="background-image:url(&quot;assets/css/ballz.jpg&quot;);">
+            <div class="login-dark" style="background-image:url(&quot;assets/css/balld.jpg&quot;);">
                 <form method="post">
                     <div class="illustration"><img height="242" width="242" src="assets/img/ziuzios.jpeg"
                             alt="Italian Trulli">

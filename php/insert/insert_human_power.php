@@ -20,7 +20,7 @@ if (isset($_POST['submit']) && isset($_SESSION['safe_key']) && isset($_SESSION['
                 $run->bindParam(':id', $id, PDO::PARAM_INT);
                 $run->bindParam(':user_id', $human_power[$i], PDO::PARAM_INT);
                 $run->execute();
-                if ($r->rowCount() > 0) $counter = $counter + 1;
+                if ($run->rowCount() > 0) $counter = $counter + 1;
             }
 			
 			$sql = "SELECT date_time FROM game WHERE id=:gid";

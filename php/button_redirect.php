@@ -23,9 +23,6 @@ if (security_check($_SESSION['safe_key'], $_SESSION['user_id']) == true) {
     } else if ($_POST["button"] == 7) {
         header('Location:../weekly_matches.php');
         die();
-    } else if ($_POST["button"] == 8) {
-        header('Location:../match_ranking.php');
-        die();
     }else {
         session_destroy();
         header('Location: ../index.php?server_response=Login απο άλλη συσκευή');

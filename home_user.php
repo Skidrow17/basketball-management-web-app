@@ -34,8 +34,7 @@ require_once('php/useful_functions.php');
 						<button name="button" value="2" class="btn btn-primary btn-block" type="submit"><?php echo $messages; ?></button>
 						<button name="button" value="5" class="btn btn-primary btn-block" type="submit"><?php echo $restrictions; ?></button>
 						<button name="button" value="6" class="btn btn-primary btn-block" type="submit"><?php echo $matches; ?></button>
-						<button name="button" value="7" class="btn btn-primary btn-block" type="submit"><?php echo $weekly_matches; ?></button>
-						<button name="button" value="8" class="btn btn-primary btn-block" type="submit"><?php echo $ranking; ?></button>
+						<button name="button" value="7" class="btn btn-primary btn-block" type="submit"><?php echo $weekly_matches.'/'.$ranking; ?></button>
 					</form>
 
 			</div>

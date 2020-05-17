@@ -1,6 +1,6 @@
 .login-dark {
   height:950px;
-  background-image:url(ball.jpg);
+  background-image:url(balld.jpg);
   background-size:cover;
   position:relative;
 }
@@ -121,7 +121,7 @@ textarea
 	  
 .annoucements-look {
   height:950px;
-  background-image:url(ball.jpg);
+  background-image:url(balld.jpg);
   background-size:cover;
   position:relative;
 }
@@ -204,13 +204,13 @@ textarea
 }
 
 .element {
-   background-image:url(ball.jpg);
+   background-image:url(balld.jpg);
 }
 
 
 @media (min-width: 1200px) {
     .element {
-        background-image:url(ball.jpg);
+        background-image:url(balld.jpg);
     }
 }
 

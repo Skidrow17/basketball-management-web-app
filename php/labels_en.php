@@ -5,6 +5,7 @@
 
  // NavBar Admin
  $homePage = "Home";
+ $about_us = "About Us";
  $tabels = "Tables";
 	$loginHistory = "Login History";
 	$restrictions = "Restrictions";

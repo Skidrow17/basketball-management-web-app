@@ -5,6 +5,7 @@
 
  // NavBar Admin
  $homePage = "Αρχική";
+ $about_us = "Σχετικά Με εμάς";
  $tabels = "Πίνακες";
 	$loginHistory = "Ιστορικό Συνδέσεων";
 	$restrictions = "Κωλύματα";
