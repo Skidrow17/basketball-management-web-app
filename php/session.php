@@ -4,7 +4,6 @@
 //Purpose: Starts session
 
 session_start();
-
 if (!isset($_SESSION['username'])) {
     if (isset($_COOKIE['uname']) == true && isset($_COOKIE['pwd']) == true) {
         header('location: ./php/login.php');
