@@ -2,6 +2,7 @@
 
 //Access: Admin 
 //Purpose: contains the navigation bar visible from admin
+require_once('php/language.php');
 
 ?>
 <nav class="navbar navbar-light navbar-expand-md fixed-top navbar-transparency" id="nav_bar">
@@ -24,7 +25,7 @@
                     <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="match_referee_update.php"><?php echo $usersPerMatch; ?></a><a class="dropdown-item" role="presentation" href="ranking_update.php"><?php echo $ranking; ?></a><a class="dropdown-item" role="presentation" href="match_update.php"><?php echo $match1; ?></a><a class="dropdown-item" role="presentation" href="update_general_info.php?id=1"><?php echo $city1; ?></a><a class="dropdown-item" role="presentation" href="update_general_info.php?id=2"><?php echo $teamCategory1; ?></a><a class="dropdown-item" role="presentation" href="update_general_info.php?id=3"><?php echo $userCategory; ?></a><a class="dropdown-item" role="presentation" href="update_general_info.php?id=4"><?php echo $team; ?></a><a class="dropdown-item" role="presentation" href="user_update.php"><?php echo $user; ?></a><a class="dropdown-item" role="presentation" href="court_update.php"><?php echo $court; ?></a></div>
                 </li>
 
-                <li class="dropdown" style="background-color:rgba(255,255,255,0);"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#" style="background-color:rgba(255,255,255,0);"><i class="fa fa-user"></i> <?php echo $_SESSION["username"]; ?></a>
+                <li class="dropdown" style="background-color:rgba(255,255,255,0);"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#" style="background-color:rgba(255,255,255,0);"><i class="fa fa-user"></i> <?php if(isset($_SESSION["username"])) echo$_SESSION["username"]; ?></a>
                     <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="admin_messages.php"><?php echo $messages; ?></a><a class="dropdown-item" role="presentation" href="admin_announcements.php"><?php echo $announcements; ?><a class="dropdown-item" role="presentation" href="admin_settings.php"><?php echo $settings; ?></a><a class="dropdown-item" role="presentation" href="./php/logout.php"><?php echo $logout; ?></a></div>
                 </li>
             </ul>

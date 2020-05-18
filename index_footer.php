@@ -2,6 +2,7 @@
 
 //Access: Guest 
 //Purpose: contains the footer of the intro page
+require_once('php/language.php');
 
 ?>
 <div class="footer-clean">

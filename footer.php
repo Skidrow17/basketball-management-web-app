@@ -2,6 +2,7 @@
 
 //Access: Everyone 
 //Purpose: contains the footer of all pages; 
+require_once('php/language.php');
 
 ?>
 <div class="footer-clean">
@@ -35,7 +36,7 @@
             </div>
         </div>
     </footer>
-	<script> var pollingTime = <?php echo $_SESSION['polling_time'];?> </script>
+	<script> var pollingTime = <?php if(isset($_SESSION['polling_time']))echo $_SESSION['polling_time'];?> </script>
     <audio id="buzzer" src="assets/ringtone/message_alert.wav" type="audio/ogg"></audio>
 	<script src="assets/js/autologout.js"></script>
     <script src="assets/js/jquery.min.js"></script>
