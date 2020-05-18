@@ -1,4 +1,4 @@
-﻿<?php
+<?php
  
 //Access: Authorized User
 //Purpose: Starts session

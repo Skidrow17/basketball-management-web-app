@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 //Access: Authorized User & Admin
 //Purpose: Autologout in case the user loged in from different device
