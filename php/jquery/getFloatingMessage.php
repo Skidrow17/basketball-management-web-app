@@ -18,29 +18,29 @@ if (isset($_POST['game_id']) && isset($_SESSION['safe_key']) && isset($_SESSION[
         $run = $dbh->prepare($sql);
         $run->bindParam(':game_id', $id, PDO::PARAM_INT);
         $run->execute();
-        $rf;
-        $jg;
-        $rr;
-        $rj;
+        $current_referees;
+        $current_judges;
+        $required_referees;
+        $required_judges;
         $flag = 0;
         while ($row = $run->fetch(PDO::FETCH_ASSOC)) {
-            $rf = $row['rf'];
-            $jg = $row['jg'];
-            $rr = $row['required_referees'];
-            $rj = $row['required_judges'];
+            $current_referees = $row['rf'];
+            $current_judges = $row['jg'];
+            $required_referees = $row['required_referees'];
+            $required_judges = $row['required_judges'];
         }
-        if (($rr - $rf) > 1) echo $needMore;
+        if (($required_referees - $current_referees) > 1) echo $needMore;
         else echo $needOneMore;
-        if ($rr != $rf) {
-            echo $rr - $rf;
-            if (($rr - $rf) > 1) echo $referees;
+        if ($required_referees != $current_referees) {
+            echo $required_referees - $current_referees;
+            if (($required_referees - $current_referees) > 1) echo $referees;
             else echo $referee;
             $flag = 1;
         }
-        if ($jg != $rj) {
+        if ($current_judges != $required_judges) {
             if ($flag == 1) echo $and;
-            echo $rj - $jg;
-            if (($rj - $jg) > 1) echo $judges;
+            echo $required_judges - $current_judges;
+            if (($required_judges - $current_judges) > 1) echo $judges;
             else echo $judge;
         }
     } else {
