@@ -4,6 +4,8 @@
 //Purpose: dashboard that exposes system informations
 
 include 'connect_db.php';
+include 'language.php';
+
 $a = array();
 $month = [];
 $restriction = [];

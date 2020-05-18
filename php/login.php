@@ -3,9 +3,10 @@
 //Access: Admin & Authorized User
 //Purpose: login helper + register cookies + session
 
+session_start();
 require 'connect_db.php';
 require 'useful_functions.php';
-session_start();
+
 $cookie_time = time() + 60 * 60 * 60;
 $username = '';
 $password = '';

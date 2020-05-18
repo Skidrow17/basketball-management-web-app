@@ -3,9 +3,9 @@
 //Access: Admin
 //Purpose: login to the website from the android apk
 
+session_start();
 require 'connect_db.php';
 require 'useful_functions.php';
-session_start();
  
 if (isset($_POST['password']) && isset($_POST['username']) && isset($_POST['safe_key'])) {
 	$cookie_time = time() + 60 * 60 * 60;
