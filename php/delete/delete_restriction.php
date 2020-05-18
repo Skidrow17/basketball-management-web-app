@@ -72,5 +72,3 @@ if (isset($_POST['id']) && isset($_SESSION['safe_key']) && isset($_SESSION['user
 		die();
     }
 }
-?>
-

@@ -8,8 +8,7 @@ require_once '../connect_db.php';
 require_once '../useful_functions.php';
 require_once '../language.php';
 
-if (isset($_POST['message']) && isset($_POST['title']) && isset($_POST['aid'])
-&& isset($_SESSION['safe_key']) && isset($_SESSION['user_id'])) {
+if (isset($_POST['message']) && isset($_POST['title']) && isset($_POST['aid']) && isset($_SESSION['safe_key']) && isset($_SESSION['user_id'])) {
     if (security_check($_SESSION['safe_key'], $_SESSION['user_id']) == true) {
         $message = filter_var($_POST['message'], FILTER_SANITIZE_STRING);
         $title = filter_var($_POST['title'], FILTER_SANITIZE_STRING);
@@ -32,13 +31,16 @@ if (isset($_POST['message']) && isset($_POST['title']) && isset($_POST['aid'])
         echo 'HTTP/1.0 401 Unauthorized';
     }
 } else {
-    if ($_SESSION['profession'] === 'Admin') {
-        header('Location: ../../admin_announcements.php');
-        die();
-    } else {
-        header('Location: ../../announcements.php');
+    if(isset($_SESSION['profession'] )){
+        if ($_SESSION['profession'] === 'Admin') {
+            header('Location: ../../admin_announcements.php');
+            die();
+        } else {
+            header('Location: ../../announcements.php');
+            die();
+        }
+    }else{
+        header('Location: ../../index.php');
         die();
     }
 }
-?>
-

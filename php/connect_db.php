@@ -23,7 +23,3 @@ catch(PDOException $e)
 //die('Connection error:' . $pe->getmessage()); 
 die('Connection error:' . $e->getmessage()); 
 }
-
-
-?>
-

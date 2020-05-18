@@ -40,4 +40,3 @@ if (isset($_POST["submit"]) && isset($_POST["password1"])) {
 		}
 }
 ?>
-

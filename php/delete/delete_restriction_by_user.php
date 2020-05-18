@@ -29,5 +29,3 @@ if (isset($_POST['restriction_id']) && isset($_SESSION['safe_key']) && isset($_S
 		die();
     }
 }
-?>
-

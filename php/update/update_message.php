@@ -39,4 +39,3 @@ if (isset($_POST['message_id']) && isset($_POST['current_category'])
     }
 }
 ?>
-

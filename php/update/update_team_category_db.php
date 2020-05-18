@@ -36,4 +36,3 @@ if (isset($_POST['team_category_name']) && isset($_POST['team_category'])) {
     die();
 }
 ?>
-

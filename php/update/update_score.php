@@ -42,4 +42,3 @@ if (isset($_POST['game_id'])) {
     die();
 }
 ?>
-

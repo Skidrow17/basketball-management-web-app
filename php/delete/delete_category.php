@@ -28,5 +28,3 @@ if (isset($_POST['team_category']) && isset($_SESSION['safe_key']) && isset($_SE
 		die();
     }
 }
-?>
-

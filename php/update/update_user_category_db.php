@@ -36,4 +36,3 @@ if (isset($_POST['user_category_name']) && isset($_POST['user_category'])) {
     die();
 }
 ?>
-

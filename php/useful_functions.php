@@ -481,5 +481,3 @@ function sentPushNotification($sender_name,$receiver_token,$message) {
   $result = curl_exec($ch );
   curl_close( $ch );
 }
-
-?>

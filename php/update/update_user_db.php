@@ -119,8 +119,6 @@ if (isset($_POST['id'])) {
         }
         $flag = 0;
         // Katigories pou borei na pexeis
-		
-		
         if (!empty($playable_categories)) {
             $sql = "DELETE FROM playable_categories WHERE user_id =:id";
             $stmt = $dbh->prepare($sql);
@@ -142,8 +140,6 @@ if (isset($_POST['id'])) {
             $flag = 1;
 		}
 		
-		
-		
         if ($run->rowCount() > 0 || $flag == 1) {
             $_SESSION['server_response'] = $success;
             header('Location: ../../user_update.php');
@@ -163,5 +159,3 @@ if (isset($_POST['id'])) {
     header('Location: ../../user_update.php');
     die();
 }
-?>
-

@@ -36,4 +36,3 @@ if (isset($_POST['city_name']) && isset($_POST['city'])) {
     die();
 }
 ?>
-

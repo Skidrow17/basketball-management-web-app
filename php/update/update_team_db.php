@@ -40,4 +40,3 @@ if (isset($_POST['team_name']) && isset($_POST['team_category2']) && isset($_POS
     die();
 }
 ?>
-
