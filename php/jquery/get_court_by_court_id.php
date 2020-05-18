@@ -34,6 +34,7 @@ if (isset($_POST['cid']) && isset($_SESSION['safe_key']) && isset($_SESSION['use
         session_destroy();
         header('HTTP/1.0 401 Unauthorized');
         echo 'HTTP/1.0 401 Unauthorized';
+		die();
     }
 }
 ?>

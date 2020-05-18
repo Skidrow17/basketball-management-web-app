@@ -38,6 +38,7 @@ if (security_check($_SESSION['safe_key'], $_SESSION['user_id']) == true) {
 	session_destroy();
 	header('HTTP/1.0 401 Unauthorized');
 	echo 'HTTP/1.0 401 Unauthorized';
+	die();
 }
 
 ?>

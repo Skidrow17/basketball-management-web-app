@@ -35,6 +35,7 @@ if (isset($_POST['message_id']) && isset($_POST['current_category'])
         session_destroy();
         header('HTTP/1.0 401 Unauthorized');
         echo 'HTTP/1.0 401 Unauthorized';
+		die();
     }
 }
 ?>
