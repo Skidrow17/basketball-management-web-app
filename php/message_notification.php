@@ -8,7 +8,7 @@ require_once 'connect_db.php';
 require_once 'useful_functions.php';
 require_once 'language.php';
 
-if (isset($_SESSION['safe_key'])&&isset($_SESSION['user_id'])) {
+if (isset($_SESSION['safe_key']) && isset($_SESSION['user_id']) && isset($_SESSION['polling_time'])) {
 	
 	if((round(microtime(true) * 1000)) > $_SESSION['polling_time'])
 		$_SESSION['polling_time'] = round(microtime(true) * 1000) + 60000 * $_SESSION['polling_mins'];
@@ -69,7 +69,7 @@ if (isset($_SESSION['safe_key'])&&isset($_SESSION['user_id'])) {
 	}
 } else {
    echo '{"code" : 2,
-		"polling_time" :'.$_SESSION["polling_time"].'
+			"polling_time" : 0
 		}';
 }
 
