@@ -14,4 +14,6 @@ endif;
 $_SESSION['server_response'] = $successfulLogout;
 header('location:../index.php');
 die();
+session_destroy();
+
 ?>

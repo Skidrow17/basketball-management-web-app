@@ -7,18 +7,18 @@ session_start();
 require_once '../connect_db.php';
 require '../useful_functions.php';
 require '../select_boxes.php';
+require_once '../language.php';
 
 $page = $_POST['current_page'] * 4;
-echo '  <tr>
-    <th>Κατάσταση Αγώνα</th>
-    <th>Ομάδα 1</th>
-    <th>Ομαδα 2</th>
-    <th>Σκορ 1</th>
-    <th>Σκορ 2</th>
-    <th>Μέρα</th>
-    <th>Τοποθεσία</th>
-    <th>Διαιτητές</th>
-    <th>Κριτές</th>
+echo '<tr>
+    <th>'; echo $team; echo' 1</th>
+    <th>'; echo $team; echo' 2</th>
+    <th>'; echo $score; echo' 1</th>
+    <th>'; echo $score; echo' 2</th>
+    <th>'; echo $date; echo'</th>
+    <th>'; echo $location; echo'</th>
+    <th>'; echo $referees; echo'</th>
+    <th>'; echo $judges; echo'</th>
     ';
 $sql = "SELECT distinct
 home.name AS team_id_1, 

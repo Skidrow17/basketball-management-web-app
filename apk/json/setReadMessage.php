@@ -9,7 +9,7 @@ $fetch = array();
 
 if(isset($_GET['safe_key']) && isset($_GET['id'])){
 	if (security_check($_GET['safe_key'], $_GET['id']) == true) {
-		update_last_seen_time($_GET['user_id']);
+		update_last_seen_time($_GET['id']);
 		$read = 1;
 		$id = filter_var($_GET['message_id'], FILTER_SANITIZE_NUMBER_INT);
 		$sql = "UPDATE message SET message_read=:message_read WHERE id=:id";
