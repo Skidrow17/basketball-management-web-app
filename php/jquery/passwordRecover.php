@@ -38,7 +38,7 @@ if (isset($_POST['username']) || isset($_SESSION['username'])) {
 			recovery_email_send($row['email'],$url.$recover_encode);
 		}else{
 			if(!isset($_SESSION['language'])){
-				echo "Αποστολή αίτησης αλλαγής κωδικού πρόσβασης στο ηλεκτρονικό ταχυδρομείο";
+				echo $password_change_request;
 			}else{
 		 		echo $please_check_email;
 			}
@@ -47,6 +47,6 @@ if (isset($_POST['username']) || isset($_SESSION['username'])) {
 	}
 	
 	if(!$userExists){
-		echo 'Μη έγκυρο όνομα χρήστη';
+		echo $non_valid_username;
 	}
 }

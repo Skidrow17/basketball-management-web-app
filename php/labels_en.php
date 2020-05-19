@@ -217,6 +217,6 @@
    $select_group = "Select Group";
    $comment = "Comment";
    $request_sent = "Request Successfuly Sent To Address";
-
-
+   $password_change_request = "An application for password change was sent to your email";
+   $non_valid_username = "Non Valid Username";
 ?>
