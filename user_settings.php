@@ -34,7 +34,7 @@ require_once('php/useful_functions.php');
                         </div>
                     </div>
 
-                    <?php include 'php/jquery/geUserSettings.php';?>
+                    <?php include 'get_user_settings.php';?>
 
                     <div class="row">
                         <div class="col">

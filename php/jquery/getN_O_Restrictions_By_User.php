@@ -3,9 +3,10 @@
 //Access: Authorized User
 //Purpose: retrieves number of restrictions by user
 
-require_once '../connect_db.php';
-require '../useful_functions.php';
 session_start();
+require_once '../connect_db.php';
+require_once '../useful_functions.php';
+
 if (isset($_SESSION['safe_key']) && isset($_SESSION['user_id'])) {
     if (security_check($_SESSION['safe_key'], $_SESSION['user_id']) == true) {
         $sql = "Select count(*) as n_o_r from restriction R where user_id=:uid AND R.deletable = 0 order by R.date desc";
@@ -22,5 +23,3 @@ if (isset($_SESSION['safe_key']) && isset($_SESSION['user_id'])) {
 		die();
     }
 }
-?>
-

@@ -48,6 +48,4 @@ if (isset($_POST['username']) || isset($_SESSION['username'])) {
 	if(!$userExists){
 		echo 'Μη έγκυρο όνομα χρήστη';
 	}
-  
 }
-?>

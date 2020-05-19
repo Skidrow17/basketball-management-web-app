@@ -60,11 +60,13 @@ if (isset($_POST['title']) && isset($_POST['text']) && isset($_SESSION['safe_key
         die();
     }
 } else {
-    if ($_SESSION['profession'] === 'Admin') {
-        header('Location: ../../admin_announcements.php');
-        die();
-    } else {
-        header('Location: ../../announcements.php');
-        die();
+    if(isset($_SESSION['profession'])){
+        if ($_SESSION['profession'] === 'Admin') {
+            header('Location: ../../admin_announcements.php');
+            die();
+        } else {
+            header('Location: ../../announcements.php');
+            die();
+        }
     }
 }

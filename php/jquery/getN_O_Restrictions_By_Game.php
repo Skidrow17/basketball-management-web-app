@@ -2,10 +2,10 @@
 
 //Access: Admin
 //Purpose: retrieves number of the restrictions by game
-
+session_start();
 require_once '../connect_db.php';
 require_once '../useful_functions.php';
-session_start();
+
 if (isset($_POST['id']) && isset($_SESSION['safe_key']) && isset($_SESSION['user_id'])){
     if (security_check($_SESSION['safe_key'], $_SESSION['user_id']) == true) {
         $sql = "Select date_time from game where id=:gid";
@@ -41,5 +41,3 @@ if (isset($_POST['id']) && isset($_SESSION['safe_key']) && isset($_SESSION['user
 		die();
     }
 }
-?>
-

@@ -3,9 +3,10 @@
 //Access: Authorized User
 //Purpose: retrieves number of logic history records per user
 
+session_start();
 require_once '../connect_db.php';
 require_once '../useful_functions.php';
-session_start();
+
 if (isset($_SESSION['safe_key']) && isset($_SESSION['user_id'])) {
     if (security_check($_SESSION['safe_key'], $_SESSION['user_id']) == true) {
         $sql2 = "SELECT count(*) as n_o_p FROM login_history WHERE user_id = :uid";
@@ -22,4 +23,3 @@ if (isset($_SESSION['safe_key']) && isset($_SESSION['user_id'])) {
 		die();
     }
 }
-?>
