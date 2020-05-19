@@ -141,6 +141,27 @@ require_once('php/select_boxes.php');
 			</form>
 
 			';
+			}else if($_GET['id'] == 6){
+				echo '
+				<form method="post"  action="php/insert/insert_group.php">
+				 <div class="form-row">
+							<div class="col">
+								<h3>';echo $group; echo'</h3>
+							</div>
+						</div>
+	
+					 <div class="form-row">
+							<div class="col">
+								<hr>
+							</div>
+						</div>
+				<div class="form-row">
+					<div class="col"><small class="form-text text-muted">';echo $name; echo'</small><input name="name" type="text" class="form-control" required /></div>
+					<div class="col"><button class="btn btn-primary" name="submit" type="submit" style="width:100%">';echo $addButton; echo'</button></div>
+				</div>
+				</form>
+	
+				';
 			}}?>
 
     </div>
