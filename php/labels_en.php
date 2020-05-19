@@ -217,6 +217,8 @@
    $select_group = "Select Group";
    $comment = "Comment";
    $request_sent = "Request Successfuly Sent To Address";
-   $password_change_request = "An application for password change was sent to your email";
+   $password_change_request_from_index = "An application for password change was sent to your email";
    $non_valid_username = "Non Valid Username";
+   $file_not_uploaded = "Sorry, your file was not uploaded.";
+   $please_only_apk_files = "Only apk files are permitted";
 ?>

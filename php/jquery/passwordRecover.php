@@ -38,7 +38,7 @@ if (isset($_POST['username']) || isset($_SESSION['username'])) {
 			recovery_email_send($row['email'],$url.$recover_encode);
 		}else{
 			if(!isset($_SESSION['language'])){
-				echo $password_change_request;
+				echo $password_change_request_from_index;
 			}else{
 		 		echo $please_check_email;
 			}

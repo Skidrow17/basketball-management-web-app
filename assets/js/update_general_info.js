@@ -15,6 +15,10 @@ $(document).ready(function() {
     $("#team_category2").val($(this).val());
   });
 
+  $("#groups").change(function() {
+    $("#group_name").val($("#groups option:selected").text());
+  });
+
   $("#team_category").change(function() {
     var category = $(this).val();
     var post_id = "cid=" + category;
@@ -30,7 +34,6 @@ $(document).ready(function() {
     });
   });
 
-  
   $("#teams").change(function() {
     var teamId = $(this).val();
     var post_id = "tid=" + teamId;

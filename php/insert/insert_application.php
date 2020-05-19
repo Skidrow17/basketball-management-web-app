@@ -17,18 +17,18 @@ if (isset($_POST['version']) && isset($_SESSION['safe_key']) && isset($_SESSION[
         $uploadOk = 1;
         $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
         if ($imageFileType != "apk") {
-            $_SESSION['server_response'] = 'Επιτρέποντε μονο .apk αρχεία';
+            $_SESSION['server_response'] = $please_only_apk_files ;
             header('Location: ../../add_general_info.php?id=5');
             die();
             $uploadOk = 0;
         }
         if ($uploadOk == 0) {
-            echo "Sorry, your file was not uploaded.";
+            echo $file_not_uploaded;
         } else {
             if (move_uploaded_file($_FILES["apk_file"]["tmp_name"], $target_file)) {
                 echo "The file " . basename($_FILES["apk_file"]["name"]) . " has been uploaded.";
             } else {
-                echo "Sorry, there was an error uploading your file.";
+                echo $file_not_uploaded;
             }
         }
         $apk_name = "Ekasdym.apk";

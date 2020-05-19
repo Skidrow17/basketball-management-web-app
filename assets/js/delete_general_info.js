@@ -65,3 +65,20 @@ $(document).ready(function() {
     }
   });
 });
+
+$("#delete_group").click(function() {
+  if (confirm("Είσται σίγουρος;")) {
+    var category = $("#groups").val();
+    var post_id = "group_id=" + category;
+
+    $.ajax({
+      type: "POST",
+      url: "php/delete/delete_group.php",
+      data: post_id,
+      success: function(result) {
+    autologout(result);
+        location.reload();
+      }
+    });
+  }
+});

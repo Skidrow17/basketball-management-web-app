@@ -212,6 +212,20 @@ function getUserCategory($selected) {
     }
     echo '</select>';
 }
+function getGroups($selected) {
+    require 'connect_db.php';
+	include 'language.php';
+    $sql = "SELECT id,name from team_groups where active = 0";
+    $lid = $dbh->prepare($sql);
+    $lid->execute();
+    echo '<select name="groups" id="groups" class="form-control" required>';
+    echo "<option value=''>";echo $selectCategory; echo"</option>";
+    while ($row = $lid->fetch(PDO::FETCH_ASSOC)) {
+        if ($row['id'] == $selected) echo '<option value=' . $row['id'] . ' selected>' . $row['name'] . '</option>';
+        if ($row['id'] != $selected) echo '<option value=' . $row['id'] . '>' . $row['name'] . '</option>';
+    }
+    echo '</select>';
+}
 function getUsers() {
     require 'connect_db.php';
 	include 'language.php';
