@@ -52,7 +52,4 @@ if (isset($_POST['version']) && isset($_SESSION['safe_key']) && isset($_SESSION[
         header('Location: ../../index.php');
         die();
     }
-} else {
-    header('Location: ../../add_general_info.php?id=5');
-    die();
 }

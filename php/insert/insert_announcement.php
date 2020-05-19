@@ -59,14 +59,4 @@ if (isset($_POST['title']) && isset($_POST['text']) && isset($_SESSION['safe_key
         header('Location: ../../index.php');
         die();
     }
-} else {
-    if(isset($_SESSION['profession'])){
-        if ($_SESSION['profession'] === 'Admin') {
-            header('Location: ../../admin_announcements.php');
-            die();
-        } else {
-            header('Location: ../../announcements.php');
-            die();
-        }
-    }
 }

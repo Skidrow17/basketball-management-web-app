@@ -33,7 +33,4 @@ if (isset($_POST['submit'])) {
         $_SESSION['server_response'] = $loggedInFromAnotherDevice;
         header('Location: ../../index.php');
     }
-} else {
-    header('Location: ../../add_general_info.php?id=4');
-    die();
 }

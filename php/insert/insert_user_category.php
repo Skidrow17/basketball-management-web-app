@@ -30,7 +30,4 @@ if (isset($_POST['submit'])) {
         header('Location: ../../index.php');
         die();
     }
-} else {
-    header('Location: ../../add_general_info.php?id=3');
-    die();
 }

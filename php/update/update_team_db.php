@@ -35,8 +35,4 @@ if (isset($_POST['team_name']) && isset($_POST['team_category2']) && isset($_POS
         header('Location: ../../index.php');
         die();
     }
-} else {
-    header('Location: ../../update_general_info.php?id=4');
-    die();
 }
-?>

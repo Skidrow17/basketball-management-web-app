@@ -31,8 +31,4 @@ if (isset($_POST['user_category_name']) && isset($_POST['user_category'])) {
         header('Location: ../../index.php');
         die();
     }
-} else {
-    header('Location: ../../update_general_info.php?id=3');
-    die();
 }
-?>

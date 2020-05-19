@@ -41,4 +41,3 @@ if(isset($_SESSION['safe_key']) && isset($_SESSION['user_id'])){
 		die();
 	}
 }
-?>

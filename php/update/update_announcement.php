@@ -30,17 +30,4 @@ if (isset($_POST['message']) && isset($_POST['title']) && isset($_POST['aid']) &
 		header('HTTP/1.0 401 Unauthorized');
         echo 'HTTP/1.0 401 Unauthorized';
     }
-} else {
-    if(isset($_SESSION['profession'] )){
-        if ($_SESSION['profession'] === 'Admin') {
-            header('Location: ../../admin_announcements.php');
-            die();
-        } else {
-            header('Location: ../../announcements.php');
-            die();
-        }
-    }else{
-        header('Location: ../../index.php');
-        die();
-    }
 }

@@ -155,7 +155,4 @@ if (isset($_POST['id'])) {
         header('Location: ../../index.php');
         die();
     }
-} else {
-    header('Location: ../../user_update.php');
-    die();
 }

@@ -37,8 +37,4 @@ if (isset($_POST['game_id'])) {
         header('Location: ../../index.php');
         die();
     }
-} else {
-    header('Location: ../../match.php');
-    die();
 }
-?>

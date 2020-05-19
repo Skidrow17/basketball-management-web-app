@@ -31,8 +31,4 @@ if (isset($_POST['city_name']) && isset($_POST['city'])) {
         header('Location: ../../index.php');
         die();
     }
-} else {
-    header('Location: ../../update_general_info.php?id=1');
-    die();
 }
-?>

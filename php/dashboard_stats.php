@@ -11,8 +11,8 @@ $month = [];
 $restriction = [];
 $flag = 1;
 $sql = "SELECT month(date) as month,count(*) as nor 
-		FROM restriction 
-		GROUP by Month(date) ORDER BY Month(date);";
+		    FROM restriction 
+		    GROUP by Month(date) ORDER BY Month(date);";
 $run = $dbh->prepare($sql);
 $run->execute();
 while ($row = $run->fetch(PDO::FETCH_ASSOC)) {

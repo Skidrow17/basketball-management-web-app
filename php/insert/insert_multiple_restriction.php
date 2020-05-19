@@ -67,7 +67,4 @@ if (isset($_POST['submit'])) {
         header('Location: ../../index.php');
 		die();
     }
-} else {
-    header('Location: ../../add_restriction.php');
-    die();
 }

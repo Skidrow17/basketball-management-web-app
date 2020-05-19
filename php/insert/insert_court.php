@@ -35,7 +35,4 @@ if (isset($_POST['submit']) && isset($_SESSION['safe_key']) && isset($_SESSION['
         $_SESSION['server_response'] = $loggedInFromAnotherDevice;
         header('Location: ../../index.php');
     }
-} else {
-    header('Location: ../../court.php');
-    die();
 }

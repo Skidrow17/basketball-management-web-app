@@ -8,8 +8,9 @@ require_once '../connect_db.php';
 require_once '../useful_functions.php';
 require_once '../language.php';
 
-$url = "https://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . '/../../../password_recover.php?code=';
-
+if(isset($_SERVER['HTTP_HOST']) && isset( $_SERVER['REQUEST_URI'])){
+	$url = "https://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . '/../../../password_recover.php?code=';
+}
 
 if (isset($_POST['username']) || isset($_SESSION['username'])) {
 	

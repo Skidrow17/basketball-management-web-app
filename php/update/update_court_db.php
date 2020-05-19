@@ -38,8 +38,4 @@ if (isset($_POST['submit'])) {
         header('Location: ../../index.php');
         die();
     }
-} else {
-    header('Location: ../../court_update.php');
-    die();
 }
-?>
