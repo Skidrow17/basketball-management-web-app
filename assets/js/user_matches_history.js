@@ -1,17 +1,28 @@
 var number_of_pages = 0;
 var current_page = 0;
 var current_category = 0;
+var default_date = get_current_date();
 
 $(document).ready(function() {
-  myFunction();
-  n_o_p();
+  
+  myFunction(default_date);
+  n_o_p(default_date);
+
+  document.getElementById("date").addEventListener("change", function() {
+    var inputDate = this.value;
+    default_date = inputDate;
+    myFunction(default_date);
+    n_o_p(default_date); 
+  });
+
+  document.getElementById("date").value = default_date;
 
   $("#export").click(function() {
     $("#here").tableToCSV();
   });
 
   $("#export_all").click(function() {
-    window.location.href = "php/csv_export.php?id=4";
+    window.location.href = "php/csv_export.php?id=4&date_from="+default_date;
     return false;
   });
 
@@ -19,15 +30,14 @@ $(document).ready(function() {
     if (number_of_pages != 0) current_page = Math.ceil(number_of_pages - 1);
     $("#current").text(current_page);
     var post = "current_page=" + current_page;
-
-    myFunction();
+    myFunction(default_date);
   });
 
   $("#min").click(function() {
     current_page = parseInt(0);
     $("#current").text(current_page);
     var post = "current_page=" + current_page;
-    myFunction();
+    myFunction(default_date);
   });
 
   $("#previous").click(function() {
@@ -35,7 +45,7 @@ $(document).ready(function() {
       current_page = current_page - 1;
       $("#current").text(current_page);
       var post = "current_page=" + current_page;
-      myFunction();
+      myFunction(default_date);
     }
   });
 
@@ -44,31 +54,31 @@ $(document).ready(function() {
       current_page = current_page + 1;
       $("#current").text(current_page);
       var post = "current_page=" + current_page;
-      myFunction();
+      myFunction(default_date);
     }
   });
 });
 
-function myFunction() {
-  var post_id = "current_page=" + current_page;
+function myFunction(inputdate) {
+  var post_id = "current_page=" + current_page+"&date_from="+inputdate;
   $.ajax({
     type: "POST",
     url: "php/jquery/get_matches_per_user_History.php",
     data: post_id,
     success: function(result) {
-      console.log(result);
-	  autologout(result);
+	    autologout(result);
       $("#here").html(result);
     }
   });
 }
 
-function n_o_p() {
+function n_o_p(inputdate) {
   $.ajax({
+    type: "POST",
     url: "php/jquery/get_no_match_history.php",
+    data: 'date_from='+inputdate,
     success: function(result) {
     autologout(result);
-    console.log(result);
       number_of_pages = result;
       $("#current").text(0);
       if (number_of_pages != 0) $("#max").text(Math.ceil(number_of_pages) - 1);

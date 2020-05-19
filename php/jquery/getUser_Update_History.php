@@ -26,10 +26,11 @@ if (isset($_SESSION['safe_key']) && isset($_SESSION['user_id']) && isset($_POST[
         echo "<th>";echo $updateDate; echo"</th>";
         echo "</tr>";
         $sql = "SELECT name,surname,password,email,phone,driving_licence,living_place,profession,profile_pic,active,rate,DATE_FORMAT(update_time, '%d/%m/%Y %H:%i') as update_time_diff_format
-				FROM user_update_history 
+				FROM user_update_history WHERE update_time > :date_from
 				ORDER BY update_time desc limit :page,9";
         $run = $dbh->prepare($sql);
         $run->bindParam(':page', $page, PDO::PARAM_INT);
+        $run->bindParam(':date_from',$_POST['date_from'],PDO::PARAM_STR);
         $run->execute();
         while ($row = $run->fetch(PDO::FETCH_ASSOC)) {
             echo "<tr>";
@@ -47,6 +48,7 @@ if (isset($_SESSION['safe_key']) && isset($_SESSION['user_id']) && isset($_POST[
             echo "<td>" . $row['update_time_diff_format'] . "</td>";
             echo "</tr>";
         }
+        echo $_POST['date_from'];
     } else {
         session_destroy();
         header('HTTP/1.0 401 Unauthorized');

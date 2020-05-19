@@ -50,6 +50,7 @@ require_once('php/language.php');
     <script src="assets/js/datepicker.js"></script>
     <script src="assets/js/i18n/datepicker.gr.js"></script>
     <script src="assets/js/cookies.js"></script>
+    <script src="assets/js/utilities.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
     <script>document.getElementById('years').innerHTML += new Date().getFullYear();</script>
     <?php

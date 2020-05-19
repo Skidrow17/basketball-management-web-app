@@ -20,8 +20,9 @@ if (isset($_POST['current_page']) && isset($_SESSION['safe_key']) && isset($_SES
         echo "<th>";echo $importingDate;echo "</th>";
         echo "<th>";echo $importingTime;echo "</th>";
         echo "</tr>";
-        $sql = "SELECT U.name,U.surname,R.time_from,R.time_to,DATE_FORMAT(R.date, '%d/%m/%Y %H:%i') as date,R.register_timestamp from user U,restriction R where U.id=R.user_id ORDER BY R.register_timestamp desc limit :page,9";
+        $sql = "SELECT U.name,U.surname,R.time_from,R.time_to,DATE_FORMAT(R.date, '%d/%m/%Y %H:%i') as date,R.register_timestamp from user U,restriction R where U.id=R.user_id and register_timestamp > :date_from ORDER BY R.register_timestamp desc limit :page,9";
         $run = $dbh->prepare($sql);
+        $run->bindParam(':date_from',$_POST['date_from'],PDO::PARAM_STR);
         $run->bindParam(':page', $page, PDO::PARAM_INT);
         $run->execute();
         $run->execute();

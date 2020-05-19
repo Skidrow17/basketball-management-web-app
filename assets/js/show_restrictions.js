@@ -1,17 +1,28 @@
 var number_of_pages = 0;
 var current_page = 0;
 var current_category = 0;
+var default_date = get_current_date();
+
 
 $(document).ready(function() {
-  myFunction();
-  n_o_p();
+  myFunction(default_date);
+  n_o_p(default_date);
+
+  document.getElementById("date").addEventListener("change", function() {
+    var inputDate = this.value;
+    default_date = inputDate;
+    myFunction(default_date);
+    n_o_p(default_date); 
+  });
+
+  document.getElementById("date").value = default_date;
 
   $("#export").click(function() {
     $("#here").tableToCSV();
   });
 
   $("#export_all").click(function() {
-    window.location.href = "php/csv_export.php?id=1";
+    window.location.href = "php/csv_export.php?id=1&date_from="+default_date;
     return false;
   });
 
@@ -20,7 +31,7 @@ $(document).ready(function() {
     $("#current").text(current_page);
     var post = "current_page=" + current_page;
 
-    myFunction();
+    myFunction(default_date);
   });
 
   $("#min").click(function() {
@@ -28,7 +39,7 @@ $(document).ready(function() {
     $("#current").text(current_page);
     var post = "current_page=" + current_page;
 
-    myFunction();
+    myFunction(default_date);
   });
 
   $("#previous").click(function() {
@@ -37,7 +48,7 @@ $(document).ready(function() {
       $("#current").text(current_page);
       var post = "current_page=" + current_page;
 
-      myFunction();
+      myFunction(default_date);
     }
   });
 
@@ -47,13 +58,13 @@ $(document).ready(function() {
       $("#current").text(current_page);
       var post = "current_page=" + current_page;
 
-      myFunction();
+      myFunction(default_date);
     }
   });
 });
 
-function myFunction() {
-  var post_id = "current_page=" + current_page;
+function myFunction(inputdate) {
+  var post_id = "current_page=" + current_page+"&date_from="+inputdate;;
 
   $.ajax({
     type: "POST",
@@ -66,9 +77,11 @@ function myFunction() {
   });
 }
 
-function n_o_p() {
+function n_o_p(inputdate) {
   $.ajax({
+    type: "POST",
     url: "php/jquery/getN_O_Restrictions.php",
+    data: 'date_from='+inputdate,
     success: function(result) {
 	  autologout(result);
       number_of_pages = result;

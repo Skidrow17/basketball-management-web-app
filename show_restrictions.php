@@ -46,6 +46,12 @@ require_once('php/useful_functions.php');
 					</nav>
 				</div>
 
+				<div class="form-row">
+					<small class="form-text text-muted"> <?php echo $date; ?>&nbsp;&nbsp;</small><br>
+					<input style='border:1px solid rgb(220,110,86);' name='date' id = 'date' type='date' required>
+				</div>
+				<br/>
+
 				<div style="overflow-x:auto;">
 					<table id='here'>
 
