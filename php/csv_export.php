@@ -18,6 +18,9 @@ if(isset($_SESSION['safe_key']) && isset($_SESSION['user_id']) && isset($_SESSIO
         } else if ($_GET['id'] == 2) {
             $sql = "Select * from user_update_history";
             $filename = 'user_update_history-' . date('d.m.Y') . '.csv';
+        } else if ($_GET['id'] == 4){
+            $sql = "SELECT u.name AS user_name,u.surname,away.name as home_team,away.name as away_team,g.date_time,team_score_1,team_score_2,c.name AS court_name FROM user u,human_power hp,court c,game g JOIN team AS home ON g.team_id_1 = home.id JOIN team AS away ON g.team_id_2 = away.id where hp.game_id = g.id and hp.user_id = u.id and g.court_id = c.id ORDER BY G.date_time";
+            $filename = 'user_update_history-' . date('d.m.Y') . '.csv';
         }
         header('Content-type: text/csv');
         header('Content-Disposition: attachment; filename="' . $filename . '"');

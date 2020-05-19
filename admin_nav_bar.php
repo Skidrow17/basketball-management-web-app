@@ -14,7 +14,7 @@ require_once('php/language.php');
                 <li class="nav-item" role="presentation"><a class="nav-link" href="home_admin.php" style="background-color:rgba(255,255,255,0);"><i class="fa fa-home"></i> <?php echo $homePage; ?></a></li>
 
                 <li class="dropdown" id="nav_table" style="background-color:rgba(255,255,255,0);"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#" style="background-color:rgba(255,255,255,0);"><i class="fa fa-table"></i> <?php echo $tabels;?></a>
-                    <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="show_login_history.php"><?php echo $loginHistory; ?></a><a class="dropdown-item" role="presentation" href="show_restrictions.php"><?php echo $restrictions; ?></a><a class="dropdown-item" role="presentation" href="show_user_update_history.php"><?php echo $userUpdateHistory; ?></a></div>
+                    <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="show_login_history.php"><?php echo $loginHistory; ?></a><a class="dropdown-item" role="presentation" href="show_restrictions.php"><?php echo $restrictions; ?></a><a class="dropdown-item" role="presentation" href="show_user_update_history.php"><?php echo $userUpdateHistory; ?></a></a><a class="dropdown-item" role="presentation" href="show_user_matches_history.php"><?php echo $match_history; ?></a></div>
                 </li>
 
                 <li class="dropdown" style="background-color:rgba(255,255,255,0);"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#" style="background-color:rgba(255,255,255,0);"><i class="fa fa-plus-square"></i> <?php echo $add; ?></a>
