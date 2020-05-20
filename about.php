@@ -1,12 +1,17 @@
 <?php 
 
-//Access: Everyone 
+//Access: Guest 
 //Purpose: Information About Us 
 
-require( "http_to_https.php"); 
-include 'php/labels_gr.php';
-
+session_start();
+include 'php/useful_functions.php';
+require 'php/language.php';
+include 'php/select_boxes.php';
+require("http_to_https.php");
+if(isset($_COOKIE['uname'])&&isset($_COOKIE['pwd'])&&isset($_COOKIE['safe_key']))
+header('Location: ./php/login.php');
 ?>
+
 <!DOCTYPE html>
 <html>
 
@@ -22,24 +27,7 @@ include 'php/labels_gr.php';
         <section class="portfolio-block photography"></section>
     </main>
 
-    <nav id='nav_bar' class="navbar navbar-light navbar-expand-md fixed-top navbar-transparency">
-        <div class="container">
-            <a class="navbar-brand" href="http://ekasdym.gr/news/"><img src="assets/img/ekas.png" height="40px"
-                    width="40px" alt="logo">
-            </a>
-            <button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle
-                    navigation</span><span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navcol-1">
-                <ul class="nav navbar-nav ml-auto">
-					<li class="nav-item" role="presentation"><a class="nav-link" href="index.php" style="background-color:rgba(255,0,0,0);"><i class="fa fa-home"></i> <?php echo $homePage; ?></a></li>
-					<li class="nav-item" role="presentation"><a class="nav-link" href="guest_all_matches.php" style="background-color:rgba(255,0,0,0);"><i class="fa fa-eercast"></i> <?php echo $weekly_matches; ?></a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="guest_match_ranking.php" style="background-color:rgba(255,0,0,0);"><i class="fa fa-newspaper-o"></i> <?php echo $ranking; ?></a></li>
-					<li class="nav-item" role="presentation"><a class="nav-link" href="about.php" style="background-color:rgba(255,0,0,0);"><i class="fa fa-info-circle"></i> <?php echo $about_us; ?></a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <?php include('index_nav_bar.php'); ?>
 
     <div class='form-row'>
 

@@ -222,5 +222,6 @@
    $file_not_uploaded = "Sorry, your file was not uploaded.";
    $please_only_apk_files = "Only apk files are permitted";
    $match_history = "Match History";
-
+   $rules = "Rules";
+   $clarifications = "Clarifications";
 ?>

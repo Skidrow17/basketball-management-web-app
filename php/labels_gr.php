@@ -222,4 +222,6 @@
    $file_not_uploaded = "Το αρχείο δεν ανέβηκε.";
    $please_only_apk_files = "Επιτρέπονται μόνο .apk αρχεία";
    $match_history = "Ιστορικό Αγώνων";
+   $rules = "Κανόνες";
+   $clarifications = "Διευκρινίσεις";
 ?>

@@ -1,5 +1,4 @@
-<?php $path = getcwd(); 
-echo $path;
-header('Location:../index.php');
-die();
+<?php 
+    $url = "https://" . $_SERVER['HTTP_HOST'].'/';
+    header('Location: '.$url.'~ece00909/EKA/index.php');
 ?>

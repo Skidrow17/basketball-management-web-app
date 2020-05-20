@@ -29,32 +29,18 @@ header('Location: ./php/login.php');
 	<?php include('index_nav_bar.php'); ?>
 
 	<div class='form-row'>
-		<div class='col-xl-12'>
+		<div class='col-xl-6'>
 			<div class="annoucements-look element">
-				<form id='hide' method="post" style="background-color:rgba(238,238,238,0.74);">
-
-					<div class="form-row">
-						<div class="col">
-							<h3><?php echo $ranking; ?></h3>
-						</div>
-					</div>
-
-					<div class="form-row">
-						<div class="col-xl-6"><small class="form-text text-muted"><?php echo $selectCategory; ?></small>
-							<div class = "col"><?php echo getAllTeam_Categories(); ?></div>
-						</div>
-
-						<div class="col-xl-6" id="group_text" style="display:none;"><small class="form-text text-muted"><?php echo $select_group; ?></small>
-							<div class = "col" id = "groups" contenteditable="false"></div>
-						</div>
-					</div>
-						
-					<div style="overflow-x:auto;">
-						<table id='ranking_table'>
-						</table>
-					</div>
-
-				</form>
+			<object data="assets/asset1.pdf" type="application/pdf" width="100%" height="100%">
+			<p>Alternative text - include a link <a href="myfile.pdf">to the PDF!</a></p>
+			</object>
+			</div>
+		</div>
+		<div class='col-xl-6'>
+			<div class="annoucements-look element">
+			<object data="assets/asset2.pdf" type="application/pdf" width="100%" height="100%">
+			<p>Alternative text - include a link <a href="myfile.pdf">to the PDF!</a></p>
+			</object>
 			</div>
 		</div>
 	</div>
