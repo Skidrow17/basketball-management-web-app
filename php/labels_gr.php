@@ -111,11 +111,11 @@
    //Floating Message 
    $needMore = "Χρειάζονται ακόμα ";
    $needOneMore = "Χρειάζεται ακόμα ";
-   $referees = " διαιτητές";
-   $referee = " διαιτητής";
-   $judges = " κριτές";
-   $judge = " κριτής";
-   $and = " και ";
+   $referees = " Διαιτητές";
+   $referee = " Διαιτητής";
+   $judges = " Κριτές";
+   $judge = " Κριτής";
+   $and = " Και ";
    
    // Add Match 
    $numberOfReferees = "Πλήθος Διαιτητών";

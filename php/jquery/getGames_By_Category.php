@@ -12,6 +12,7 @@ require_once '../language.php';
 if(isset($_POST['current_page'])){
     $page = $_POST['current_page'] * 4;
     echo '<tr>
+        <th>'; echo $state; echo' 1</th>
         <th>'; echo $team; echo' 1</th>
         <th>'; echo $team; echo' 2</th>
         <th>'; echo $score; echo' 1</th>
@@ -46,17 +47,17 @@ if(isset($_POST['current_page'])){
             echo '<td>'.$row['state'].'η περίοδος</td>';
         }
         echo '<td>' . $row['team_id_1'] . '</td>
-        <td>' . $row['team_id_2'] . '</td>
-        <td>' . $row['team_score_1'] . '</td>
-        <td>' . $row['team_score_2'] . '</td>
-        <td>' . $row['date_time'] . '</td>
-        <td>' . $row['city'] . '</td>
-        <td>';
-        echo getHuman_Power_By_Game($row['id'], 2);
-        echo '</td>
-        <td>';
-        echo getHuman_Power_By_Game($row['id'], 3);
-        echo '</td>
+                <td>' . $row['team_id_2'] . '</td>
+                <td>' . $row['team_score_1'] . '</td>
+                <td>' . $row['team_score_2'] . '</td>
+                <td>' . $row['date_time'] . '</td>
+                <td>' . $row['city'] . '</td>
+                <td>';
+                echo getHuman_Power_By_Game($row['id'], 2);
+                echo '</td>
+                <td>';
+                echo getHuman_Power_By_Game($row['id'], 3);
+                echo '</td>
     </tr>';
     }
 }
