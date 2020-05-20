@@ -14,7 +14,7 @@ if (isset($_SESSION['safe_key']) && isset($_SESSION['user_id'])) {
         $run->bindParam(':uid', $_SESSION['user_id'], PDO::PARAM_INT);
         $run->execute();
         while ($row = $run->fetch(PDO::FETCH_ASSOC)) {
-            echo $row['n_o_r'] / 4;
+            echo $row['n_o_r'] / 7;
         }
     } else {
         session_destroy();
