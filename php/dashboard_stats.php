@@ -30,24 +30,18 @@ for ($i = 1;$i < 13;$i++) {
     }
     if ($flag == 1) $a[$i - 1] = 0;
 }
-?>
-
-
-
-<canvas id="bar-chart" ></canvas>
+echo '<canvas id="bar-chart" ></canvas>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-
-
  <script>
 new Chart(document.getElementById("bar-chart"), {
-    type: 'bar',
+    type: "bar",
     data: {
-      labels: [<?php echo $jan; ?>, <?php echo $feb; ?>, <?php echo $mar; ?>, <?php echo $apr; ?>, <?php echo $may; ?>,<?php echo $jul; ?>,<?php echo $jun; ?>,<?php echo $aug; ?>,<?php echo $sep; ?>,<?php echo $oct; ?>,<?php echo $nov; ?>,<?php echo $dec; ?>],
+      labels: ['; echo $jan.','.$feb.','.$mar.','.$apr.','.$may.','.$jul.','.$jun.','.$aug.','.$sep.','.$oct.','.$nov.','.$dec; echo '],
       datasets: [
         {
           label: "",
           backgroundColor: ["#f032e6", "#800000","#9A6324","#808000","#469990","#000075", "#e6194B","#f58231","#ffe119","#bfef45","#3cb44b","#42d4f4"],
-          data: [<?php echo "$a[0]"; ?>,<?php echo "$a[1]"; ?>,<?php echo "$a[2]"; ?>,<?php echo "$a[3]"; ?>,<?php echo "$a[4]"; ?>,<?php echo "$a[5]"; ?>,<?php echo "$a[6]"; ?>,<?php echo "$a[7]"; ?>,<?php echo "$a[8]"; ?>,<?php echo "$a[9]"; ?>,<?php echo "$a[10]"; ?>,<?php echo "$a[11]"; ?>]
+          data: ['; echo "$a[0]".','."$a[1]".','."$a[2]".','."$a[3]".','."$a[4]".','."$a[5]".','."$a[6]".','."$a[7]".','."$a[8]".','."$a[9]".','."$a[10]".','."$a[11]"; echo ']
         }
       ]
     },
@@ -55,8 +49,9 @@ new Chart(document.getElementById("bar-chart"), {
       legend: { display: false },
       title: {
         display: true,
-        text:<?php echo $chartLabel; ?>
+        text:'; echo $chartLabel; echo '
       }
     }
 });
-</script>
+</script>';
+?>
