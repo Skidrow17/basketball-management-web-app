@@ -162,7 +162,32 @@ echo';
 </form>
 
 ';
+}elseif($_GET['id']==7){
+	echo'
+<form method="post" action="./php/update/update_rate_db.php">
+    
+		    <div class="form-row">
+                <div class="col">
+                    <h3>';echo $rating; echo'</h3>
+                </div>
+            </div>
+			
+		 <div class="form-row">
+                <div class="col">
+                    <hr>
+                </div>
+            </div>
+    <div class="form-row">
+        <div class="col"><small class="form-text text-muted">';echo $selectRate; echo'</small>';echo getRate(0);echo'</div>
+        <div class="col"><small class="form-text text-muted">';echo $name; echo'</small><input name="rate_name" id="rate_name" class="form-control" type="text"></div>
+	</div>
+    <div class="form-row">
+        <div class="col"><button class="btn btn-primary" type="submit" style="width:100%">';echo $update; echo'</button></div>
+		<div class="col"><button class="btn btn-primary" type="button" id="delete_rate" style="width:100%">';echo $delete; echo'</button></div>
+    </div>
+</form>
 
+';
 }}?>
 
 

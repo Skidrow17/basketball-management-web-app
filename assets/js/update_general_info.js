@@ -19,6 +19,10 @@ $(document).ready(function() {
     $("#group_name").val($("#groups option:selected").text());
   });
 
+  $("#rate").change(function() {
+    $("#rate_name").val($("#rate option:selected").text());
+  });
+
   $("#team_category").change(function() {
     var category = $(this).val();
     var post_id = "cid=" + category;

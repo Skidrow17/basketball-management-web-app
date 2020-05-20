@@ -31,14 +31,14 @@ header('Location: ./php/login.php');
 	<div class='form-row'>
 		<div class='col-xl-6'>
 			<div class="annoucements-look element">
-			<object data="assets/asset1.pdf" type="application/pdf" width="100%" height="100%">
+			<object data="assets/pdf/asset1.pdf" type="application/pdf" width="100%" height="100%">
 			<p>Alternative text - include a link <a href="myfile.pdf">to the PDF!</a></p>
 			</object>
 			</div>
 		</div>
 		<div class='col-xl-6'>
 			<div class="annoucements-look element">
-			<object data="assets/asset2.pdf" type="application/pdf" width="100%" height="100%">
+			<object data="assets/pdf/asset2.pdf" type="application/pdf" width="100%" height="100%">
 			<p>Alternative text - include a link <a href="myfile.pdf">to the PDF!</a></p>
 			</object>
 			</div>

@@ -175,10 +175,11 @@ function getDrivingLicence($selected) {
 function getRate($selected) {
     require 'connect_db.php';
 	include 'language.php';
-    $sql = "SELECT id,name from rate";
+    $sql = "SELECT id,name from rate WHERE active = 0";
     $lid = $dbh->prepare($sql);
     $lid->execute();
-    echo '<select name="rate" class="form-control" required>';
+    echo '<select name="rate" id="rate" class="form-control" required>';
+    echo "<option value=''>";echo $selectRate; echo"</option>";
     while ($row = $lid->fetch(PDO::FETCH_ASSOC)) {
         if ($row['id'] == $selected) echo '<option value=' . $row['id'] . ' selected>' . $row['name'] . '</option>';
         if ($row['id'] != $selected) echo '<option value=' . $row['id'] . '>' . $row['name'] . '</option>';
