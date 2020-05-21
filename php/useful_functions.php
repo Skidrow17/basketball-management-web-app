@@ -446,6 +446,91 @@ function recovery_email_send($mail,$recovery_url)
 
 }
 
+function unread_messages_send($mail)
+{
+
+  require_once __DIR__.'/../PHPMailer/PHPMailerAutoload.php';
+  include 'language.php';
+
+  //echo $mail;
+  $strmail = (string)$mail;
+
+
+  $mail = new PHPMailer;
+
+  $mail->isSMTP();                                   // Set mailer to use SMTP
+  $mail->Host = 'smtp.mail.yahoo.fr';                    // Specify main and backup SMTP servers
+  $mail->SMTPAuth = true;                            // Enable SMTP authentication
+  $mail->Username = EMAIL;          // SMTP username
+  $mail->Password = PASSWORD; // SMTP password
+  $mail->SMTPSecure = 'ssl';                         // Enable TLS encryption, `ssl` also accepted
+  $mail->Port = 465;                                 // TCP port to connect to
+  $mail->setFrom(EMAIL, ORGANIZATION);
+  $mail->addReplyTo(EMAIL, ORGANIZATION);
+  $mail->addAddress($strmail);   // Add a recipient
+
+  $mail->isHTML(true);  // Set email format to HTML
+
+  $bodyContent = '<!DOCTYPE html>
+  <html>
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+  body {
+    font-family: Arial;
+  }
+
+  .coupon {
+    border: 5px dotted #bbb;
+    width: 80%;
+    border-radius: 15px;
+    margin: 0 auto;
+    max-width: 600px;
+  }
+
+  .container {
+    padding: 2px 16px;
+    background-color: #f1f1f1;
+  }
+
+  .promo {
+    background: #ccc;
+    padding: 3px;
+  }
+
+  .expire {
+    color: red;
+  }
+  </style>
+  </head>
+  <body>
+
+  <div class="coupon">
+    <div class="container">
+      <h3><b>Υπενθύμιση</b></h3>
+    </div>
+    <div class="container">
+      <p>Έχετε μη αναγνωσμένα μηνύματα, ελέγξτε τα εισερχόμενά σας</p>
+    </div>
+  </div>
+
+  </body>
+  </html> 
+  ';
+
+  $mail->Subject = ORGANIZATION;
+  $mail->Body    = $bodyContent;
+
+  if(!$mail->send()) {
+      echo 'Message could not be sent.';
+      echo 'Mailer Error: ' . $mail->ErrorInfo;
+  } else {
+      echo $request_sent.' : '.$strmail;
+  }
+
+}
+
 function sentPushNotification($sender_name,$receiver_token,$message) {
   $msg = array
   (

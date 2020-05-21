@@ -224,4 +224,6 @@
    $match_history = "Match History";
    $rules = "Rules";
    $clarifications = "Clarifications";
+   $reminder = "Reminder";
+   $reminder_message = "You Have Unread Messages, Please Check Your Inbox";
 ?>
