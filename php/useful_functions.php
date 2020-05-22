@@ -150,7 +150,7 @@ function security_check($safe_key, $user_id) {
     while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
         $last_safe_key = $row["safe_key"];
     }
-    if ($last_safe_key === $safe_key) {
+    if ($last_safe_key === $safe_key && $last_safe_key != '') {
         return true;
     }
 }
