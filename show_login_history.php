@@ -46,7 +46,7 @@ require_once('php/useful_functions.php');?>
 				</div>
 
 				<div class="form-row">
-					<small class="form-text text-muted"> <?php echo $date; ?>&nbsp;&nbsp;</small><br>
+					<small class="form-text text-muted"> <?php echo $from; ?>&nbsp;&nbsp;</small><br>
 					<input style='border:1px solid rgb(220,110,86);' name='date' id = 'date' type='date' required>
 				</div>
 				<br/>
