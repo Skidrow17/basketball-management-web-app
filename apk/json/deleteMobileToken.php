@@ -8,7 +8,6 @@ require_once '../../php/useful_functions.php';
 $fetch = array();
 
 if(isset($_GET['safe_key']) && isset($_GET['id'])){
-
 	$id = filter_var($_GET["id"], FILTER_SANITIZE_NUMBER_INT);
 	$empty_mobile_token = '';
 	if (security_check($_GET['safe_key'], $_GET['id']) == true) {

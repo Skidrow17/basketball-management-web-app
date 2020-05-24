@@ -422,11 +422,10 @@ function recovery_email_send($mail,$recovery_url)
 
   <div class="coupon">
     <div class="container">
-      <h3><b>Password Recover</b></h3>
+      <h3><b>Επαναφορά Κωδικού Πρόσβασης</b></h3>
     </div>
     <div class="container">
-      <p>Press The Link: <a href="'.$recovery_url.'">Verify</a></p>
-    
+      <p>Παρακαλώ πατήστε το σύνδεσμο: <a href="'.$recovery_url.'">Επιβεβαίωση</a></p>
     </div>
   </div>
 
