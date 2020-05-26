@@ -11,13 +11,13 @@ require_once('php/language.php');
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-sm-4 col-md-3 item">
-                    <h3>Developer</h3>
+                    <h3><?php echo $developer; ?></h3>
                     <ul>
                         <li>Silvan Sholla</li>
                     </ul>
                 </div>
                 <div class="col-sm-4 col-md-3 item">
-                    <h3>Supervisors</h3>
+                    <h3><?php echo $supervisors; ?></h3>
                     <ul>
                         <li><a>Minas Dasygenis</a>
                             <br>
@@ -29,7 +29,7 @@ require_once('php/language.php');
                     </ul>
                 </div>
                 <div class="col-lg-3 item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="apk/Ekasdym.apk"><i class="icon ion-social-android"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a>
-                    <p class="copyright">UOWM © All Rights Reserved
+                    <p class="copyright"><?php echo $allRightsReserved; ?>
                         <script>
                             document.write(new Date().getFullYear())
                         </script>

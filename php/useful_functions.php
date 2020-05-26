@@ -260,12 +260,12 @@ function sent_mail($mail,$username,$password)
 
   <div class="coupon">
     <div class="container">
-      <h3><b>User Details</b></h3>
+      <h3><b>Στοιχεία Χρήστη</b></h3>
     </div>
     <div class="container">
     <p>Url: <span class="promo">'.$url.'</span></p>
-      <p>Username: <span class="promo">'.$username.'</span></p>
-      <p class="expire">Password:'.$password.'</p>
+      <p>Όνομα Χρήστη: <span class="promo">'.$username.'</span></p>
+      <p class="expire">Κωδικός Πρόσβασης:'.$password.'</p>
     </div>
   </div>
 
@@ -273,7 +273,7 @@ function sent_mail($mail,$username,$password)
   </html> 
   ';
 
-  $mail->Subject = ORGANIZATION;
+  $mail->Subject = ORGANIZATION.' - Στοιχεία Σύνδεσης';
   $mail->Body    = $bodyContent;
 
   if(!$mail->send()) {
@@ -339,10 +339,10 @@ function recovery_email_send_mobile($mail,$recoveryKey)
 
   <div class="coupon">
     <div class="container">
-      <h3><b>User Details</b></h3>
+      <h3><b>Στοιχεία Χρήστη</b></h3>
     </div>
     <div class="container">
-      <p>Recovery Key: <span class="promo">'.$recoveryKey.'</span></p>
+      <p>Κωδικός Επαναφοράς: <span class="promo">'.$recoveryKey.'</span></p>
     </div>
   </div>
 
@@ -350,7 +350,7 @@ function recovery_email_send_mobile($mail,$recoveryKey)
   </html> 
   ';
 
-  $mail->Subject = ORGANIZATION;
+  $mail->Subject = ORGANIZATION.' - Επαναφορά Κωδικού';
   $mail->Body    = $bodyContent;
 
   if(!$mail->send()) {
@@ -433,7 +433,7 @@ function recovery_email_send($mail,$recovery_url)
   </html> 
   ';
 
-  $mail->Subject = ORGANIZATION;
+  $mail->Subject = ORGANIZATION.' - Επαναφορά Κωδικού';
   $mail->Body    = $bodyContent;
 
   if(!$mail->send()) {
@@ -518,7 +518,7 @@ function unread_messages_send($mail)
   </html> 
   ';
 
-  $mail->Subject = ORGANIZATION;
+  $mail->Subject = ORGANIZATION.' - Μη Αναγνωσμένα Μηνύματα';
   $mail->Body    = $bodyContent;
 
   if(!$mail->send()) {
