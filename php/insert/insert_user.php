@@ -8,7 +8,7 @@ require_once '../connect_db.php';
 require_once '../useful_functions.php';
 require_once '../language.php';
 
-if (isset($_POST['submit']) && isset($_POST['safe_key']) && isset($_POST['user_id']) && isset($_POST['profession'])){
+if (isset($_POST['submit']) && isset($_SESSION['safe_key']) && isset($_SESSION['user_id']) && isset($_SESSION['profession'])){
     if (security_check($_SESSION['safe_key'], $_SESSION['user_id']) == true && $_SESSION['profession'] === 'Admin'){
         $name = filter_var($_POST['name'], FILTER_SANITIZE_STRING);
         $surname = filter_var($_POST['surname'], FILTER_SANITIZE_STRING);
