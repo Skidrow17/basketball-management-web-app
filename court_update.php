@@ -40,9 +40,9 @@ require_once('php/select_boxes.php');
 				</div>
 				<div class="form-row">
 					<div class="col-xl-12"><small class="form-text text-muted"><?php echo $court; ?></small>
-
-						<?php echo getAllCourts(); ?>
-
+							<div class = "selectbox-design">
+								<?php echo getAllCourts(); ?>
+							</div>
 						<div id="txtHint">
 						</div>
 

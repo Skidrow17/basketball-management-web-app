@@ -41,9 +41,9 @@ require_once('php/select_boxes.php');
 				</div>
 				<div class="form-row">
 					<div class="col-xl-12"><small class="form-text text-muted"><?php echo $selectUser; ?></small>
-
-						<?php echo getUsers(); ?>
-
+						<div class = "selectbox-design">
+							<?php echo getUsers(); ?>
+						</div>
 					</div>
 				</div>
 

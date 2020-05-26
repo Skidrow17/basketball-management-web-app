@@ -65,18 +65,29 @@ require_once('php/select_boxes.php');
 				</div>
 				<div class="form-row">
 					<div class="col"><small class="form-text text-muted"><?php echo $livingPlace; ?></small>
-						<?php echo getAllCities();?>
+						<div class = 'selectbox-design'>
+							<?php echo getAllCities();?>
+						</div>
 					</div>
 					<div class="col"><small class="form-text text-muted"><?php echo $rating; ?></small>
+					<div class = 'selectbox-design'>
+
 						<?php echo getAllRates();?>
+					</div>
 					</div>
 				</div>
 				<div class="form-row">
 					<div class="col"><small class="form-text text-muted"><?php echo $drivingLicence; ?></small>
+					<div class = 'selectbox-design'>
+
 						<?php echo getDrivingLicence(1);?>
 					</div>
+					</div>
 					<div <div class="col"><small class="form-text text-muted"><?php echo $profession; ?></small>
+					<div class = 'selectbox-design'>
+
 						<?php echo getAllUser_categories();?>
+					</div>
 					</div>
 				</div>
 				<div class="form-row">

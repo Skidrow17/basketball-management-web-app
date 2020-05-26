@@ -50,9 +50,7 @@ require_once("php/useful_functions.php");
     </div>
 
     <div class="form-row">
-        <div class="col">
-            <hr>
-        </div>
+        
     </div>
 
     <?php include('footer.php'); ?>

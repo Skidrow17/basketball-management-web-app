@@ -42,7 +42,7 @@ echo'
                 </div>
             </div>
     <div class="form-row">
-        <div class="col"><small class="form-text text-muted">';echo $selectCity; echo'</small>';echo getAllCities();echo '</div>
+        <div class="col"><small class="form-text text-muted">';echo $selectCity; echo'</small><div class = "selectbox-design">';echo getAllCities();echo '</div></div>
         <div class="col"><small class="form-text text-muted">';echo $name; echo'</small><input name="city_name" id="city_name" class="form-control" type="text"></div>
 	</div>
 	<div class="form-row">
@@ -68,7 +68,7 @@ echo'
                 </div>
             </div>
     <div class="form-row">
-        <div class="col"><small class="form-text text-muted">';echo $selectTeam; echo'</small>';echo getAllTeam_categories(); echo'</div>
+        <div class="col"><small class="form-text text-muted">';echo $selectTeam; echo'</small><div class = "selectbox-design">';echo getAllTeam_categories(); echo'</div></div>
         <div class="col"><small class="form-text text-muted">';echo $name; echo'</small><input name="team_category_name" id="team_category_name" class="form-control" type="text"></div>
 	</div>
     <div class="form-row">
@@ -93,7 +93,7 @@ echo'
                 </div>
             </div>
     <div class="form-row">
-        <div class="col"><small class="form-text text-muted">';echo $selectCategory; echo'</small>';echo getUserCategory(0);echo'</div>
+        <div class="col"><small class="form-text text-muted">';echo $selectCategory; echo'</small><div class = "selectbox-design">';echo getUserCategory(0);echo'</div></div>
         <div class="col"><small class="form-text text-muted">';echo $name; echo'</small><input name="user_category_name" id="user_category_name" class="form-control" type="text"></div>
 	</div>
     <div class="form-row">
@@ -119,14 +119,14 @@ echo'
                 </div>
             </div>
     <div class="form-row">
-        <div class="col-md-6"><small class="form-text text-muted">';echo $selectCategory; echo'</small>'; echo getAllTeam_categories(); echo'</div>
-		<div class="col-md-6"><small class="form-text text-muted">';echo $selectTeam; echo'</small><select class="form-control" id="teams" name="teams"><option>';echo $selectCategory; echo'</option></select></div>
+        <div class="col-md-6"><small class="form-text text-muted">';echo $selectCategory; echo'</small><div class = "selectbox-design">'; echo getAllTeam_categories(); echo'</div></div>
+		<div class="col-md-6"><small class="form-text text-muted">';echo $selectTeam; echo'</small><div class = "selectbox-design"><select class="form-control" id="teams" name="teams"><option>';echo $selectCategory; echo'</option></select></div></div>
 	</div>
 	<hr>
 	<div class="form-row" style = "padding-top: 30px;">
         <div class="col-xl-4"><small class="form-text text-muted">';echo $name; echo'</small><input name="team_name" id="team_name" class="form-control" type="text"></div>
-        <div class="col-xl-4"><small class="form-text text-muted">';echo $select_group; echo'</small>';echo getAllTeam_Group();echo'</div>
-        <div class="col-xl-4"><small class="form-text text-muted">';echo $selectCategory; echo'</small>';echo getAllTeam_categories2();echo'</div>
+        <div class="col-xl-4"><small class="form-text text-muted">';echo $select_group; echo'</small><div class = "selectbox-design">';echo getAllTeam_Group();echo'</div></div>
+        <div class="col-xl-4"><small class="form-text text-muted">';echo $selectCategory; echo'</small><div class = "selectbox-design">';echo getAllTeam_categories2();echo'</div></div>
 	</div>
 	
     <div class="form-row">
@@ -152,7 +152,7 @@ echo';
                 </div>
             </div>
     <div class="form-row">
-        <div class="col"><small class="form-text text-muted">';echo $select_group; echo'</small>';echo getGroups(0);echo'</div>
+        <div class="col"><small class="form-text text-muted">';echo $select_group; echo'</small><div class = "selectbox-design">';echo getGroups(0);echo'</div></div>
         <div class="col"><small class="form-text text-muted">';echo $name; echo'</small><input name="group_name" id="group_name" class="form-control" type="text"></div>
 	</div>
     <div class="form-row">
@@ -178,7 +178,7 @@ echo';
                 </div>
             </div>
     <div class="form-row">
-        <div class="col"><small class="form-text text-muted">';echo $selectRate; echo'</small>';echo getRate(0);echo'</div>
+        <div class="col"><small class="form-text text-muted">';echo $selectRate; echo'</small><div class = "selectbox-design">';echo getRate(0);echo'</div></div>
         <div class="col"><small class="form-text text-muted">';echo $name; echo'</small><input name="rate_name" id="rate_name" class="form-control" type="text"></div>
 	</div>
     <div class="form-row">

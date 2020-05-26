@@ -45,7 +45,9 @@ require_once('php/select_boxes.php');
 						<input name="name" class="form-control" type="text">
 					</div>
 					<div class="col-xl-6"><small class="form-text text-muted"><?php echo $city; ?></small>
-						<?php echo getAllCities();?>
+						<div class = 'selectbox-design'>
+							<?php echo getAllCities();?>
+						</div>
 					</div>
 				</div>
 				<div class="form-row">

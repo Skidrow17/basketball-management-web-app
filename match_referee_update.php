@@ -42,17 +42,17 @@ require_once('php/select_boxes.php');?>
 				</div>
 				<div class="form-row">
 					<div class="col"><small class="form-text text-muted"><?php echo $teamCategory; ?></small>
-
-						<?php echo getAllTeam_Categories(); ?>
-
+						<div class = "selectbox-design">
+							<?php echo getAllTeam_Categories(); ?>
+						</div>
 					</div>
 
 					<div class="col"><small class="form-text text-muted"><?php echo $match; ?></small>
-
-						<select class="form-control" id="matches" name="matches">
-							<option><?php echo $selectCategory; ?></option>
-						</select>
-
+						<div class = "selectbox-design">
+							<select class="form-control" id="matches" name="matches">
+								<option><?php echo $selectCategory; ?></option>
+							</select>
+						</div>
 					</div>
 
 				</div>

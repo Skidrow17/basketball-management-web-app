@@ -40,19 +40,25 @@ require_once('php/select_boxes.php');
             </div>
             <div class="form-row">
                 <div class="col"><small class="form-text text-muted"><?php echo $teamCategory; ?></small>
-                    <?php echo getAllTeam_Categories(); ?>
+                    <div class = "selectbox-design">
+                        <?php echo getAllTeam_Categories(); ?>
+                    </div>
                 </div>
             </div>
             <div class="form-row">
                 <div class="col"><small class="form-text text-muted"><?php echo $team; ?> 1</small>
-                    <select id='team1' name='team1' class="form-control" required>
-                        <option value="-1" selected=""><?php echo $selectCategory; ?></option>
-                    </select>
+                    <div class = "selectbox-design">
+                        <select id='team1' name='team1' class="form-control" required>
+                            <option value="-1" selected=""><?php echo $selectCategory; ?></option>
+                        </select>
+                    </div>
                 </div>
                 <div class="col"><small class="form-text text-muted"><?php echo $team; ?> 2</small>
-                    <select id='team2' name='team2' class="form-control" required>
-                        <option value="-1" selected=""><?php echo $selectCategory; ?></option>
-                    </select>
+                    <div class = "selectbox-design">
+                        <select id='team2' name='team2' class="form-control" required>
+                            <option value="-1" selected=""><?php echo $selectCategory; ?></option>
+                        </select>
+                    </div>
                 </div>
             </div>
             <div class="form-row">
@@ -73,10 +79,14 @@ require_once('php/select_boxes.php');
             </div>
             <div class="form-row">
                 <div class="col"><small class="form-text text-muted"><?php echo $court; ?></small>
-                    <?php getAllCourts();?>
+                    <div class = "selectbox-design">
+                        <?php getAllCourts();?>
+                    </div>
                 </div>
                 <div class="col"><small class="form-text text-muted"><?php echo $gameRate; ?></small>
-                    <?php getAllRates();?>
+                    <div class = "selectbox-design">
+                        <?php getAllRates();?>
+                    </div>
                 </div>
             </div>
             <button class="btn btn-primary btn-block" type="submit" name='submit'

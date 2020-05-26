@@ -17,7 +17,7 @@ if (isset($_SESSION['safe_key']) && isset($_SESSION['user_id'])) {
 		while ($row = $run->fetch(PDO::FETCH_ASSOC)) {
 			echo '<div class="col"><small class="form-text text-muted">';
 			echo $selectLanguage;
-			echo '</small>';
+			echo '</small><div class = "selectbox-design">';
 
 			if ($row['language'] === 'en') {
 				echo '<select id="language" name="language" class="form-control" required>
@@ -33,7 +33,7 @@ if (isset($_SESSION['safe_key']) && isset($_SESSION['user_id'])) {
 				</div>';
 			}
 
-			echo '<div class="col"><small class="form-text text-muted">Polling Time';
+			echo '</div><div class="col"><small class="form-text text-muted">Polling Time';
 			echo $minutes;
 			echo '<br></small>
 					<input name="pollingTime" value = "';

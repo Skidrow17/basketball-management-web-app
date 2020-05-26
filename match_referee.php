@@ -67,38 +67,51 @@ require_once('php/select_boxes.php');?>
 
 				<div class="form-row">
 					<div class="col"><small class="form-text text-muted"><?php echo $selectCategory;?></small>
+					<div class = "selectbox-design">
+
 						<?php echo getAllTeam_Categories(); ?>
 					</div>
+					</div>
 					<div class="col"><small class="form-text text-muted"><?php echo $selectMatch;?></small>
-						<select class="form-control" id="matches" name="matches">
-							<option><?php echo $selectCategory; ?></option>
-						</select>
+						<div class = "selectbox-design">
+							<select class="form-control" id="matches" name="matches">
+								<option><?php echo $selectCategory; ?></option>
+							</select>
+						</div>
 					</div>
 				</div>
 
 				<div class="form-row">
 					<div class="col"><small class="form-text text-muted"><?php echo $selectRefere;?> 1</small>
-						<select class="form-control" id="referee1" name="human_power[]" required>
-							<option value=""><?php echo $selectMatch; ?></option>
-						</select>
+						<div class = "selectbox-design">
+							<select class="form-control" id="referee1" name="human_power[]" required>
+								<option value=""><?php echo $selectMatch; ?></option>
+							</select>
+						</div>
 					</div>
 					<div class="col"><small class="form-text text-muted"><?php echo $selectRefere;?> 2</small>
-						<select class="form-control" id="referee2" name="human_power[]" required>
-							<option value=""><?php echo $selectMatch; ?></option>
-						</select>
+						<div class = "selectbox-design">
+							<select class="form-control" id="referee2" name="human_power[]" required>
+								<option value=""><?php echo $selectMatch; ?></option>
+							</select>
+						</div>
 					</div>
 				</div>
 
 				<div class="form-row">
 					<div class="col"><small class="form-text text-muted"><?php echo $selectJudge;?> 1</small>
-						<select class="form-control" id="judge1" name="human_power[]" required>
-							<option value=""><?php echo $selectMatch; ?></option>
-						</select>
+						<div class = "selectbox-design">
+							<select class="form-control" id="judge1" name="human_power[]" required>
+								<option value=""><?php echo $selectMatch; ?></option>
+							</select>
+						</div>
 					</div>
 					<div class="col"><small class="form-text text-muted"><?php echo $selectJudge;?> 2</small>
-						<select class="form-control" id="judge2" name="human_power[]" required>
-							<option value=""><?php echo $selectMatch; ?></option>
-						</select>
+						<div class = "selectbox-design">
+							<select class="form-control" id="judge2" name="human_power[]" required>
+								<option value=""><?php echo $selectMatch; ?></option>
+							</select>
+						</div>
 					</div>
 				</div>
 
