@@ -425,7 +425,7 @@ function recovery_email_send($mail,$recovery_url)
       <h3><b>Επαναφορά Κωδικού Πρόσβασης</b></h3>
     </div>
     <div class="container">
-      <p>Παρακαλώ πατήστε το σύνδεσμο: <a href="'.$recovery_url.'">Επιβεβαίωση</a></p>
+      <p>Παρακαλώ πατήστε τον σύνδεσμο: <a href="'.$recovery_url.'">Επιβεβαίωση</a></p>
     </div>
   </div>
 

@@ -35,21 +35,21 @@ if (isset($_GET['q']) && isset($_SESSION['safe_key']) && isset($_SESSION['user_i
                 <div class="col"><small class="form-text text-muted">';echo $phone; echo'</small><input class="form-control" name="phone" value="' . $row['phone'] . '" type="text"></div>
             </div>
             <div class="form-row">
-                <div class="col"><small class="form-text text-muted">';echo $livingPlace; echo'</small>';
+                <div class="col"><small class="form-text text-muted">';echo $livingPlace; echo'</small><div class = "selectbox-design">';
             echo getLivingPlace($row['living_place']);
-            echo '</div>
-                <div class="col"><small class="form-text text-muted">';echo $rating; echo'</small>';
+            echo '</div></div>
+                <div class="col"><small class="form-text text-muted">';echo $rating; echo'</small><div class = "selectbox-design">';
             echo getRate($row['rate']);
             echo '</select></div>
-			</div>
+			</div></div>
 			<div class="form-row">
-				<div class="col-xl-6"><small class="form-text text-muted">';echo $drivingLicence; echo'</small>';
+				<div class="col-xl-6"><small class="form-text text-muted">';echo $drivingLicence; echo'</small><div class = "selectbox-design">';
             echo getDrivingLicence($row['driving_licence']);
-            echo '</div>
+            echo '</div></div>
 			<div
-				<div class="col-xl-6"><small class="form-text text-muted">';echo $profession; echo'</small>';
+				<div class="col-xl-6"><small class="form-text text-muted">';echo $profession; echo'</small><div class = "selectbox-design">';
             echo getUserCategory($row['profession']);
-            echo '</select></div>
+            echo '</select></div></div>
 			</div>
 			<div class="form-row">
 				<div class="col-xl-6"><small class="form-text text-muted">';echo $profileImage; echo'</small><input  name="profile_pic" id="profile_pic" value=' . $row['profile_pic'] . ' class="col-xl-12" type="file" /></div>

@@ -19,9 +19,9 @@ if (isset($_POST['cid']) && isset($_SESSION['safe_key']) && isset($_SESSION['use
             echo '  
             <div class="form-row">
                 <div class="col-xl-6"><small class="form-text text-muted">';echo $name; echo'</small><input name="name" class="form-control" value="' . $row['name'] . '" type="text"></div>
-                <div class="col-xl-6"><small class="form-text text-muted">';echo $city; echo'</small>';
+                <div class="col-xl-6"><small class="form-text text-muted">';echo $city; echo'</small><div class = "selectbox-design">';
             echo getLivingPlace($row['city']);
-            echo '</div>
+            echo '</div></div>
             </div>
 			<div class="form-row">
                 <div class="col"><small class="form-text text-muted">Latitude</small><input class="form-control" id="lat" name="latitude" val="40.29111003227428" value="' . $row['latitude'] . '" type="text"></div>
