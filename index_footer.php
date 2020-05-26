@@ -6,7 +6,6 @@ require_once('php/language.php');
 
 ?>
 <div class="footer-clean">
-
     <footer>
         <div class="container">
             <div class="row justify-content-center">

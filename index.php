@@ -28,7 +28,6 @@ header('Location: ./php/login.php');
 	<?php include('index_nav_bar.php'); ?>
 
 	<div class='form-row'>
-
 		<div class='col-xl-12'>
 			<div class="login-dark">
 				<form method="post" action="./php/login.php">
@@ -39,6 +38,7 @@ header('Location: ./php/login.php');
 					<div class="form-group">
 						<input class="form-control" type="password" name="password" id="password" placeholder="Κωδικός" required>
 					</div>
+					<input type="hidden" name="browser" id="browser" value="">
 					<div class="form-group">
 						<button class="btn btn-primary btn-block" type="submit">Είσοδος</button>
 					</div><a href="#" id="password_recovery" class="forgot">Ξεχάσατε τον κωδικό σας;</a>
@@ -48,7 +48,8 @@ header('Location: ./php/login.php');
 	</div>
 
 	<?php include('index_footer.php'); ?>
-		<script src="assets/js/index.js"></script>
+	<script src="assets/js/index.js"></script>
+	<script src="assets/js/browser_information.js"></script>
 
 </body>
 
