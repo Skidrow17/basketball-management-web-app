@@ -14,7 +14,7 @@ if (isset($_POST['current_page']) && isset($_SESSION['safe_key']) && isset($_SES
         $page = $_POST['current_page'];
         $sql = "SELECT 
 		home.name AS team_id_1, 
-		away.name AS team_id_2,r.id,r.team_score_1,r.team_score_2,r.date_time,c.latitude,c.longitude
+		away.name AS team_id_2,r.id,r.team_score_1,r.team_score_2,r.date_time,c.latitude,c.longitude,r.state
 		FROM 
 		game AS r
 		JOIN team AS home 
@@ -30,12 +30,30 @@ if (isset($_POST['current_page']) && isset($_SESSION['safe_key']) && isset($_SES
         $run->execute();
         while ($row = $run->fetch(PDO::FETCH_ASSOC)) {
             $converted = date('d M Y h.i.s A', strtotime($row['date_time']));
-            $reversed = date('d-m-Y H.i.s', strtotime($converted));
+			$reversed = date('d-m-Y H.i.s', strtotime($converted));
+			$state_string = '';
+			if($row['state'] == 1){
+				$state_string = $period1;
+			 }else if($row['state'] == 2){
+				$state_string = $period2;
+			 }else if($row['state'] == 3){
+				$state_string = $period3;
+			 }else if($row['state'] == 4){
+				$state_string = $period4;
+			 }else if($row['state'] == 5){
+				$state_string = $final;
+			 }else if($row['state'] == 0){
+				$state_string = $unknown;
+			}
+
             echo " 				  
 				  
 				  <div class='form-row'>
 				    <div class='col'> <li class='list-group-item' style='text-align: center;color:#000000;background-color:#ffffff;'>" . $reversed . "</div>
-			    </div>
+				</div>
+				<div> 
+					<li class='list-group-item' style='text-align: center;color:#000000;background-color:#ffffff;'>";echo $state_string; echo "</div>
+				</div>
 				  
 				  <div class='form-row'>
                 <div class='col'>

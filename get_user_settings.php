@@ -33,7 +33,7 @@ if (isset($_SESSION['safe_key']) && isset($_SESSION['user_id'])) {
 				</div>';
 			}
 
-			echo '</div><div class="col"><small class="form-text text-muted">Polling Time';
+			echo '</div><div class="col"><small class="form-text text-muted">Polling Time ';
 			echo $minutes;
 			echo '<br></small>
 					<input min="20" max="60" name="pollingTime" value = "';

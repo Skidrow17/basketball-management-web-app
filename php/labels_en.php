@@ -226,4 +226,10 @@
    $clarifications = "Clarifications";
    $reminder = "Reminder";
    $reminder_message = "You Have Unread Messages, Please Check Your Inbox";
+   $unknown = "Unknown";
+   $yes = "Yes";
+   $no = "No";
+   $active = "Active";
+   $inactive = "Inactive";
+   
 ?>

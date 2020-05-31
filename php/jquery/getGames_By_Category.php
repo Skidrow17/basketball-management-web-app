@@ -12,7 +12,7 @@ require_once '../language.php';
 if(isset($_POST['current_page'])){
     $page = $_POST['current_page'] * 4;
     echo '<tr>
-        <th>'; echo $state; echo' 1</th>
+        <th>'; echo $state; echo'</th>
         <th>'; echo $team; echo' 1</th>
         <th>'; echo $team; echo' 2</th>
         <th>'; echo $score; echo' 1</th>
