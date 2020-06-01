@@ -21,7 +21,7 @@ if (isset($_POST['title']) && isset($_POST['text']) && isset($_SESSION['safe_key
         $run->execute();
 
 
-        $sql = "SELECT mobile_token FROM user WHERE id != :sender_id";
+        $sql = "SELECT mobile_token,active FROM user WHERE id != :sender_id";
         $result = $dbh->prepare($sql);
         $result->bindParam(':sender_id', $user_id, PDO::PARAM_INT);
         $result->execute();
