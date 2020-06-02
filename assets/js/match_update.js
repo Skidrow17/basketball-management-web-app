@@ -55,4 +55,19 @@ $(document).ready(function() {
         $("#team1 option[value='" + r2 + "']").hide();
         $("#team2 option[value='" + r1 + "']").hide();
     }
+
+    $("#tableta").on("click","#delete_match",function() {
+        var post_id = "match_id=" + current_game;
+        if (confirm("Είσται σίγουρος;")) {
+          $.ajax({
+            type: "POST",
+            url: "php/delete/delete_match.php",
+            data: post_id,
+            success: function(result) {
+              autologout(result);
+              location.reload();
+            }
+          });
+        }
+      });
 });

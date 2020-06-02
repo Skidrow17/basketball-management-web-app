@@ -27,9 +27,7 @@ $(document).ready(function() {
         r2 = $("#team2").val();
         hideAndShow();
     });
-
-    $('#time').timepicker({ format: 'HH:mm' }); 
-
+    
     function hideAndShow() {
         $("#team1 option").show();
         $("#team2 option").show();

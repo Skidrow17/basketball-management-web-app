@@ -46,7 +46,12 @@ if (isset($_POST['game_id']) && isset($_SESSION['safe_key']) && isset($_SESSION[
             class="col"><small class="form-text text-muted">';echo $rating; echo'</small><div class = "selectbox-design">';
             echo getRate($row['rate']);
             echo '</div></div>
-			</div><button class="btn btn-primary btn-block" name="submit" type="submit" style="background-color:rgb(220,64,29);">';echo $update; echo'</button></form> ';
+            </div>
+            <div class="form-row">
+            <div class="col"><button class="btn btn-primary btn-block" name="submit" type="submit" style="background-color:rgb(220,64,29);">';echo $update; echo'</button></div>
+            <div class="col"><button class="btn btn-primary btn-block" type="button" id="delete_match" style="background-color:rgb(220,64,29);">';echo $delete; echo'</button></div>
+            </div>
+            </form> ';
         }
     } else {
         session_destroy();

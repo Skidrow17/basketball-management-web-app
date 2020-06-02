@@ -64,7 +64,7 @@ require_once('php/select_boxes.php');
                     </div>
 
                     <div id='tableta'>
-
+                    
                     </div>
 
             </div>
