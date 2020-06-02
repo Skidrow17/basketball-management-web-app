@@ -66,7 +66,7 @@ require_once('php/select_boxes.php');
                     <input name='date' class="form-control" type="date" required>
                 </div>
                 <div class="col"><small class="form-text text-muted"><?php echo $time; ?> </small>
-                    <input name='time' class="form-control" type="time" required>
+                    <input name='time' id='time' class="form-control" type="time" required>
                 </div>
             </div>
             <div class="form-row">
