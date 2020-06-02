@@ -29,7 +29,7 @@ if (isset($_SESSION['safe_key']) && isset($_SESSION['user_id']) && isset($_POST[
         $sql = "SELECT H.name,H.surname,H.password,H.email,H.phone,if(H.driving_licence = 0, '".$yes."', '".$no."') as driving_licence,C.name as living_place,P.name as profession,H.profile_pic,if(H.active = 0, '".$active."', '".$inactive."') as active,R.name as rate,DATE_FORMAT(H.update_time, '%d/%m/%Y %H:%i') as update_time_diff_format
 				FROM user_update_history H,rate R,city C,user_categories P
                 WHERE H.rate = R.id AND C.id = H.living_place AND P.id = H.profession AND update_time > :date_from
-				ORDER BY update_time desc limit :page,9";
+				ORDER BY H.update_time desc limit :page,9";
         $run = $dbh->prepare($sql);
         $run->bindParam(':page', $page, PDO::PARAM_INT);
         $run->bindParam(':date_from',$_POST['date_from'],PDO::PARAM_STR);

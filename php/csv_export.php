@@ -25,7 +25,8 @@ if(isset($_SESSION['safe_key']) && isset($_SESSION['user_id']) && isset($_SESSIO
         } else if ($_GET['id'] == 2) {
             $sql = "SELECT H.name,H.surname,H.username,H.password,H.name,H.surname,H.email,H.phone,if(H.driving_licence = 0, '".$yes."', '".$no."') as driving_licence,C.name as city_name,P.name as user_category,H.profile_pic,if(H.active = 0, '".$active."', '".$inactive."') as active,R.name as user_rate,H.update_time
                     FROM user_update_history H,rate R,city C,user_categories P
-                    WHERE H.rate = R.id AND C.id = H.living_place AND P.id = H.profession AND update_time > :date_from";
+                    WHERE H.rate = R.id AND C.id = H.living_place AND P.id = H.profession AND update_time > :date_from 
+                    ORDER BY H.update_time DESC";
             $filename = 'user_update_history-' . date('d.m.Y') . '.csv';
         } else if ($_GET['id'] == 4){
             $sql = "SELECT u.name AS user_name,u.surname,home.name as home_team,away.name as away_team,g.date_time,team_score_1,team_score_2,c.name AS court_name 

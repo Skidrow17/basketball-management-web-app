@@ -28,6 +28,7 @@ $(document).ready(function() {
         hideAndShow();
     });
 
+    $('#time').timepicker({ format: 'HH:mm' }); 
 
     function hideAndShow() {
         $("#team1 option").show();
@@ -35,4 +36,5 @@ $(document).ready(function() {
         $("#team1 option[value='" + r2 + "']").hide();
         $("#team2 option[value='" + r1 + "']").hide();
     }
+
 });

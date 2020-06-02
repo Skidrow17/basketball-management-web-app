@@ -273,7 +273,7 @@ function sent_mail($mail,$username,$password)
   </html> 
   ';
 
-  $mail->Subject = ORGANIZATION.' - Στοιχεία Σύνδεσης';
+  $mail->Subject = ORGANIZATION."=?UTF-8?B?".base64_encode(' - Στοιχεία Σύνδεσης')."?=";
   $mail->Body    = $bodyContent;
 
   if(!$mail->send()) {
@@ -350,7 +350,7 @@ function recovery_email_send_mobile($mail,$recoveryKey)
   </html> 
   ';
 
-  $mail->Subject = ORGANIZATION.' - Επαναφορά Κωδικού';
+  $mail->Subject = ORGANIZATION."=?UTF-8?B?".base64_encode(' - Επαναφορά Κωδικού')."?=";
   $mail->Body    = $bodyContent;
 
   if(!$mail->send()) {
@@ -433,7 +433,7 @@ function recovery_email_send($mail,$recovery_url)
   </html> 
   ';
 
-  $mail->Subject = ORGANIZATION.' - Επαναφορά Κωδικού';
+  $mail->Subject = ORGANIZATION."=?UTF-8?B?".base64_encode(' - Επαναφορά Κωδικού')."?=";
   $mail->Body    = $bodyContent;
 
   if(!$mail->send()) {
@@ -518,7 +518,7 @@ function unread_messages_send($mail)
   </html> 
   ';
 
-  $mail->Subject = ORGANIZATION.' - Μη Αναγνωσμένα Μηνύματα';
+  $mail->Subject = ORGANIZATION."=?UTF-8?B?".base64_encode(' - Μη Αναγνωσμένα Μηνύματα')."?=";
   $mail->Body    = $bodyContent;
 
   if(!$mail->send()) {

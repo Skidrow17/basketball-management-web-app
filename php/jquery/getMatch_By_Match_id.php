@@ -23,12 +23,12 @@ if (isset($_POST['game_id']) && isset($_SESSION['safe_key']) && isset($_SESSION[
             $time1 = $splitTimeStamp[1];
             echo '
             <div class="form-row">
-                <div class="col"><small class="form-text text-muted">';echo $team; echo' 1</small><select id="team1" name="team1" class="form-control" required>';
+                <div class="col"><small class="form-text text-muted">';echo $team; echo' 1</small><div class = "selectbox-design"><select id="team1" name="team1" class="form-control" required>';
             echo getTeamById($row['team_id_1'], $_POST['category_id']);
-            echo '</select></div>
-                <div class="col"><small class="form-text text-muted">';echo $team; echo' 2</small><select id="team2" name="team2" class="form-control" required>';
+            echo '</select></div></div>
+                <div class="col"><small class="form-text text-muted">';echo $team; echo' 2</small><div class = "selectbox-design"><select  id="team2" name="team2" class="form-control" required>';
             echo getTeamById($row['team_id_2'], $_POST['category_id']);
-            echo '</select></div>
+            echo '</select></div></div>
            </div>
 			<div class="form-row">
 				<div class="col"><small class="form-text text-muted">';echo $date; echo'</small><input name="date" value=' . $date1 . ' class="form-control" type="date" required></div>
@@ -39,13 +39,13 @@ if (isset($_POST['game_id']) && isset($_SESSION['safe_key']) && isset($_SESSION[
 				<div class="col"><small class="form-text text-muted">';echo $numberOfJudges; echo'<br></small><input name="judge_num" class="form-control" value=' . $row['required_judges'] . '  min="0" max="2" type="number" required></div>
 			</div>
 			<div class="form-row">
-			<div class="col"><small class="form-text text-muted">';echo $court; echo'</small>';
+			<div class="col"><small class="form-text text-muted">';echo $court; echo'</small><div class = "selectbox-design">';
             echo getCourt($row['court_id']);
-            echo '</div>
+            echo '</div></div>
 			<div
-            class="col"><small class="form-text text-muted">';echo $rating; echo'</small>';
+            class="col"><small class="form-text text-muted">';echo $rating; echo'</small><div class = "selectbox-design">';
             echo getRate($row['rate']);
-            echo '</div>
+            echo '</div></div>
 			</div><button class="btn btn-primary btn-block" name="submit" type="submit" style="background-color:rgb(220,64,29);">';echo $update; echo'</button></form> ';
         }
     } else {
