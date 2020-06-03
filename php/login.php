@@ -36,6 +36,7 @@ if ((isset($_POST['password']) && isset($_POST['username'])) || (isset($_COOKIE[
                         $_SESSION['profile_pic'] = $row['profile_pic'];
                         $_SESSION['safe_key'] = $safe_key;
                         $_SESSION['profession'] = $row['profession'];
+                        $_SESSION["last_update_time"] =  date('H:i:s', time());
                         $_SESSION['N_O_M'] = getNumberOfMessages($row['username']);
                         $_SESSION['L_L_H'] = getLastLoginHistoryId($row['id']);
                         if ($row['active'] == 0) {
@@ -105,6 +106,7 @@ if ((isset($_POST['password']) && isset($_POST['username'])) || (isset($_COOKIE[
                     $_SESSION['surname'] = $row['surname'];
                     $_SESSION['profile_pic'] = $row['profile_pic'];
                     $_SESSION['safe_key'] = $safe_key;
+                    $_SESSION["last_update_time"] =  date('H:i:s', time());
                     $_SESSION['profession'] = $row['profession'];
                     $_SESSION['N_O_M'] = getNumberOfMessages($row['username']);
                     $_SESSION['L_L_H'] = getLastLoginHistoryId($row['id']);

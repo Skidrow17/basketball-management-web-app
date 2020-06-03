@@ -29,7 +29,7 @@ require_once('php/select_boxes.php');
 
 				<div class="form-row">
 					<div class="col">
-						<h3><?php echo $court; ?></h3>
+						<h3><?php echo $court1; ?></h3>
 					</div>
 				</div>
 

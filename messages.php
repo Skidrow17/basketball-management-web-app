@@ -65,7 +65,13 @@
 								<hr>
 							</div>
 						</div>
-
+						<div style = "text-align: center;font-weight: bold;"> <?php echo $last_update_done.' '.$_SESSION["last_update_time"];?></div>
+						<div class="form-row">
+							<div class="col">
+								<hr>
+							</div>
+						</div>
+						
 						<div class='form-row'>
 							<div class="col">
 								<button class="btn btn-primary btn-block" id='incomming' value='1' type="button"><?php echo $incommingMessages; ?></div>

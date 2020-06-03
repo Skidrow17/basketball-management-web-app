@@ -12,7 +12,8 @@ if (isset($_SESSION['safe_key']) && isset($_SESSION['user_id']) && isset($_SESSI
 	
 	if((round(microtime(true) * 1000)) > $_SESSION['polling_time'])
 		$_SESSION['polling_time'] = round(microtime(true) * 1000) + 60000 * $_SESSION['polling_mins'];
-	
+
+	$_SESSION["last_update_time"] = date('H:i:s', time());
 	if (security_check($_SESSION['safe_key'], $_SESSION['user_id']) == true) {
 		if (isset($_SESSION['N_O_M']) && isset($_SESSION['polling_time'])) {
 			$numberOfMessagesInDB = getNumberOfMessages($_SESSION['username']);

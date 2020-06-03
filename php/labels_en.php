@@ -234,5 +234,5 @@
    $no = "No";
    $active = "Active";
    $inactive = "Inactive";
-   
+   $last_update_done = "Last Update Done In :";
 ?>

@@ -61,7 +61,7 @@
 	$dec = "'Δεκ'";
   //Footer
 	$developer = "Προγραμματιστής";
-	$supervisors = "Επόπτες";
+	$supervisors = "Eπιβλέποντες";
 	$allRightsReserved = "UOWM © All Rights Reserved";
 	
 	
@@ -130,10 +130,10 @@
    
    //Headers
    $usersPerMatch = "Επεξεργασία Διαιτητών/Κριτών Ανα Αγώνα";
-   $userUpdate = "Αναβάθμιση Χρήστη";
-   $courtUpdate = "Αναβάθμιση Γηπέδου";
-   $matchUpdate = "Αναβάθμιση Αγώνα";
-   $updateGeneralInfo = "Αναβάθμιση Γενικών Πληροφοριών";
+   $userUpdate = "Επεξεργασία Χρήστη";
+   $courtUpdate = "Επεξεργασία Γηπέδου";
+   $matchUpdate = "Επεξεργασία Αγώνα";
+   $updateGeneralInfo = "Επεξεργασία Γενικών Πληροφοριών";
 
    $userInsert = "Προσθήκη Χρήστη";
    $courtInsert = "Προσθήκη Γηπέδου";
@@ -234,4 +234,5 @@
    $no = "Όχι";
    $active = "Ενεργός";
    $inactive = "Ανενεργός";
+   $last_update_done = "Τελευταία Ενημέρωση Έγινε Στης :";
 ?>
