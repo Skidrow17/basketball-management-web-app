@@ -32,7 +32,7 @@ echo'
     
 		    <div class="form-row">
                 <div class="col">
-                    <h3>';echo $city; echo'</h3>
+                    <h3>';echo $city1; echo'</h3>
                 </div>
             </div>
 			
@@ -58,7 +58,7 @@ echo'
     
 		    <div class="form-row">
                 <div class="col">
-                    <h3>';echo $teamCategory; echo'</h3>
+                    <h3>';echo $teamCategory1; echo'</h3>
                 </div>
             </div>
 			
@@ -83,7 +83,7 @@ echo'
     
 		    <div class="form-row">
                 <div class="col">
-                    <h3>';echo $userCategory; echo'</h3>
+                    <h3>';echo $userCategory1; echo'</h3>
                 </div>
             </div>
 			
@@ -109,7 +109,7 @@ echo'
     
 		    <div class="form-row">
                 <div class="col">
-                    <h3>';echo $team; echo'</h3>
+                    <h3>';echo $team1; echo'</h3>
                 </div>
             </div>
 			
@@ -142,7 +142,7 @@ echo';
     
 		    <div class="form-row">
                 <div class="col">
-                    <h3>';echo $group; echo'</h3>
+                    <h3>';echo $group1; echo'</h3>
                 </div>
             </div>
 			
@@ -168,7 +168,7 @@ echo';
     
 		    <div class="form-row">
                 <div class="col">
-                    <h3>';echo $rating; echo'</h3>
+                    <h3>';echo $rating1; echo'</h3>
                 </div>
             </div>
 			

@@ -11,24 +11,28 @@
 	$restrictions = "Restrictions";
 	$userUpdateHistory = "User Update History";
  $add = "Add";
-	$humanPowerSorting = "Align People To Match";
-	$match = "Match";
-	$city = "City";
-	$teamCategory = "Team Category";
-	$userCategory = "User Category";
-	$team = "Team";
-	$user = "User";
-	$court = "Court";
-	$androidAplication = "Android Application";
+	$humanPowerSorting = "Add Referee/Judge To Match";
+	$match = "Add Match";
+	$city = "Add City";
+	$teamCategory = "Add Team Category";
+	$userCategory = "Add User Category";
+	$team = "Add Team";
+	$user = "Add User";
+  $court = "Add Court";
+  $group = "Add Group";
+  $rating  = "Add Rating";
+	$androidAplication = "Add Android Application";
  $modifyDelete = "Modify/Delete";
-	$usersPerMatch = "Users Per Match";
-	$match1 = "Match";
-	$city1 = "City";
-	$teamCategory1 = "Team Category";
-	$userCategory1 = "User Category";
-	$team1 = "Team";
-	$user1= "User";
-	$court1 = "Court";
+	$usersPerMatch = "Modify Users Per Match";
+	$match1 = "Modify Match";
+	$city1 = "Modify City";
+	$teamCategory1 = "Modify Team Category";
+	$userCategory1 = "Modify User Category";
+	$team1 = "Modify Team";
+	$user1= "Modify User";
+  $court1 = "Modify Court";
+  $rating1  = "Modify Rating";
+  $group1 = "Modify Group";
  //logedUser
 	$messages = "Messages";
 	$announcements = "Announcements";
@@ -40,7 +44,7 @@
 	$restrictionsDashboard = "Restrictions";
 	$totalMatchesDashboard = "Total Matches";
 	$unassignedMatchesDashboard = "Unassigned Matches";
-	$currentWeekMatchesDashoard =  "Current Week Matches";
+	$currentWeekMatchesDashoard =  "Weekly Matches";
  //Chart 
 	$chartLabel = "'Restrictions Per Month'";
 	$jan = "'Jan'";
@@ -93,7 +97,6 @@
 	$profession = "Profession";
 	$profileImage = "Profile Image";
 	$accountState = "Account State";
-	$rating  = "Rating";
 	$updateDate = "Update Date";
 //========================================================
    
@@ -126,7 +129,7 @@
    $playableCategories = "Playable Categories";
    
    //Headers
-   $usersPerMatch = "Users Per Match";
+   $usersPerMatch = "Modify Referee/Judge From Match";
    $userUpdate = "User Update";
    $courtUpdate = "Court Update";
    $matchUpdate = "Match Update";
@@ -209,11 +212,11 @@
    $email_request_sent = "Passwrod Change Request Email Sent";
    $please_check_email = "Please Check your Email Box";
    $ranking = "Ranking";
+   $ranking_update = "Modify Ranking";
    $wins = "Wins";
    $loses = "Loses";
    $total_games = "Tolal Matches";
    $points = "Points";
-   $group = "Group";
    $select_group = "Select Group";
    $comment = "Comment";
    $request_sent = "Request Successfuly Sent To Address";

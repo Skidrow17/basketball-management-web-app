@@ -31,7 +31,7 @@ require_once('php/select_boxes.php');
 
                     <div class="form-row">
                         <div class="col">
-                            <h3><?php echo $match; ?></h3>
+                            <h3><?php echo $match1; ?></h3>
                         </div>
                     </div>
 

@@ -107,7 +107,7 @@ textarea
 }
 
 #nav_bar{
-	background-color:#ffffff;
+	background-color:#ffffffec;
 }
 
 
@@ -334,7 +334,7 @@ tr:nth-child(even){background-color: #f2f2f2;}
 
 .footer-clean {
   padding:50px 0;
-  background-color:#fff;
+	background-color:#ffffffd8;
   color:#4b4c4d;
 }
 

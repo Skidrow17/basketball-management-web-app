@@ -15,7 +15,7 @@ require_once('php/select_boxes.php');
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>ΕΚΑΣΔΥΜ - <?php echo $ranking; ?></title>
+	<title>ΕΚΑΣΔΥΜ - <?php echo $ranking_update; ?></title>
 	<?php include('head.php'); ?>
 </head>
 
@@ -29,7 +29,7 @@ require_once('php/select_boxes.php');
 
 				<div class="form-row">
 					<div class="col">
-						<h3><?php echo $ranking; ?></h3>
+						<h3><?php echo $ranking_update; ?></h3>
 					</div>
 				</div>
 

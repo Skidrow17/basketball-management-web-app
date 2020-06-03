@@ -11,24 +11,28 @@
 	$restrictions = "Κωλύματα";
 	$userUpdateHistory = "Ιστορικό Αναβάθμισης χρήστη";
  $add = "Προσθήκη";
-	$humanPowerSorting = "Ταξινόμηση Διαιτητών";
-	$match = "Αγώνας";
-	$city = "Πόλη";
-	$teamCategory = "Κατηγορία Ομάδας";
-	$userCategory = "Κατηγορία Χρήστη";
-	$team = "Ομάδα";
-	$user = "Χρήστη";
-	$court = "Γήπεδο";
-	$androidAplication = "Εφαρμογή Android";
+	$humanPowerSorting = "Προσθήκη Διαιτητών/Κριτών Σε Αγώνα";
+	$match = "Προσθήκη Αγώνα";
+	$city = "Προσθήκη Πόλης";
+	$teamCategory = "Προσθήκη Κατηγορίας Ομάδας";
+	$userCategory = "Προσθήκη Κατηγορίας Χρήστη";
+	$team = "Προσθήκη Ομάδας";
+	$user = "Προσθήκη Χρήστη";
+  $court = "Προσθήκη Γηπέδου";
+  $rating  = "Προσθήκη Αξιολόγησης";
+  $group = "Προσθήκη Ομίλου";
+	$androidAplication = "Προσθήκη Εφαρμογής Android";
  $modifyDelete = "Επε/σία-Δια/φή";
 	$usersPerMatch = "Διαιτητές Αγώνα";
-	$match1 = "Αγώνας";
-	$city1 = "Πόλη";
-	$teamCategory1 = "Κατηγορία Ομάδας";
-	$userCategory1 = "Κατηγορία Χρήστη";
-	$team1 = "Ομάδα";
-	$user1= "Χρήστη";
-	$court1 = "Γήπεδο";
+	$match1 = "Επεξεργασία Αγώνας";
+	$city1 = "Επεξεργασία Πόλης";
+	$teamCategory1 = "Επεξεργασία Κατηγορίας Ομάδας";
+	$userCategory1 = "Επεξεργασία Κατηγορίας Χρήστη";
+	$team1 = "Επεξεργασία Ομάδα";
+	$user1= "Επεξεργασία Χρήστη";
+  $court1 = "Επεξεργασία Γηπέδου";
+  $rating1  = "Επεξεργασία Αξιολόγησης";
+  $group1 = "Επεξεργασία Ομίλου";
  //logedUser
 	 $messages = "Μηνύματα";
 	 $announcements = "Ανακοινώσεις";
@@ -40,7 +44,7 @@
 	$restrictionsDashboard = "Κωλύματα";
 	$totalMatchesDashboard = "Συνολικοί Αγώνες";
 	$unassignedMatchesDashboard = "Αγώνες χωρίς διαιτητές";
-	$currentWeekMatchesDashoard =  "Τρέχων αγώνες";
+	$currentWeekMatchesDashoard =  "Αγώνες Εβδομάδας";
  //Chart 
 	$chartLabel = "'Κωλύματα Ανά μήνα'";
 	$jan = "'Ιαν'";
@@ -68,7 +72,7 @@
 					$exportCSVButton = "Εξαγωγή CSV";
 					$addButton = "Υποβολή";
 					$totalRestrictions = "Συνολικά Κωλύματα";
-					$update = "Αναβάθμηση";
+					$update = "Ενημέρωση";
 					$delete = "Διαγραφή";
 					
 					
@@ -93,7 +97,6 @@
 	$profession = "Ιδιότητα";
 	$profileImage = "Εικόνα Προφίλ";
 	$accountState = "Κατάσταση Λογαριασμού";
-	$rating  = "Αξιολόγηση";
 	$updateDate = "Χρόνος Αναβάθμισης";
 //========================================================
  
@@ -126,7 +129,7 @@
    $playableCategories = "Αγώνες Που Μπορεί να Παίξει";
    
    //Headers
-   $usersPerMatch = "Χρήστες Ανά Αγώνα";
+   $usersPerMatch = "Επεξεργασία Διαιτητών/Κριτών Ανα Αγώνα";
    $userUpdate = "Αναβάθμιση Χρήστη";
    $courtUpdate = "Αναβάθμιση Γηπέδου";
    $matchUpdate = "Αναβάθμιση Αγώνα";
@@ -209,11 +212,11 @@
    $email_request_sent = "Αποστολή αίτησης αλλαγής κωδικού πρόσβασης στο ηλεκτρονικό ταχυδρομείο";
    $please_check_email = "Παρακαλώ ελέγξτε τα εισερχόμενα Email";
    $ranking = "Kατάταξη";
+   $ranking_update = "Επεξεργασία Kατάταξης";
    $wins = "Νίκες";
    $loses = "Ήττες";
    $total_games = "Συνολικοί Αγώνες";
    $points = "Πόντοι";
-   $group = "Όμιλος";
    $select_group = "Επιλέξτε Όμιλο";
    $comment = "Σχόλιο";
    $request_sent = "Η αίτηση στάλθηκε στην διεύθυνση";

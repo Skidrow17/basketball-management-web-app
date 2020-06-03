@@ -9,6 +9,9 @@ require_once('php/language.php');
 <nav id='nav_bar' class="navbar navbar-light navbar-expand-md fixed-top navbar-transparency">
     <div class="container">
         <a class="navbar-brand" href="http://ekasdym.gr/news/" style="background-color:rgba(255,255,255,0);"><img src="assets/img/ekas.png" height="40px" width="40px" alt="logo"></a>
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">ΕΚΑΣΔΥΜ</a>
+        </div>
         <button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navcol-1">
             <ul class="nav navbar-nav ml-auto">

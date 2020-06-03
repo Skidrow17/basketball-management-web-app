@@ -41,7 +41,7 @@
         $snackbar.attr("class", "snackbar");
       }
 
-      options.timeout = isset(options.timeout) ? options.timeout : 3000;
+      options.timeout = isset(options.timeout) ? options.timeout : 10000;
 
       if (isset(options.content)) {
         if ($snackbar.find(".snackbar-content").length) {
