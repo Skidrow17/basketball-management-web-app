@@ -40,7 +40,7 @@
 	$logout = "Logout";
  //dashboard
 	$usersDashboard = "Users";
-	$messagesDashboard = "Messages";
+	$messagesDashboard = "New Messages";
 	$restrictionsDashboard = "Restrictions";
 	$totalMatchesDashboard = "Total Matches";
 	$unassignedMatchesDashboard = "Unassigned Matches";
@@ -234,5 +234,7 @@
    $no = "No";
    $active = "Active";
    $inactive = "Inactive";
-   $last_update_done = "Last Update Done In :";
+   $last_update_done = "Last Update :";
+   $restriction_history = "Restriction History";
+   $date_range = "Date Should Belong In This Week";
 ?>

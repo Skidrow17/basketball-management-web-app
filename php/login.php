@@ -38,6 +38,7 @@ if ((isset($_POST['password']) && isset($_POST['username'])) || (isset($_COOKIE[
                         $_SESSION['profession'] = $row['profession'];
                         $_SESSION["last_update_time"] =  date('H:i:s', time());
                         $_SESSION['N_O_M'] = getNumberOfMessages($row['username']);
+                        $_SESSION['current_messages'] = getNumberOfMessages($row['username']);
                         $_SESSION['L_L_H'] = getLastLoginHistoryId($row['id']);
                         if ($row['active'] == 0) {
                             if ($_SESSION['profession'] === 'Admin') {
@@ -109,6 +110,7 @@ if ((isset($_POST['password']) && isset($_POST['username'])) || (isset($_COOKIE[
                     $_SESSION["last_update_time"] =  date('H:i:s', time());
                     $_SESSION['profession'] = $row['profession'];
                     $_SESSION['N_O_M'] = getNumberOfMessages($row['username']);
+                    $_SESSION['current_messages'] = getNumberOfMessages($row['username']);
                     $_SESSION['L_L_H'] = getLastLoginHistoryId($row['id']);
                     $device = $_POST['browser'];
                     $sql = "INSERT INTO login_history (user_id,safe_key,device_name,ip)VALUES (:id,:safe_key,:device_name,:ip)";

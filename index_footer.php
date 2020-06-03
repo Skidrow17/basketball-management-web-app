@@ -24,7 +24,9 @@ require_once('php/language.php');
                         <li><a>Dimitris Ziouzios</a>
                             <br>
                         </li>
-                        <li></li>
+                        <li>
+                            <a href="https://arch.icte.uowm.gr">ARCH ICTE UOWM</a>
+                        </li>
                     </ul>
                 </div>
                 <div class="col-lg-3 item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="apk/Ekasdym.apk"><i class="icon ion-social-android"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a>

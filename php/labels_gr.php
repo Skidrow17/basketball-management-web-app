@@ -40,7 +40,7 @@
 	 $logout = "Αποσύνδεση";
  //dashboard
 	$usersDashboard = "Χρήστες";
-	$messagesDashboard = "Μηνύματα";
+	$messagesDashboard = "Νέα Μηνύματα";
 	$restrictionsDashboard = "Κωλύματα";
 	$totalMatchesDashboard = "Συνολικοί Αγώνες";
 	$unassignedMatchesDashboard = "Αγώνες χωρίς διαιτητές";
@@ -234,5 +234,7 @@
    $no = "Όχι";
    $active = "Ενεργός";
    $inactive = "Ανενεργός";
-   $last_update_done = "Τελευταία Ενημέρωση Έγινε Στης :";
+   $last_update_done = "Τελευταία Ενημέρωση :";
+   $restriction_history = "Ιστορικό Κωλυμάτων";
+   $date_range = "Η ημερομηνία πρέπει να βρήσκετε την τρέχουσα εβδομάδα";
 ?>

@@ -13,7 +13,7 @@ require_once('php/useful_functions.php');
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>ΕΚΑΣΔΥΜ - <?php echo $restrictions; ?></title>
+	<title>ΕΚΑΣΔΥΜ - <?php echo $restriction_history; ?></title>
 	<?php include('head.php'); ?>
 </head>
 
@@ -28,7 +28,7 @@ require_once('php/useful_functions.php');
 			<form method="post">
 				<div class="form-row">
 					<div class="col">
-						<h1><?php echo $restrictions; ?></h1>
+						<h1><?php echo $restriction_history; ?></h1>
 					</div>
 				</div>
 

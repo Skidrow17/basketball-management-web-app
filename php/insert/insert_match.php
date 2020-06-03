@@ -10,9 +10,17 @@ require_once '../language.php';
 
 if (isset($_POST['submit']) && isset($_SESSION['safe_key']) && isset($_SESSION['user_id'])) {
     if (security_check($_SESSION['safe_key'], $_SESSION['user_id']) == true && $_SESSION['profession'] === 'Admin') {
+
+        $monday = strtotime("last monday");
+        $monday = date('w', $monday)==date('w') ? $monday+7*86400 : $monday;
+        $sunday = strtotime(date("Y-m-d",$monday)." +6 days");
+        $this_week_sd = date("Y-m-d",$monday);
+        $this_week_ed = date("Y-m-d",$sunday);
+
+
         $team1 = filter_var($_POST['team1'], FILTER_SANITIZE_STRING);
         $team2 = filter_var($_POST['team2'], FILTER_SANITIZE_STRING);
-        $date = filter_var($_POST['date'], FILTER_SANITIZE_STRING);
+        $date = $_POST['date'];
         $time = filter_var($_POST['time'], FILTER_SANITIZE_STRING);
         $court = filter_var($_POST['court'], FILTER_SANITIZE_NUMBER_INT);
         $rate = filter_var($_POST['rate'], FILTER_SANITIZE_NUMBER_INT);
@@ -20,7 +28,8 @@ if (isset($_POST['submit']) && isset($_SESSION['safe_key']) && isset($_SESSION['
         $judge_num = filter_var($_POST['judge_num'], FILTER_SANITIZE_NUMBER_INT);
         $team_category = filter_var($_POST['team_category'], FILTER_SANITIZE_NUMBER_INT);
         $dateTime = $date . ' ' . $time;
-        if ($team1 != $team2) {
+
+        if (strtotime($this_week_sd) <= strtotime($date) && strtotime($date) <= strtotime($this_week_ed) ) {
             $sql = "INSERT INTO `game`(`team_id_1`, `team_id_2`,`court_id`,`date_time`,`rate`,`required_referees`,`required_judges`) VALUES 
 					                  (:team1, :team2, :court, :dateTime, :rate, :referee_num, :judge_num)";
             $run = $dbh->prepare($sql);
@@ -42,7 +51,8 @@ if (isset($_POST['submit']) && isset($_SESSION['safe_key']) && isset($_SESSION['
                 die();
             }
         } else {
-            $_SESSION['server_response'] = $chooseSameTeam;
+            $_SESSION['server_response'] = $date_range;
+            echo $date_range;
             header('Location: ../../add_match.php');
             die();
         }

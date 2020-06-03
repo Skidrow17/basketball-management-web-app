@@ -230,13 +230,13 @@ function getGroups($selected) {
 function getUsers() {
     require 'connect_db.php';
 	include 'language.php';
-    $sql = "SELECT id,name,surname FROM user ORDER BY name";
+    $sql = "SELECT id,name,surname FROM user ORDER BY surname";
     $lid = $dbh->prepare($sql);
     $lid->execute();
     echo '<select name="users" id="users" onchange="showUser(this.value)" class="form-control" required>';
     echo '<option value="">';echo $selectUser; echo'</option>';
     while ($row = $lid->fetch(PDO::FETCH_ASSOC)) {
-        echo '<option value=' . $row['id'] . '>' . $row['name'] . ' ' . $row['surname'] . '</option>';
+        echo '<option value=' . $row['id'] . '>' . $row['surname'] . ' ' . $row['name'] . '</option>';
     }
     echo '</select>';
 }

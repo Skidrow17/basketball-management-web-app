@@ -57,7 +57,7 @@ if (isset($_POST['game_id']) && isset($_POST['id']) && isset($_SESSION['safe_key
         $rest = substr($not_in, 0, -1);
         if (strlen($rest) != 0) $sql = "SELECT U.id , U.name,U.surname from user U,playable_categories PC 
 										WHERE U.active = 0 AND U.id=PC.user_id AND U.profession=2 AND PC.team_categories_id=:td 
-										AND U.id not in( " . $rest . " ) ORDER BY U.name ASC";
+										AND U.id not in( " . $rest . " ) ORDER BY U.surname ASC";
         else $sql = "SELECT U.id , U.name,U.surname 
 					 FROM user U,playable_categories PC where U.active = 0 AND U.id=PC.user_id AND U.profession=2 
 					 AND PC.team_categories_id=:td AND U.id order by U.name ASC";
@@ -66,7 +66,7 @@ if (isset($_POST['game_id']) && isset($_POST['id']) && isset($_SESSION['safe_key
         $run->execute();
         echo "<option selected>";echo $selectRefere; echo"</option>";
         while ($row = $run->fetch(PDO::FETCH_ASSOC)) {
-            echo '<option value="' . $row['id'] . '">' . $row['name'] . ' ' . $row['surname'] . '</option>';
+            echo '<option value="' . $row['id'] . '">' . $row['surname'] . ' ' . $row['name'] . '</option>';
         }
     } else {
         session_destroy();

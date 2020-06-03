@@ -52,13 +52,13 @@ require_once('php/select_boxes.php');
 								</a>
 							</div>
 							<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-								<a class="dashboard-stat blue" href="#">
+								<a class="dashboard-stat blue" href="admin_messages.php">
 									<div class="visual">
 										<i class="fa fa-envelope-open"></i>
 									</div>
 									<div class="details">
 										<div class="number">
-											<span><?php echo getNumberOfAllMessages(); ?></span>
+											<span><?php echo getNumberOfMessages($_SESSION['username']) - $_SESSION['current_messages']; ?></span>
 										</div>
 										<div class="desc"><?php echo $messagesDashboard; ?></div>
 									</div>

@@ -22,9 +22,12 @@ require_once('php/select_boxes.php');
 
 <body>
 
-    <?php include('admin_nav_bar.php'); ?>
+    <main class="page lanidng-page">
+		<section class="portfolio-block photography"></section>
+	</main>
 
-    <div class="form-group"></div>
+    <?php include('admin_nav_bar.php'); ?>
+    
     <div class="admin-look" style="height:1052px;">
         <form method="post" action="./php/insert/insert_match.php">
             <div class="form-row">
@@ -63,7 +66,7 @@ require_once('php/select_boxes.php');
             </div>
             <div class="form-row">
                 <div class="col"><small class="form-text text-muted"><?php echo $date; ?> </small>
-                    <input name='date' class="form-control" type="date" required>
+                    <input name='date' id='date' class="form-control" type="date" required>
                 </div>
                 <div class="col"><small class="form-text text-muted"><?php echo $time; ?> </small>
                     <input name='time' id='time' class="form-control" type="time" required>
