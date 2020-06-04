@@ -276,12 +276,6 @@ function sent_mail($mail,$username,$password)
   $mail->Subject = ORGANIZATION."=?UTF-8?B?".base64_encode(' - Στοιχεία Σύνδεσης')."?=";
   $mail->Body    = $bodyContent;
 
-  if(!$mail->send()) {
-      echo 'Message could not be sent.';
-      echo 'Mailer Error: ' . $mail->ErrorInfo;
-  } else {
-      echo 'ok ';
-  }
 }
 
 function recovery_email_send_mobile($mail,$recoveryKey)
@@ -352,13 +346,6 @@ function recovery_email_send_mobile($mail,$recoveryKey)
 
   $mail->Subject = ORGANIZATION."=?UTF-8?B?".base64_encode(' - Επαναφορά Κωδικού')."?=";
   $mail->Body    = $bodyContent;
-
-  if(!$mail->send()) {
-      //echo 'Message could not be sent.';
-      //echo 'Mailer Error: ' . $mail->ErrorInfo;
-  } else {
-      //echo 'ok ';
-  }
 }
 
 function recovery_email_send($mail,$recovery_url)
@@ -435,13 +422,6 @@ function recovery_email_send($mail,$recovery_url)
 
   $mail->Subject = ORGANIZATION."=?UTF-8?B?".base64_encode(' - Επαναφορά Κωδικού')."?=";
   $mail->Body    = $bodyContent;
-
-  if(!$mail->send()) {
-      echo 'Message could not be sent.';
-      echo 'Mailer Error: ' . $mail->ErrorInfo;
-  } else {
-      echo $request_sent.' : '.$strmail;
-  }
 
 }
 
@@ -521,13 +501,6 @@ function unread_messages_send($mail)
   $mail->Subject = ORGANIZATION."=?UTF-8?B?".base64_encode(' - Μη Αναγνωσμένα Μηνύματα')."?=";
   $mail->Body    = $bodyContent;
 
-  if(!$mail->send()) {
-      echo 'Message could not be sent.';
-      echo 'Mailer Error: ' . $mail->ErrorInfo;
-  } else {
-      echo $request_sent.' : '.$strmail;
-  }
-
 }
 
 function sentPushNotification($sender_name,$receiver_token,$message) {
@@ -564,4 +537,9 @@ function sentPushNotification($sender_name,$receiver_token,$message) {
   curl_setopt( $ch,CURLOPT_POSTFIELDS, json_encode( $fields ) );
   $result = curl_exec($ch );
   curl_close( $ch );
+}
+
+function clean($string) {
+  $string = str_replace(' ', '', $string); // Replaces all spaces with hyphens.
+  return preg_replace("/[^a-zA-Z]/", '', $string); // Removes special chars.
 }

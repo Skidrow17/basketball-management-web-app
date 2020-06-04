@@ -237,4 +237,5 @@
    $last_update_done = "Last Update :";
    $restriction_history = "Restriction History";
    $date_range = "Date Should Belong In This Week";
+   $username_in_user = "Username is used By Another Account";
 ?>

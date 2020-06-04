@@ -91,12 +91,14 @@ function getAllRates() {
 }
 function getAllUser_categories() {
     require 'connect_db.php';
+    include 'language.php';
     $sql = "SELECT id,name from user_categories where active = 0";
     $lid = $dbh->prepare($sql);
     $lid->execute();
     echo '<select name="user_category" class="form-control" required>';
+    echo "<option value='' selected>";echo $selectCategory; echo "</option>";
     while ($row = $lid->fetch(PDO::FETCH_ASSOC)) {
-        echo '<option value=' . $row['id'] . ' selected>' . $row['name'] . '</option>';
+        echo '<option value=' . $row['id'] . '>' . $row['name'] . '</option>';
     }
     echo '</select>';
 }

@@ -25,7 +25,7 @@ require_once('php/select_boxes.php');
 	
 	<?php include('admin_nav_bar.php'); ?>
 		<div class="admin-look">
-			<form method="post" action="./php/insert/insert_user.php" enctype="multipart/form-data">
+			<form id="user_form" onsubmit="return false;">
 
 				<div class="form-row">
 					<div class="col">
@@ -41,26 +41,26 @@ require_once('php/select_boxes.php');
 
 				<div class="form-row">
 					<div class="col"><small class="form-text text-muted"><?php echo $name; ?></small>
-						<input required name="name" class="form-control" type="text">
+						<input required name="name" id = "name" class="form-control" type="text" maxlength="15">
 					</div>
 					<div class="col"><small class="form-text text-muted"><?php echo $surname; ?></small>
-						<input required name="surname" class="form-control" type="text">
+						<input required name="surname" id = "surname" class="form-control" type="text" maxlength="15">
 					</div>
 				</div>
 				<div class="form-row">
 					<div class="col"><small class="form-text text-muted"><?php echo $username; ?></small>
-						<input required name="username" class="form-control" type="text">
+						<input required name="username" id = "username" class="form-control" type="text" maxlength="15">
 					</div>
 					<div class="col"><small class="form-text text-muted"><?php echo $password; ?></small>
-						<input required name="password" class="form-control" type="text">
+						<input required name="password" class="form-control" type="text" maxlength="15">
 					</div>
 				</div>
 				<div class="form-row">
 					<div class="col"><small class="form-text text-muted"><?php echo $email; ?></small>
-						<input requiredv name="email" class="form-control" type="text">
+						<input required name="email" class="form-control" type="email" maxlength="30">
 					</div>
 					<div class="col"><small class="form-text text-muted"><?php echo $phone; ?></small>
-						<input required name="phone" class="form-control" type="text">
+						<input required name="phone" class="form-control" type="text" maxlength="15">
 					</div>
 				</div>
 				<div class="form-row">
@@ -80,7 +80,7 @@ require_once('php/select_boxes.php');
 					<div class="col"><small class="form-text text-muted"><?php echo $drivingLicence; ?></small>
 					<div class = 'selectbox-design'>
 
-						<?php echo getDrivingLicence(1);?>
+						<?php echo getDrivingLicence(0);?>
 					</div>
 					</div>
 					<div <div class="col"><small class="form-text text-muted"><?php echo $profession; ?></small>
@@ -100,13 +100,15 @@ require_once('php/select_boxes.php');
 				</div>
 				<div class="form-row">
 					<div class="col-xl-12">
-					<button name="submit" class="btn btn-primary btn-lg col-xl-12" type="submit"><?php echo $addButton; ?></button>
+						<button name="submit" id = 'submit' class="btn btn-primary btn-lg col-xl-12" type="submit"><?php echo $addButton; ?></button>
 					</div>
 				</div>
 			</form>
+			
 		</div>
 
 		<?php include('footer.php'); ?>
+		<script src="assets/js/register.js"></script>
 
 </body>
 

@@ -17,22 +17,22 @@ if (isset($_GET['q']) && isset($_SESSION['safe_key']) && isset($_SESSION['user_i
         $run->execute();
         while ($row = $run->fetch(PDO::FETCH_ASSOC)) {
             echo '<div class="form-row">';
-            echo '<div class="col-xl-12"><small class="form-text text-muted">';echo $accountState; echo'</small>';
+            echo '<div class="col-xl-12"><small class="form-text text-muted">';echo $accountState; echo'</small><div class = "selectbox-design">';
             echo getStates($row['active']);
-            echo '</div>
+            echo '</div></div>
             
 			</div>
             <div class="form-row">
-                <div class="col"><small class="form-text text-muted">';echo $name; echo'</small><input class="form-control" name="name" value="' . $row['name'] . '" type="text"></div>
-                <div class="col"><small class="form-text text-muted">';echo $surname; echo'</small><input class="form-control" name="surname" value="' . $row['surname'] . '" type="text"></div>
+                <div class="col"><small class="form-text text-muted">';echo $name; echo'</small><input class="form-control" id="name" name="name" value="' . $row['name'] . '" type="text" maxlength="15"></div>
+                <div class="col"><small class="form-text text-muted">';echo $surname; echo'</small><input class="form-control" id="surname" name="surname" value="' . $row['surname'] . '" type="text" maxlength="15"></div>
             </div>
             <div class="form-row">
-                <div class="col"><small class="form-text text-muted">';echo $username; echo'</small><input class="form-control" name="username" value="' . $row['username'] . '" type="text" autocomplete="off"></div>
-                <div class="col"><small class="form-text text-muted">';echo $password; echo'</small><input class="form-control" placeholder="Νέος Κωδικός" name="password" type="password" autocomplete="off"></div>
+                <div class="col"><small class="form-text text-muted">';echo $username; echo'</small><input class="form-control" id="username" name="username" value="' . $row['username'] . '" type="text" autocomplete="off" maxlength="15" readonly></div>
+                <div class="col"><small class="form-text text-muted">';echo $password; echo'</small><input class="form-control" placeholder="Νέος Κωδικός" name="password" type="password" autocomplete="off" maxlength="15"></div>
             </div>
             <div class="form-row">
                 <div class="col"><small class="form-text text-muted">';echo $email; echo'</small><input class="form-control" name="email" value="' . $row['email'] . '" type="email"></div>
-                <div class="col"><small class="form-text text-muted">';echo $phone; echo'</small><input class="form-control" name="phone" value="' . $row['phone'] . '" type="text"></div>
+                <div class="col"><small class="form-text text-muted">';echo $phone; echo'</small><input class="form-control" name="phone" value="' . $row['phone'] . '" type="text" maxlength="15"></div>
             </div>
             <div class="form-row">
                 <div class="col"><small class="form-text text-muted">';echo $livingPlace; echo'</small><div class = "selectbox-design">';
