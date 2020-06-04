@@ -67,18 +67,14 @@ if (isset($_POST['id'])) {
                 $run->execute();
             }
         } else {
-            $pic_name = $_FILES['profile_pic']['name'];
+            $pic_name = randomString(20);
             $temp_name = $_FILES['profile_pic']['tmp_name'];
             $url_location = "assets/img/users/";
             if (isset($pic_name)) {
                 if (!empty($pic_name)) {
                     $location = '../../assets/img/users/';
-                    if (move_uploaded_file($temp_name, $location . $pic_name)) {
-                        echo 'File uploaded successfully';
-                    }
+                    move_uploaded_file($temp_name, $location . $pic_name);
                 }
-            } else {
-                echo 'You should select a file to upload !!';
             }
             $profile_img = $url_location . $pic_name;
             if ($password !== '') {

@@ -59,14 +59,14 @@ if ( isset($_SESSION['safe_key']) && isset($_SESSION['user_id']) && isset($_SESS
             $run->bindParam(':rate', $rate, PDO::PARAM_INT);  
             $run->bindParam(':password_recovery', $password_recovery, PDO::PARAM_STR); 
             $run->execute();
-            print_r($dbh->errorInfo());
         } else {
-            $pic_name = $_FILES['profile_pic']['name'];
+            $pic_name = randomString(20);
             $temp_name = $_FILES['profile_pic']['tmp_name'];
             $url_location = "assets/img/users/";
             if (isset($pic_name)) {
                 if (!empty($pic_name)) {
                     $location = '../../assets/img/users/';
+                    move_uploaded_file($temp_name, $location . $pic_name);
                 }
             }
             $sql = "INSERT INTO `user`(`username`, `password`, `name`,`surname`,`email`,`phone`,`driving_licence`,`living_place`,`profile_pic`,`profession`,`rate`,`active`,`password_recovery_url`) 

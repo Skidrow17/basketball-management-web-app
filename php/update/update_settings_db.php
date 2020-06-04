@@ -27,18 +27,14 @@ if (isset($_POST['language']) && isset($_POST['pollingTime'])
 			$run->bindParam(':user_id', $user_id, PDO::PARAM_INT);
             $run->execute();
         }else{
-            $pic_name = $_FILES['profile_pic']['name'];
+            $pic_name = randomString(20);
             $temp_name = $_FILES['profile_pic']['tmp_name'];
             $url_location = "assets/img/users/";
             if (isset($pic_name)) {
                 if (!empty($pic_name)) {
                     $location = '../../assets/img/users/';
-                    if (move_uploaded_file($temp_name, $location . $pic_name)) {
-                        echo 'File uploaded successfully';
-                    }
+                    move_uploaded_file($temp_name, $location . $pic_name);
                 }
-            } else {
-                echo 'You should select a file to upload !!';
             }
             $profile_img = $url_location.$pic_name;
             $sql = "UPDATE user SET polling_time = :pollingTime,language = :language,profile_pic = :profile_pic where id = :user_id";
