@@ -26,12 +26,12 @@ if(isset($_POST["cid"]) && isset($_POST["gid"])){
 		
 	while ($row = $run->fetch(PDO::FETCH_ASSOC)) {
 		echo "<tr>";
-		echo "<td id = 'team_id' style='display:none;'>" . $row['id'] . "</td>";
-		echo "<td id = 'name' >" . $row['name'] . "</td>";
-		echo "<td id = 'total_games' contenteditable>" . $row['total_games'] . "</td>";
-		echo "<td id = 'wins' contenteditable>" . $row['wins'] . "</td>";
-		echo "<td id = 'loses' contenteditable>" . $row['loses'] . "</td>";
-		echo "<td id = 'points' contenteditable>" . $row['points'] . "</td>";
+		echo "<td onkeypress = 'return testCharacter(event);' data-maxlength = '3' id = 'team_id' style='display:none;'>" . $row['id'] . "</td>";
+		echo "<td onkeypress = 'return testCharacter(event);' data-maxlength = '3' id = 'name' >" . $row['name'] . "</td>";
+		echo "<td onkeypress = 'return testCharacter(event);' data-maxlength = '3' id = 'total_games' contenteditable>" . $row['total_games'] . "</td>";
+		echo "<td onkeypress = 'return testCharacter(event);' data-maxlength = '3' id = 'wins' contenteditable>" . $row['wins'] . "</td>";
+		echo "<td onkeypress = 'return testCharacter(event);' data-maxlength = '3' id = 'loses' contenteditable>" . $row['loses'] . "</td>";
+		echo "<td onkeypress = 'return testCharacter(event);' data-maxlength = '3' id = 'points' contenteditable>" . $row['points'] . "</td>";
 		echo "</tr>";
 	}
 }

@@ -31,7 +31,6 @@ $(document).ready(function() {
 			$("#ranking_table").html('');
 		}
 	});
-	
 
 	$("#groups").on("change", "#group", function() {
 		group = $(this).val();
@@ -76,4 +75,14 @@ function showTable(post_id) {
 		$("#submit").show();
 	}
 });
+}
+
+
+function testCharacter(event) {
+	var myVal = event.target.textContent.length;
+	if (myVal < 3 && ((event.keyCode >= 48 && event.keyCode <= 57) || event.keyCode === 13)) {
+		return true;
+	} else {
+		return false;
+	}
 }
