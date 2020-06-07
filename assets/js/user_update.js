@@ -21,7 +21,7 @@ function showUser(str) {
 $(document).ready(function() {
   
   $('#txtHint').on('keypress','#name,#surname,#username', function (event) {
-    var regex = new RegExp("^[a-zA-Zα-ωΑ-Ω]+$");
+    var regex = new RegExp("^[a-zA-Z0-9ά-ωΑ-ώ]+$");
     var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
     if (!regex.test(key)) {
        event.preventDefault();
