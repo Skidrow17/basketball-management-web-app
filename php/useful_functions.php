@@ -3,9 +3,9 @@
 //Access: Admin & Authorized User
 //Purpose: containss useful function 
 
-define( 'API_ACCESS_KEY', 'API_NAME');
-define( 'EMAIL', 'EMAIL');
-define( 'PASSWORD', 'EMAIL_PASSWORD');
+define( 'API_ACCESS_KEY', 'AAAApMEIeNU:APA91bEfkVs_--4jAPOVgmaoB3FL6mz1EDLyMki3ftV3mpazrF4PNsnC1UWL25jWHos0rydUNxO48ro9lFNRWYO0MMizo3yZxiriiDj69GbIzBdCv2NYMzQdPZ5Jyx_6jL3mK_6UIFG8');
+define( 'EMAIL', 'ekasdymannouncements@yahoo.com');
+define( 'PASSWORD', 'diplomaThesis12345');
 define( 'ORGANIZATION','EKASDYM');
 
 function update_last_seen_time($user_id) {
@@ -275,6 +275,7 @@ function sent_mail($mail,$username,$password)
 
   $mail->Subject = ORGANIZATION."=?UTF-8?B?".base64_encode(' - Στοιχεία Σύνδεσης')."?=";
   $mail->Body    = $bodyContent;
+  $mail->send();
 
 }
 
@@ -346,6 +347,8 @@ function recovery_email_send_mobile($mail,$recoveryKey)
 
   $mail->Subject = ORGANIZATION."=?UTF-8?B?".base64_encode(' - Επαναφορά Κωδικού')."?=";
   $mail->Body    = $bodyContent;
+  $mail->send();
+
 }
 
 function recovery_email_send($mail,$recovery_url)
@@ -422,6 +425,12 @@ function recovery_email_send($mail,$recovery_url)
 
   $mail->Subject = ORGANIZATION."=?UTF-8?B?".base64_encode(' - Επαναφορά Κωδικού')."?=";
   $mail->Body    = $bodyContent;
+  if(!$mail->send()) {
+    echo 'Message could not be sent.';
+    echo 'Mailer Error: ' . $mail->ErrorInfo;
+  } else {
+      echo $request_sent.' : '.$strmail;
+  }
 
 }
 
@@ -500,6 +509,7 @@ function unread_messages_send($mail)
 
   $mail->Subject = ORGANIZATION."=?UTF-8?B?".base64_encode(' - Μη Αναγνωσμένα Μηνύματα')."?=";
   $mail->Body    = $bodyContent;
+  $mail->send();
 
 }
 
