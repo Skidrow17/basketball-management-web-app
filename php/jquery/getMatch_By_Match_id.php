@@ -35,15 +35,15 @@ if (isset($_POST['game_id']) && isset($_SESSION['safe_key']) && isset($_SESSION[
 				<div class="col"><small class="form-text text-muted">';echo $time; echo'</small><input name="time" class="form-control" value=' . $time1 . ' type="time" required></div>
 			</div>
 			<div class="form-row">
-				<div class="col"><small class="form-text text-muted">';echo $numberOfReferees; echo'</small><input name="referee_num" class="form-control" value=' . $row['required_referees'] . ' min="0" max="2" type="number" required></div>
-				<div class="col"><small class="form-text text-muted">';echo $numberOfJudges; echo'<br></small><input name="judge_num" class="form-control" value=' . $row['required_judges'] . '  min="0" max="2" type="number" required></div>
+				<div class="col"><small class="form-text text-muted">';echo $numberOfReferees; echo'</small><input name="referee_num" class="form-control" value=' . $row['required_referees'] . ' min="0" max="4" type="number" required></div>
+				<div class="col"><small class="form-text text-muted">';echo $numberOfJudges; echo'<br></small><input name="judge_num" class="form-control" value=' . $row['required_judges'] . '  min="0" max="4" type="number" required></div>
 			</div>
 			<div class="form-row">
-			<div class="col"><small class="form-text text-muted">';echo $court; echo'</small><div class = "selectbox-design">';
+			<div class="col"><small class="form-text text-muted">';echo $court; echo'</small><div class = "selectbox-design" required>';
             echo getCourt($row['court_id']);
             echo '</div></div>
 			<div
-            class="col"><small class="form-text text-muted">';echo $rating; echo'</small><div class = "selectbox-design">';
+            class="col"><small class="form-text text-muted">';echo $rating; echo'</small><div class = "selectbox-design" required>';
             echo getRate($row['rate']);
             echo '</div></div>
             </div>

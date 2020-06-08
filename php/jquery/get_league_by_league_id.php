@@ -28,7 +28,7 @@ if(isset($_POST["cid"]) && isset($_POST["gid"])){
 		echo "<tr>";
 		echo "<td onkeypress = 'return testCharacter(event);' data-maxlength = '3' id = 'team_id' style='display:none;'>" . $row['id'] . "</td>";
 		echo "<td onkeypress = 'return testCharacter(event);' data-maxlength = '3' id = 'name' >" . $row['name'] . "</td>";
-		echo "<td onkeypress = 'return testCharacter(event);' data-maxlength = '3' id = 'total_games' contenteditable>" . $row['total_games'] . "</td>";
+		echo "<td onkeypress = 'return testCharacter(event);' data-maxlength = '3' id = 'total_games'>" . $row['total_games'] . "</td>";
 		echo "<td onkeypress = 'return testCharacter(event);' data-maxlength = '3' id = 'wins' contenteditable>" . $row['wins'] . "</td>";
 		echo "<td onkeypress = 'return testCharacter(event);' data-maxlength = '3' id = 'loses' contenteditable>" . $row['loses'] . "</td>";
 		echo "<td onkeypress = 'return testCharacter(event);' data-maxlength = '3' id = 'points' contenteditable>" . $row['points'] . "</td>";

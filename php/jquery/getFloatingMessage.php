@@ -18,10 +18,10 @@ if (isset($_POST['game_id']) && isset($_SESSION['safe_key']) && isset($_SESSION[
         $run = $dbh->prepare($sql);
         $run->bindParam(':game_id', $id, PDO::PARAM_INT);
         $run->execute();
-        $current_referees;
-        $current_judges;
-        $required_referees;
-        $required_judges;
+        $current_referees = 0;
+        $current_judges = 0;
+        $required_referees = 0;
+        $required_judges = 0;
         $flag = 0;
         while ($row = $run->fetch(PDO::FETCH_ASSOC)) {
             $current_referees = $row['rf'];

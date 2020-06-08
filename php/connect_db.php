@@ -4,10 +4,10 @@
 //Access: Authorized User & Admin
 //Purpose: helper to login to the database
 
-$host = 'host';
-$dbname = 'db_name';
-$user = 'user_name';
-$pass = 'password';
+$host = '/zstorage/home/ictest00909/mysql/run/mysql.sock';
+$dbname = 'eok';
+$user = 'root';
+$pass = '';
 // connect to database or return error
 try
 {
