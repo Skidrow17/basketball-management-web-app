@@ -33,6 +33,8 @@ if (isset($_POST['password']) && isset($_POST['username']) && isset($_POST['safe
                 $_SESSION['surname'] = $row['surname'];
                 $_SESSION['profile_pic'] = $row['profile_pic'];
                 $_SESSION['safe_key'] = $safe_key;
+                $_SESSION['current_messages'] = getNumberOfMessages($row['username']);
+                $_SESSION["last_update_time"] =  date('H:i:s', time());
                 $_SESSION['profession'] = $row['profession'];
                 $_SESSION['N_O_M'] = getNumberOfMessages($row['username']);
                 $_SESSION['L_L_H'] = getLastLoginHistoryId($row['id']);
