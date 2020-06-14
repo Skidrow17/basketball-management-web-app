@@ -35,7 +35,7 @@ if (isset($_POST['submit']) && isset($_SESSION['safe_key']) && isset($_SESSION['
             }
         }
 
-        sentPushNotification($sender_name,$receiver_token,$text);
+        sentPushNotification($sender_name."/".$sender_id,$receiver_token,$text);
 
         if ($run->rowCount() > 0) {
             if ($_SESSION['profession'] === 'Admin') {

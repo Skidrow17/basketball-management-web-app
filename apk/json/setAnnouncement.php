@@ -28,7 +28,7 @@ if(isset($_GET['safe_key']) && isset($_GET['user_id'])){
 
         while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
             if(strlen($row["mobile_token"]) == 152){
-                sentPushNotification($title,$row['mobile_token'],$text);
+                sentPushNotification($title."/"."0",$row['mobile_token'],$text);
             }
         }
 

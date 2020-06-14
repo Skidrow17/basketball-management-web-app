@@ -36,7 +36,7 @@ if(isset($_GET['safe_key']) && isset($_GET['sender_id'])){
         $receiver_token = "";
         while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
             if($row["id"] == $sender_id){
-                $sender_name = $row["name"]." ".$row["surname"];
+                $sender_name = $row["name"]." ".$row["surname"]."/".$row["id"];
             }else{
                 $receiver_token = $row["mobile_token"];
             }
