@@ -243,7 +243,12 @@ function sent_mail($mail,$username,$password)
 
   .container {
     padding: 2px 16px;
+    text-align: center;
     background-color: #f1f1f1;
+  }
+
+  .footering {
+    text-align: center;
   }
 
   .promo {
@@ -259,6 +264,9 @@ function sent_mail($mail,$username,$password)
   <body>
 
   <div class="coupon">
+    <div class = "footering">
+      <h3>Πληροφοριακό Σύστημα Διαχείρισης Αγώνων - <a href="'.$url.'">ΕΚΑΣΔΥΜ</a> </h3>
+    </div>
     <div class="container">
       <h3><b>Στοιχεία Χρήστη</b></h3>
     </div>
@@ -266,6 +274,10 @@ function sent_mail($mail,$username,$password)
     <p>Url: <span class="promo">'.$url.'</span></p>
       <p>Όνομα Χρήστη: <span class="promo">'.$username.'</span></p>
       <p class="expire">Κωδικός Πρόσβασης:'.$password.'</p>
+    </div>
+    <div class = "footering">
+      <a>Λαμβάνετε αυτό το μήνυμα αυτόματα από το πληροφοριακό σύστημα γιατί ο λογαριασμός σας είναι ενεργός.
+      Σε περίπτωση που θέλετε να απενεργοποιήσετε το λογαριασμό σας, επικοινωνήστε με '.EMAIL.'</a>
     </div>
   </div>
 
@@ -281,6 +293,7 @@ function sent_mail($mail,$username,$password)
 
 function recovery_email_send_mobile($mail,$recoveryKey)
 {
+  $url = "https://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . '/../../';
 	require_once '../../PHPMailer/PHPMailerAutoload.php';
   $strmail = (string)$mail;
   $mail = new PHPMailer;
@@ -317,7 +330,12 @@ function recovery_email_send_mobile($mail,$recoveryKey)
 
   .container {
     padding: 2px 16px;
+    text-align: center;
     background-color: #f1f1f1;
+  }
+
+  .footering {
+    text-align: center;
   }
 
   .promo {
@@ -333,12 +351,19 @@ function recovery_email_send_mobile($mail,$recoveryKey)
   <body>
 
   <div class="coupon">
+    <div class = "footering">
+      <h3>Πληροφοριακό Σύστημα Διαχείρισης Αγώνων - <a href="'.$url.'">ΕΚΑΣΔΥΜ</a> </h3>
+    </div>
     <div class="container">
       <h3><b>Στοιχεία Χρήστη</b></h3>
     </div>
     <div class="container">
       <p>Κωδικός Επαναφοράς: <span class="promo">'.$recoveryKey.'</span></p>
     </div>
+    <div class = "footering">
+      <a>Λαμβάνετε αυτό το μήνυμα αυτόματα από το πληροφοριακό σύστημα γιατί ο λογαριασμός σας είναι ενεργός.
+      Σε περίπτωση που θέλετε να απενεργοποιήσετε το λογαριασμό σας, επικοινωνήστε με '.EMAIL.'</a>
+     </div>
   </div>
 
   </body>
@@ -355,6 +380,7 @@ function recovery_email_send($mail,$recovery_url)
 {
   require_once '../../PHPMailer/PHPMailerAutoload.php';
   include 'language.php';
+  $url = "https://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . '/../../';
 
   //echo $mail;
   $strmail = (string)$mail;
@@ -394,6 +420,7 @@ function recovery_email_send($mail,$recovery_url)
   }
 
   .container {
+    text-align: center;
     padding: 2px 16px;
     background-color: #f1f1f1;
   }
@@ -401,6 +428,10 @@ function recovery_email_send($mail,$recovery_url)
   .promo {
     background: #ccc;
     padding: 3px;
+  }
+
+  .footering {
+    text-align: center;
   }
 
   .expire {
@@ -411,12 +442,19 @@ function recovery_email_send($mail,$recovery_url)
   <body>
 
   <div class="coupon">
+    <div class = "footering">
+      <h3>Πληροφοριακό Σύστημα Διαχείρισης Αγώνων - <a href="'.$url.'">ΕΚΑΣΔΥΜ</a> </h3>
+     </div>
     <div class="container">
       <h3><b>Επαναφορά Κωδικού Πρόσβασης</b></h3>
     </div>
     <div class="container">
       <p>Παρακαλώ πατήστε τον σύνδεσμο: <a href="'.$recovery_url.'">Επιβεβαίωση</a></p>
     </div>
+    <div class = "footering">
+      <a>Λαμβάνετε αυτό το μήνυμα αυτόματα από το πληροφοριακό σύστημα γιατί ο λογαριασμός σας είναι ενεργός.
+      Σε περίπτωση που θέλετε να απενεργοποιήσετε το λογαριασμό σας, επικοινωνήστε με '.EMAIL.'</a>
+     </div>
   </div>
 
   </body>
@@ -437,6 +475,7 @@ function recovery_email_send($mail,$recovery_url)
 function unread_messages_send($mail)
 {
 
+  $url = "https://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . '/../../';
   require_once __DIR__.'/../PHPMailer/PHPMailerAutoload.php';
   include 'language.php';
 
@@ -478,6 +517,7 @@ function unread_messages_send($mail)
   }
 
   .container {
+    text-align: center;
     padding: 2px 16px;
     background-color: #f1f1f1;
   }
@@ -490,17 +530,27 @@ function unread_messages_send($mail)
   .expire {
     color: red;
   }
+
+  .footering {
+    text-align: center;
+  }
   </style>
   </head>
   <body>
-
   <div class="coupon">
+     <div class = "footering">
+      <h3>Πληροφοριακό Σύστημα Διαχείρισης Αγώνων - <a href="'.$url.'">ΕΚΑΣΔΥΜ</a> </h3>
+     </div>
     <div class="container">
-      <h3><b>Υπενθύμιση</b></h3>
+      <h2><b>Υπενθύμιση</b></h2>
     </div>
     <div class="container">
-      <p>Έχετε μη αναγνωσμένα μηνύματα, ελέγξτε τα εισερχόμενά σας</p>
+      <h3>Έχετε μη αναγνωσμένα μηνύματα, ελέγξτε τα εισερχόμενά σας</h3>
     </div>
+    <div class = "footering">
+      <a>Λαμβάνετε αυτό το μήνυμα αυτόματα από το πληροφοριακό σύστημα γιατί ο λογαριασμός σας είναι ενεργός.
+      Σε περίπτωση που θέλετε να απενεργοποιήσετε το λογαριασμό σας, επικοινωνήστε με '.EMAIL.'</a>
+     </div>
   </div>
 
   </body>
