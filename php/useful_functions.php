@@ -205,7 +205,7 @@ function getLocale(){
 function sent_mail($mail,$username,$password)
 {
 	require_once '../../PHPMailer/PHPMailerAutoload.php';
-  $url = "https://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . '/../../';
+  $url = 'https://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']).'/index.php';
   $strmail = (string)$mail;
 
   $mail = new PHPMailer;
@@ -293,8 +293,8 @@ function sent_mail($mail,$username,$password)
 
 function recovery_email_send_mobile($mail,$recoveryKey)
 {
-  $url = "https://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . '/../../';
-	require_once '../../PHPMailer/PHPMailerAutoload.php';
+  require_once '../../PHPMailer/PHPMailerAutoload.php';
+  $url = 'https://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']).'/index.php';
   $strmail = (string)$mail;
   $mail = new PHPMailer;
   $mail->isSMTP();                                   // Set mailer to use SMTP
@@ -380,7 +380,7 @@ function recovery_email_send($mail,$recovery_url)
 {
   require_once '../../PHPMailer/PHPMailerAutoload.php';
   include 'language.php';
-  $url = "https://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . '/../../';
+  $url = 'https://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']).'/index.php';
 
   //echo $mail;
   $strmail = (string)$mail;
@@ -475,7 +475,7 @@ function recovery_email_send($mail,$recovery_url)
 function unread_messages_send($mail)
 {
 
-  $url = "https://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . '/../../';
+  $url = 'https://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']).'/index.php';
   require_once __DIR__.'/../PHPMailer/PHPMailerAutoload.php';
   include 'language.php';
 
