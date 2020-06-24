@@ -67,8 +67,6 @@ $(document).ready(function(){
                 $(".messages_add").html(result);
             }
         });
-        
-        $('.scrolled_bottom').scrollTop($('ul li').last().position().top + $('ul li').last().height());
 
         $.ajax({
             type: "POST",
