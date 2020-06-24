@@ -8,6 +8,8 @@ require_once '../connect_db.php';
 require_once '../useful_functions.php';
 require_once '../language.php';
 
+echo $_POST['submit'].' '.$_POST['receiver_id']. ' ' .$_POST['text'];
+
 if (isset($_POST['submit']) && isset($_SESSION['safe_key']) && isset($_SESSION['user_id'])) {
     if (security_check($_SESSION['safe_key'], $_SESSION['user_id']) == true) {
         $sender_id = filter_var($_SESSION['user_id'], FILTER_SANITIZE_NUMBER_INT);
