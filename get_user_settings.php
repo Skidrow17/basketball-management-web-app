@@ -36,7 +36,7 @@ if (isset($_SESSION['safe_key']) && isset($_SESSION['user_id'])) {
 			echo '</div><div class="col"><small class="form-text text-muted">Polling Time ';
 			echo $minutes;
 			echo '<br></small>
-					<input min="20" max="60" name="pollingTime" value = "';
+					<input min="9999" name="pollingTime" value = "';
 			echo $row['polling_time'];
 			echo '" class="form-control" type="number" required>
 				</div>';
