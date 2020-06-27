@@ -1,7 +1,32 @@
+
+var firebase_contact = 0;
+var firebase_message = '';
+messaging.onMessage(function(payload) {
+    console.log("Message received. ",payload);
+    firebase_contact = payload.data.title.split("/");
+
+    if(contact_id == firebase_contact[1] && contact_id != 0){
+        console.log();
+        var post = "contact_id=" + contact_id;
+        getChattingMessages(post);
+    }
+    $("#scrolled_bottom").animate({ scrollTop: 113000 }, 1000);
+
+});
+
+
+
+
 $(document).ready(function(){
-    var contact_id = 0;
     var chatts_or_contacts = 1;
     searchChats('');
+
+    if(contact_id !== 0){
+        post = "contact_id=" + contact_id;
+        getChattingMessages(post);
+        $("#scrolled_bottom").animate({ scrollTop: 113000 }, 1000);
+    }
+
     $('#chats').css('background-color','rgb(247, 211, 173)');
 
     $('#action_menu_btn').click(function(){
@@ -80,8 +105,12 @@ $(document).ready(function(){
         searchChats('');
     });
 
+    
 
 });
+
+
+
 
 
 function searchData(val) {			
@@ -117,10 +146,4 @@ function getChattingMessages(post){
             $(".messages_add").html(result);
         }
     })
-}
-
-
-function updateScroll(){
-    var element = document.getElementById("scrolled_bottom");
-    element.scrollTop = element.scrollHeight;
 }

@@ -30,7 +30,9 @@ require_once('php/select_boxes.php');
 	<?php include('chatting_component.php');?>
   	<?php include('footer.php'); ?>
 	  
-  <script src="assets/js/chatting.js"></script>
+
+	<script> var contact_id = <?php if(isset($_SESSION['contact_id'])){ echo $_SESSION['contact_id'];}else{echo 0;}unset($_SESSION["contact_id"]);?></script>
+  	<script src="assets/js/chatting.js"></script>
 
 </body>
 

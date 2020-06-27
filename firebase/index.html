@@ -1,0 +1,77 @@
+<html>
+<title>Firebase Messaging Demo</title>
+<style>
+    div {
+        margin-bottom: 15px;
+    }
+</style>
+<body>
+    <div id="token"></div>
+    <div id="msg"></div>
+    <div id="notis"></div>
+    <div id="err"></div>
+    <script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-messaging.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-analytics.js"></script>
+    <script>
+        MsgElem = document.getElementById("msg");
+        TokenElem = document.getElementById("token");
+        NotisElem = document.getElementById("notis");
+        ErrElem = document.getElementById("err");
+        // Initialize Firebase
+        // TODO: Replace with your project's customized code snippet
+         var firebaseConfig = {
+			apiKey: "AIzaSyDPZ1Q0S5bCCbpmdc2m1Ccs5e1-wwHWDps",
+			authDomain: "ekasdym-e8cc1.firebaseapp.com",
+			databaseURL: "https://ekasdym-e8cc1.firebaseio.com",
+			projectId: "ekasdym-e8cc1",
+			storageBucket: "ekasdym-e8cc1.appspot.com",
+			messagingSenderId: "707613194453",
+			appId: "1:707613194453:web:905ce196429e4643e70a5c",
+			measurementId: "G-H2K5SM5YRM"
+		  };
+		  // Initialize Firebase
+		  firebase.initializeApp(firebaseConfig);
+
+        const messaging = firebase.messaging();
+        
+
+        navigator.serviceWorker.register('firebase/firebase-messaging-sw.js')
+                .then((registration) => {
+                   messaging.useServiceWorker(registration);
+                   console.log(messaging.getToken())
+
+        messaging.requestPermission().
+                then(function () {
+                MsgElem.innerHTML = "Notification permission granted." 
+                console.log("Notification permission granted.");       
+                
+                return messaging.getToken()
+            })
+            .then(function(token) {
+                TokenElem.innerHTML = "token is : " + token
+            })
+            .catch(function (err) {
+                ErrElem.innerHTML =  ErrElem.innerHTML + "; " + err
+                console.log("Unable to get permission to notify.", err);
+            });
+        });
+        messaging.onMessage(function(payload) {
+            console.log("Message received. ", payload);
+            NotisElem.innerHTML = NotisElem.innerHTML + JSON.stringify(payload);
+            //kenng - foreground notifications
+            const {title, ...options} = payload.data;
+            navigator.serviceWorker.register('firebase/firebase-messaging-sw.js')
+            .then((registration) => {
+                registration.showNotification(title, options);
+            }).catch(function (err) {
+                console.log("sECOND FAILED ALSO", err);
+            });
+        });
+
+        
+    </script>
+
+    </body>
+
+</html>

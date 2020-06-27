@@ -54,6 +54,11 @@ require_once('php/language.php');
     <script src="assets/js/cookies.js"></script>
     <script src="assets/js/utilities.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-messaging.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.2.1/firebase-analytics.js"></script>
+    <script src="assets/js/firebase_register_token.js"></script>
+
     <script>document.getElementById('years').innerHTML += new Date().getFullYear();</script>
     <?php
 		if (isset($_SESSION['server_response'])) {
