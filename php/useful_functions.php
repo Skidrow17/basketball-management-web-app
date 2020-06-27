@@ -603,3 +603,31 @@ function clean($string) {
   $string = str_replace(' ', '', $string); // Replaces all spaces with hyphens.
   return preg_replace("/[^a-zA-Z]/", '', $string); // Removes special chars.
 }
+
+function time_since($since) {
+	include '../language.php';
+	$milliseconds = round(microtime(true));
+
+	$stamp = strtotime($since); // get unix timestamp
+	$since = $milliseconds - $stamp;
+    $chunks = array(
+        array(60 * 60 * 24 * 365 , $year.' '.$ago),
+        array(60 * 60 * 24 * 30 , $month.' '.$ago),
+        array(60 * 60 * 24 * 7, $week.' '.$ago),
+        array(60 * 60 * 24 , $day.' '.$ago),
+        array(60 * 60 , $hour.' '.$ago),
+        array(60 , $minute.' '.$ago),
+        array(1 , $second.' '.$ago)
+    );
+
+    for ($i = 0, $j = count($chunks); $i < $j; $i++) {
+        $seconds = $chunks[$i][0];
+        $name = $chunks[$i][1];
+        if (($count = floor($since / $seconds)) != 0) {
+            break;
+        }
+    }
+
+    $print = ($count == 1) ? '1 '.$name : "$count {$name}";
+    return $print;
+}

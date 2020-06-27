@@ -13,7 +13,7 @@ if(isset($_SESSION['safe_key']) && isset($_SESSION['user_id'])){
             header('Location:../announcements.php');
             die();
         } else if ($_POST["button"] == 2) {
-            header('Location:../messages.php');
+            header('Location:../chatting_user.php');
             die();
         } else if ($_POST["button"] == 5) {
             header('Location:../add_restriction.php');

@@ -238,4 +238,16 @@
    $restriction_history = "Restriction History";
    $date_range = "Date Should Belong In This Week";
    $username_in_user = "Username is used By Another Account";
+   $contacts = "Contacts";
+   $chats = "Chats";
+   $type_message = "Type your message ......";
+   $year = 'years';
+   $month = 'months';
+   $week = 'weeks';
+   $day = 'days';
+   $hour = 'hours';
+   $minute = 'minutes';
+   $second = 'seconds';
+   $ago = 'ago';
+   $never = "Never";
 ?>

@@ -6,7 +6,10 @@
 session_start();
 require_once '../../php/connect_db.php';
 require_once '../../php/useful_functions.php';
+require_once '../language.php';
 
+
+if (isset($_SESSION['safe_key']) && isset($_SESSION['user_id'])) {
 	$id = filter_var($_SESSION['user_id'], FILTER_SANITIZE_NUMBER_INT);		
 
 	echo '<ui class="contacts">';
@@ -19,19 +22,33 @@ require_once '../../php/useful_functions.php';
 
 		if ($run->rowCount() > 0) {
 			while ($row = $run->fetch(PDO::FETCH_ASSOC)) {
-
-				echo '<li class = "active" style = "display:block;" id = "contact_id" value = "'.$row['id'].'">
-						<div class="d-flex bd-highlight">
-							<div class="img_cont">
-								<img src="'.$row['profile_pic'].'" class="rounded-circle user_img">
+				if($row['last_login'] === null){
+					echo '<li class = "active" style = "display:block;" id = "contact_id" value = "'.$row['id'].'">
+							<div class="d-flex bd-highlight">
+								<div class="img_cont">
+									<img src="'.$row['profile_pic'].'" class="rounded-circle user_img">
+								</div>
+								<div class="user_info">
+									<span>'.$row['name'].' '.$row['surname'].'</span>
+									<p>'.$never.'</p>
+								</div>
 							</div>
-							<div class="user_info">
-								<span>'.$row['name'].' '.$row['surname'].'</span>
-								<p>'.$row['last_login'].'</p>
+						</li>';
+				}else{
+					echo '<li class = "active" style = "display:block;" id = "contact_id" value = "'.$row['id'].'">
+							<div class="d-flex bd-highlight">
+								<div class="img_cont">
+									<img src="'.$row['profile_pic'].'" class="rounded-circle user_img">
+								</div>
+								<div class="user_info">
+									<span>'.$row['name'].' '.$row['surname'].'</span>
+									<p>'.time_since($row['last_login']).'</p>
+								</div>
 							</div>
-						</div>
-					</li>';
+						</li>';
+				}
 			}
 		}
 
 	echo '</ui>';
+}
