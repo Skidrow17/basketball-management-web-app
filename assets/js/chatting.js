@@ -15,8 +15,6 @@ messaging.onMessage(function(payload) {
 });
 
 
-
-
 $(document).ready(function(){
     var chatts_or_contacts = 1;
     searchChats('');
@@ -24,6 +22,14 @@ $(document).ready(function(){
     if(contact_id !== 0){
         post = "contact_id=" + contact_id;
         getChattingMessages(post);
+        $.ajax({
+            type: "POST",
+            url: "php/jquery/getContactInfo.php",
+            data: post,
+            success: function(result) {
+                $(".contact_info").html(result);
+            }
+        });
         $("#scrolled_bottom").animate({ scrollTop: 113000 }, 1000);
     }
 

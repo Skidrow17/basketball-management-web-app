@@ -40,7 +40,7 @@ messaging.requestPermission().
 messaging.onMessage(function(payload) {
     console.log("Message received. ",payload);
     //kenng - foreground notifications
-    if(window.location.pathname.split('/').pop() !== 'chatting.php'){
+    if(window.location.pathname.split('/').pop() !== 'chatting.php' && window.location.pathname.split('/').pop() !== 'chatting_user.php'){
         const {message, ...options} = payload.data;
         firebase_contact = payload.data.title.split("/");
         console.log(firebase_contact[1]);
