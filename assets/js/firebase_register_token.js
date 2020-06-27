@@ -18,7 +18,6 @@ navigator.serviceWorker.register('firebase/firebase-messaging-sw.js')
            messaging.useServiceWorker(registration);
 messaging.requestPermission().
         then(function () {
-        console.log("Notification permission granted.");               
         return messaging.getToken()
     })
     .then(function(token) {
@@ -28,22 +27,18 @@ messaging.requestPermission().
             url: "php/jquery/tokenRegister.php",
             data: post,
             success: function(result) {
-                console.log(result+' '+token);
             }
         });
     })
     .catch(function (err) {
-        console.log("Unable to get permission to notify.", err);
     });
 });
 
 messaging.onMessage(function(payload) {
-    console.log("Message received. ",payload);
     //kenng - foreground notifications
     if(window.location.pathname.split('/').pop() !== 'chatting.php' && window.location.pathname.split('/').pop() !== 'chatting_user.php'){
         const {message, ...options} = payload.data;
         firebase_contact = payload.data.title.split("/");
-        console.log(firebase_contact[1]);
 
         const notificationOptions = {
             body: payload.data.message,
@@ -55,7 +50,6 @@ messaging.onMessage(function(payload) {
         .then((registration) => {
             registration.showNotification(firebase_contact[0], notificationOptions);
         }).catch(function (err) {
-            console.log("sECOND FAILED ALSO", err);
         });
     }
 });

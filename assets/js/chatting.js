@@ -2,11 +2,9 @@
 var firebase_contact = 0;
 var firebase_message = '';
 messaging.onMessage(function(payload) {
-    console.log("Message received. ",payload);
     firebase_contact = payload.data.title.split("/");
 
     if(contact_id == firebase_contact[1] && contact_id != 0){
-        console.log();
         var post = "contact_id=" + contact_id;
         getChattingMessages(post);
     }
