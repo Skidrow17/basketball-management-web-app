@@ -31,7 +31,7 @@ require_once('php/useful_functions.php');
 					<form name="button" method="post" action="./php/button_redirect.php">
 						<div class="illustration" style="background-size: cover;  background-position: center; background-image:url(<?php echo $_SESSION['profile_pic']; ?>);"><i class="icon ion-ios-locked-outline" style="color:rgba(220,64,29,0);"></i></div>
 						<button name="button" value="1" class="btn btn-primary btn-block" type="submit"><?php echo $announcements; ?></button>
-						<button name="button" value="2" class="btn btn-primary btn-block" type="submit"><?php echo $messages; ?></button>
+						<button name="button" value="2" class="btn btn-primary btn-block" type="submit"><?php echo $chats; ?></button>
 						<button name="button" value="5" class="btn btn-primary btn-block" type="submit"><?php echo $restrictions; ?></button>
 						<button name="button" value="6" class="btn btn-primary btn-block" type="submit"><?php echo $matches; ?></button>
 						<button name="button" value="7" class="btn btn-primary btn-block" type="submit"><?php echo $weekly_matches.'/'.$ranking; ?></button>
