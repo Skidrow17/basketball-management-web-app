@@ -32,6 +32,12 @@ $fetch = array();
 		}
 
 		echo json_encode($fetch);
+
+		$sql = "UPDATE message SET message_read = 1 WHERE receiver_id = :rid and sender_id = :sid and DATE(date_time) = CURDATE() and message_read = 0";
+		$run = $dbh->prepare($sql);
+		$run->bindParam(':rid', $id , PDO::PARAM_INT);
+		$run->bindParam(':sid', $buddy , PDO::PARAM_INT);
+		$run->execute();
 	} else {
 		$fetch['ERROR']['error_code'] = "403";
 		echo json_encode($fetch);

@@ -28,6 +28,7 @@ if (isset($_SESSION['safe_key']) && isset($_SESSION['user_id'])) {
 	$run->bindParam(':id2', $id, PDO::PARAM_INT);
 	$run->bindParam(':buddy2', $buddy, PDO::PARAM_INT);
 	$run->execute();
+
 	if ($run->rowCount() > 0) {
 
 		while ($row = $run->fetch(PDO::FETCH_ASSOC)) {
@@ -50,4 +51,10 @@ if (isset($_SESSION['safe_key']) && isset($_SESSION['user_id'])) {
 			}
 		}
 	}
+
+	$sql = "UPDATE message SET message_read = 1 WHERE receiver_id = :rid and sender_id = :sid and DATE(date_time) = CURDATE() and message_read = 0";
+	$run = $dbh->prepare($sql);
+	$run->bindParam(':rid', $id , PDO::PARAM_INT);
+	$run->bindParam(':sid', $buddy , PDO::PARAM_INT);
+	$run->execute();
 }

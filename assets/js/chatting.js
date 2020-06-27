@@ -8,6 +8,8 @@ messaging.onMessage(function(payload) {
         var post = "contact_id=" + contact_id;
         getChattingMessages(post);
     }
+    searchChats('');
+   
     $("#scrolled_bottom").animate({ scrollTop: 113000 }, 1000);
 
 });
@@ -109,13 +111,50 @@ $(document).ready(function(){
         searchChats('');
     });
 
+
+    $(document).keydown(function(event) {
+        if(event.keyCode==13) {
+            if($('#text_send').val().length !== 0 && contact_id !== 0){
+                $(".messages_add").append(`<div class="d-flex justify-content-end mb-4">
+                                            <div class="msg_cotainer_send">
+                                                `+$('#text_send').val()+`
+                                                <span class="msg_time_send"></span>
+                                            </div>
+                                        </div>`);
+    
+                var post = "receiver_id=" + contact_id+"&text="+$('#text_send').val();
+                $.ajax({
+                    type: "POST",
+                    url: "php/jquery/sent_message.php",
+                    data: post,
+                    success: function(result) {
+                        $("#text_send").val("");
+                    }
+                });
+    
+                post = "contact_id=" + contact_id;
+                getChattingMessages(post);
+                $("#scrolled_bottom").animate({ scrollTop: 113000 }, 1000);
+            }
+        }
+        
+    });
+
     
 
 });
 
 
+document.addEventListener("", keyDownTextField, false);
 
-
+function keyDownTextField(e) {
+var keyCode = e.keyCode;
+  if(keyCode==13) {
+  alert("You hit the enter key.");
+  } else {
+  alert("Oh no you didn't.");
+  }
+}
 
 function searchData(val) {			
     var post = "search=%" + val + "%";
@@ -127,6 +166,8 @@ function searchData(val) {
         $(".contacts_add").html(result);
       }
     });
+    $('#chats').css('background-color','white');
+    $('#contacts').css('background-color','rgb(247, 211, 173)');
 }
 
 function searchChats(val) {			
@@ -139,6 +180,8 @@ function searchChats(val) {
         $(".contacts_add").html(result);
       }
     });
+    $('#chats').css('background-color','rgb(247, 211, 173)');
+    $('#contacts').css('background-color','white');
 }
 
 function getChattingMessages(post){

@@ -15,7 +15,7 @@ require_once('php/select_boxes.php');
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>ΕΚΑΣΔΥΜ - <?php echo $restriction_history; ?></title>
+	<title>ΕΚΑΣΔΥΜ - <?php echo $chats; ?></title>
   <?php include('head.php'); ?>
   <link href="assets/css/personal_chat.css" rel="stylesheet"> 
 
