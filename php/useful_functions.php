@@ -3,10 +3,10 @@
 //Access: Admin & Authorized User
 //Purpose: containss useful function 
 
-define( 'API_ACCESS_KEY', 'AAAApMEIeNU:APA91bEfkVs_--4jAPOVgmaoB3FL6mz1EDLyMki3ftV3mpazrF4PNsnC1UWL25jWHos0rydUNxO48ro9lFNRWYO0MMizo3yZxiriiDj69GbIzBdCv2NYMzQdPZ5Jyx_6jL3mK_6UIFG8');
-define( 'EMAIL', 'ekasdymannouncements@yahoo.com');
-define( 'PASSWORD', 'diplomaThesis12345');
-define( 'ORGANIZATION','EKASDYM');
+define( 'API_ACCESS_KEY', '<FIREBASE-API>');
+define( 'EMAIL', '<EMAIL>');
+define( 'PASSWORD', '<EMAIL_PASSWORD>');
+define( 'ORGANIZATION','<ORGANISATION_NAME>');
 
 function update_last_seen_time($user_id) {
   require 'connect_db.php';
