@@ -14,7 +14,7 @@ if (isset($_SESSION['safe_key']) && isset($_SESSION['user_id'])) {
 
 	echo '<ui class="contacts">';
 
-		$sql = "SELECT get_last_login_by_user(U.id) as last_login,UC.name as profession,U.id,U.name,U.surname,U.profile_pic,U.phone from user U,user_categories UC where U.id!=:id AND UC.id = U.profession AND U.active = 0 AND CONCAT(U.name,' ',U.surname) like :searchVal order by U.name asc";
+		$sql = "SELECT get_last_login_by_user(U.id) as last_login,UC.name as profession,U.id,U.name,U.surname,U.profile_pic,U.phone from user U,user_categories UC where U.id!=:id AND UC.id = U.profession AND U.active = 0 AND CONCAT(U.name,' ',U.surname) like :searchVal order by U.surname asc";
 		$run = $dbh->prepare($sql);
 		$run->bindParam(':id', $id, PDO::PARAM_INT);
 		$run->bindParam(':searchVal',$_POST['search'],PDO::PARAM_STR);
@@ -29,7 +29,7 @@ if (isset($_SESSION['safe_key']) && isset($_SESSION['user_id'])) {
 									<img src="'.$row['profile_pic'].'" class="rounded-circle user_img">
 								</div>
 								<div class="user_info">
-									<span>'.$row['name'].' '.$row['surname'].'</span>
+									<span>'.$row['surname'].' '.$row['name'].'</span>
 									<p>'.$never.'</p>
 								</div>
 							</div>
@@ -41,7 +41,7 @@ if (isset($_SESSION['safe_key']) && isset($_SESSION['user_id'])) {
 									<img src="'.$row['profile_pic'].'" class="rounded-circle user_img">
 								</div>
 								<div class="user_info">
-									<span>'.$row['name'].' '.$row['surname'].'</span>
+									<span>'.$row['surname'].' '.$row['name'].'</span>
 									<p>'.time_since($row['last_login']).'</p>
 								</div>
 							</div>

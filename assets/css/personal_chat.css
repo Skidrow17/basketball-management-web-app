@@ -257,13 +257,13 @@ html {
 	background-color: white;
 }
 
-@media(max-width: 576px) {
+@media(max-width: 768px) {
 	.contacts_card {
 		margin-bottom: 15px !important;
 	}
 
 	.mobile_view {
-		margin-top: 90px !important;
-		margin-bottom: 520px !important;
+		margin-top: 190px !important;
+		margin-bottom: 920px !important;
 	}
 }
